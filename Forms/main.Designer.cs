@@ -57,15 +57,17 @@ namespace iYak
             this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
             this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.AvatarFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ActorFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,35 +75,33 @@ namespace iYak
             this.tbVolume = new System.Windows.Forms.TrackBar();
             this.tbPitch = new System.Windows.Forms.TrackBar();
             this.tbSpeed = new System.Windows.Forms.TrackBar();
-            this.SayBox = new System.Windows.Forms.RichTextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCommand3 = new System.Windows.Forms.Button();
             this.btnRead = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.SayBox = new System.Windows.Forms.RichTextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.VoiceSelect = new System.Windows.Forms.ListView();
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AvatarFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.ActorFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
@@ -193,7 +193,7 @@ namespace iYak
             // XMLToolStripMenuItem
             // 
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
@@ -340,6 +340,32 @@ namespace iYak
             this.panel1.Size = new System.Drawing.Size(212, 594);
             this.panel1.TabIndex = 24;
             // 
+            // AvatarFlow
+            // 
+            this.AvatarFlow.AutoScroll = true;
+            this.AvatarFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AvatarFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AvatarFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvatarFlow.Location = new System.Drawing.Point(0, 31);
+            this.AvatarFlow.Name = "AvatarFlow";
+            this.AvatarFlow.Size = new System.Drawing.Size(212, 563);
+            this.AvatarFlow.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SeaShell;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(5);
+            this.label5.Size = new System.Drawing.Size(212, 31);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Faces";
+            // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(212, 24);
@@ -359,6 +385,32 @@ namespace iYak
             this.panel2.Size = new System.Drawing.Size(225, 594);
             this.panel2.TabIndex = 26;
             // 
+            // ActorFlow
+            // 
+            this.ActorFlow.AutoScroll = true;
+            this.ActorFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActorFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActorFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorFlow.Location = new System.Drawing.Point(0, 31);
+            this.ActorFlow.Name = "ActorFlow";
+            this.ActorFlow.Size = new System.Drawing.Size(225, 563);
+            this.ActorFlow.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SeaShell;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(5);
+            this.label6.Size = new System.Drawing.Size(225, 31);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Actors";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSlateBlue;
@@ -368,25 +420,6 @@ namespace iYak
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(879, 310);
             this.panel3.TabIndex = 27;
-            // 
-            // splitter2
-            // 
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(1094, 24);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 594);
-            this.splitter2.TabIndex = 28;
-            this.splitter2.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel4.Controls.Add(this.flowLayoutPanel1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(215, 24);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(879, 284);
-            this.panel4.TabIndex = 29;
             // 
             // groupBox1
             // 
@@ -409,16 +442,39 @@ namespace iYak
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Voice Controls";
             // 
-            // panel5
+            // btnExport
             // 
-            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel5.Controls.Add(this.statusStrip2);
-            this.panel5.Controls.Add(this.VoiceSelect);
-            this.panel5.Location = new System.Drawing.Point(6, 19);
-            this.panel5.Margin = new System.Windows.Forms.Padding(0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(150, 256);
-            this.panel5.TabIndex = 13;
+            this.btnExport.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.ImageIndex = 36;
+            this.btnExport.ImageList = this.IconList;
+            this.btnExport.Location = new System.Drawing.Point(428, 243);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExport.Size = new System.Drawing.Size(149, 32);
+            this.btnExport.TabIndex = 19;
+            this.btnExport.Text = "    Export Sound";
+            this.btnExport.UseVisualStyleBackColor = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.ImageIndex = 25;
+            this.btnSave.ImageList = this.IconList;
+            this.btnSave.Location = new System.Drawing.Point(581, 243);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnSave.Size = new System.Drawing.Size(96, 32);
+            this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "    Save";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
@@ -429,16 +485,6 @@ namespace iYak
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(325, 120);
             this.panel6.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tuning";
             // 
             // panel7
             // 
@@ -524,63 +570,15 @@ namespace iYak
             this.tbSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbSpeed.Value = 5;
             // 
-            // SayBox
+            // label1
             // 
-            this.SayBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.SayBox.AutoWordSelection = true;
-            this.SayBox.BackColor = System.Drawing.Color.PapayaWhip;
-            this.SayBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SayBox.Location = new System.Drawing.Point(160, 144);
-            this.SayBox.Margin = new System.Windows.Forms.Padding(10);
-            this.SayBox.Name = "SayBox";
-            this.SayBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.SayBox.ShowSelectionMargin = true;
-            this.SayBox.Size = new System.Drawing.Size(516, 93);
-            this.SayBox.TabIndex = 15;
-            this.SayBox.Text = "";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.SlateBlue;
-            this.panel8.Location = new System.Drawing.Point(491, 19);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(185, 120);
-            this.panel8.TabIndex = 16;
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.ImageIndex = 36;
-            this.btnExport.ImageList = this.IconList;
-            this.btnExport.Location = new System.Drawing.Point(428, 243);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExport.Size = new System.Drawing.Size(149, 32);
-            this.btnExport.TabIndex = 19;
-            this.btnExport.Text = "    Export Sound";
-            this.btnExport.UseVisualStyleBackColor = false;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.ImageIndex = 25;
-            this.btnSave.ImageList = this.IconList;
-            this.btnSave.Location = new System.Drawing.Point(581, 243);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnSave.Size = new System.Drawing.Size(96, 32);
-            this.btnSave.TabIndex = 20;
-            this.btnSave.Text = "    Save";
-            this.btnSave.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tuning";
             // 
             // btnCommand3
             // 
@@ -612,6 +610,51 @@ namespace iYak
             this.btnRead.TabIndex = 17;
             this.btnRead.Text = "    Read";
             this.btnRead.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.SlateBlue;
+            this.panel8.Location = new System.Drawing.Point(491, 19);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(185, 120);
+            this.panel8.TabIndex = 16;
+            // 
+            // SayBox
+            // 
+            this.SayBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.SayBox.AutoWordSelection = true;
+            this.SayBox.BackColor = System.Drawing.Color.PapayaWhip;
+            this.SayBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SayBox.Location = new System.Drawing.Point(160, 144);
+            this.SayBox.Margin = new System.Windows.Forms.Padding(10);
+            this.SayBox.Name = "SayBox";
+            this.SayBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.SayBox.ShowSelectionMargin = true;
+            this.SayBox.Size = new System.Drawing.Size(516, 93);
+            this.SayBox.TabIndex = 15;
+            this.SayBox.Text = "";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel5.Controls.Add(this.statusStrip2);
+            this.panel5.Controls.Add(this.VoiceSelect);
+            this.panel5.Location = new System.Drawing.Point(6, 19);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(150, 256);
+            this.panel5.TabIndex = 13;
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statusStrip2.GripMargin = new System.Windows.Forms.Padding(0);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(150, 22);
+            this.statusStrip2.SizingGrip = false;
+            this.statusStrip2.TabIndex = 17;
             // 
             // VoiceSelect
             // 
@@ -666,15 +709,24 @@ namespace iYak
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.col2.Width = 37;
             // 
-            // statusStrip2
+            // splitter2
             // 
-            this.statusStrip2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.statusStrip2.GripMargin = new System.Windows.Forms.Padding(0);
-            this.statusStrip2.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(150, 22);
-            this.statusStrip2.SizingGrip = false;
-            this.statusStrip2.TabIndex = 17;
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Location = new System.Drawing.Point(1094, 24);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 594);
+            this.splitter2.TabIndex = 28;
+            this.splitter2.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel4.Controls.Add(this.flowLayoutPanel1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(215, 24);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(879, 284);
+            this.panel4.TabIndex = 29;
             // 
             // flowLayoutPanel1
             // 
@@ -685,58 +737,6 @@ namespace iYak
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(879, 284);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SeaShell;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(5);
-            this.label5.Size = new System.Drawing.Size(212, 31);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Faces";
-            // 
-            // AvatarFlow
-            // 
-            this.AvatarFlow.AutoScroll = true;
-            this.AvatarFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AvatarFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AvatarFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AvatarFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AvatarFlow.Location = new System.Drawing.Point(0, 31);
-            this.AvatarFlow.Name = "AvatarFlow";
-            this.AvatarFlow.Size = new System.Drawing.Size(212, 563);
-            this.AvatarFlow.TabIndex = 4;
-            // 
-            // ActorFlow
-            // 
-            this.ActorFlow.AutoScroll = true;
-            this.ActorFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ActorFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActorFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActorFlow.Location = new System.Drawing.Point(0, 31);
-            this.ActorFlow.Name = "ActorFlow";
-            this.ActorFlow.Size = new System.Drawing.Size(225, 563);
-            this.ActorFlow.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SeaShell;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(5);
-            this.label6.Size = new System.Drawing.Size(225, 31);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Actors";
             // 
             // Main
             // 
@@ -754,10 +754,10 @@ namespace iYak
             this.Controls.Add(this.StatusStrip1);
             this.Controls.Add(this.MenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1100, 450);
             this.Name = "Main";
             this.Text = "iYak";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
             this.ToolStripRoster.ResumeLayout(false);
@@ -767,16 +767,16 @@ namespace iYak
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
