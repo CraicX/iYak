@@ -122,8 +122,9 @@ namespace iYak
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
@@ -193,7 +194,7 @@ namespace iYak
             // XMLToolStripMenuItem
             // 
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 

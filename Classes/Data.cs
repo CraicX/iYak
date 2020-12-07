@@ -17,7 +17,8 @@ namespace iYak.Classes
         static public SqliteConnection DBH;
 
 
-        static public void InitializeDatabase() {
+        static public void InitializeDatabase() 
+        {
 
             List<String> QueryList = new List<String>();
 

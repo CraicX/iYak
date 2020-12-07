@@ -29,12 +29,20 @@ namespace iYak
             //frmSplash.ShowDialog();
         }
 
-        private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
+        public void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Settings frmSettings = new Settings();
-            frmSettings.ShowDialog();
 
+            Config.frmSettings = new Settings();
+
+            
+            Config.frmSettings.cbAzure.Checked = CloudWS.Azure.enabled;
+            Config.frmSettings.AzureKey.Text = CloudWS.Azure.key;
+            Config.frmSettings.AzureRegion.Text = CloudWS.Azure.region;
+            Application.DoEvents();
+            Console.WriteLine("key:" + CloudWS.Azure.key);
+
+            Config.frmSettings.ShowDialog();
 
         }
 
@@ -49,6 +57,11 @@ namespace iYak
 
 
 
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

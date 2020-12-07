@@ -19,7 +19,8 @@ namespace iYak.Classes
          *  
          *  Create Paths, Datatables and download Avatars
          */
-        static public void StartUp() {
+        static public void StartUp() 
+        {
 
             Application.DoEvents();
 
@@ -53,6 +54,8 @@ namespace iYak.Classes
             //
             Datax.InitializeDatabase();
 
+            LoadCloudCreds();
+
         }
 
 
@@ -63,7 +66,8 @@ namespace iYak.Classes
          * Downloads new ones if necessary
          * 
          */
-        static public List<String> LoadAvatars() {
+        static public List<String> LoadAvatars() 
+        {
 
             List<string> TempAvatars = Helpers.GlobList(Config.AvatarsPath);
 
@@ -104,6 +108,61 @@ namespace iYak.Classes
 
             return TempAvatars;
 
+
+        }
+
+        static public void LoadCloudCreds()
+        {
+            String iniFile = Helpers.JoinPath(Config.RootPath, "Cloud.ini");
+
+            if (!File.Exists(iniFile)) return;
+
+            StreamReader sr = new StreamReader(iniFile);
+
+            while (!sr.EndOfStream) {
+                String lineProperty = sr.ReadLine();
+                Console.WriteLine(lineProperty);
+
+                if (lineProperty.Contains('=') ) {
+
+                    String[] pieces = lineProperty.Split('=');
+
+                    switch( pieces[0].Trim() ) {
+                        case "AzureKey":
+                            CloudWS.Azure.key = pieces[1];
+                            break;
+
+                        case "AzureRegion":
+                            CloudWS.Azure.region = pieces[1];
+                            break;
+
+                        case "AzureEnabled":
+                            CloudWS.Azure.enabled = (pieces[1].Trim() == "1");
+                            break;
+
+                    }
+
+                }
+
+            }
+
+            sr.Close();
+
+
+
+        }
+
+        static public void SaveCloudCreds()
+        {
+            String iniFile = Helpers.JoinPath(Config.RootPath, "Cloud.ini");
+
+            StreamWriter sw = new StreamWriter(iniFile, false);
+
+            sw.WriteLine("AzureKey = "       + CloudWS.Azure.key);
+            sw.WriteLine("AzureRegion = "    + CloudWS.Azure.region);
+            sw.WriteLine("AzureEnabled = "   + (CloudWS.Azure.enabled ? "1":"0"));
+
+            sw.Close();
 
         }
 

@@ -10,9 +10,9 @@ namespace iYak.Classes
     {
 
         static public ViewSplash splasher;
-
-        static public string AppName     = "iYak";
-        static public List<Voice> Voices = new List<Voice>();
+        static public Settings frmSettings;
+        static public string AppName       = "iYak";
+        static public List<Voice> Voices   = new List<Voice>();
         static public List<String> Avatars = new List<String>();
 
 
@@ -27,6 +27,17 @@ namespace iYak.Classes
 
     }
 
+    class CloudWS
+    {
+        static public class Azure
+        {
+            static public String key      = "";
+            static public String region   = "";
+            static public Boolean enabled = false;
+            
+        }
+    }
+
     class Playlist
     {
         public int Uid            = 0;
@@ -38,19 +49,22 @@ namespace iYak.Classes
 
     class Voice
     {
-        public enum EGender {
+        public enum EGender 
+        {
             Male,
             Female,
             Neutral
         }
 
-        public enum EVoiceType {
+        public enum EVoiceType 
+        {
             Standard,
             Neural
 
         }
 
-        public enum ELoc {
+        public enum ELoc 
+        {
             Local,
             Cloud
         }
@@ -66,7 +80,8 @@ namespace iYak.Classes
         public int Pitch            = 5;
         public int Volume           = 5;
         
-        public string GenerateName(string HandleStr) {
+        public string GenerateName(string HandleStr) 
+        {
 
             string replaceList = "VE,American,English,22kHz,Mobile,British,Desktop,Microsoft,_, ";
 
@@ -80,7 +95,8 @@ namespace iYak.Classes
 
         }
 
-        public void SetVoice(String Lookup) {
+        public void SetVoice(String Lookup) 
+        {
 
             foreach (Voice tmpVoice in Config.Voices) {
 
@@ -103,7 +119,8 @@ namespace iYak.Classes
 
     }
 
-    class VoiceSet {
+    class VoiceSet 
+    {
 
         public int Uid       = 0;
         public int Volume    = 100;

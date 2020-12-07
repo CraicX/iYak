@@ -17,11 +17,12 @@ namespace iYak
             InitializeComponent();
         }
 
-        public void ShowStatus( string msg, int currentPos, int maxPos ) {
+        public void ShowStatus( string msg, int currentPos, int maxPos ) 
+        {
 
             lblStatus.Text = msg;
-            pBar.Maximum = maxPos;
-            pBar.Value = currentPos;
+            pBar.Maximum   = maxPos;
+            pBar.Value     = currentPos;
             Application.DoEvents();
 
         }
