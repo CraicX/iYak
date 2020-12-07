@@ -7,8 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iYak", "iYak.csproj", "{F5E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YakResources", "YakResources", "{0B3FC72E-8451-4BB7-A012-CE2C1DE2D771}"
 	ProjectSection(SolutionItems) = preProject
-		AvatarDownload.txt = AvatarDownload.txt
-		AvatarList.txt = AvatarList.txt
+		Resources\AvatarList.txt = Resources\AvatarList.txt
 	EndProjectSection
 EndProject
 Global
