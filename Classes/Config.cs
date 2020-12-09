@@ -28,6 +28,7 @@ namespace iYak.Classes
         //  Define Controls
         //
         static public System.Windows.Forms.ListView LVoices;
+        static public System.Windows.Forms.FlowLayoutPanel FAvatars;
 
 
 

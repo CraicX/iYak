@@ -60,6 +60,8 @@ namespace iYak.Classes
 
             FillVoiceList(Config.Voices);
 
+            ListAvatars();
+
         }
 
         static public void FillVoiceList(List<Voice> VList) 
@@ -123,6 +125,47 @@ namespace iYak.Classes
 
                 Config.LVoices.Items.Add(VoiceItem);
             }
+
+        }
+
+
+        static public void ListAvatars()
+        {
+
+            if (Config.Avatars.Count <= 0) return;
+
+            List<string> AvatarList = Config.Avatars;
+
+            Helpers.Shuffle(ref AvatarList);
+                      
+
+            foreach (string avatarPath in AvatarList)
+            {
+                string ATag = "";
+
+                if (avatarPath.Contains('/') ) {
+                    ATag = avatarPath.Substring(avatarPath.LastIndexOf('/'));
+                }
+
+
+                PictureBox anAvatar = new PictureBox();
+                anAvatar.Tag = ATag;
+                anAvatar.AutoSize = false;
+                anAvatar.Width = 48;
+                anAvatar.Height = 48;
+                anAvatar.Margin = new Padding(1, 1, 1, 1);
+                anAvatar.BorderStyle = BorderStyle.FixedSingle;
+                anAvatar.BackColor   = System.Drawing.Color.Transparent;
+                anAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
+                anAvatar.Image = Helpers.LoadImage(avatarPath);
+
+                anAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
+
+
+                Config.FAvatars.Controls.Add(anAvatar);
+
+            }
+
 
         }
 

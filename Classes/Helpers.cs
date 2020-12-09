@@ -62,5 +62,43 @@ namespace iYak.Classes
         }
 
 
+        static public Image LoadImage(string imgPath)
+        {
+
+            if (File.Exists(imgPath))
+            {
+
+                Bitmap bmpTemp = new Bitmap(imgPath);
+                Bitmap MyImage = new Bitmap(bmpTemp);
+
+                return MyImage;
+
+
+
+            }
+
+
+            return new System.Drawing.Bitmap(48, 48);
+
+
+        }
+        static public void Shuffle(ref List<string> theList)
+        {
+            var r = new Random();
+
+            int lc = theList.Count();
+
+            int i = 0;
+
+            for (i = 0; i < lc - 1; i++) {
+                int index = r.Next(i, lc);
+                if (i != index) {
+                    string temp = theList[i];
+                    theList[i] = theList[index];
+                    theList[index] = temp;
+                }
+            }
+        }
+
     }
 }

@@ -55,11 +55,11 @@ namespace iYak
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
             this.IconList = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.AvatarFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.AvatarPanel = new System.Windows.Forms.Panel();
+            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.ActorsPanel = new System.Windows.Forms.Panel();
             this.ActorFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -100,8 +100,8 @@ namespace iYak
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.AvatarPanel.SuspendLayout();
+            this.ActorsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -119,7 +119,7 @@ namespace iYak
             // 
             this.ToolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
-            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1262, 17);
+            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1162, 17);
             this.ToolStripStatusLabel2.Spring = true;
             // 
             // FileToolStripMenuItem
@@ -133,7 +133,7 @@ namespace iYak
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -190,7 +190,7 @@ namespace iYak
             this.TextToSpeechToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1208, 24);
+            this.MenuStrip1.Size = new System.Drawing.Size(1222, 24);
             this.MenuStrip1.TabIndex = 21;
             this.MenuStrip1.Text = "MenuStrip1";
             // 
@@ -205,7 +205,7 @@ namespace iYak
             // XMLToolStripMenuItem
             // 
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
@@ -257,7 +257,7 @@ namespace iYak
             this.lblStatus});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 618);
             this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1208, 22);
+            this.StatusStrip1.Size = new System.Drawing.Size(1222, 22);
             this.StatusStrip1.TabIndex = 23;
             this.StatusStrip1.Text = "StatusStrip1";
             // 
@@ -341,28 +341,30 @@ namespace iYak
             this.IconList.Images.SetKeyName(43, "stop.png");
             this.IconList.Images.SetKeyName(44, "volume.png");
             // 
-            // panel1
+            // AvatarPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.AvatarFlow);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(212, 594);
-            this.panel1.TabIndex = 24;
+            this.AvatarPanel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarPanel.Controls.Add(this.AvatarsFlow);
+            this.AvatarPanel.Controls.Add(this.label5);
+            this.AvatarPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AvatarPanel.Location = new System.Drawing.Point(0, 24);
+            this.AvatarPanel.Name = "AvatarPanel";
+            this.AvatarPanel.Size = new System.Drawing.Size(220, 594);
+            this.AvatarPanel.TabIndex = 24;
             // 
-            // AvatarFlow
+            // AvatarsFlow
             // 
-            this.AvatarFlow.AutoScroll = true;
-            this.AvatarFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AvatarFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AvatarFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AvatarFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AvatarFlow.Location = new System.Drawing.Point(0, 31);
-            this.AvatarFlow.Name = "AvatarFlow";
-            this.AvatarFlow.Size = new System.Drawing.Size(212, 563);
-            this.AvatarFlow.TabIndex = 4;
+            this.AvatarsFlow.AutoScroll = true;
+            this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
+            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.AvatarsFlow.Name = "AvatarsFlow";
+            this.AvatarsFlow.Size = new System.Drawing.Size(220, 563);
+            this.AvatarsFlow.TabIndex = 4;
             // 
             // label5
             // 
@@ -374,28 +376,28 @@ namespace iYak
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(5);
-            this.label5.Size = new System.Drawing.Size(212, 31);
+            this.label5.Size = new System.Drawing.Size(220, 31);
             this.label5.TabIndex = 0;
             this.label5.Text = "Faces";
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(212, 24);
+            this.splitter1.Location = new System.Drawing.Point(220, 24);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 594);
             this.splitter1.TabIndex = 25;
             this.splitter1.TabStop = false;
             // 
-            // panel2
+            // ActorsPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel2.Controls.Add(this.ActorFlow);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(983, 24);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(225, 594);
-            this.panel2.TabIndex = 26;
+            this.ActorsPanel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsPanel.Controls.Add(this.ActorFlow);
+            this.ActorsPanel.Controls.Add(this.label6);
+            this.ActorsPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ActorsPanel.Location = new System.Drawing.Point(997, 24);
+            this.ActorsPanel.Name = "ActorsPanel";
+            this.ActorsPanel.Size = new System.Drawing.Size(225, 594);
+            this.ActorsPanel.TabIndex = 26;
             // 
             // ActorFlow
             // 
@@ -428,9 +430,9 @@ namespace iYak
             this.panel3.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(215, 308);
+            this.panel3.Location = new System.Drawing.Point(223, 308);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(765, 310);
+            this.panel3.Size = new System.Drawing.Size(771, 310);
             this.panel3.TabIndex = 27;
             // 
             // groupBox1
@@ -447,7 +449,7 @@ namespace iYak
             this.groupBox1.Controls.Add(this.VoiceSelFrame);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(2, 13);
+            this.groupBox1.Location = new System.Drawing.Point(5, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(761, 283);
             this.groupBox1.TabIndex = 1;
@@ -843,7 +845,7 @@ namespace iYak
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(980, 24);
+            this.splitter2.Location = new System.Drawing.Point(994, 24);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 594);
             this.splitter2.TabIndex = 28;
@@ -854,9 +856,9 @@ namespace iYak
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel4.Controls.Add(this.flowLayoutPanel1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(215, 24);
+            this.panel4.Location = new System.Drawing.Point(223, 24);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(765, 284);
+            this.panel4.Size = new System.Drawing.Size(771, 284);
             this.panel4.TabIndex = 29;
             // 
             // flowLayoutPanel1
@@ -866,7 +868,7 @@ namespace iYak
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(765, 284);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(771, 284);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Main
@@ -874,14 +876,14 @@ namespace iYak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.ClientSize = new System.Drawing.Size(1208, 640);
+            this.ClientSize = new System.Drawing.Size(1222, 640);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.AvatarPanel);
             this.Controls.Add(this.ToolStripRoster);
             this.Controls.Add(this.splitter2);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.ActorsPanel);
             this.Controls.Add(this.StatusStrip1);
             this.Controls.Add(this.MenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -895,8 +897,8 @@ namespace iYak
             this.ToolStripRoster.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.AvatarPanel.ResumeLayout(false);
+            this.ActorsPanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -938,9 +940,9 @@ namespace iYak
         internal System.Windows.Forms.ToolStripStatusLabel lblStatus;
         internal System.Windows.Forms.ImageList ActorIcons;
         internal System.Windows.Forms.ImageList IconList;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel AvatarPanel;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel ActorsPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Panel panel4;
@@ -967,7 +969,7 @@ namespace iYak
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.FlowLayoutPanel AvatarFlow;
+        internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
         internal System.Windows.Forms.FlowLayoutPanel ActorFlow;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader col3;

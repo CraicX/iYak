@@ -15,13 +15,13 @@ namespace iYak
 {
     public partial class Main : Form
     {
+        
 
         static public Voice CurrentVoice = new Voice();
         public Main()
         {
             InitializeComponent();
 
-           
 
 
 
@@ -36,7 +36,6 @@ namespace iYak
 
 
             Config.frmSettings = new Settings();
-
             
             Config.frmSettings.cbAzure.Checked = CloudWS.Azure.enabled;
             Config.frmSettings.AzureKey.Text = CloudWS.Azure.key;
@@ -56,14 +55,25 @@ namespace iYak
             
 
             Config.LVoices = VoiceSelect;
+            Config.FAvatars = AvatarsFlow;
 
             Utilities.StartUp();
 
+            if (Config.Avatars.Count >= 1) {
+
+                ListAvatars();
+            }
 
 
 
 
 
+        }
+
+        private void ListAvatars() 
+        {
+
+            
 
         }
 
