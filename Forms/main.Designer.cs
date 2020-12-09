@@ -78,12 +78,22 @@ namespace iYak
             this.btnCommand3 = new System.Windows.Forms.Button();
             this.btnRead = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.SayBox = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblService = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblVoice = new System.Windows.Forms.Label();
+            this.SayBox = new System.Windows.Forms.RichTextBox();
+            this.VoiceSelFrame = new System.Windows.Forms.Panel();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.VoiceSelect = new System.Windows.Forms.ListView();
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -99,7 +109,9 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
+            this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.VoiceSelFrame.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -432,12 +444,12 @@ namespace iYak
             this.groupBox1.Controls.Add(this.btnRead);
             this.groupBox1.Controls.Add(this.panel8);
             this.groupBox1.Controls.Add(this.SayBox);
-            this.groupBox1.Controls.Add(this.panel5);
+            this.groupBox1.Controls.Add(this.VoiceSelFrame);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(99, 10);
+            this.groupBox1.Location = new System.Drawing.Point(64, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(682, 283);
+            this.groupBox1.Size = new System.Drawing.Size(761, 283);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Voice Controls";
@@ -450,7 +462,7 @@ namespace iYak
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.ImageIndex = 36;
             this.btnExport.ImageList = this.IconList;
-            this.btnExport.Location = new System.Drawing.Point(428, 243);
+            this.btnExport.Location = new System.Drawing.Point(506, 243);
             this.btnExport.Margin = new System.Windows.Forms.Padding(0);
             this.btnExport.Name = "btnExport";
             this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -467,7 +479,7 @@ namespace iYak
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.ImageIndex = 25;
             this.btnSave.ImageList = this.IconList;
-            this.btnSave.Location = new System.Drawing.Point(581, 243);
+            this.btnSave.Location = new System.Drawing.Point(659, 243);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -481,7 +493,8 @@ namespace iYak
             this.panel6.BackColor = System.Drawing.Color.SlateBlue;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(160, 19);
+            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Location = new System.Drawing.Point(238, 19);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(325, 120);
             this.panel6.TabIndex = 14;
@@ -587,7 +600,7 @@ namespace iYak
             this.btnCommand3.ForeColor = System.Drawing.Color.Black;
             this.btnCommand3.Image = ((System.Drawing.Image)(resources.GetObject("btnCommand3.Image")));
             this.btnCommand3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCommand3.Location = new System.Drawing.Point(258, 243);
+            this.btnCommand3.Location = new System.Drawing.Point(336, 243);
             this.btnCommand3.Name = "btnCommand3";
             this.btnCommand3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnCommand3.Size = new System.Drawing.Size(90, 32);
@@ -602,7 +615,7 @@ namespace iYak
             this.btnRead.ForeColor = System.Drawing.Color.Black;
             this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
             this.btnRead.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRead.Location = new System.Drawing.Point(159, 243);
+            this.btnRead.Location = new System.Drawing.Point(237, 243);
             this.btnRead.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.btnRead.Name = "btnRead";
             this.btnRead.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -610,14 +623,124 @@ namespace iYak
             this.btnRead.TabIndex = 17;
             this.btnRead.Text = "    Read";
             this.btnRead.UseVisualStyleBackColor = false;
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.SlateBlue;
-            this.panel8.Location = new System.Drawing.Point(491, 19);
+            this.panel8.Controls.Add(this.panel5);
+            this.panel8.Location = new System.Drawing.Point(569, 19);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(185, 120);
             this.panel8.TabIndex = 16;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.lblType);
+            this.panel5.Controls.Add(this.lblService);
+            this.panel5.Controls.Add(this.lblGender);
+            this.panel5.Controls.Add(this.label11);
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.lblVoice);
+            this.panel5.Font = new System.Drawing.Font("Microsoft NeoGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel5.ForeColor = System.Drawing.Color.LightYellow;
+            this.panel5.Location = new System.Drawing.Point(41, 56);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(143, 61);
+            this.panel5.TabIndex = 0;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblType.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblType.Location = new System.Drawing.Point(43, 44);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(11, 13);
+            this.lblType.TabIndex = 7;
+            this.lblType.Text = "-";
+            // 
+            // lblService
+            // 
+            this.lblService.AutoSize = true;
+            this.lblService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblService.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblService.Location = new System.Drawing.Point(43, 30);
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(11, 13);
+            this.lblService.TabIndex = 6;
+            this.lblService.Text = "-";
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblGender.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblGender.Location = new System.Drawing.Point(43, 16);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(11, 13);
+            this.lblGender.TabIndex = 5;
+            this.lblGender.Text = "-";
+            this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label11.Location = new System.Drawing.Point(13, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Type:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label10.Location = new System.Drawing.Point(0, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Service:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label9.Location = new System.Drawing.Point(0, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Gender:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label8.Location = new System.Drawing.Point(9, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Voice:";
+            // 
+            // lblVoice
+            // 
+            this.lblVoice.AutoSize = true;
+            this.lblVoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblVoice.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lblVoice.Location = new System.Drawing.Point(43, 2);
+            this.lblVoice.Name = "lblVoice";
+            this.lblVoice.Size = new System.Drawing.Size(11, 13);
+            this.lblVoice.TabIndex = 0;
+            this.lblVoice.Text = "-";
             // 
             // SayBox
             // 
@@ -626,7 +749,7 @@ namespace iYak
             this.SayBox.AutoWordSelection = true;
             this.SayBox.BackColor = System.Drawing.Color.PapayaWhip;
             this.SayBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SayBox.Location = new System.Drawing.Point(160, 144);
+            this.SayBox.Location = new System.Drawing.Point(238, 144);
             this.SayBox.Margin = new System.Windows.Forms.Padding(10);
             this.SayBox.Name = "SayBox";
             this.SayBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
@@ -635,16 +758,16 @@ namespace iYak
             this.SayBox.TabIndex = 15;
             this.SayBox.Text = "";
             // 
-            // panel5
+            // VoiceSelFrame
             // 
-            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel5.Controls.Add(this.statusStrip2);
-            this.panel5.Controls.Add(this.VoiceSelect);
-            this.panel5.Location = new System.Drawing.Point(6, 19);
-            this.panel5.Margin = new System.Windows.Forms.Padding(0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(150, 256);
-            this.panel5.TabIndex = 13;
+            this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
+            this.VoiceSelFrame.Controls.Add(this.statusStrip2);
+            this.VoiceSelFrame.Controls.Add(this.VoiceSelect);
+            this.VoiceSelFrame.Location = new System.Drawing.Point(6, 19);
+            this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
+            this.VoiceSelFrame.Name = "VoiceSelFrame";
+            this.VoiceSelFrame.Size = new System.Drawing.Size(228, 256);
+            this.VoiceSelFrame.TabIndex = 13;
             // 
             // statusStrip2
             // 
@@ -652,7 +775,7 @@ namespace iYak
             this.statusStrip2.GripMargin = new System.Windows.Forms.Padding(0);
             this.statusStrip2.Location = new System.Drawing.Point(0, 0);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(150, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(228, 22);
             this.statusStrip2.SizingGrip = false;
             this.statusStrip2.TabIndex = 17;
             // 
@@ -663,7 +786,8 @@ namespace iYak
             this.VoiceSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VoiceSelect.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col1,
-            this.col2});
+            this.col2,
+            this.col3});
             this.VoiceSelect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VoiceSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
@@ -688,23 +812,30 @@ namespace iYak
             this.VoiceSelect.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceSelect.MultiSelect = false;
             this.VoiceSelect.Name = "VoiceSelect";
-            this.VoiceSelect.Size = new System.Drawing.Size(150, 256);
+            this.VoiceSelect.Size = new System.Drawing.Size(228, 256);
             this.VoiceSelect.SmallImageList = this.ActorIcons;
             this.VoiceSelect.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.VoiceSelect.TabIndex = 16;
             this.VoiceSelect.UseCompatibleStateImageBehavior = false;
             this.VoiceSelect.View = System.Windows.Forms.View.Details;
+            this.VoiceSelect.SelectedIndexChanged += new System.EventHandler(this.VoiceSelect_SelectedIndexChanged);
             // 
             // col1
             // 
             this.col1.Text = "Name";
-            this.col1.Width = 79;
+            this.col1.Width = 100;
             // 
             // col2
             // 
-            this.col2.Text = "";
+            this.col2.Text = "Type";
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.col2.Width = 37;
+            this.col2.Width = 40;
+            // 
+            // col3
+            // 
+            this.col3.Text = "Type";
+            this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.col3.Width = 70;
             // 
             // splitter2
             // 
@@ -771,8 +902,11 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).EndInit();
+            this.panel8.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.VoiceSelFrame.ResumeLayout(false);
+            this.VoiceSelFrame.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -817,7 +951,7 @@ namespace iYak
         internal System.Windows.Forms.TrackBar tbPitch;
         internal System.Windows.Forms.TrackBar tbSpeed;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel VoiceSelFrame;
         internal System.Windows.Forms.Button btnExport;
         internal System.Windows.Forms.Button btnSave;
         internal System.Windows.Forms.Button btnCommand3;
@@ -833,6 +967,16 @@ namespace iYak
         internal System.Windows.Forms.FlowLayoutPanel AvatarFlow;
         internal System.Windows.Forms.FlowLayoutPanel ActorFlow;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ColumnHeader col3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lblVoice;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblService;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

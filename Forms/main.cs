@@ -15,6 +15,8 @@ namespace iYak
 {
     public partial class Main : Form
     {
+
+        static public Voice CurrentVoice = new Voice();
         public Main()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace iYak
 
             Config.splasher = new ViewSplash();
             Config.splasher.Show();
+            
 
             Config.LVoices = VoiceSelect;
 
@@ -67,6 +70,52 @@ namespace iYak
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void VoiceSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (VoiceSelect.SelectedItems.Count < 1) return;
+
+            Application.DoEvents();
+
+            Main.CurrentVoice = new Voice();
+
+            Main.CurrentVoice.SetVoice(VoiceSelect.Items[VoiceSelect.SelectedIndices[0]].Text);
+
+            UpdateVoiceInfo(Main.CurrentVoice);
+            
+
+
+            //Voice1.SetVoice(CurrentVoice.Id);
+            //VoiceName.Text = CurrentVoice.Id;
+
+        }
+
+        private void UpdateVoiceInfo( Voice speaker )
+        {
+
+            lblVoice.Text     = speaker.Id;
+            lblGender.Text    = Voice.GetGender(speaker.Gender);
+            lblService.Text   = Voice.GetHost(speaker.Host);
+            lblType.Text = Voice.GetType(speaker.VoiceType);
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            string SayText = SayBox.Text.Trim();
+            Console.WriteLine(SayText);
+            if (SayText == "") return;
+
+            RoboVoice RVoice = new RoboVoice();
+
+            RVoice.voice = Main.CurrentVoice;
+
+            RVoice.Say(SayText);
+
+
+
+
+
         }
     }
 }

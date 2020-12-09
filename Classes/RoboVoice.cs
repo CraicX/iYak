@@ -11,11 +11,11 @@ using Microsoft.CognitiveServices.Speech;
 
 namespace iYak.Classes
 {
-    class RoboVoice
+    public class RoboVoice
     {
 
         static private Boolean isImported  = false;
-        static private Boolean AzureReady  = false;
+        //static private Boolean AzureReady  = false;
         //static private Boolean AzureEnabled = false;
         //static private Boolean GCloudReady = false;
         //static private String AzureKey     = "";
@@ -25,6 +25,7 @@ namespace iYak.Classes
 
         static private System.Speech.Synthesis.SpeechSynthesizer LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
 
+        public Voice voice = new Voice();
 
 
         public RoboVoice() 
@@ -37,10 +38,24 @@ namespace iYak.Classes
 
             }
 
-            if
+
             
         }
 
+
+        public bool Say(string sayText) 
+        {
+
+            System.Speech.Synthesis.SpeechSynthesizer tmpVoice = new System.Speech.Synthesis.SpeechSynthesizer();
+            tmpVoice.SetOutputToDefaultAudioDevice();
+            tmpVoice.SelectVoice(voice.Handle);
+            tmpVoice.Volume = voice.Volume;
+            tmpVoice.Rate = (voice.Rate * 2) - 10;
+            tmpVoice.SpeakAsync(sayText);
+
+            return true;
+
+        }
 
         static void InitAzure() 
         {
@@ -50,7 +65,7 @@ namespace iYak.Classes
 
             RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
 
-            RoboVoice.AzureReady = true;
+           // if (!RoboVoice.AzureReady) RoboVoice.AzureReady = true;
 
             
         }
@@ -69,7 +84,8 @@ namespace iYak.Classes
                     Active = true,
                     Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle = iVoice.VoiceInfo.Name,
-                    Gender = iVoice.VoiceInfo.Gender
+                    Gender = iVoice.VoiceInfo.Gender,
+                    Host = Voice.EHost.Local
                 };
 
                 VoiceList.Add(TempVoice);
@@ -86,7 +102,13 @@ namespace iYak.Classes
     }
 
 
-    class Voice
+
+    //
+    // ────────────────────────────────────────────────────────────────────────
+    //   :::::: V O I C E 
+    // ────────────────────────────────────────────────────────────────────────
+    //
+    public class Voice
     {
         public enum EGender
         {
@@ -102,10 +124,40 @@ namespace iYak.Classes
 
         }
 
-        public enum ELoc
+        public enum EHost
         {
             Local,
-            Cloud
+            Azure,
+            GCloud
+        }
+
+        static public string GetGender(System.Speech.Synthesis.VoiceGender which)
+        {
+            if (which == VoiceGender.Male)      return "Male";
+            if (which == VoiceGender.Female)    return "Female";
+            if (which == VoiceGender.Neutral)   return "Neu";
+
+            return "unknown";
+            
+        }
+
+        static public string GetType (EVoiceType which)
+        {
+            if (which == EVoiceType.Standard) return "Standard";
+            if (which == EVoiceType.Neural) return "Neural";
+
+            return "unknown";
+
+        }
+
+        static public string GetHost(EHost which)
+        {
+            if (which == EHost.Azure)  return "Azure";
+            if (which == EHost.GCloud) return "GCloud";
+            if (which == EHost.Local)  return "Local";
+
+            return "unknown";
+
         }
 
 
@@ -113,11 +165,11 @@ namespace iYak.Classes
         public string Handle                              = "";
         public bool Active                                = true;
         public System.Speech.Synthesis.VoiceGender Gender = System.Speech.Synthesis.VoiceGender.NotSet;
-        public EVoiceType VoiceType                       = EVoiceType.Neural;
-        public ELoc Loc                                   = ELoc.Local;
+        public EVoiceType VoiceType                       = EVoiceType.Standard;
+        public EHost Host                                 = EHost.Local;
         public int Rate                                   = 5;
         public int Pitch                                  = 5;
-        public int Volume                                 = 5;
+        public int Volume                                 = 100;
 
         static public string GenerateName(string HandleStr)
         {
@@ -158,7 +210,7 @@ namespace iYak.Classes
                     Handle    = tmpVoice.Handle;
                     Gender    = tmpVoice.Gender;
                     VoiceType = tmpVoice.VoiceType;
-                    Loc       = tmpVoice.Loc;
+                    Host      = tmpVoice.Host;
                     Rate      = tmpVoice.Rate;
                     Pitch     = tmpVoice.Pitch;
                     Volume    = tmpVoice.Volume;
@@ -172,7 +224,12 @@ namespace iYak.Classes
 
     }
 
-    class VoiceSet
+    //
+    // ────────────────────────────────────────────────────────────────────────
+    //   :::::: V O I C E   S E T
+    // ────────────────────────────────────────────────────────────────────────
+    //
+    public class VoiceSet
     {
 
         public int Uid       = 0;

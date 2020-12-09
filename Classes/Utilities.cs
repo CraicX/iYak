@@ -67,7 +67,7 @@ namespace iYak.Classes
 
             int imgNum       = 0; 
             string tmpLoc    = "";
-            string FontColor = "";
+            Color FontColor;
             string BackCol   = "";
 
             foreach (Voice vItem in VList)
@@ -76,26 +76,32 @@ namespace iYak.Classes
                 Console.WriteLine(vItem.Handle);
                 if (vItem.Gender == System.Speech.Synthesis.VoiceGender.Male) {
                     imgNum = 0;
-                    FontColor = "Blue";
+                    FontColor = Color.Blue;
                     BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
 
                 } else {
                     imgNum = 1;
-                    FontColor = "MediumVioletRed";
+                    FontColor = Color.MediumVioletRed;
                     BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
                 }
 
                 ListViewItem VoiceItem = new ListViewItem(vItem.Id, imgNum);
+                VoiceItem.UseItemStyleForSubItems = false;
+                //~ VoiceItem.ForeColor = Color.FromName(FontColor);
 
-                VoiceItem.ForeColor = Color.FromName(FontColor);
-
-                if (vItem.Loc == Voice.ELoc.Cloud) {
+                if (vItem.Host == Voice.EHost.Azure) {
                     VoiceItem.BackColor = Color.FromName(BackCol);
                     tmpLoc = "C";
                 }
                 tmpLoc = "-";
 
                 VoiceItem.SubItems.Add(tmpLoc);
+
+                ListViewItem.ListViewSubItem tmpHost = new ListViewItem.ListViewSubItem(VoiceItem, Voice.GetHost(vItem.Host));
+
+                tmpHost.ForeColor = Color.Black;
+
+                VoiceItem.SubItems.Add(tmpHost);
 
                 switch( vItem.Gender) {
                     case System.Speech.Synthesis.VoiceGender.Male:
@@ -110,6 +116,10 @@ namespace iYak.Classes
                         VoiceItem.Group = Config.LVoices.Groups[2];
                         break;
                 }
+                VoiceItem.SubItems[0].ForeColor = FontColor;
+                VoiceItem.SubItems[0].Font = new Font(VoiceItem.SubItems[0].Font, VoiceItem.SubItems[1].Font.Style | FontStyle.Bold);
+                VoiceItem.SubItems[2].Font = new Font("Microsoft Sans Serif", 10, GraphicsUnit.Pixel);
+                VoiceItem.SubItems[2].ForeColor = Color.MidnightBlue;
 
                 Config.LVoices.Items.Add(VoiceItem);
             }
