@@ -54,9 +54,9 @@ namespace iYak
             // pBar
             // 
             this.pBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pBar.Location = new System.Drawing.Point(0, 465);
+            this.pBar.Location = new System.Drawing.Point(0, 461);
             this.pBar.Name = "pBar";
-            this.pBar.Size = new System.Drawing.Size(423, 23);
+            this.pBar.Size = new System.Drawing.Size(419, 23);
             this.pBar.TabIndex = 1;
             this.pBar.Value = 10;
             // 
@@ -74,7 +74,7 @@ namespace iYak
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 488);
+            this.ClientSize = new System.Drawing.Size(419, 484);
             this.ControlBox = false;
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.pBar);
@@ -83,7 +83,7 @@ namespace iYak
             this.Name = "ViewSplash";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "ViewSplash";
+            this.Text = "iYak Setup";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).EndInit();
             this.ResumeLayout(false);

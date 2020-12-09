@@ -198,8 +198,6 @@ namespace iYak.Classes
         static public List<String> DownloadAvatars()
         {
 
-            List<String> TempAvatars = new List<String>();
-
             String[] avatarList = System.IO.File.ReadAllLines(@"AvatarList.txt");
 
             int numAvatar = avatarList.Length;
@@ -216,6 +214,7 @@ namespace iYak.Classes
 
             }
 
+            List<string> TempAvatars = Helpers.GlobList(Config.AvatarsPath);
 
             return TempAvatars;
 
