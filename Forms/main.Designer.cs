@@ -190,7 +190,7 @@ namespace iYak
             this.TextToSpeechToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1322, 24);
+            this.MenuStrip1.Size = new System.Drawing.Size(1208, 24);
             this.MenuStrip1.TabIndex = 21;
             this.MenuStrip1.Text = "MenuStrip1";
             // 
@@ -257,7 +257,7 @@ namespace iYak
             this.lblStatus});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 618);
             this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1322, 22);
+            this.StatusStrip1.Size = new System.Drawing.Size(1208, 22);
             this.StatusStrip1.TabIndex = 23;
             this.StatusStrip1.Text = "StatusStrip1";
             // 
@@ -392,7 +392,7 @@ namespace iYak
             this.panel2.Controls.Add(this.ActorFlow);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1097, 24);
+            this.panel2.Location = new System.Drawing.Point(983, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(225, 594);
             this.panel2.TabIndex = 26;
@@ -430,7 +430,7 @@ namespace iYak
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(215, 308);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(879, 310);
+            this.panel3.Size = new System.Drawing.Size(765, 310);
             this.panel3.TabIndex = 27;
             // 
             // groupBox1
@@ -447,7 +447,7 @@ namespace iYak
             this.groupBox1.Controls.Add(this.VoiceSelFrame);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(64, 13);
+            this.groupBox1.Location = new System.Drawing.Point(2, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(761, 283);
             this.groupBox1.TabIndex = 1;
@@ -558,6 +558,7 @@ namespace iYak
             this.tbVolume.TabIndex = 13;
             this.tbVolume.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbVolume.Value = 100;
+            this.tbVolume.Scroll += new System.EventHandler(this.tbVolume_Scroll);
             // 
             // tbPitch
             // 
@@ -570,6 +571,7 @@ namespace iYak
             this.tbPitch.TabIndex = 12;
             this.tbPitch.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbPitch.Value = 5;
+            this.tbPitch.Scroll += new System.EventHandler(this.tbPitch_Scroll);
             // 
             // tbSpeed
             // 
@@ -582,6 +584,7 @@ namespace iYak
             this.tbSpeed.TabIndex = 11;
             this.tbSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbSpeed.Value = 5;
+            this.tbSpeed.Scroll += new System.EventHandler(this.tbSpeed_Scroll);
             // 
             // label1
             // 
@@ -840,7 +843,7 @@ namespace iYak
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(1094, 24);
+            this.splitter2.Location = new System.Drawing.Point(980, 24);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 594);
             this.splitter2.TabIndex = 28;
@@ -853,7 +856,7 @@ namespace iYak
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(215, 24);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(879, 284);
+            this.panel4.Size = new System.Drawing.Size(765, 284);
             this.panel4.TabIndex = 29;
             // 
             // flowLayoutPanel1
@@ -863,7 +866,7 @@ namespace iYak
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(879, 284);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(765, 284);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Main
@@ -871,7 +874,7 @@ namespace iYak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.ClientSize = new System.Drawing.Size(1322, 640);
+            this.ClientSize = new System.Drawing.Size(1208, 640);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitter1);
@@ -882,7 +885,7 @@ namespace iYak
             this.Controls.Add(this.StatusStrip1);
             this.Controls.Add(this.MenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1100, 450);
+            this.MinimumSize = new System.Drawing.Size(1224, 450);
             this.Name = "Main";
             this.Text = "iYak";
             this.Load += new System.EventHandler(this.Main_Load);

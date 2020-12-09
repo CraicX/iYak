@@ -117,5 +117,20 @@ namespace iYak
 
 
         }
+
+        private void tbVolume_Scroll(object sender, EventArgs e)
+        {
+            Main.CurrentVoice.Volume = tbVolume.Value;
+        }
+
+        private void tbPitch_Scroll(object sender, EventArgs e)
+        {
+            Main.CurrentVoice.Pitch = tbPitch.Value;
+        }
+
+        private void tbSpeed_Scroll(object sender, EventArgs e)
+        {
+            Main.CurrentVoice.Rate = tbSpeed.Value;
+        }
     }
 }
