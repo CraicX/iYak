@@ -52,36 +52,11 @@ namespace iYak.Classes
 
             tClient.DownloadFile(path, savePath + "\\" + fName);
 
-            // byte[] superByte = tClient.DownloadData(path);
-
-            // Image MyImage;
-
 
             return true;
 
 
-            //Dim tClient As Net.WebClient = New Net.WebClient
-
-
-
-            //Try
-            //    Dim superByte() As Byte
-            //    superByte = tClient.DownloadData(imgPath)
-
-            //    If superByte.Length > 0 Then
-            //        MyImage = Image.FromStream(New MemoryStream(superByte))
-            //    Else
-            //        Using bmpTemp As New Bitmap(imgPath)
-            //            MyImage = New Bitmap(bmpTemp)
-            //        End Using
-            //    End If
-
-            //Catch ex As WebException
-            //    Debug.WriteLine(ex.Message)
-            //    Using bmpTemp As New Bitmap(imgPath)
-            //        MyImage = New Bitmap(bmpTemp)
-            //    End Using
-            //End Try
+            
 
 
         }

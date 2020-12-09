@@ -7,7 +7,7 @@ using iYak.Classes;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-
+using System.Drawing;
 namespace iYak.Classes
 {
     class Utilities
@@ -55,6 +55,64 @@ namespace iYak.Classes
             Datax.InitializeDatabase();
 
             LoadCloudCreds();
+
+            Config.Voices = RoboVoice.GetVoiceList();
+
+            FillVoiceList(Config.Voices);
+
+        }
+
+        static public void FillVoiceList(List<Voice> VList) 
+        {
+
+            int imgNum       = 0; 
+            string tmpLoc    = "";
+            string FontColor = "";
+            string BackCol   = "";
+
+            foreach (Voice vItem in VList)
+            {
+
+                Console.WriteLine(vItem.Handle);
+                if (vItem.Gender == System.Speech.Synthesis.VoiceGender.Male) {
+                    imgNum = 0;
+                    FontColor = "Blue";
+                    BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
+
+                } else {
+                    imgNum = 1;
+                    FontColor = "MediumVioletRed";
+                    BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
+                }
+
+                ListViewItem VoiceItem = new ListViewItem(vItem.Id, imgNum);
+
+                VoiceItem.ForeColor = Color.FromName(FontColor);
+
+                if (vItem.Loc == Voice.ELoc.Cloud) {
+                    VoiceItem.BackColor = Color.FromName(BackCol);
+                    tmpLoc = "C";
+                }
+                tmpLoc = "-";
+
+                VoiceItem.SubItems.Add(tmpLoc);
+
+                switch( vItem.Gender) {
+                    case System.Speech.Synthesis.VoiceGender.Male:
+                        VoiceItem.Group = Config.LVoices.Groups[0];
+                        break;
+
+                    case System.Speech.Synthesis.VoiceGender.Female:
+                        VoiceItem.Group = Config.LVoices.Groups[1];
+                        break;
+
+                    default:
+                        VoiceItem.Group = Config.LVoices.Groups[2];
+                        break;
+                }
+
+                Config.LVoices.Items.Add(VoiceItem);
+            }
 
         }
 

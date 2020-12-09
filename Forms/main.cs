@@ -52,7 +52,12 @@ namespace iYak
             Config.splasher = new ViewSplash();
             Config.splasher.Show();
 
+            Config.LVoices = VoiceSelect;
+
             Utilities.StartUp();
+
+
+
 
 
 

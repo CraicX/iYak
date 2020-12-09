@@ -34,7 +34,6 @@ namespace iYak
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +121,7 @@ namespace iYak
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -194,7 +193,7 @@ namespace iYak
             // XMLToolStripMenuItem
             // 
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
@@ -660,7 +659,7 @@ namespace iYak
             // VoiceSelect
             // 
             this.VoiceSelect.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.VoiceSelect.BackColor = System.Drawing.Color.SteelBlue;
+            this.VoiceSelect.BackColor = System.Drawing.Color.LightBlue;
             this.VoiceSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VoiceSelect.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col1,
@@ -683,10 +682,7 @@ namespace iYak
             listViewGroup1,
             listViewGroup2,
             listViewGroup3});
-            this.VoiceSelect.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.VoiceSelect.HideSelection = false;
-            this.VoiceSelect.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.VoiceSelect.LabelWrap = false;
             this.VoiceSelect.Location = new System.Drawing.Point(0, 0);
             this.VoiceSelect.Margin = new System.Windows.Forms.Padding(0);
@@ -707,7 +703,7 @@ namespace iYak
             // col2
             // 
             this.col2.Text = "";
-            this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.col2.Width = 37;
             // 
             // splitter2
