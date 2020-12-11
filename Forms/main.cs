@@ -56,6 +56,7 @@ namespace iYak
 
             Config.LVoices = VoiceSelect;
             Config.FAvatars = AvatarsFlow;
+            Config.CurrentFace = pbFace;
 
             Utilities.StartUp();
 
@@ -107,7 +108,7 @@ namespace iYak
             lblVoice.Text     = speaker.Id;
             lblGender.Text    = Voice.GetGender(speaker.Gender);
             lblService.Text   = Voice.GetHost(speaker.Host);
-            lblType.Text = Voice.GetType(speaker.VoiceType);
+            lblType.Text      = Voice.GetType(speaker.VoiceType);
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -141,6 +142,16 @@ namespace iYak
         private void tbSpeed_Scroll(object sender, EventArgs e)
         {
             Main.CurrentVoice.Rate = tbSpeed.Value;
+        }
+
+        private void AvatarsFlow_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

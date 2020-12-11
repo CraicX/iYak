@@ -29,6 +29,7 @@ namespace iYak.Classes
         //
         static public System.Windows.Forms.ListView LVoices;
         static public System.Windows.Forms.FlowLayoutPanel FAvatars;
+        static public System.Windows.Forms.PictureBox CurrentFace;
 
 
 
@@ -42,6 +43,7 @@ namespace iYak.Classes
             static public String key      = "";
             static public String region   = "";
             static public Boolean enabled = false;
+
             
         }
     }

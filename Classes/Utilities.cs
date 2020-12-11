@@ -143,8 +143,8 @@ namespace iYak.Classes
             {
                 string ATag = "";
 
-                if (avatarPath.Contains('/') ) {
-                    ATag = avatarPath.Substring(avatarPath.LastIndexOf('/'));
+                if (avatarPath.Contains('\\') ) {
+                    ATag = avatarPath.Substring(avatarPath.LastIndexOf('\\')+1);
                 }
 
 
@@ -164,9 +164,20 @@ namespace iYak.Classes
 
                 Config.FAvatars.Controls.Add(anAvatar);
 
+                anAvatar.Click += new EventHandler(Avatar_Click);
+
+
             }
 
 
+        }
+
+        static void Avatar_Click( object sender, EventArgs e )
+        {
+            PictureBox cAvatar = sender as PictureBox;
+            Config.CurrentFace.Image = cAvatar.Image;
+            
+            
         }
 
 
