@@ -179,6 +179,12 @@
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\RoboVoice.cs" />
     <Compile Include="Classes\Utilities.cs" />
+    <Compile Include="Controls\RoboActor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RoboActor.Designer.cs">
+      <DependentUpon>RoboActor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     <Compile Include="Forms\ViewSplash.Designer.cs">
       <DependentUpon>ViewSplash.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\RoboActor.resx">
+      <DependentUpon>RoboActor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +219,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -236,6 +246,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iYak.ico" />
+    <None Include="Resources\icons\voice.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

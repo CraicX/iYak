@@ -85,7 +85,6 @@ namespace iYak
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblVoice = new System.Windows.Forms.Label();
-            this.pbFace = new System.Windows.Forms.PictureBox();
             this.SayBox = new System.Windows.Forms.RichTextBox();
             this.VoiceSelFrame = new System.Windows.Forms.Panel();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
@@ -100,6 +99,10 @@ namespace iYak
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pbFace = new System.Windows.Forms.PictureBox();
+            this.btnAddActor = new System.Windows.Forms.Button();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -114,9 +117,10 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.VoiceSelFrame.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
@@ -580,10 +584,11 @@ namespace iYak
             // 
             // btnCommand3
             // 
-            this.btnCommand3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCommand3.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnCommand3.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnCommand3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCommand3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnCommand3.ForeColor = System.Drawing.Color.Black;
+            this.btnCommand3.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.btnCommand3.Image = ((System.Drawing.Image)(resources.GetObject("btnCommand3.Image")));
             this.btnCommand3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCommand3.Location = new System.Drawing.Point(320, 243);
@@ -596,10 +601,11 @@ namespace iYak
             // 
             // btnRead
             // 
-            this.btnRead.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnRead.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnRead.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnRead.ForeColor = System.Drawing.Color.Black;
+            this.btnRead.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
             this.btnRead.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRead.Location = new System.Drawing.Point(238, 243);
@@ -615,8 +621,10 @@ namespace iYak
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.SlateBlue;
+            this.panel8.Controls.Add(this.btnAddActor);
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel5);
-            this.panel8.Controls.Add(this.pbFace);
             this.panel8.Location = new System.Drawing.Point(551, 19);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(203, 120);
@@ -625,8 +633,7 @@ namespace iYak
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.lblType);
             this.panel5.Controls.Add(this.lblService);
             this.panel5.Controls.Add(this.lblGender);
@@ -637,9 +644,9 @@ namespace iYak
             this.panel5.Controls.Add(this.lblVoice);
             this.panel5.Font = new System.Drawing.Font("Microsoft NeoGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.ForeColor = System.Drawing.Color.LightYellow;
-            this.panel5.Location = new System.Drawing.Point(3, 54);
+            this.panel5.Location = new System.Drawing.Point(84, 40);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(197, 63);
+            this.panel5.Size = new System.Drawing.Size(116, 63);
             this.panel5.TabIndex = 0;
             // 
             // lblType
@@ -730,17 +737,6 @@ namespace iYak
             this.lblVoice.Size = new System.Drawing.Size(11, 13);
             this.lblVoice.TabIndex = 0;
             this.lblVoice.Text = "-";
-            // 
-            // pbFace
-            // 
-            this.pbFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbFace.Location = new System.Drawing.Point(4, 4);
-            this.pbFace.Margin = new System.Windows.Forms.Padding(0);
-            this.pbFace.Name = "pbFace";
-            this.pbFace.Size = new System.Drawing.Size(48, 48);
-            this.pbFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFace.TabIndex = 1;
-            this.pbFace.TabStop = false;
             // 
             // SayBox
             // 
@@ -868,10 +864,11 @@ namespace iYak
             // 
             // btnAdd
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAdd.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnAdd.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Location = new System.Drawing.Point(680, 243);
@@ -932,10 +929,11 @@ namespace iYak
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnUpdate.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdate.Location = new System.Drawing.Point(583, 243);
@@ -949,10 +947,11 @@ namespace iYak
             // 
             // btnExport
             // 
-            this.btnExport.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnExport.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.Location = new System.Drawing.Point(496, 243);
@@ -963,6 +962,66 @@ namespace iYak
             this.btnExport.TabIndex = 23;
             this.btnExport.Text = "    Export";
             this.btnExport.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.SlateBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.textBox1.Location = new System.Drawing.Point(5, 86);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.MaxLength = 15;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(76, 15);
+            this.textBox1.TabIndex = 27;
+            this.textBox1.Text = "nickname";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel2.Controls.Add(this.pbFace);
+            this.panel2.Location = new System.Drawing.Point(4, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(76, 78);
+            this.panel2.TabIndex = 26;
+            // 
+            // pbFace
+            // 
+            this.pbFace.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.pbFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbFace.Image = global::iYak.Properties.Resources.voice;
+            this.pbFace.Location = new System.Drawing.Point(4, 5);
+            this.pbFace.Margin = new System.Windows.Forms.Padding(0);
+            this.pbFace.Name = "pbFace";
+            this.pbFace.Size = new System.Drawing.Size(68, 68);
+            this.pbFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFace.TabIndex = 2;
+            this.pbFace.TabStop = false;
+            // 
+            // btnAddActor
+            // 
+            this.btnAddActor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddActor.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnAddActor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddActor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddActor.Font = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAddActor.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnAddActor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddActor.Image")));
+            this.btnAddActor.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnAddActor.Location = new System.Drawing.Point(125, 6);
+            this.btnAddActor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddActor.Name = "btnAddActor";
+            this.btnAddActor.Size = new System.Drawing.Size(75, 24);
+            this.btnAddActor.TabIndex = 28;
+            this.btnAddActor.Text = "Set Actor  ";
+            this.btnAddActor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddActor.UseCompatibleTextRendering = true;
+            this.btnAddActor.UseMnemonic = false;
+            this.btnAddActor.UseVisualStyleBackColor = false;
             // 
             // Main
             // 
@@ -1001,12 +1060,14 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).EndInit();
             this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).EndInit();
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1074,11 +1135,14 @@ namespace iYak
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pbFace;
         internal System.Windows.Forms.Button btnExport;
         internal System.Windows.Forms.Button btnUpdate;
         internal System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ImageList IconsYak;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pbFace;
+        internal System.Windows.Forms.Button btnAddActor;
     }
 }
 
