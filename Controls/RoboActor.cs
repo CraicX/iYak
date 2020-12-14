@@ -16,7 +16,7 @@ namespace iYak.Controls
     public partial class RoboActor : UserControl
     {
         static private int ControlCounter          = 1;
-        static private StringFormat SpeechIDFormat = new StringFormat();
+        private static readonly StringFormat SpeechIDFormat = new StringFormat();
 
 
 

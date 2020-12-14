@@ -25,7 +25,6 @@ namespace iYak.Classes
 
             Application.DoEvents();
 
-
             //
             //  Check/create folders
             //
@@ -66,15 +65,14 @@ namespace iYak.Classes
         static public void FillVoiceList(List<Voice> VList) 
         {
 
-            int imgNum       = 0; 
-            string tmpLoc    = "";
+            int imgNum;
+            string tmpLoc;
             Color FontColor;
-            string BackCol   = "";
+            string BackCol;
 
             foreach (Voice vItem in VList)
             {
 
-                Console.WriteLine(vItem.Handle);
                 if (vItem.Gender == System.Speech.Synthesis.VoiceGender.Male) {
                     imgNum    = 0;
                     FontColor = Color.Blue;
@@ -86,9 +84,9 @@ namespace iYak.Classes
                     BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
                 }
 
-                ListViewItem VoiceItem            = new ListViewItem(vItem.Id, imgNum);
-                VoiceItem.UseItemStyleForSubItems = false;
-                //~ VoiceItem.ForeColor           = Color.FromName(FontColor);
+                ListViewItem VoiceItem            = new ListViewItem(vItem.Id, imgNum) { 
+                    UseItemStyleForSubItems = false
+                };
 
                 if (vItem.Host == Voice.EHost.Azure) {
                     VoiceItem.BackColor = Color.FromName(BackCol);
@@ -98,9 +96,10 @@ namespace iYak.Classes
 
                 VoiceItem.SubItems.Add(tmpLoc);
 
-                ListViewItem.ListViewSubItem tmpHost = new ListViewItem.ListViewSubItem(VoiceItem, Voice.GetHost(vItem.Host));
-
-                tmpHost.ForeColor = Color.Black;
+                ListViewItem.ListViewSubItem tmpHost = new ListViewItem.ListViewSubItem(VoiceItem, Voice.GetHost(vItem.Host))
+                {
+                    ForeColor = Color.Black
+                };
 
                 VoiceItem.SubItems.Add(tmpHost);
 

@@ -21,9 +21,9 @@ namespace iYak.Classes
         //static private String AzureKey     = "";
         //static private String AzureRegion  = "";
 
-        static private SpeechConfig AzureConfig;
+        //static private SpeechConfig AzureConfig;
 
-        static private System.Speech.Synthesis.SpeechSynthesizer LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
+        private static readonly System.Speech.Synthesis.SpeechSynthesizer LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
 
         public Voice voice = new Voice();
 
@@ -66,7 +66,7 @@ namespace iYak.Classes
 
             // SpeechConf = SpeechConfig.FromSubscription(CloudKey, CloudRegion)
 
-            RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
+            //RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
 
            // if (!RoboVoice.AzureReady) RoboVoice.AzureReady = true;
 
@@ -76,8 +76,8 @@ namespace iYak.Classes
 
         static public List<Voice> GetVoiceList()
         {
-            var VoiceList = new List<Voice>();
-            var TempVoice = new Voice();
+            List<Voice> VoiceList = new List<Voice>();
+            Voice TempVoice;
 
 
             foreach (InstalledVoice iVoice in LocalSynth.GetInstalledVoices()) {
@@ -255,22 +255,4 @@ namespace iYak.Classes
 
     }
 
-    //
-    // ────────────────────────────────────────────────────────────────────────
-    //   :::::: V O I C E   S E T
-    // ────────────────────────────────────────────────────────────────────────
-    //
-    public class VoiceSet
-    {
-
-        public int Uid       = 0;
-        public int Volume    = 100;
-        public int Rate      = 5;
-        public int Pitch     = 5;
-        public string Avatar = "";
-        public string Say    = "";
-        public Voice Voice   = new Voice();
-
-
-    }
 }

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Text.RegularExpressions;
+
 
 namespace iYak.Classes
 {
@@ -20,12 +16,14 @@ namespace iYak.Classes
         static public void InitializeDatabase() 
         {
 
+
             List<String> QueryList = new List<String>();
 
-            ConnectionStr.Mode = SqliteOpenMode.ReadWriteCreate;
-            ConnectionStr.Cache = SqliteCacheMode.Private;
+            ConnectionStr.Mode       = SqliteOpenMode.ReadWriteCreate;
+            ConnectionStr.Cache      = SqliteCacheMode.Private;
             ConnectionStr.DataSource = Helpers.JoinPath(Config.CachePath, "iYak.db");
-
+            Console.WriteLine(Helpers.JoinPath(Config.CachePath, "iYak.db"));
+            
             DBH = new SqliteConnection(ConnectionStr.ConnectionString);
 
 
@@ -37,7 +35,8 @@ namespace iYak.Classes
                     [id]           INTEGER PRIMARY KEY AUTOINCREMENT,
                     [name]         NVARCHAR(50)     NOT NULL,
                     [date_created] DateTime         DEFAULT CURRENT_TIMESTAMP NOT NULL,
-                    [last_updated] DateTime         DEFAULT CURRENT_TIMESTAMP NOT NULL
+                    [last_updated] DateTime         DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                    [positions]    TEXT             DEFAULT """" NOT NULL
                 ); 
             ");
 
@@ -72,7 +71,7 @@ namespace iYak.Classes
 
             QueryList.Add("CREATE INDEX IF Not EXISTS idx_RosterP ON Actors (playlist);");
 
-            //DropTables("Actors")
+            DropTables("Playlists,Actors,Speeches");
             //TruncateTables()
 
 
@@ -80,10 +79,10 @@ namespace iYak.Classes
 
             SqliteCommand MyCommand = DBH.CreateCommand();
 
-            foreach (string query in QueryList) {
-                MyCommand.CommandText = query;
-                MyCommand.ExecuteNonQuery();
-            }
+            //foreach (string query in QueryList) {
+            //    MyCommand.CommandText = query;
+            //    MyCommand.ExecuteNonQuery();
+            //}
 
             DBH.Close();
 
@@ -91,6 +90,29 @@ namespace iYak.Classes
 
         }
 
+        static private void DropTables(string tableList)
+        {
+            string[] Tables = tableList.Split(',');
+
+            foreach (string tableName in Tables) {
+                Query("DROP TABLE IF EXISTS " + tableName.Trim());
+            }
+            
+        }
+
+
+        static public void Query(string query)
+        {
+            DBH.Open();
+
+            SqliteCommand command = DBH.CreateCommand();
+
+            command.CommandText = query;
+            command.ExecuteNonQuery();
+
+            DBH.Close();
+
+        }
 
     }
 }

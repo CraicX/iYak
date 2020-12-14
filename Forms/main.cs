@@ -125,7 +125,7 @@ namespace iYak
             tbNickname.Text   = speaker.Nickname;
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private void BtnRead_Click(object sender, EventArgs e)
         {
             string SayText = SayBox.Text.Trim();
             Console.WriteLine(SayText);
@@ -141,28 +141,28 @@ namespace iYak
 
         }
 
-        private void tbVolume_Scroll(object sender, EventArgs e)
+        private void TbVolume_Scroll(object sender, EventArgs e)
         {
             Config.CurrentVoice.Volume = tbVolume.Value;
         }
 
-        private void tbPitch_Scroll(object sender, EventArgs e)
+        private void TbPitch_Scroll(object sender, EventArgs e)
         {
             Config.CurrentVoice.Pitch = tbPitch.Value;
         }
 
-        private void tbSpeed_Scroll(object sender, EventArgs e)
+        private void TbSpeed_Scroll(object sender, EventArgs e)
         {
             Config.CurrentVoice.Rate = tbSpeed.Value;
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
 
         
@@ -175,7 +175,7 @@ namespace iYak
 
 
        
-        private void tbNickname_Click(object sender, EventArgs e) 
+        private void TbNickname_Click(object sender, EventArgs e) 
         {
             if (tbNickname.Text == "nickname")
             {
@@ -189,21 +189,21 @@ namespace iYak
 
         }
 
-        private void tbNickname_Changed(object sender, EventArgs e)
+        private void TbNickname_Changed(object sender, EventArgs e)
         {
             if (tbNickname.Text == "") return;
 
             Config.CurrentVoice.Nickname = tbNickname.Text;
         }
 
-        private void btnAddActor_Click(object sender, EventArgs e)
+        private void BtnAddActor_Click(object sender, EventArgs e)
         {
             if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
 
             Utilities.AddActor(Config.CurrentVoice);
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void BtnUpdate_Click(object sender, EventArgs e)
         {
             RoboActor actor = RoboActor.GetSelected();
 
