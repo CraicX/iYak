@@ -31,9 +31,9 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +64,9 @@ namespace iYak
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,6 +79,11 @@ namespace iYak
             this.btnCommand3 = new System.Windows.Forms.Button();
             this.btnRead = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.lblNickImg = new System.Windows.Forms.Label();
+            this.btnAddActor = new System.Windows.Forms.Button();
+            this.tbNickname = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pbFace = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblType = new System.Windows.Forms.Label();
             this.lblService = new System.Windows.Forms.Label();
@@ -95,14 +103,7 @@ namespace iYak
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.tbNickname = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pbFace = new System.Windows.Forms.PictureBox();
-            this.btnAddActor = new System.Windows.Forms.Button();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -116,11 +117,11 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbPitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
             this.panel8.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.panel5.SuspendLayout();
             this.VoiceSelFrame.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
@@ -373,7 +374,6 @@ namespace iYak
             this.AvatarsFlow.Name = "AvatarsFlow";
             this.AvatarsFlow.Size = new System.Drawing.Size(220, 563);
             this.AvatarsFlow.TabIndex = 4;
-            this.AvatarsFlow.Paint += new System.Windows.Forms.PaintEventHandler(this.AvatarsFlow_Paint);
             // 
             // label5
             // 
@@ -465,6 +465,61 @@ namespace iYak
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Voice Controls";
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(496, 243);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExport.Size = new System.Drawing.Size(86, 32);
+            this.btnExport.TabIndex = 23;
+            this.btnExport.Text = "    Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(583, 243);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnUpdate.Size = new System.Drawing.Size(96, 32);
+            this.btnUpdate.TabIndex = 22;
+            this.btnUpdate.Text = "    Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(680, 243);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnAdd.Size = new System.Drawing.Size(74, 32);
+            this.btnAdd.TabIndex = 21;
+            this.btnAdd.Text = "    Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // panel6
             // 
@@ -621,6 +676,7 @@ namespace iYak
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.SlateBlue;
+            this.panel8.Controls.Add(this.lblNickImg);
             this.panel8.Controls.Add(this.btnAddActor);
             this.panel8.Controls.Add(this.tbNickname);
             this.panel8.Controls.Add(this.panel2);
@@ -629,6 +685,76 @@ namespace iYak
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(203, 120);
             this.panel8.TabIndex = 16;
+            // 
+            // lblNickImg
+            // 
+            this.lblNickImg.Image = ((System.Drawing.Image)(resources.GetObject("lblNickImg.Image")));
+            this.lblNickImg.Location = new System.Drawing.Point(1, 85);
+            this.lblNickImg.Name = "lblNickImg";
+            this.lblNickImg.Size = new System.Drawing.Size(20, 18);
+            this.lblNickImg.TabIndex = 29;
+            // 
+            // btnAddActor
+            // 
+            this.btnAddActor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddActor.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnAddActor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddActor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddActor.Font = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAddActor.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnAddActor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddActor.Image")));
+            this.btnAddActor.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnAddActor.Location = new System.Drawing.Point(125, 6);
+            this.btnAddActor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddActor.Name = "btnAddActor";
+            this.btnAddActor.Size = new System.Drawing.Size(75, 24);
+            this.btnAddActor.TabIndex = 28;
+            this.btnAddActor.Text = "Set Actor  ";
+            this.btnAddActor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddActor.UseCompatibleTextRendering = true;
+            this.btnAddActor.UseMnemonic = false;
+            this.btnAddActor.UseVisualStyleBackColor = false;
+            this.btnAddActor.Click += new System.EventHandler(this.btnAddActor_Click);
+            // 
+            // tbNickname
+            // 
+            this.tbNickname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNickname.BackColor = System.Drawing.Color.SlateBlue;
+            this.tbNickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNickname.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.tbNickname.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.tbNickname.Location = new System.Drawing.Point(21, 85);
+            this.tbNickname.Margin = new System.Windows.Forms.Padding(0);
+            this.tbNickname.MaxLength = 15;
+            this.tbNickname.Name = "tbNickname";
+            this.tbNickname.Size = new System.Drawing.Size(59, 12);
+            this.tbNickname.TabIndex = 27;
+            this.tbNickname.Text = "nickname";
+            this.tbNickname.Click += new System.EventHandler(this.tbNickname_Click);
+            this.tbNickname.TextChanged += new System.EventHandler(this.tbNickname_Changed);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel2.Controls.Add(this.pbFace);
+            this.panel2.Location = new System.Drawing.Point(4, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(76, 78);
+            this.panel2.TabIndex = 26;
+            // 
+            // pbFace
+            // 
+            this.pbFace.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.pbFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbFace.Image = global::iYak.Properties.Resources.voice;
+            this.pbFace.Location = new System.Drawing.Point(4, 5);
+            this.pbFace.Margin = new System.Windows.Forms.Padding(0);
+            this.pbFace.Name = "pbFace";
+            this.pbFace.Size = new System.Drawing.Size(68, 68);
+            this.pbFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFace.TabIndex = 2;
+            this.pbFace.TabStop = false;
             // 
             // panel5
             // 
@@ -789,19 +915,19 @@ namespace iYak
             this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
             this.VoiceSelect.FullRowSelect = true;
             this.VoiceSelect.GridLines = true;
-            listViewGroup4.Header = "Male";
-            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup4.Name = "grpMale";
-            listViewGroup5.Header = "Female";
-            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup5.Name = "grpFemale";
-            listViewGroup6.Header = "Neutral";
-            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup6.Name = "grpNeutral";
+            listViewGroup1.Header = "Male";
+            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup1.Name = "grpMale";
+            listViewGroup2.Header = "Female";
+            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup2.Name = "grpFemale";
+            listViewGroup3.Header = "Neutral";
+            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup3.Name = "grpNeutral";
             this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
             this.VoiceSelect.HideSelection = false;
             this.VoiceSelect.LabelWrap = false;
             this.VoiceSelect.Location = new System.Drawing.Point(0, 0);
@@ -854,6 +980,7 @@ namespace iYak
             // 
             // FlowScript
             // 
+            this.FlowScript.AutoScroll = true;
             this.FlowScript.BackColor = System.Drawing.Color.SkyBlue;
             this.FlowScript.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowScript.Location = new System.Drawing.Point(0, 0);
@@ -861,25 +988,6 @@ namespace iYak
             this.FlowScript.Name = "FlowScript";
             this.FlowScript.Size = new System.Drawing.Size(771, 284);
             this.FlowScript.TabIndex = 0;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(680, 243);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnAdd.Size = new System.Drawing.Size(74, 32);
-            this.btnAdd.TabIndex = 21;
-            this.btnAdd.Text = "    Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // IconsYak
             // 
@@ -928,103 +1036,6 @@ namespace iYak
             this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
             this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(583, 243);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnUpdate.Size = new System.Drawing.Size(96, 32);
-            this.btnUpdate.TabIndex = 22;
-            this.btnUpdate.Text = "    Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnExport.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(496, 243);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExport.Size = new System.Drawing.Size(86, 32);
-            this.btnExport.TabIndex = 23;
-            this.btnExport.Text = "    Export";
-            this.btnExport.UseVisualStyleBackColor = false;
-            // 
-            // tbNickname
-            // 
-            this.tbNickname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNickname.BackColor = System.Drawing.Color.SlateBlue;
-            this.tbNickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbNickname.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.tbNickname.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.tbNickname.Location = new System.Drawing.Point(5, 86);
-            this.tbNickname.Margin = new System.Windows.Forms.Padding(0);
-            this.tbNickname.MaxLength = 15;
-            this.tbNickname.Name = "tbNickname";
-            this.tbNickname.Size = new System.Drawing.Size(76, 15);
-            this.tbNickname.TabIndex = 27;
-            this.tbNickname.Text = "nickname";
-            this.tbNickname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbNickname.Click += new System.EventHandler(this.tbNickname_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel2.Controls.Add(this.pbFace);
-            this.panel2.Location = new System.Drawing.Point(4, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(76, 78);
-            this.panel2.TabIndex = 26;
-            // 
-            // pbFace
-            // 
-            this.pbFace.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.pbFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbFace.Image = global::iYak.Properties.Resources.voice;
-            this.pbFace.Location = new System.Drawing.Point(4, 5);
-            this.pbFace.Margin = new System.Windows.Forms.Padding(0);
-            this.pbFace.Name = "pbFace";
-            this.pbFace.Size = new System.Drawing.Size(68, 68);
-            this.pbFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFace.TabIndex = 2;
-            this.pbFace.TabStop = false;
-            // 
-            // btnAddActor
-            // 
-            this.btnAddActor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddActor.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnAddActor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddActor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddActor.Font = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnAddActor.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnAddActor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddActor.Image")));
-            this.btnAddActor.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnAddActor.Location = new System.Drawing.Point(125, 6);
-            this.btnAddActor.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddActor.Name = "btnAddActor";
-            this.btnAddActor.Size = new System.Drawing.Size(75, 24);
-            this.btnAddActor.TabIndex = 28;
-            this.btnAddActor.Text = "Set Actor  ";
-            this.btnAddActor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddActor.UseCompatibleTextRendering = true;
-            this.btnAddActor.UseMnemonic = false;
-            this.btnAddActor.UseVisualStyleBackColor = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1063,13 +1074,13 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbFace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1141,10 +1152,11 @@ namespace iYak
         internal System.Windows.Forms.Button btnUpdate;
         internal System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ImageList IconsYak;
-        private System.Windows.Forms.TextBox tbNickname;
+        internal System.Windows.Forms.TextBox tbNickname;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pbFace;
         internal System.Windows.Forms.Button btnAddActor;
+        private System.Windows.Forms.Label lblNickImg;
     }
 }
 

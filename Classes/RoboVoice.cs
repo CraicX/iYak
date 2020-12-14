@@ -83,10 +83,10 @@ namespace iYak.Classes
                 TempVoice = new Voice
                 {
                     Active = true,
-                    Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
+                    Id     = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle = iVoice.VoiceInfo.Name,
                     Gender = iVoice.VoiceInfo.Gender,
-                    Host = Voice.EHost.Local
+                    Host   = Voice.EHost.Local
                 };
 
                 VoiceList.Add(TempVoice);
@@ -111,6 +111,20 @@ namespace iYak.Classes
     //
     public class Voice
     {
+
+        public string Id       = "";
+        public string Handle   = "";
+        public string Avatar   = "";
+        public string Nickname = "";
+        public bool Active     = true;
+        public int Rate        = 5;
+        public int Pitch       = 5;
+        public int Volume      = 100;
+
+        public System.Speech.Synthesis.VoiceGender Gender = System.Speech.Synthesis.VoiceGender.NotSet;
+        public EVoiceType VoiceType                       = EVoiceType.Standard;
+        public EHost Host                                 = EHost.Local;
+
         public enum EGender
         {
             Male,
@@ -129,7 +143,8 @@ namespace iYak.Classes
         {
             Local,
             Azure,
-            GCloud
+            GCloud,
+            AWS
         }
 
         static public string GetGender(System.Speech.Synthesis.VoiceGender which)
@@ -145,7 +160,7 @@ namespace iYak.Classes
         static public string GetType (EVoiceType which)
         {
             if (which == EVoiceType.Standard) return "Standard";
-            if (which == EVoiceType.Neural) return "Neural";
+            if (which == EVoiceType.Neural)   return "Neural";
 
             return "unknown";
 
@@ -155,6 +170,7 @@ namespace iYak.Classes
         {
             if (which == EHost.Azure)  return "Azure";
             if (which == EHost.GCloud) return "GCloud";
+            if (which == EHost.AWS)    return "AWS";
             if (which == EHost.Local)  return "Local";
 
             return "unknown";
@@ -162,15 +178,6 @@ namespace iYak.Classes
         }
 
 
-        public string Id                                  = "";
-        public string Handle                              = "";
-        public bool Active                                = true;
-        public System.Speech.Synthesis.VoiceGender Gender = System.Speech.Synthesis.VoiceGender.NotSet;
-        public EVoiceType VoiceType                       = EVoiceType.Standard;
-        public EHost Host                                 = EHost.Local;
-        public int Rate                                   = 5;
-        public int Pitch                                  = 5;
-        public int Volume                                 = 100;
 
         static public string GenerateName(string HandleStr)
         {
@@ -215,6 +222,7 @@ namespace iYak.Classes
                     Rate      = tmpVoice.Rate;
                     Pitch     = tmpVoice.Pitch;
                     Volume    = tmpVoice.Volume;
+                    Nickname  = tmpVoice.Id;
                 }
 
 

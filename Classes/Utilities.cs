@@ -33,11 +33,9 @@ namespace iYak.Classes
                 Config.AppName
             );
 
-            Config.CachePath = Helpers.JoinPath(Config.RootPath, "Cache");
-            
+            Config.CachePath   = Helpers.JoinPath(Config.RootPath, "Cache");
             Config.AvatarsPath = Helpers.JoinPath(Config.RootPath, "Avatars");
-            
-            Config.VoicesPath = Helpers.JoinPath(Config.RootPath, "voices.json");
+            Config.VoicesPath  = Helpers.JoinPath(Config.RootPath, "voices.json");
 
             if (!Directory.Exists(Config.CachePath))    Directory.CreateDirectory(Config.CachePath);
             if (!Directory.Exists(Config.AvatarsPath))  Directory.CreateDirectory(Config.AvatarsPath);
@@ -77,19 +75,19 @@ namespace iYak.Classes
 
                 Console.WriteLine(vItem.Handle);
                 if (vItem.Gender == System.Speech.Synthesis.VoiceGender.Male) {
-                    imgNum = 0;
+                    imgNum    = 0;
                     FontColor = Color.Blue;
-                    BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
+                    BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
 
                 } else {
-                    imgNum = 1;
+                    imgNum    = 1;
                     FontColor = Color.MediumVioletRed;
-                    BackCol = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
+                    BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
                 }
 
-                ListViewItem VoiceItem = new ListViewItem(vItem.Id, imgNum);
+                ListViewItem VoiceItem            = new ListViewItem(vItem.Id, imgNum);
                 VoiceItem.UseItemStyleForSubItems = false;
-                //~ VoiceItem.ForeColor = Color.FromName(FontColor);
+                //~ VoiceItem.ForeColor           = Color.FromName(FontColor);
 
                 if (vItem.Host == Voice.EHost.Azure) {
                     VoiceItem.BackColor = Color.FromName(BackCol);
@@ -119,8 +117,8 @@ namespace iYak.Classes
                         break;
                 }
                 VoiceItem.SubItems[0].ForeColor = FontColor;
-                VoiceItem.SubItems[0].Font = new Font(VoiceItem.SubItems[0].Font, VoiceItem.SubItems[1].Font.Style | FontStyle.Bold);
-                VoiceItem.SubItems[2].Font = new Font("Microsoft Sans Serif", 10, GraphicsUnit.Pixel);
+                VoiceItem.SubItems[0].Font      = new Font(VoiceItem.SubItems[0].Font, VoiceItem.SubItems[1].Font.Style | FontStyle.Bold);
+                VoiceItem.SubItems[2].Font      = new Font("Microsoft Sans Serif", 10, GraphicsUnit.Pixel);
                 VoiceItem.SubItems[2].ForeColor = Color.MidnightBlue;
 
                 Config.LVoices.Items.Add(VoiceItem);
@@ -148,18 +146,17 @@ namespace iYak.Classes
                 }
 
 
-                PictureBox anAvatar = new PictureBox();
-                anAvatar.Tag = ATag;
-                anAvatar.AutoSize = false;
-                anAvatar.Width = 48;
-                anAvatar.Height = 48;
-                anAvatar.Margin = new Padding(1, 1, 1, 1);
+                PictureBox anAvatar  = new PictureBox();
+                anAvatar.Tag         = ATag;
+                anAvatar.AutoSize    = false;
+                anAvatar.Width       = 48;
+                anAvatar.Height      = 48;
+                anAvatar.Margin      = new Padding(1, 1, 1, 1);
                 anAvatar.BorderStyle = BorderStyle.FixedSingle;
                 anAvatar.BackColor   = System.Drawing.Color.Transparent;
-                anAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
-                anAvatar.Image = Helpers.LoadImage(avatarPath);
-
-                anAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
+                anAvatar.SizeMode    = PictureBoxSizeMode.StretchImage;
+                anAvatar.Image       = Helpers.LoadImage(avatarPath);
+                anAvatar.Cursor      = System.Windows.Forms.Cursors.Hand;
 
 
                 Config.FAvatars.Controls.Add(anAvatar);
@@ -174,9 +171,10 @@ namespace iYak.Classes
 
         static void Avatar_Click( object sender, EventArgs e )
         {
-            PictureBox cAvatar = sender as PictureBox;
-            Config.CurrentFace.Image = cAvatar.Image;
-            Config.CurrentFace.Tag = cAvatar.Tag;
+            PictureBox cAvatar         = sender as PictureBox;
+            Config.CurrentFace.Image   = cAvatar.Image;
+            Config.CurrentFace.Tag     = cAvatar.Tag;
+            Config.CurrentVoice.Avatar = cAvatar.Tag.ToString();
             
             
         }

@@ -14,6 +14,7 @@ namespace iYak.Classes
         static public string AppName       = "iYak";
         static public List<Voice> Voices   = new List<Voice>();
         static public List<String> Avatars = new List<String>();
+        static public Voice CurrentVoice   = new Voice();
 
 
         //
@@ -31,6 +32,7 @@ namespace iYak.Classes
         static public System.Windows.Forms.FlowLayoutPanel FAvatars;
         static public System.Windows.Forms.PictureBox CurrentFace;
         static public System.Windows.Forms.FlowLayoutPanel FScripts;
+        static public Main mainRef;
 
 
 

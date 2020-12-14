@@ -18,18 +18,10 @@ namespace iYak
     {
         
 
-        static public Voice CurrentVoice = new Voice();
         public Main()
         {
             InitializeComponent();
 
-
-
-
-
-            //Splasher frmSplash = new Splasher();
-
-            //frmSplash.ShowDialog();
         }
 
         public void XMLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,8 +30,8 @@ namespace iYak
 
             Config.frmSettings = new Settings();
             
-            Config.frmSettings.cbAzure.Checked = CloudWS.Azure.enabled;
-            Config.frmSettings.AzureKey.Text = CloudWS.Azure.key;
+            Config.frmSettings.cbAzure.Checked  = CloudWS.Azure.enabled;
+            Config.frmSettings.AzureKey.Text    = CloudWS.Azure.key;
             Config.frmSettings.AzureRegion.Text = CloudWS.Azure.region;
             Application.DoEvents();
             Console.WriteLine("key:" + CloudWS.Azure.key);
@@ -55,10 +47,11 @@ namespace iYak
             Config.splasher.Show();
             
 
-            Config.LVoices = VoiceSelect;
-            Config.FAvatars = AvatarsFlow;
-            Config.FScripts = FlowScript;
+            Config.LVoices     = VoiceSelect;
+            Config.FAvatars    = AvatarsFlow;
+            Config.FScripts    = FlowScript;
             Config.CurrentFace = pbFace;
+            Config.mainRef     = this;
 
             Utilities.StartUp();
 
@@ -85,32 +78,44 @@ namespace iYak
             Application.Exit();
         }
 
+        public void SetTuningToVoice()
+        {
+            this.tbVolume.Value = Config.CurrentVoice.Volume;
+            this.tbPitch.Value = Config.CurrentVoice.Pitch;
+            this.tbSpeed.Value = Config.CurrentVoice.Rate;
+        }
+
+        public void SetVoiceToTuning()
+        {
+            Config.CurrentVoice.Volume = this.tbVolume.Value;
+            Config.CurrentVoice.Pitch = this.tbPitch.Value;
+            Config.CurrentVoice.Rate = this.tbSpeed.Value;
+        }
+
         private void VoiceSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VoiceSelect.SelectedItems.Count < 1) return;
 
             Application.DoEvents();
 
-            Main.CurrentVoice = new Voice();
+            Config.CurrentVoice = new Voice();
 
-            Main.CurrentVoice.SetVoice(VoiceSelect.Items[VoiceSelect.SelectedIndices[0]].Text);
+            Config.CurrentVoice.SetVoice(VoiceSelect.Items[VoiceSelect.SelectedIndices[0]].Text);
 
-            UpdateVoiceInfo(Main.CurrentVoice);
-            
+            Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
 
-
-            //Voice1.SetVoice(CurrentVoice.Id);
-            //VoiceName.Text = CurrentVoice.Id;
+            UpdateVoiceInfo(Config.CurrentVoice);
 
         }
 
-        private void UpdateVoiceInfo( Voice speaker )
+        public void UpdateVoiceInfo( Voice speaker )
         {
 
             lblVoice.Text     = speaker.Id;
             lblGender.Text    = Voice.GetGender(speaker.Gender);
             lblService.Text   = Voice.GetHost(speaker.Host);
             lblType.Text      = Voice.GetType(speaker.VoiceType);
+            tbNickname.Text   = speaker.Nickname;
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -119,9 +124,7 @@ namespace iYak
             Console.WriteLine(SayText);
             if (SayText == "") return;
 
-            RoboVoice RVoice = new RoboVoice();
-
-            RVoice.voice = Main.CurrentVoice;
+            RoboVoice RVoice = new RoboVoice { voice = Config.CurrentVoice };
 
             RVoice.Say(SayText);
 
@@ -133,23 +136,19 @@ namespace iYak
 
         private void tbVolume_Scroll(object sender, EventArgs e)
         {
-            Main.CurrentVoice.Volume = tbVolume.Value;
+            Config.CurrentVoice.Volume = tbVolume.Value;
         }
 
         private void tbPitch_Scroll(object sender, EventArgs e)
         {
-            Main.CurrentVoice.Pitch = tbPitch.Value;
+            Config.CurrentVoice.Pitch = tbPitch.Value;
         }
 
         private void tbSpeed_Scroll(object sender, EventArgs e)
         {
-            Main.CurrentVoice.Rate = tbSpeed.Value;
+            Config.CurrentVoice.Rate = tbSpeed.Value;
         }
 
-        private void AvatarsFlow_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -159,29 +158,18 @@ namespace iYak
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            if (CurrentVoice.Handle == null || CurrentVoice.Handle == "") return;
+            if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
             RoboActor roboA = new RoboActor(
                 0,
-                tbNickname.Text,
                 SayBox.Text,
-                CurrentVoice
+                Config.CurrentVoice
             );
 
             if (Config.CurrentFace.Tag != null) {
                 roboA.SetAvatar(Config.CurrentFace.Tag.ToString());
             }
-
-            
-
             
             Config.FScripts.Controls.Add(roboA);
-           
-
-            // roboA.PreviewMouseDown += new MouseEventHandler(this.MClick);
-
-           
-
-
 
         }
 
@@ -200,5 +188,19 @@ namespace iYak
             }
 
         }
+
+        private void tbNickname_Changed(object sender, EventArgs e)
+        {
+            if (tbNickname.Text == "") return;
+
+            Config.CurrentVoice.Nickname = tbNickname.Text;
+        }
+
+        private void btnAddActor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
