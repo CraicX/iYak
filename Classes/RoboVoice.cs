@@ -37,9 +37,11 @@ namespace iYak.Classes
                 RoboVoice.isImported = true;
 
             }
+        }
 
-
-            
+        public RoboVoice(Voice _voice)
+        {
+            this.voice = _voice;
         }
 
 
@@ -124,6 +126,26 @@ namespace iYak.Classes
         public System.Speech.Synthesis.VoiceGender Gender = System.Speech.Synthesis.VoiceGender.NotSet;
         public EVoiceType VoiceType                       = EVoiceType.Standard;
         public EHost Host                                 = EHost.Local;
+
+        public Voice Copy()
+        {
+            Voice _voice = new Voice()
+            {
+                Id        = this.Id,
+                Handle    = this.Handle,
+                Avatar    = this.Avatar,
+                Nickname  = this.Nickname,
+                Active    = this.Active,
+                Rate      = this.Rate,
+                Pitch     = this.Pitch,
+                Volume    = this.Volume,
+                Gender    = this.Gender,
+                VoiceType = this.VoiceType,
+                Host      = this.Host
+            };
+
+            return _voice;
+        }
 
         public enum EGender
         {

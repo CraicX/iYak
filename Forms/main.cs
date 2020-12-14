@@ -82,17 +82,23 @@ namespace iYak
         public void SetTuningToVoice()
         {
             this.tbVolume.Value = Config.CurrentVoice.Volume;
-            this.tbPitch.Value = Config.CurrentVoice.Pitch;
-            this.tbSpeed.Value = Config.CurrentVoice.Rate;
+            this.tbPitch.Value  = Config.CurrentVoice.Pitch;
+            this.tbSpeed.Value  = Config.CurrentVoice.Rate;
         }
 
         public void SetVoiceToTuning()
         {
             Config.CurrentVoice.Volume = this.tbVolume.Value;
-            Config.CurrentVoice.Pitch = this.tbPitch.Value;
-            Config.CurrentVoice.Rate = this.tbSpeed.Value;
+            Config.CurrentVoice.Pitch  = this.tbPitch.Value;
+            Config.CurrentVoice.Rate   = this.tbSpeed.Value;
         }
 
+        public void ResetTuning()
+        {
+            tbPitch.Value  = 5;
+            tbSpeed.Value  = 5;
+            tbVolume.Value = 100;
+        }
         private void VoiceSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VoiceSelect.SelectedItems.Count < 1) return;
@@ -159,18 +165,11 @@ namespace iYak
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
+        
             if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
-            RoboActor roboA = new RoboActor(
-                0,
-                SayBox.Text,
-                Config.CurrentVoice
-            );
 
-            if (Config.CurrentFace.Tag != null) {
-                roboA.SetAvatar(Config.CurrentFace.Tag.ToString());
-            }
+            Utilities.AddSpeech(Config.CurrentVoice.Copy(), SayBox.Text);
             
-            Config.FScripts.Controls.Add(roboA);
 
         }
 
@@ -204,6 +203,18 @@ namespace iYak
             Utilities.AddActor(Config.CurrentVoice);
         }
 
-        
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            RoboActor actor = RoboActor.GetSelected();
+
+            if (actor == null) return;
+
+            Console.WriteLine(actor.ActorID);
+
+            actor.voice = Config.CurrentVoice.Copy();
+            actor.Speech = SayBox.Text;
+            actor.RefreshActor();
+
+        }
     }
 }
