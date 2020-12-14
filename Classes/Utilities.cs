@@ -176,6 +176,7 @@ namespace iYak.Classes
         {
             PictureBox cAvatar = sender as PictureBox;
             Config.CurrentFace.Image = cAvatar.Image;
+            Config.CurrentFace.Tag = cAvatar.Tag;
             
             
         }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using iYak.Classes;
+using iYak.Controls;
 
 
 
@@ -56,6 +57,7 @@ namespace iYak
 
             Config.LVoices = VoiceSelect;
             Config.FAvatars = AvatarsFlow;
+            Config.FScripts = FlowScript;
             Config.CurrentFace = pbFace;
 
             Utilities.StartUp();
@@ -151,6 +153,51 @@ namespace iYak
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+            if (CurrentVoice.Handle == null || CurrentVoice.Handle == "") return;
+            RoboActor roboA = new RoboActor(
+                0,
+                tbNickname.Text,
+                SayBox.Text,
+                CurrentVoice
+            );
+
+            if (Config.CurrentFace.Tag != null) {
+                roboA.SetAvatar(Config.CurrentFace.Tag.ToString());
+            }
+
+            
+
+            
+            Config.FScripts.Controls.Add(roboA);
+           
+
+            // roboA.PreviewMouseDown += new MouseEventHandler(this.MClick);
+
+           
+
+
+
+        }
+
+
+       
+        private void tbNickname_Click(object sender, EventArgs e) 
+        {
+            if (tbNickname.Text == "nickname")
+            {
+                tbNickname.Text = "";
+
+            } else {
+
+                tbNickname.SelectAll();
+
+            }
 
         }
     }

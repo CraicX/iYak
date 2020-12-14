@@ -29,58 +29,85 @@ namespace iYak.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoboActor));
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblDelete = new System.Windows.Forms.Label();
+            this.lblEdit = new System.Windows.Forms.Label();
             this.pbActor = new System.Windows.Forms.PictureBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
+            this.lblNickname = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).BeginInit();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 200;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // lblDelete
+            // 
+            this.lblDelete.BackColor = System.Drawing.Color.Indigo;
+            this.lblDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblDelete.Image = ((System.Drawing.Image)(resources.GetObject("lblDelete.Image")));
+            this.lblDelete.Location = new System.Drawing.Point(0, 1);
+            this.lblDelete.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Size = new System.Drawing.Size(16, 16);
+            this.lblDelete.TabIndex = 12;
+            this.lblDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDelete.UseCompatibleTextRendering = true;
+            this.lblDelete.UseMnemonic = false;
+            // 
+            // lblEdit
+            // 
+            this.lblEdit.BackColor = System.Drawing.Color.Transparent;
+            this.lblEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdit.Image = ((System.Drawing.Image)(resources.GetObject("lblEdit.Image")));
+            this.lblEdit.Location = new System.Drawing.Point(60, 22);
+            this.lblEdit.Margin = new System.Windows.Forms.Padding(0);
+            this.lblEdit.Name = "lblEdit";
+            this.lblEdit.Size = new System.Drawing.Size(16, 16);
+            this.lblEdit.TabIndex = 11;
+            this.lblEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEdit.UseCompatibleTextRendering = true;
+            this.lblEdit.UseMnemonic = false;
             // 
             // pbActor
             // 
             this.pbActor.Dock = System.Windows.Forms.DockStyle.Top;
             this.pbActor.Image = global::iYak.Properties.Resources.voice;
-            this.pbActor.Location = new System.Drawing.Point(0, 16);
+            this.pbActor.Location = new System.Drawing.Point(0, 20);
             this.pbActor.Margin = new System.Windows.Forms.Padding(0);
             this.pbActor.Name = "pbActor";
-            this.pbActor.Size = new System.Drawing.Size(65, 64);
-            this.pbActor.TabIndex = 0;
+            this.pbActor.Size = new System.Drawing.Size(78, 78);
+            this.pbActor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbActor.TabIndex = 9;
             this.pbActor.TabStop = false;
-            this.pbActor.Click += new System.EventHandler(this.pbActor_Click);
             // 
-            // lblName
+            // lblNickname
             // 
-            this.lblName.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.lblName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(0, 81);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(65, 16);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Johnny";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblID
-            // 
-            this.lblID.BackColor = System.Drawing.Color.Indigo;
-            this.lblID.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblID.ForeColor = System.Drawing.Color.Linen;
-            this.lblID.Location = new System.Drawing.Point(0, 0);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 16);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "#1";
-            this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNickname.BackColor = System.Drawing.Color.Indigo;
+            this.lblNickname.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNickname.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNickname.ForeColor = System.Drawing.Color.Linen;
+            this.lblNickname.Location = new System.Drawing.Point(0, 0);
+            this.lblNickname.Name = "lblNickname";
+            this.lblNickname.Size = new System.Drawing.Size(78, 20);
+            this.lblNickname.TabIndex = 10;
+            this.lblNickname.Text = "nickname";
+            this.lblNickname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RoboActor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblName);
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblDelete);
+            this.Controls.Add(this.lblEdit);
             this.Controls.Add(this.pbActor);
-            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblNickname);
             this.Name = "RoboActor";
-            this.Size = new System.Drawing.Size(65, 97);
+            this.Size = new System.Drawing.Size(78, 98);
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).EndInit();
             this.ResumeLayout(false);
 
@@ -88,8 +115,10 @@ namespace iYak.Controls
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pbActor;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblDelete;
+        private System.Windows.Forms.Label lblEdit;
+        public System.Windows.Forms.PictureBox pbActor;
+        public System.Windows.Forms.Label lblNickname;
     }
 }

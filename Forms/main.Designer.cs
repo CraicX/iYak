@@ -31,9 +31,9 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,12 +94,12 @@ namespace iYak
             this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbNickname = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbFace = new System.Windows.Forms.PictureBox();
             this.btnAddActor = new System.Windows.Forms.Button();
@@ -622,7 +622,7 @@ namespace iYak
             // 
             this.panel8.BackColor = System.Drawing.Color.SlateBlue;
             this.panel8.Controls.Add(this.btnAddActor);
-            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.tbNickname);
             this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel5);
             this.panel8.Location = new System.Drawing.Point(551, 19);
@@ -789,19 +789,19 @@ namespace iYak
             this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
             this.VoiceSelect.FullRowSelect = true;
             this.VoiceSelect.GridLines = true;
-            listViewGroup1.Header = "Male";
-            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name = "grpMale";
-            listViewGroup2.Header = "Female";
-            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup2.Name = "grpFemale";
-            listViewGroup3.Header = "Neutral";
-            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup3.Name = "grpNeutral";
+            listViewGroup4.Header = "Male";
+            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup4.Name = "grpMale";
+            listViewGroup5.Header = "Female";
+            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup5.Name = "grpFemale";
+            listViewGroup6.Header = "Neutral";
+            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup6.Name = "grpNeutral";
             this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
             this.VoiceSelect.HideSelection = false;
             this.VoiceSelect.LabelWrap = false;
             this.VoiceSelect.Location = new System.Drawing.Point(0, 0);
@@ -845,22 +845,22 @@ namespace iYak
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel4.Controls.Add(this.flowLayoutPanel1);
+            this.panel4.Controls.Add(this.FlowScript);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(223, 24);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(771, 284);
             this.panel4.TabIndex = 29;
             // 
-            // flowLayoutPanel1
+            // FlowScript
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.SkyBlue;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(771, 284);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.FlowScript.BackColor = System.Drawing.Color.SkyBlue;
+            this.FlowScript.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowScript.Location = new System.Drawing.Point(0, 0);
+            this.FlowScript.Margin = new System.Windows.Forms.Padding(10);
+            this.FlowScript.Name = "FlowScript";
+            this.FlowScript.Size = new System.Drawing.Size(771, 284);
+            this.FlowScript.TabIndex = 0;
             // 
             // btnAdd
             // 
@@ -879,6 +879,7 @@ namespace iYak
             this.btnAdd.TabIndex = 21;
             this.btnAdd.Text = "    Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // IconsYak
             // 
@@ -963,21 +964,22 @@ namespace iYak
             this.btnExport.Text = "    Export";
             this.btnExport.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // tbNickname
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.SlateBlue;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.textBox1.Location = new System.Drawing.Point(5, 86);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.MaxLength = 15;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 15);
-            this.textBox1.TabIndex = 27;
-            this.textBox1.Text = "nickname";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNickname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNickname.BackColor = System.Drawing.Color.SlateBlue;
+            this.tbNickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNickname.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.tbNickname.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.tbNickname.Location = new System.Drawing.Point(5, 86);
+            this.tbNickname.Margin = new System.Windows.Forms.Padding(0);
+            this.tbNickname.MaxLength = 15;
+            this.tbNickname.Name = "tbNickname";
+            this.tbNickname.Size = new System.Drawing.Size(76, 15);
+            this.tbNickname.TabIndex = 27;
+            this.tbNickname.Text = "nickname";
+            this.tbNickname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNickname.Click += new System.EventHandler(this.tbNickname_Click);
             // 
             // panel2
             // 
@@ -1120,7 +1122,7 @@ namespace iYak
         internal System.Windows.Forms.ColumnHeader col1;
         internal System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.StatusStrip statusStrip2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel FlowScript;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
         internal System.Windows.Forms.FlowLayoutPanel ActorFlow;
@@ -1139,7 +1141,7 @@ namespace iYak
         internal System.Windows.Forms.Button btnUpdate;
         internal System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ImageList IconsYak;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbNickname;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pbFace;
         internal System.Windows.Forms.Button btnAddActor;

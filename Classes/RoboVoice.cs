@@ -45,6 +45,7 @@ namespace iYak.Classes
 
         public bool Say(string sayText) 
         {
+            if (voice.Handle == null || voice.Handle == "") return false;
 
             System.Speech.Synthesis.SpeechSynthesizer tmpVoice = new System.Speech.Synthesis.SpeechSynthesizer();
             tmpVoice.SetOutputToDefaultAudioDevice();
