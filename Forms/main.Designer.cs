@@ -60,7 +60,7 @@ namespace iYak
             this.label5 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ActorsPanel = new System.Windows.Forms.Panel();
-            this.ActorFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -400,7 +400,7 @@ namespace iYak
             // ActorsPanel
             // 
             this.ActorsPanel.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorsPanel.Controls.Add(this.ActorFlow);
+            this.ActorsPanel.Controls.Add(this.ActorsFlow);
             this.ActorsPanel.Controls.Add(this.label6);
             this.ActorsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.ActorsPanel.Location = new System.Drawing.Point(997, 24);
@@ -408,17 +408,19 @@ namespace iYak
             this.ActorsPanel.Size = new System.Drawing.Size(225, 594);
             this.ActorsPanel.TabIndex = 26;
             // 
-            // ActorFlow
+            // ActorsFlow
             // 
-            this.ActorFlow.AutoScroll = true;
-            this.ActorFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ActorFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActorFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActorFlow.Location = new System.Drawing.Point(0, 31);
-            this.ActorFlow.Name = "ActorFlow";
-            this.ActorFlow.Size = new System.Drawing.Size(225, 563);
-            this.ActorFlow.TabIndex = 6;
+            this.ActorsFlow.AutoScroll = true;
+            this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
+            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.ActorsFlow.Name = "ActorsFlow";
+            this.ActorsFlow.Size = new System.Drawing.Size(225, 563);
+            this.ActorsFlow.TabIndex = 6;
             // 
             // label6
             // 
@@ -1136,7 +1138,7 @@ namespace iYak
         private System.Windows.Forms.FlowLayoutPanel FlowScript;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
-        internal System.Windows.Forms.FlowLayoutPanel ActorFlow;
+        internal System.Windows.Forms.FlowLayoutPanel ActorsFlow;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader col3;
         private System.Windows.Forms.Panel panel5;

@@ -30,6 +30,7 @@ namespace iYak.Classes
         //
         static public System.Windows.Forms.ListView LVoices;
         static public System.Windows.Forms.FlowLayoutPanel FAvatars;
+        static public System.Windows.Forms.FlowLayoutPanel FActors;
         static public System.Windows.Forms.PictureBox CurrentFace;
         static public System.Windows.Forms.FlowLayoutPanel FScripts;
         static public Main mainRef;

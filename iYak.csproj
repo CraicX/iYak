@@ -173,7 +173,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Actor.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Data.cs" />
     <Compile Include="Classes\Helpers.cs" />

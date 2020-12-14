@@ -61,6 +61,21 @@ namespace iYak.Controls
 
         }
         
+        public RoboActor(Voice _voice, ControlType _controlType)
+        {
+            InitializeComponent();
+
+            Type  = _controlType;
+            voice = _voice;
+
+            lblNickname.Text = voice.Nickname;
+            SetAvatar(voice.Avatar);
+
+            AddHandlers();
+
+
+            
+        }
         
 
         public void SetAvatar(string _Avatar)
@@ -68,8 +83,6 @@ namespace iYak.Controls
 
             foreach (PictureBox pbox in Config.FAvatars.Controls)
             {
-                Console.WriteLine(pbox.Tag + " -- " + _Avatar);
-
                 if (pbox.Tag.ToString() == _Avatar) {
                     pbActor.Image = pbox.Image;
                     return;

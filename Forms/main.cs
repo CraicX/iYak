@@ -49,6 +49,7 @@ namespace iYak
 
             Config.LVoices     = VoiceSelect;
             Config.FAvatars    = AvatarsFlow;
+            Config.FActors     = ActorsFlow;
             Config.FScripts    = FlowScript;
             Config.CurrentFace = pbFace;
             Config.mainRef     = this;
@@ -198,7 +199,9 @@ namespace iYak
 
         private void btnAddActor_Click(object sender, EventArgs e)
         {
+            if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
 
+            Utilities.AddActor(Config.CurrentVoice);
         }
 
         

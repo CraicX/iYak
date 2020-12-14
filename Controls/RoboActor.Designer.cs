@@ -74,7 +74,7 @@ namespace iYak.Controls
             // 
             // pbActor
             // 
-            this.pbActor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbActor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbActor.Image = global::iYak.Properties.Resources.voice;
             this.pbActor.Location = new System.Drawing.Point(0, 20);
             this.pbActor.Margin = new System.Windows.Forms.Padding(0);

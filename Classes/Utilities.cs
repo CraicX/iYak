@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Drawing;
+using iYak.Controls;
 namespace iYak.Classes
 {
     class Utilities
@@ -283,6 +284,20 @@ namespace iYak.Classes
             sw.WriteLine("AzureEnabled = "   + (CloudWS.Azure.enabled ? "1":"0"));
 
             sw.Close();
+
+        }
+
+        static public void AddActor(Voice voice)
+        {
+            RoboActor actor = new RoboActor(voice, RoboActor.ControlType.Actor)
+            {
+                Width = 64,
+                Height = 80,
+                Margin = new Padding(1)
+            };
+
+
+            Config.FActors.Controls.Add(actor);
 
         }
 
