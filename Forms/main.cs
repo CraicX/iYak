@@ -200,7 +200,7 @@ namespace iYak
         {
             if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
 
-            Utilities.AddActor(Config.CurrentVoice);
+            Utilities.AddActor(Config.CurrentVoice, true);
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)

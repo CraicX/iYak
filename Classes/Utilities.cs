@@ -313,9 +313,12 @@ namespace iYak.Classes
 
         }
 
-        static public void AddActor(Voice voice)
+        static public void AddActor(Voice _voice, bool autoSave=false)
         {
-            RoboActor actor = new RoboActor(voice.Copy(), RoboActor.ControlType.Actor)
+
+            Voice voice = (autoSave) ? _voice.Copy() : _voice;
+            
+            RoboActor actor = new RoboActor(voice, RoboActor.ControlType.Actor)
             {
                 Width  = 64,
                 Height = 80,
@@ -325,7 +328,7 @@ namespace iYak.Classes
 
             Config.FActors.Controls.Add(actor);
 
-            Datax.AddActor( voice, Config.CurrentPlaylist.Uid );
+            if(autoSave) Datax.AddActor( voice, Config.CurrentPlaylist.Uid );
 
         }
 
@@ -356,6 +359,8 @@ namespace iYak.Classes
 
             Config.FScripts.Controls.Add(roboA);
             RoboActor.Activate(roboA);
+
+            if(autoSave) Datax.AddSpeech(voice, voice.Speech, Config.CurrentPlaylist.Uid);
 
         }
 

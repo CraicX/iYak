@@ -259,7 +259,7 @@ namespace iYak.Classes
             SqliteCommand cmd = DBH.CreateCommand();
 
             cmd.CommandText = String.Format(qDeleteActor, voiceId, playlistId);
-
+            Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
 
             DBH.Close();
@@ -389,7 +389,7 @@ namespace iYak.Classes
                     Speech    = reader.GetString(11)
                 };
 
-                Speeches.Add(voice.Copy());
+                Speeches.Add(voice);
 
             }
 
@@ -438,7 +438,7 @@ namespace iYak.Classes
                     Avatar = reader.GetString(10)
                 };
 
-                Actors.Add(voice.Copy());
+                Actors.Add(voice);
 
             }
 
