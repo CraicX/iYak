@@ -60,7 +60,7 @@ namespace iYak.Classes
 
             ListAvatars();
 
-            LoadPlaylist(0);
+            LoadPlaylist(Config.CurrentPlaylist.Uid);
 
         }
 
@@ -75,6 +75,17 @@ namespace iYak.Classes
                 {
                     Utilities.AddSpeech(voice);
                 }
+            }
+
+            List<Voice> Actors = Datax.GetActors(playlistId);
+
+            if(Actors.Count > 0)
+            {
+                foreach(Voice voice in Actors)
+                {
+                    Utilities.AddActor(voice);
+                }
+
             }
         }
         static public void FillVoiceList(List<Voice> VList) 
@@ -304,7 +315,7 @@ namespace iYak.Classes
 
         static public void AddActor(Voice voice)
         {
-            RoboActor actor = new RoboActor(voice, RoboActor.ControlType.Actor)
+            RoboActor actor = new RoboActor(voice.Copy(), RoboActor.ControlType.Actor)
             {
                 Width  = 64,
                 Height = 80,

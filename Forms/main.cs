@@ -216,7 +216,7 @@ namespace iYak
             actor.Speech = actor.voice.Speech = SayBox.Text;
             actor.RefreshActor();
 
-            Datax.AddSpeech(actor.voice, actor.voice.Speech, 0);
+            Datax.AddSpeech(actor.voice, actor.voice.Speech, Config.CurrentPlaylist.Uid);
 
         }
     }

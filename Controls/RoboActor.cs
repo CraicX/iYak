@@ -147,6 +147,13 @@ namespace iYak.Controls
                 // cancel delete
                 return;
             }
+            
+            if(this.Type == ControlType.Actor) {
+                Datax.DeleteActor(this.voice.Uid, Config.CurrentPlaylist.Uid);
+            } else {
+                Datax.DeleteSpeech(this.voice.Uid, Config.CurrentPlaylist.Uid);
+            }
+            
             this.Dispose();
         }
 

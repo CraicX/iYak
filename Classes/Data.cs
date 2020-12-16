@@ -171,22 +171,47 @@ namespace iYak.Classes
 
             SqliteCommand cmd = DBH.CreateCommand();
 
-            if (actor.Uid > 0) {
+            if (actor.Uid > 0)
+            {
 
-                cmd.CommandText = String.Format(qUpdateActor, playlistId, actor.Id, actor.Handle,
-                                    actor.Volume, actor.Rate, actor.Pitch, actor.Avatar, actor.Uid);
+                cmd.CommandText = String.Format(qUpdateActor,
+                    playlistId,
+                    actor.Nickname,
+                    actor.Handle,
+                    actor.Id,
+                    actor.GetType(),
+                    actor.GetHost(),
+                    actor.GetGender(),
+                    actor.Volume,
+                    actor.Rate,
+                    actor.Pitch,
+                    actor.Avatar,
+                    actor.Uid);
+
+
+                cmd.ExecuteNonQuery();
+
+            }
+            else
+            {
+
+                cmd.CommandText = String.Format(qInsertActor,
+                    playlistId,
+                    actor.Nickname,
+                    actor.Handle,
+                    actor.Id,
+                    actor.GetType(),
+                    actor.GetHost(),
+                    actor.GetGender(),
+                    actor.Volume,
+                    actor.Rate,
+                    actor.Pitch,
+                    actor.Avatar);
 
                 Object actor_uid = cmd.ExecuteScalar();
 
-                actor.Uid = (int)actor_uid;
-                
+                actor.Uid = int.Parse(actor_uid.ToString());
 
-            } else {
-
-                cmd.CommandText = String.Format(qInsertActor, playlistId, actor.Id, actor.Handle,
-                                    actor.Volume, actor.Rate, actor.Pitch, actor.Avatar);
-
-                cmd.ExecuteNonQuery();
 
             }
 
@@ -197,6 +222,47 @@ namespace iYak.Classes
             DBH.Close();
 
             return actor.Uid;
+
+        }
+
+
+        static public void DeleteSpeech(int voiceId, int playlistId)
+        {
+            DBH.Open();
+
+            const string qDeleteSpeech = @"
+                DELETE FROM [Speeches] 
+                WHERE id = {0} 
+                    AND playlist = {1}
+            ";
+
+            SqliteCommand cmd = DBH.CreateCommand();
+
+            cmd.CommandText = String.Format(qDeleteSpeech, voiceId, playlistId);
+
+            cmd.ExecuteNonQuery();
+
+            DBH.Close();
+
+        }
+
+        static public void DeleteActor(int voiceId, int playlistId)
+        {
+            DBH.Open();
+
+            const string qDeleteActor = @"
+                DELETE FROM [Actors] 
+                WHERE id = {0} 
+                    AND playlist = {1}
+            ";
+
+            SqliteCommand cmd = DBH.CreateCommand();
+
+            cmd.CommandText = String.Format(qDeleteActor, voiceId, playlistId);
+
+            cmd.ExecuteNonQuery();
+
+            DBH.Close();
 
         }
 
@@ -251,10 +317,7 @@ namespace iYak.Classes
                     say,
                     speech.Uid);
 
-
-
-
-                Object speech_uid = cmd.ExecuteScalar();
+                cmd.ExecuteNonQuery();
 
             }
             else
@@ -274,7 +337,9 @@ namespace iYak.Classes
                     speech.Avatar, 
                     say);
 
-                cmd.ExecuteNonQuery();
+                Object speech_uid = cmd.ExecuteScalar();
+
+                speech.Uid = int.Parse(speech_uid.ToString());
 
             }
 
@@ -333,6 +398,55 @@ namespace iYak.Classes
             DBH.Close();
 
             return Speeches;
+
+
+        }
+
+        static public List<Voice> GetActors(int playlistId)
+        {
+            DBH.Open();
+
+            const string qGetActors = @"
+                SELECT id, nickname, voice_handle, voice_name, voice_type, voice_host, gender, volume, rate, pitch, avatar
+                FROM [Actors] 
+                WHERE playlist = ""{0}""
+            ";
+
+            List<Voice> Actors = new List<Voice>();
+
+            SqliteCommand cmd = DBH.CreateCommand();
+
+            cmd.CommandText = String.Format(qGetActors, playlistId);
+
+            SqliteDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Voice voice = new Voice()
+                {
+                    Uid = int.Parse(reader.GetString(0)),
+                    Nickname = reader.GetString(1),
+                    Handle = reader.GetString(2),
+                    Id = reader.GetString(3),
+                    VoiceType = Voice.FromType(reader.GetString(4)),
+                    Host = Voice.FromHost(reader.GetString(5)),
+                    Gender = Voice.FromGender(reader.GetString(6)),
+                    Volume = int.Parse(reader.GetString(7)),
+                    Rate = int.Parse(reader.GetString(8)),
+                    Pitch = int.Parse(reader.GetString(9)),
+                    Avatar = reader.GetString(10)
+                };
+
+                Actors.Add(voice.Copy());
+
+            }
+
+            reader.Close();
+
+            DBH.Close();
+
+            return Actors;
 
 
         }
