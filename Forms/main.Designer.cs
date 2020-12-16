@@ -34,76 +34,83 @@ namespace iYak
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
-            this.ToolStripStatusLabel2                   = new System.Windows.Forms.ToolStripStatusLabel();
-            this.FileToolStripMenuItem                   = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitToolStripMenuItem                   = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditToolStripMenuItem                   = new System.Windows.Forms.ToolStripMenuItem();
-            this.SelectVoicesToDeleteToolStripMenuItem   = new System.Windows.Forms.ToolStripMenuItem();
-            this.PlaylistToolStripMenuItem               = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripSeparator1                     = new System.Windows.Forms.ToolStripSeparator();
-            this.StartNewPlaylistToolStripMenuItem       = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectVoicesToDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.StartNewPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenADifferentPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStrip1                              = new System.Windows.Forms.MenuStrip();
-            this.TextToSpeechToolStripMenuItem           = new System.Windows.Forms.ToolStripMenuItem();
-            this.XMLToolStripMenuItem                    = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripRoster                         = new System.Windows.Forms.ToolStrip();
-            this.btnDeleteRoster                         = new System.Windows.Forms.ToolStripButton();
-            this.ToolStripSeparator2                     = new System.Windows.Forms.ToolStripSeparator();
-            this.btnCancelRoster                         = new System.Windows.Forms.ToolStripButton();
-            this.StatusStrip1                            = new System.Windows.Forms.StatusStrip();
-            this.ToolStripStatusLabel1                   = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblStatus                               = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ActorIcons                              = new System.Windows.Forms.ImageList(this.components);
-            this.IconList                                = new System.Windows.Forms.ImageList(this.components);
-            this.AvatarPanel                             = new System.Windows.Forms.Panel();
-            this.AvatarsFlow                             = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5                                  = new System.Windows.Forms.Label();
-            this.splitter1                               = new System.Windows.Forms.Splitter();
-            this.ActorsPanel                             = new System.Windows.Forms.Panel();
-            this.ActorsFlow                              = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6                                  = new System.Windows.Forms.Label();
-            this.panel3                                  = new System.Windows.Forms.Panel();
-            this.groupBox1                               = new System.Windows.Forms.GroupBox();
-            this.btnExport                               = new System.Windows.Forms.Button();
-            this.btnUpdate                               = new System.Windows.Forms.Button();
-            this.btnAdd                                  = new System.Windows.Forms.Button();
-            this.panel6                                  = new System.Windows.Forms.Panel();
-            this.panel7                                  = new System.Windows.Forms.Panel();
-            this.label4                                  = new System.Windows.Forms.Label();
-            this.label3                                  = new System.Windows.Forms.Label();
-            this.label2                                  = new System.Windows.Forms.Label();
-            this.tbVolume                                = new System.Windows.Forms.TrackBar();
-            this.tbPitch                                 = new System.Windows.Forms.TrackBar();
-            this.tbSpeed                                 = new System.Windows.Forms.TrackBar();
-            this.label1                                  = new System.Windows.Forms.Label();
-            this.btnCommand3                             = new System.Windows.Forms.Button();
-            this.btnRead                                 = new System.Windows.Forms.Button();
-            this.panel8                                  = new System.Windows.Forms.Panel();
-            this.lblNickImg                              = new System.Windows.Forms.Label();
-            this.btnAddActor                             = new System.Windows.Forms.Button();
-            this.tbNickname                              = new System.Windows.Forms.TextBox();
-            this.panel2                                  = new System.Windows.Forms.Panel();
-            this.pbFace                                  = new System.Windows.Forms.PictureBox();
-            this.panel5                                  = new System.Windows.Forms.Panel();
-            this.lblType                                 = new System.Windows.Forms.Label();
-            this.lblService                              = new System.Windows.Forms.Label();
-            this.lblGender                               = new System.Windows.Forms.Label();
-            this.label11                                 = new System.Windows.Forms.Label();
-            this.label10                                 = new System.Windows.Forms.Label();
-            this.label9                                  = new System.Windows.Forms.Label();
-            this.label8                                  = new System.Windows.Forms.Label();
-            this.lblVoice                                = new System.Windows.Forms.Label();
-            this.SayBox                                  = new System.Windows.Forms.RichTextBox();
-            this.VoiceSelFrame                           = new System.Windows.Forms.Panel();
-            this.statusStrip2                            = new System.Windows.Forms.StatusStrip();
-            this.VoiceSelect                             = new System.Windows.Forms.ListView();
-            this.col1                                    = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col2                                    = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col3                                    = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.splitter2                               = new System.Windows.Forms.Splitter();
-            this.panel4                                  = new System.Windows.Forms.Panel();
-            this.FlowScript                              = new System.Windows.Forms.FlowLayoutPanel();
-            this.IconsYak                                = new System.Windows.Forms.ImageList(this.components);
+            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.TextToSpeechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.XMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripRoster = new System.Windows.Forms.ToolStrip();
+            this.btnDeleteRoster = new System.Windows.Forms.ToolStripButton();
+            this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCancelRoster = new System.Windows.Forms.ToolStripButton();
+            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
+            this.IconList = new System.Windows.Forms.ImageList(this.components);
+            this.AvatarPanel = new System.Windows.Forms.Panel();
+            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.ActorsPanel = new System.Windows.Forms.Panel();
+            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbVolume = new System.Windows.Forms.TrackBar();
+            this.tbPitch = new System.Windows.Forms.TrackBar();
+            this.tbSpeed = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCommand3 = new System.Windows.Forms.Button();
+            this.btnRead = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblNickImg = new System.Windows.Forms.Label();
+            this.btnAddActor = new System.Windows.Forms.Button();
+            this.tbNickname = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pbFace = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblService = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblVoice = new System.Windows.Forms.Label();
+            this.SayBox = new System.Windows.Forms.RichTextBox();
+            this.VoiceSelFrame = new System.Windows.Forms.Panel();
+            this.VoiceSelect = new System.Windows.Forms.ListView();
+            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.VCFilter = new System.Windows.Forms.ToolStrip();
+            this.VCBoys = new System.Windows.Forms.ToolStripButton();
+            this.VCGirls = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.VCAzure = new System.Windows.Forms.ToolStripButton();
+            this.VCGCloud = new System.Windows.Forms.ToolStripButton();
+            this.VCAWS = new System.Windows.Forms.ToolStripButton();
+            this.VCLocal = new System.Windows.Forms.ToolStripButton();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
+            this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -121,15 +128,16 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.panel5.SuspendLayout();
             this.VoiceSelFrame.SuspendLayout();
+            this.VCFilter.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
             // 
             this.ToolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.ToolStripStatusLabel2.Name         = "ToolStripStatusLabel2";
-            this.ToolStripStatusLabel2.Size         = new System.Drawing.Size(1162, 17);
-            this.ToolStripStatusLabel2.Spring       = true;
+            this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
+            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1162, 17);
+            this.ToolStripStatusLabel2.Spring = true;
             // 
             // FileToolStripMenuItem
             // 
@@ -141,9 +149,9 @@ namespace iYak
             // 
             // ExitToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem.Name   = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size   = new System.Drawing.Size(93, 22);
-            this.ExitToolStripMenuItem.Text   = "E&xit";
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
@@ -157,9 +165,9 @@ namespace iYak
             // SelectVoicesToDeleteToolStripMenuItem
             // 
             this.SelectVoicesToDeleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SelectVoicesToDeleteToolStripMenuItem.Image")));
-            this.SelectVoicesToDeleteToolStripMenuItem.Name  = "SelectVoicesToDeleteToolStripMenuItem";
-            this.SelectVoicesToDeleteToolStripMenuItem.Size  = new System.Drawing.Size(191, 22);
-            this.SelectVoicesToDeleteToolStripMenuItem.Text  = "Select Voices to Delete";
+            this.SelectVoicesToDeleteToolStripMenuItem.Name = "SelectVoicesToDeleteToolStripMenuItem";
+            this.SelectVoicesToDeleteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.SelectVoicesToDeleteToolStripMenuItem.Text = "Select Voices to Delete";
             // 
             // PlaylistToolStripMenuItem
             // 
@@ -186,9 +194,9 @@ namespace iYak
             // OpenADifferentPlaylistToolStripMenuItem
             // 
             this.OpenADifferentPlaylistToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenADifferentPlaylistToolStripMenuItem.Image")));
-            this.OpenADifferentPlaylistToolStripMenuItem.Name  = "OpenADifferentPlaylistToolStripMenuItem";
-            this.OpenADifferentPlaylistToolStripMenuItem.Size  = new System.Drawing.Size(201, 22);
-            this.OpenADifferentPlaylistToolStripMenuItem.Text  = "&Open a Different Playlist";
+            this.OpenADifferentPlaylistToolStripMenuItem.Name = "OpenADifferentPlaylistToolStripMenuItem";
+            this.OpenADifferentPlaylistToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.OpenADifferentPlaylistToolStripMenuItem.Text = "&Open a Different Playlist";
             // 
             // MenuStrip1
             // 
@@ -198,10 +206,10 @@ namespace iYak
             this.PlaylistToolStripMenuItem,
             this.TextToSpeechToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name     = "MenuStrip1";
-            this.MenuStrip1.Size     = new System.Drawing.Size(1222, 24);
+            this.MenuStrip1.Name = "MenuStrip1";
+            this.MenuStrip1.Size = new System.Drawing.Size(1222, 24);
             this.MenuStrip1.TabIndex = 21;
-            this.MenuStrip1.Text     = "MenuStrip1";
+            this.MenuStrip1.Text = "MenuStrip1";
             // 
             // TextToSpeechToolStripMenuItem
             // 
@@ -213,9 +221,9 @@ namespace iYak
             // 
             // XMLToolStripMenuItem
             // 
-            this.XMLToolStripMenuItem.Name   = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size   = new System.Drawing.Size(116, 22);
-            this.XMLToolStripMenuItem.Text   = "Options";
+            this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
             // ToolStripRoster
@@ -227,21 +235,21 @@ namespace iYak
             this.ToolStripSeparator2,
             this.btnCancelRoster});
             this.ToolStripRoster.Location = new System.Drawing.Point(466, -5);
-            this.ToolStripRoster.Name     = "ToolStripRoster";
-            this.ToolStripRoster.Size     = new System.Drawing.Size(215, 25);
+            this.ToolStripRoster.Name = "ToolStripRoster";
+            this.ToolStripRoster.Size = new System.Drawing.Size(215, 25);
             this.ToolStripRoster.TabIndex = 22;
-            this.ToolStripRoster.Text     = "ToolStrip1";
-            this.ToolStripRoster.Visible  = false;
+            this.ToolStripRoster.Text = "ToolStrip1";
+            this.ToolStripRoster.Visible = false;
             // 
             // btnDeleteRoster
             // 
-            this.btnDeleteRoster.AutoSize              = false;
-            this.btnDeleteRoster.BackColor             = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnDeleteRoster.Image                 = ((System.Drawing.Image)(resources.GetObject("btnDeleteRoster.Image")));
+            this.btnDeleteRoster.AutoSize = false;
+            this.btnDeleteRoster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnDeleteRoster.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRoster.Image")));
             this.btnDeleteRoster.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteRoster.Name                  = "btnDeleteRoster";
-            this.btnDeleteRoster.Size                  = new System.Drawing.Size(143, 22);
-            this.btnDeleteRoster.Text                  = "Delete Selected Voices";
+            this.btnDeleteRoster.Name = "btnDeleteRoster";
+            this.btnDeleteRoster.Size = new System.Drawing.Size(143, 22);
+            this.btnDeleteRoster.Text = "Delete Selected Voices";
             // 
             // ToolStripSeparator2
             // 
@@ -250,12 +258,12 @@ namespace iYak
             // 
             // btnCancelRoster
             // 
-            this.btnCancelRoster.BackColor             = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCancelRoster.Image                 = ((System.Drawing.Image)(resources.GetObject("btnCancelRoster.Image")));
+            this.btnCancelRoster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelRoster.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelRoster.Image")));
             this.btnCancelRoster.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelRoster.Name                  = "btnCancelRoster";
-            this.btnCancelRoster.Size                  = new System.Drawing.Size(63, 22);
-            this.btnCancelRoster.Text                  = "Cancel";
+            this.btnCancelRoster.Name = "btnCancelRoster";
+            this.btnCancelRoster.Size = new System.Drawing.Size(63, 22);
+            this.btnCancelRoster.Text = "Cancel";
             // 
             // StatusStrip1
             // 
@@ -264,11 +272,11 @@ namespace iYak
             this.ToolStripStatusLabel1,
             this.ToolStripStatusLabel2,
             this.lblStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 618);
-            this.StatusStrip1.Name     = "StatusStrip1";
-            this.StatusStrip1.Size     = new System.Drawing.Size(1222, 22);
+            this.StatusStrip1.Location = new System.Drawing.Point(0, 599);
+            this.StatusStrip1.Name = "StatusStrip1";
+            this.StatusStrip1.Size = new System.Drawing.Size(1222, 22);
             this.StatusStrip1.TabIndex = 23;
-            this.StatusStrip1.Text     = "StatusStrip1";
+            this.StatusStrip1.Text = "StatusStrip1";
             // 
             // ToolStripStatusLabel1
             // 
@@ -299,6 +307,9 @@ namespace iYak
             this.ActorIcons.Images.SetKeyName(10, "microphone.png");
             this.ActorIcons.Images.SetKeyName(11, "personal-computer.png");
             this.ActorIcons.Images.SetKeyName(12, "woman.png");
+            this.ActorIcons.Images.SetKeyName(13, "aws.ico");
+            this.ActorIcons.Images.SetKeyName(14, "azure.ico");
+            this.ActorIcons.Images.SetKeyName(15, "GCloud.ico");
             // 
             // IconList
             // 
@@ -355,95 +366,95 @@ namespace iYak
             this.AvatarPanel.BackColor = System.Drawing.Color.CornflowerBlue;
             this.AvatarPanel.Controls.Add(this.AvatarsFlow);
             this.AvatarPanel.Controls.Add(this.label5);
-            this.AvatarPanel.Dock     = System.Windows.Forms.DockStyle.Left;
+            this.AvatarPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.AvatarPanel.Location = new System.Drawing.Point(0, 24);
-            this.AvatarPanel.Name     = "AvatarPanel";
-            this.AvatarPanel.Size     = new System.Drawing.Size(220, 594);
+            this.AvatarPanel.Name = "AvatarPanel";
+            this.AvatarPanel.Size = new System.Drawing.Size(220, 575);
             this.AvatarPanel.TabIndex = 24;
             // 
             // AvatarsFlow
             // 
-            this.AvatarsFlow.AutoScroll       = true;
+            this.AvatarsFlow.AutoScroll = true;
             this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.AvatarsFlow.AutoSizeMode     = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AvatarsFlow.BackColor        = System.Drawing.Color.CornflowerBlue;
-            this.AvatarsFlow.BorderStyle      = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AvatarsFlow.Dock             = System.Windows.Forms.DockStyle.Fill;
-            this.AvatarsFlow.Location         = new System.Drawing.Point(0, 31);
-            this.AvatarsFlow.Margin           = new System.Windows.Forms.Padding(0);
-            this.AvatarsFlow.Name             = "AvatarsFlow";
-            this.AvatarsFlow.Size             = new System.Drawing.Size(220, 563);
-            this.AvatarsFlow.TabIndex         = 4;
+            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
+            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.AvatarsFlow.Name = "AvatarsFlow";
+            this.AvatarsFlow.Size = new System.Drawing.Size(220, 544);
+            this.AvatarsFlow.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label5.Dock      = System.Windows.Forms.DockStyle.Top;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font      = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.SeaShell;
-            this.label5.Location  = new System.Drawing.Point(0, 0);
-            this.label5.Name      = "label5";
-            this.label5.Padding   = new System.Windows.Forms.Padding(5);
-            this.label5.Size      = new System.Drawing.Size(220, 31);
-            this.label5.TabIndex  = 0;
-            this.label5.Text      = "Faces";
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(5);
+            this.label5.Size = new System.Drawing.Size(220, 31);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Faces";
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(220, 24);
-            this.splitter1.Name     = "splitter1";
-            this.splitter1.Size     = new System.Drawing.Size(3, 594);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 575);
             this.splitter1.TabIndex = 25;
-            this.splitter1.TabStop  = false;
+            this.splitter1.TabStop = false;
             // 
             // ActorsPanel
             // 
             this.ActorsPanel.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ActorsPanel.Controls.Add(this.ActorsFlow);
             this.ActorsPanel.Controls.Add(this.label6);
-            this.ActorsPanel.Dock     = System.Windows.Forms.DockStyle.Right;
+            this.ActorsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.ActorsPanel.Location = new System.Drawing.Point(997, 24);
-            this.ActorsPanel.Name     = "ActorsPanel";
-            this.ActorsPanel.Size     = new System.Drawing.Size(225, 594);
+            this.ActorsPanel.Name = "ActorsPanel";
+            this.ActorsPanel.Size = new System.Drawing.Size(225, 575);
             this.ActorsPanel.TabIndex = 26;
             // 
             // ActorsFlow
             // 
-            this.ActorsFlow.AutoScroll       = true;
+            this.ActorsFlow.AutoScroll = true;
             this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.ActorsFlow.AutoSizeMode     = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ActorsFlow.BackColor        = System.Drawing.Color.CornflowerBlue;
-            this.ActorsFlow.BorderStyle      = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActorsFlow.Dock             = System.Windows.Forms.DockStyle.Fill;
-            this.ActorsFlow.Location         = new System.Drawing.Point(0, 31);
-            this.ActorsFlow.Margin           = new System.Windows.Forms.Padding(0);
-            this.ActorsFlow.Name             = "ActorsFlow";
-            this.ActorsFlow.Size             = new System.Drawing.Size(225, 563);
-            this.ActorsFlow.TabIndex         = 6;
+            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
+            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.ActorsFlow.Name = "ActorsFlow";
+            this.ActorsFlow.Size = new System.Drawing.Size(225, 544);
+            this.ActorsFlow.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label6.Dock      = System.Windows.Forms.DockStyle.Top;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font      = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SeaShell;
-            this.label6.Location  = new System.Drawing.Point(0, 0);
-            this.label6.Name      = "label6";
-            this.label6.Padding   = new System.Windows.Forms.Padding(5);
-            this.label6.Size      = new System.Drawing.Size(225, 31);
-            this.label6.TabIndex  = 5;
-            this.label6.Text      = "Actors";
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(5);
+            this.label6.Size = new System.Drawing.Size(225, 31);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Actors";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Dock     = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(223, 308);
-            this.panel3.Name     = "panel3";
-            this.panel3.Size     = new System.Drawing.Size(771, 310);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(223, 289);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(771, 310);
             this.panel3.TabIndex = 27;
             // 
             // groupBox1
@@ -459,80 +470,80 @@ namespace iYak
             this.groupBox1.Controls.Add(this.panel8);
             this.groupBox1.Controls.Add(this.SayBox);
             this.groupBox1.Controls.Add(this.VoiceSelFrame);
-            this.groupBox1.Font      = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location  = new System.Drawing.Point(5, 13);
-            this.groupBox1.Name      = "groupBox1";
-            this.groupBox1.Size      = new System.Drawing.Size(761, 283);
-            this.groupBox1.TabIndex  = 1;
-            this.groupBox1.TabStop   = false;
-            this.groupBox1.Text      = "Voice Controls";
+            this.groupBox1.Location = new System.Drawing.Point(5, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(761, 283);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Voice Controls";
             // 
             // btnExport
             // 
-            this.btnExport.BackColor                  = System.Drawing.Color.SlateBlue;
+            this.btnExport.BackColor = System.Drawing.Color.SlateBlue;
             this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnExport.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Font                       = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnExport.ForeColor                  = System.Drawing.Color.LightSteelBlue;
-            this.btnExport.Image                      = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.ImageAlign                 = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location                   = new System.Drawing.Point(496, 243);
-            this.btnExport.Margin                     = new System.Windows.Forms.Padding(0);
-            this.btnExport.Name                       = "btnExport";
-            this.btnExport.Padding                    = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExport.Size                       = new System.Drawing.Size(86, 32);
-            this.btnExport.TabIndex                   = 23;
-            this.btnExport.Text                       = "    Export";
-            this.btnExport.UseVisualStyleBackColor    = false;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(496, 243);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExport.Size = new System.Drawing.Size(86, 32);
+            this.btnExport.TabIndex = 23;
+            this.btnExport.Text = "    Export";
+            this.btnExport.UseVisualStyleBackColor = false;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor                  = System.Drawing.Color.SlateBlue;
+            this.btnUpdate.BackColor = System.Drawing.Color.SlateBlue;
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnUpdate.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font                       = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnUpdate.ForeColor                  = System.Drawing.Color.LightSteelBlue;
-            this.btnUpdate.Image                      = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageAlign                 = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location                   = new System.Drawing.Point(583, 243);
-            this.btnUpdate.Margin                     = new System.Windows.Forms.Padding(0);
-            this.btnUpdate.Name                       = "btnUpdate";
-            this.btnUpdate.Padding                    = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnUpdate.Size                       = new System.Drawing.Size(96, 32);
-            this.btnUpdate.TabIndex                   = 22;
-            this.btnUpdate.Text                       = "    Update";
-            this.btnUpdate.UseVisualStyleBackColor    = false;
-            this.btnUpdate.Click                     += new System.EventHandler(this.BtnUpdate_Click);
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(583, 243);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnUpdate.Size = new System.Drawing.Size(96, 32);
+            this.btnUpdate.TabIndex = 22;
+            this.btnUpdate.Text = "    Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.BackColor                  = System.Drawing.Color.SlateBlue;
+            this.btnAdd.BackColor = System.Drawing.Color.SlateBlue;
             this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnAdd.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font                       = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnAdd.ForeColor                  = System.Drawing.Color.LightSteelBlue;
-            this.btnAdd.Image                      = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageAlign                 = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location                   = new System.Drawing.Point(680, 243);
-            this.btnAdd.Margin                     = new System.Windows.Forms.Padding(0);
-            this.btnAdd.Name                       = "btnAdd";
-            this.btnAdd.Padding                    = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnAdd.Size                       = new System.Drawing.Size(74, 32);
-            this.btnAdd.TabIndex                   = 21;
-            this.btnAdd.Text                       = "    Add";
-            this.btnAdd.UseVisualStyleBackColor    = false;
-            this.btnAdd.Click                     += new System.EventHandler(this.BtnAdd_Click);
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(680, 243);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnAdd.Size = new System.Drawing.Size(74, 32);
+            this.btnAdd.TabIndex = 21;
+            this.btnAdd.Text = "    Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SlateBlue;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Font     = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(238, 19);
-            this.panel6.Name     = "panel6";
-            this.panel6.Size     = new System.Drawing.Size(308, 120);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(308, 120);
             this.panel6.TabIndex = 14;
             // 
             // panel7
@@ -547,134 +558,134 @@ namespace iYak
             this.panel7.Controls.Add(this.tbPitch);
             this.panel7.Controls.Add(this.tbSpeed);
             this.panel7.Location = new System.Drawing.Point(2, 26);
-            this.panel7.Name     = "panel7";
-            this.panel7.Size     = new System.Drawing.Size(304, 91);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(304, 91);
             this.panel7.TabIndex = 1;
             // 
             // label4
             // 
-            this.label4.Font      = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location  = new System.Drawing.Point(7, 61);
-            this.label4.Name      = "label4";
-            this.label4.Size      = new System.Drawing.Size(48, 23);
-            this.label4.TabIndex  = 16;
-            this.label4.Text      = "Volume";
+            this.label4.Location = new System.Drawing.Point(7, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 23);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Volume";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.Font      = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location  = new System.Drawing.Point(7, 39);
-            this.label3.Name      = "label3";
-            this.label3.Size      = new System.Drawing.Size(48, 23);
-            this.label3.TabIndex  = 15;
-            this.label3.Text      = "Pitch";
+            this.label3.Location = new System.Drawing.Point(7, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 23);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Pitch";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Font      = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location  = new System.Drawing.Point(7, 14);
-            this.label2.Name      = "label2";
-            this.label2.Size      = new System.Drawing.Size(48, 23);
-            this.label2.TabIndex  = 14;
-            this.label2.Text      = "Rate";
+            this.label2.Location = new System.Drawing.Point(7, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 23);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Rate";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbVolume
             // 
             this.tbVolume.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbVolume.AutoSize  = false;
+            this.tbVolume.AutoSize = false;
             this.tbVolume.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.tbVolume.Location  = new System.Drawing.Point(59, 63);
-            this.tbVolume.Margin    = new System.Windows.Forms.Padding(0);
-            this.tbVolume.Maximum   = 100;
-            this.tbVolume.Name      = "tbVolume";
-            this.tbVolume.Size      = new System.Drawing.Size(242, 25);
-            this.tbVolume.TabIndex  = 13;
+            this.tbVolume.Location = new System.Drawing.Point(59, 63);
+            this.tbVolume.Margin = new System.Windows.Forms.Padding(0);
+            this.tbVolume.Maximum = 100;
+            this.tbVolume.Name = "tbVolume";
+            this.tbVolume.Size = new System.Drawing.Size(242, 25);
+            this.tbVolume.TabIndex = 13;
             this.tbVolume.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbVolume.Value     = 100;
-            this.tbVolume.Scroll   += new System.EventHandler(this.TbVolume_Scroll);
+            this.tbVolume.Value = 100;
+            this.tbVolume.Scroll += new System.EventHandler(this.TbVolume_Scroll);
             // 
             // tbPitch
             // 
             this.tbPitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPitch.AutoSize  = false;
+            this.tbPitch.AutoSize = false;
             this.tbPitch.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.tbPitch.Location  = new System.Drawing.Point(59, 40);
-            this.tbPitch.Margin    = new System.Windows.Forms.Padding(0);
-            this.tbPitch.Name      = "tbPitch";
-            this.tbPitch.Size      = new System.Drawing.Size(242, 25);
-            this.tbPitch.TabIndex  = 12;
+            this.tbPitch.Location = new System.Drawing.Point(59, 40);
+            this.tbPitch.Margin = new System.Windows.Forms.Padding(0);
+            this.tbPitch.Name = "tbPitch";
+            this.tbPitch.Size = new System.Drawing.Size(242, 25);
+            this.tbPitch.TabIndex = 12;
             this.tbPitch.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbPitch.Value     = 5;
-            this.tbPitch.Scroll   += new System.EventHandler(this.TbPitch_Scroll);
+            this.tbPitch.Value = 5;
+            this.tbPitch.Scroll += new System.EventHandler(this.TbPitch_Scroll);
             // 
             // tbSpeed
             // 
             this.tbSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSpeed.AutoSize  = false;
+            this.tbSpeed.AutoSize = false;
             this.tbSpeed.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.tbSpeed.Location  = new System.Drawing.Point(59, 14);
-            this.tbSpeed.Margin    = new System.Windows.Forms.Padding(0);
-            this.tbSpeed.Name      = "tbSpeed";
-            this.tbSpeed.Size      = new System.Drawing.Size(242, 26);
-            this.tbSpeed.TabIndex  = 11;
+            this.tbSpeed.Location = new System.Drawing.Point(59, 14);
+            this.tbSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.tbSpeed.Name = "tbSpeed";
+            this.tbSpeed.Size = new System.Drawing.Size(242, 26);
+            this.tbSpeed.TabIndex = 11;
             this.tbSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbSpeed.Value     = 5;
-            this.tbSpeed.Scroll   += new System.EventHandler(this.TbSpeed_Scroll);
+            this.tbSpeed.Value = 5;
+            this.tbSpeed.Scroll += new System.EventHandler(this.TbSpeed_Scroll);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font     = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 2);
-            this.label1.Name     = "label1";
-            this.label1.Size     = new System.Drawing.Size(63, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text     = "Tuning";
+            this.label1.Text = "Tuning";
             // 
             // btnCommand3
             // 
-            this.btnCommand3.BackColor                  = System.Drawing.Color.SlateBlue;
+            this.btnCommand3.BackColor = System.Drawing.Color.SlateBlue;
             this.btnCommand3.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnCommand3.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCommand3.Font                       = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnCommand3.ForeColor                  = System.Drawing.Color.LightSteelBlue;
-            this.btnCommand3.Image                      = ((System.Drawing.Image)(resources.GetObject("btnCommand3.Image")));
-            this.btnCommand3.ImageAlign                 = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCommand3.Location                   = new System.Drawing.Point(320, 243);
-            this.btnCommand3.Name                       = "btnCommand3";
-            this.btnCommand3.Padding                    = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnCommand3.Size                       = new System.Drawing.Size(90, 32);
-            this.btnCommand3.TabIndex                   = 18;
-            this.btnCommand3.Text                       = "    Stop";
-            this.btnCommand3.UseVisualStyleBackColor    = false;
+            this.btnCommand3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCommand3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnCommand3.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCommand3.Image = ((System.Drawing.Image)(resources.GetObject("btnCommand3.Image")));
+            this.btnCommand3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCommand3.Location = new System.Drawing.Point(320, 243);
+            this.btnCommand3.Name = "btnCommand3";
+            this.btnCommand3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnCommand3.Size = new System.Drawing.Size(90, 32);
+            this.btnCommand3.TabIndex = 18;
+            this.btnCommand3.Text = "    Stop";
+            this.btnCommand3.UseVisualStyleBackColor = false;
             // 
             // btnRead
             // 
-            this.btnRead.BackColor                  = System.Drawing.Color.SlateBlue;
+            this.btnRead.BackColor = System.Drawing.Color.SlateBlue;
             this.btnRead.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnRead.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRead.Font                       = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnRead.ForeColor                  = System.Drawing.Color.LightSteelBlue;
-            this.btnRead.Image                      = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
-            this.btnRead.ImageAlign                 = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRead.Location                   = new System.Drawing.Point(238, 243);
-            this.btnRead.Margin                     = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.btnRead.Name                       = "btnRead";
-            this.btnRead.Padding                    = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnRead.Size                       = new System.Drawing.Size(81, 32);
-            this.btnRead.TabIndex                   = 17;
-            this.btnRead.Text                       = "    Play";
-            this.btnRead.UseVisualStyleBackColor    = false;
-            this.btnRead.Click                     += new System.EventHandler(this.BtnRead_Click);
+            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnRead.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
+            this.btnRead.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRead.Location = new System.Drawing.Point(238, 243);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnRead.Size = new System.Drawing.Size(81, 32);
+            this.btnRead.TabIndex = 17;
+            this.btnRead.Text = "    Play";
+            this.btnRead.UseVisualStyleBackColor = false;
+            this.btnRead.Click += new System.EventHandler(this.BtnRead_Click);
             // 
             // panel8
             // 
@@ -685,55 +696,55 @@ namespace iYak
             this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel5);
             this.panel8.Location = new System.Drawing.Point(551, 19);
-            this.panel8.Name     = "panel8";
-            this.panel8.Size     = new System.Drawing.Size(203, 120);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(203, 120);
             this.panel8.TabIndex = 16;
             // 
             // lblNickImg
             // 
-            this.lblNickImg.Image    = ((System.Drawing.Image)(resources.GetObject("lblNickImg.Image")));
+            this.lblNickImg.Image = ((System.Drawing.Image)(resources.GetObject("lblNickImg.Image")));
             this.lblNickImg.Location = new System.Drawing.Point(1, 85);
-            this.lblNickImg.Name     = "lblNickImg";
-            this.lblNickImg.Size     = new System.Drawing.Size(20, 18);
+            this.lblNickImg.Name = "lblNickImg";
+            this.lblNickImg.Size = new System.Drawing.Size(20, 18);
             this.lblNickImg.TabIndex = 29;
             // 
             // btnAddActor
             // 
-            this.btnAddActor.Anchor                     = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddActor.BackColor                  = System.Drawing.Color.MediumSlateBlue;
+            this.btnAddActor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddActor.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.btnAddActor.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddActor.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddActor.Font                       = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnAddActor.ForeColor                  = System.Drawing.Color.LightBlue;
-            this.btnAddActor.Image                      = ((System.Drawing.Image)(resources.GetObject("btnAddActor.Image")));
-            this.btnAddActor.ImageAlign                 = System.Drawing.ContentAlignment.BottomRight;
-            this.btnAddActor.Location                   = new System.Drawing.Point(125, 6);
-            this.btnAddActor.Margin                     = new System.Windows.Forms.Padding(0);
-            this.btnAddActor.Name                       = "btnAddActor";
-            this.btnAddActor.Size                       = new System.Drawing.Size(75, 24);
-            this.btnAddActor.TabIndex                   = 28;
-            this.btnAddActor.Text                       = "Set Actor  ";
-            this.btnAddActor.TextAlign                  = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddActor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddActor.Font = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAddActor.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnAddActor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddActor.Image")));
+            this.btnAddActor.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnAddActor.Location = new System.Drawing.Point(125, 6);
+            this.btnAddActor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddActor.Name = "btnAddActor";
+            this.btnAddActor.Size = new System.Drawing.Size(75, 24);
+            this.btnAddActor.TabIndex = 28;
+            this.btnAddActor.Text = "Set Actor  ";
+            this.btnAddActor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddActor.UseCompatibleTextRendering = true;
-            this.btnAddActor.UseMnemonic                = false;
-            this.btnAddActor.UseVisualStyleBackColor    = false;
-            this.btnAddActor.Click                     += new System.EventHandler(this.BtnAddActor_Click);
+            this.btnAddActor.UseMnemonic = false;
+            this.btnAddActor.UseVisualStyleBackColor = false;
+            this.btnAddActor.Click += new System.EventHandler(this.BtnAddActor_Click);
             // 
             // tbNickname
             // 
-            this.tbNickname.Anchor       = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNickname.BackColor    = System.Drawing.Color.SlateBlue;
-            this.tbNickname.BorderStyle  = System.Windows.Forms.BorderStyle.None;
-            this.tbNickname.Font         = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.tbNickname.ForeColor    = System.Drawing.Color.LightSkyBlue;
-            this.tbNickname.Location     = new System.Drawing.Point(21, 85);
-            this.tbNickname.Margin       = new System.Windows.Forms.Padding(0);
-            this.tbNickname.MaxLength    = 15;
-            this.tbNickname.Name         = "tbNickname";
-            this.tbNickname.Size         = new System.Drawing.Size(59, 12);
-            this.tbNickname.TabIndex     = 27;
-            this.tbNickname.Text         = "nickname";
-            this.tbNickname.Click       += new System.EventHandler(this.TbNickname_Click);
+            this.tbNickname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNickname.BackColor = System.Drawing.Color.SlateBlue;
+            this.tbNickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNickname.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.tbNickname.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.tbNickname.Location = new System.Drawing.Point(21, 85);
+            this.tbNickname.Margin = new System.Windows.Forms.Padding(0);
+            this.tbNickname.MaxLength = 15;
+            this.tbNickname.Name = "tbNickname";
+            this.tbNickname.Size = new System.Drawing.Size(59, 12);
+            this.tbNickname.TabIndex = 27;
+            this.tbNickname.Text = "nickname";
+            this.tbNickname.Click += new System.EventHandler(this.TbNickname_Click);
             this.tbNickname.TextChanged += new System.EventHandler(this.TbNickname_Changed);
             // 
             // panel2
@@ -741,23 +752,23 @@ namespace iYak
             this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel2.Controls.Add(this.pbFace);
             this.panel2.Location = new System.Drawing.Point(4, 5);
-            this.panel2.Margin   = new System.Windows.Forms.Padding(0);
-            this.panel2.Name     = "panel2";
-            this.panel2.Size     = new System.Drawing.Size(76, 78);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(76, 78);
             this.panel2.TabIndex = 26;
             // 
             // pbFace
             // 
-            this.pbFace.BackColor   = System.Drawing.Color.CornflowerBlue;
+            this.pbFace.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pbFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbFace.Image       = global::iYak.Properties.Resources.voice;
-            this.pbFace.Location    = new System.Drawing.Point(4, 5);
-            this.pbFace.Margin      = new System.Windows.Forms.Padding(0);
-            this.pbFace.Name        = "pbFace";
-            this.pbFace.Size        = new System.Drawing.Size(68, 68);
-            this.pbFace.SizeMode    = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbFace.TabIndex    = 2;
-            this.pbFace.TabStop     = false;
+            this.pbFace.Image = global::iYak.Properties.Resources.voice;
+            this.pbFace.Location = new System.Drawing.Point(4, 5);
+            this.pbFace.Margin = new System.Windows.Forms.Padding(0);
+            this.pbFace.Name = "pbFace";
+            this.pbFace.Size = new System.Drawing.Size(68, 68);
+            this.pbFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFace.TabIndex = 2;
+            this.pbFace.TabStop = false;
             // 
             // panel5
             // 
@@ -771,179 +782,170 @@ namespace iYak
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.lblVoice);
-            this.panel5.Font      = new System.Drawing.Font("Microsoft NeoGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel5.Font = new System.Drawing.Font("Microsoft NeoGothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.ForeColor = System.Drawing.Color.LightYellow;
-            this.panel5.Location  = new System.Drawing.Point(84, 40);
-            this.panel5.Name      = "panel5";
-            this.panel5.Size      = new System.Drawing.Size(116, 63);
-            this.panel5.TabIndex  = 0;
+            this.panel5.Location = new System.Drawing.Point(84, 40);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(116, 63);
+            this.panel5.TabIndex = 0;
             // 
             // lblType
             // 
-            this.lblType.AutoSize  = true;
-            this.lblType.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblType.Location  = new System.Drawing.Point(43, 44);
-            this.lblType.Name      = "lblType";
-            this.lblType.Size      = new System.Drawing.Size(11, 13);
-            this.lblType.TabIndex  = 7;
-            this.lblType.Text      = "-";
+            this.lblType.Location = new System.Drawing.Point(43, 44);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(11, 13);
+            this.lblType.TabIndex = 7;
+            this.lblType.Text = "-";
             // 
             // lblService
             // 
-            this.lblService.AutoSize  = true;
-            this.lblService.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblService.AutoSize = true;
+            this.lblService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblService.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblService.Location  = new System.Drawing.Point(43, 30);
-            this.lblService.Name      = "lblService";
-            this.lblService.Size      = new System.Drawing.Size(11, 13);
-            this.lblService.TabIndex  = 6;
-            this.lblService.Text      = "-";
+            this.lblService.Location = new System.Drawing.Point(43, 30);
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(11, 13);
+            this.lblService.TabIndex = 6;
+            this.lblService.Text = "-";
             // 
             // lblGender
             // 
-            this.lblGender.AutoSize  = true;
-            this.lblGender.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblGender.Location  = new System.Drawing.Point(43, 16);
-            this.lblGender.Name      = "lblGender";
-            this.lblGender.Size      = new System.Drawing.Size(11, 13);
-            this.lblGender.TabIndex  = 5;
-            this.lblGender.Text      = "-";
+            this.lblGender.Location = new System.Drawing.Point(43, 16);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(11, 13);
+            this.lblGender.TabIndex = 5;
+            this.lblGender.Text = "-";
             this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
-            this.label11.AutoSize  = true;
-            this.label11.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label11.Location  = new System.Drawing.Point(13, 44);
-            this.label11.Name      = "label11";
-            this.label11.Size      = new System.Drawing.Size(32, 13);
-            this.label11.TabIndex  = 4;
-            this.label11.Text      = "Type:";
+            this.label11.Location = new System.Drawing.Point(13, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Type:";
             // 
             // label10
             // 
-            this.label10.AutoSize  = true;
-            this.label10.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label10.Location  = new System.Drawing.Point(0, 30);
-            this.label10.Name      = "label10";
-            this.label10.Size      = new System.Drawing.Size(45, 13);
-            this.label10.TabIndex  = 3;
-            this.label10.Text      = "Service:";
+            this.label10.Location = new System.Drawing.Point(0, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Service:";
             // 
             // label9
             // 
-            this.label9.AutoSize  = true;
-            this.label9.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label9.Location  = new System.Drawing.Point(0, 16);
-            this.label9.Name      = "label9";
-            this.label9.Size      = new System.Drawing.Size(45, 13);
-            this.label9.TabIndex  = 2;
-            this.label9.Text      = "Gender:";
+            this.label9.Location = new System.Drawing.Point(0, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Gender:";
             // 
             // label8
             // 
-            this.label8.AutoSize  = true;
-            this.label8.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label8.Location  = new System.Drawing.Point(9, 2);
-            this.label8.Name      = "label8";
-            this.label8.Size      = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex  = 1;
-            this.label8.Text      = "Voice:";
+            this.label8.Location = new System.Drawing.Point(9, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Voice:";
             // 
             // lblVoice
             // 
-            this.lblVoice.AutoSize  = true;
-            this.lblVoice.Font      = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblVoice.AutoSize = true;
+            this.lblVoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblVoice.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lblVoice.Location  = new System.Drawing.Point(43, 2);
-            this.lblVoice.Name      = "lblVoice";
-            this.lblVoice.Size      = new System.Drawing.Size(11, 13);
-            this.lblVoice.TabIndex  = 0;
-            this.lblVoice.Text      = "-";
+            this.lblVoice.Location = new System.Drawing.Point(43, 2);
+            this.lblVoice.Name = "lblVoice";
+            this.lblVoice.Size = new System.Drawing.Size(11, 13);
+            this.lblVoice.TabIndex = 0;
+            this.lblVoice.Text = "-";
             // 
             // SayBox
             // 
             this.SayBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.SayBox.AutoWordSelection   = true;
-            this.SayBox.BackColor           = System.Drawing.Color.PapayaWhip;
-            this.SayBox.BorderStyle         = System.Windows.Forms.BorderStyle.None;
-            this.SayBox.Location            = new System.Drawing.Point(238, 144);
-            this.SayBox.Margin              = new System.Windows.Forms.Padding(10);
-            this.SayBox.Name                = "SayBox";
-            this.SayBox.ScrollBars          = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.SayBox.AutoWordSelection = true;
+            this.SayBox.BackColor = System.Drawing.Color.PapayaWhip;
+            this.SayBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SayBox.Location = new System.Drawing.Point(238, 144);
+            this.SayBox.Margin = new System.Windows.Forms.Padding(10);
+            this.SayBox.Name = "SayBox";
+            this.SayBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.SayBox.ShowSelectionMargin = true;
-            this.SayBox.Size                = new System.Drawing.Size(516, 93);
-            this.SayBox.TabIndex            = 15;
-            this.SayBox.Text                = "";
+            this.SayBox.Size = new System.Drawing.Size(516, 93);
+            this.SayBox.TabIndex = 15;
+            this.SayBox.Text = "";
             // 
             // VoiceSelFrame
             // 
             this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
-            this.VoiceSelFrame.Controls.Add(this.statusStrip2);
             this.VoiceSelFrame.Controls.Add(this.VoiceSelect);
+            this.VoiceSelFrame.Controls.Add(this.VCFilter);
             this.VoiceSelFrame.Location = new System.Drawing.Point(6, 19);
-            this.VoiceSelFrame.Margin   = new System.Windows.Forms.Padding(0);
-            this.VoiceSelFrame.Name     = "VoiceSelFrame";
-            this.VoiceSelFrame.Size     = new System.Drawing.Size(228, 256);
+            this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
+            this.VoiceSelFrame.Name = "VoiceSelFrame";
+            this.VoiceSelFrame.Size = new System.Drawing.Size(228, 256);
             this.VoiceSelFrame.TabIndex = 13;
-            // 
-            // statusStrip2
-            // 
-            this.statusStrip2.Dock       = System.Windows.Forms.DockStyle.Top;
-            this.statusStrip2.GripMargin = new System.Windows.Forms.Padding(0);
-            this.statusStrip2.Location   = new System.Drawing.Point(0, 0);
-            this.statusStrip2.Name       = "statusStrip2";
-            this.statusStrip2.Size       = new System.Drawing.Size(228, 22);
-            this.statusStrip2.SizingGrip = false;
-            this.statusStrip2.TabIndex   = 17;
             // 
             // VoiceSelect
             // 
-            this.VoiceSelect.Activation  = System.Windows.Forms.ItemActivation.OneClick;
-            this.VoiceSelect.BackColor   = System.Drawing.Color.LightBlue;
+            this.VoiceSelect.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.VoiceSelect.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+            this.VoiceSelect.AutoArrange = false;
+            this.VoiceSelect.BackColor = System.Drawing.Color.LightBlue;
             this.VoiceSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VoiceSelect.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col1,
             this.col2,
             this.col3});
-            this.VoiceSelect.Dock          = System.Windows.Forms.DockStyle.Fill;
-            this.VoiceSelect.Font          = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoiceSelect.ForeColor     = System.Drawing.Color.Blue;
+            this.VoiceSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
             this.VoiceSelect.FullRowSelect = true;
-            this.VoiceSelect.GridLines     = true;
-            listViewGroup1.Header          = "Male";
+            listViewGroup1.Header = "Male";
             listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name            = "grpMale";
-            listViewGroup2.Header          = "Female";
+            listViewGroup1.Name = "grpMale";
+            listViewGroup2.Header = "Female";
             listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup2.Name            = "grpFemale";
-            listViewGroup3.Header          = "Neutral";
+            listViewGroup2.Name = "grpFemale";
+            listViewGroup3.Header = "Neutral";
             listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup3.Name            = "grpNeutral";
+            listViewGroup3.Name = "grpNeutral";
             this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
             listViewGroup3});
-            this.VoiceSelect.HideSelection                   = false;
-            this.VoiceSelect.LabelWrap                       = false;
-            this.VoiceSelect.Location                        = new System.Drawing.Point(0, 0);
-            this.VoiceSelect.Margin                          = new System.Windows.Forms.Padding(0);
-            this.VoiceSelect.MultiSelect                     = false;
-            this.VoiceSelect.Name                            = "VoiceSelect";
-            this.VoiceSelect.Size                            = new System.Drawing.Size(228, 256);
-            this.VoiceSelect.SmallImageList                  = this.ActorIcons;
-            this.VoiceSelect.Sorting                         = System.Windows.Forms.SortOrder.Ascending;
-            this.VoiceSelect.TabIndex                        = 16;
+            this.VoiceSelect.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.VoiceSelect.HideSelection = false;
+            this.VoiceSelect.LabelWrap = false;
+            this.VoiceSelect.Location = new System.Drawing.Point(0, 25);
+            this.VoiceSelect.Margin = new System.Windows.Forms.Padding(0);
+            this.VoiceSelect.MultiSelect = false;
+            this.VoiceSelect.Name = "VoiceSelect";
+            this.VoiceSelect.Size = new System.Drawing.Size(228, 231);
+            this.VoiceSelect.SmallImageList = this.ActorIcons;
+            this.VoiceSelect.TabIndex = 16;
             this.VoiceSelect.UseCompatibleStateImageBehavior = false;
-            this.VoiceSelect.View                            = System.Windows.Forms.View.Details;
-            this.VoiceSelect.SelectedIndexChanged           += new System.EventHandler(this.VoiceSelect_SelectedIndexChanged);
+            this.VoiceSelect.View = System.Windows.Forms.View.Details;
+            this.VoiceSelect.SelectedIndexChanged += new System.EventHandler(this.VoiceSelect_SelectedIndexChanged);
             // 
             // col1
             // 
@@ -952,7 +954,7 @@ namespace iYak
             // 
             // col2
             // 
-            this.col2.Text = "Type";
+            this.col2.Text = "-";
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.col2.Width = 40;
             // 
@@ -962,35 +964,143 @@ namespace iYak
             this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.col3.Width = 70;
             // 
+            // VCFilter
+            // 
+            this.VCFilter.BackColor = System.Drawing.Color.SteelBlue;
+            this.VCFilter.GripMargin = new System.Windows.Forms.Padding(0);
+            this.VCFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.VCFilter.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.VCFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.VCBoys,
+            this.VCGirls,
+            this.toolStripSeparator3,
+            this.VCAzure,
+            this.VCGCloud,
+            this.VCAWS,
+            this.VCLocal});
+            this.VCFilter.Location = new System.Drawing.Point(0, 0);
+            this.VCFilter.Name = "VCFilter";
+            this.VCFilter.Padding = new System.Windows.Forms.Padding(1);
+            this.VCFilter.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.VCFilter.Size = new System.Drawing.Size(228, 25);
+            this.VCFilter.TabIndex = 17;
+            this.VCFilter.Text = "Filters";
+
+            // 
+            // VCBoys
+            // 
+            this.VCBoys.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCBoys.CheckOnClick = true;
+            this.VCBoys.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCBoys.Image = ((System.Drawing.Image)(resources.GetObject("VCBoys.Image")));
+            this.VCBoys.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCBoys.Name = "VCBoys";
+            this.VCBoys.Size = new System.Drawing.Size(23, 20);
+            this.VCBoys.Text = "toolStripButton1";
+            this.VCBoys.ToolTipText = "Male Voices";
+            // 
+            // VCGirls
+            // 
+            this.VCGirls.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCGirls.CheckOnClick = true;
+            this.VCGirls.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCGirls.Image = ((System.Drawing.Image)(resources.GetObject("VCGirls.Image")));
+            this.VCGirls.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCGirls.Name = "VCGirls";
+            this.VCGirls.Size = new System.Drawing.Size(23, 20);
+            this.VCGirls.Text = "toolStripButton1";
+            this.VCGirls.ToolTipText = "Female Voices";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
+            // 
+            // VCAzure
+            // 
+            this.VCAzure.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCAzure.CheckOnClick = true;
+            this.VCAzure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCAzure.Image = ((System.Drawing.Image)(resources.GetObject("VCAzure.Image")));
+            this.VCAzure.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.VCAzure.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCAzure.Name = "VCAzure";
+            this.VCAzure.Size = new System.Drawing.Size(23, 20);
+            this.VCAzure.Text = "toolStripButton1";
+            this.VCAzure.ToolTipText = "Azure WS Voices";
+            // 
+            // VCGCloud
+            // 
+            this.VCGCloud.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCGCloud.CheckOnClick = true;
+            this.VCGCloud.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCGCloud.Image = ((System.Drawing.Image)(resources.GetObject("VCGCloud.Image")));
+            this.VCGCloud.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCGCloud.Name = "VCGCloud";
+            this.VCGCloud.Size = new System.Drawing.Size(23, 20);
+            this.VCGCloud.Text = "toolStripButton1";
+            this.VCGCloud.ToolTipText = "GCloud WS Voices";
+            // 
+            // VCAWS
+            // 
+            this.VCAWS.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCAWS.CheckOnClick = true;
+            this.VCAWS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCAWS.Image = ((System.Drawing.Image)(resources.GetObject("VCAWS.Image")));
+            this.VCAWS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCAWS.Name = "VCAWS";
+            this.VCAWS.Size = new System.Drawing.Size(23, 20);
+            this.VCAWS.Text = "toolStripButton1";
+            this.VCAWS.ToolTipText = "Amazon AWS Voices";
+            // 
+            // VCLocal
+            // 
+            this.VCLocal.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCLocal.CheckOnClick = true;
+            this.VCLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCLocal.Image = ((System.Drawing.Image)(resources.GetObject("VCLocal.Image")));
+            this.VCLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCLocal.Name = "VCLocal";
+            this.VCLocal.Size = new System.Drawing.Size(23, 20);
+            this.VCLocal.Text = "toolStripButton1";
+            this.VCLocal.ToolTipText = "Locally Installed Voices";
+            
+            this.VCGirls.Click += new System.EventHandler(this.VCFilter_Click);
+            this.VCBoys.Click += new System.EventHandler(this.VCFilter_Click);
+            this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
+            this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
+            this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
+
+            // 
             // splitter2
             // 
-            this.splitter2.Dock     = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitter2.Location = new System.Drawing.Point(994, 24);
-            this.splitter2.Name     = "splitter2";
-            this.splitter2.Size     = new System.Drawing.Size(3, 594);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 575);
             this.splitter2.TabIndex = 28;
-            this.splitter2.TabStop  = false;
+            this.splitter2.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel4.Controls.Add(this.FlowScript);
-            this.panel4.Dock     = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(223, 24);
-            this.panel4.Name     = "panel4";
-            this.panel4.Size     = new System.Drawing.Size(771, 284);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(771, 265);
             this.panel4.TabIndex = 29;
             // 
             // FlowScript
             // 
             this.FlowScript.AutoScroll = true;
-            this.FlowScript.BackColor  = System.Drawing.Color.SkyBlue;
-            this.FlowScript.Dock       = System.Windows.Forms.DockStyle.Fill;
-            this.FlowScript.Location   = new System.Drawing.Point(0, 0);
-            this.FlowScript.Margin     = new System.Windows.Forms.Padding(10);
-            this.FlowScript.Name       = "FlowScript";
-            this.FlowScript.Size       = new System.Drawing.Size(771, 284);
-            this.FlowScript.TabIndex   = 0;
+            this.FlowScript.BackColor = System.Drawing.Color.SkyBlue;
+            this.FlowScript.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowScript.Location = new System.Drawing.Point(0, 0);
+            this.FlowScript.Margin = new System.Windows.Forms.Padding(10);
+            this.FlowScript.Name = "FlowScript";
+            this.FlowScript.Size = new System.Drawing.Size(771, 265);
+            this.FlowScript.TabIndex = 0;
             // 
             // IconsYak
             // 
@@ -1044,7 +1154,7 @@ namespace iYak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.ClientSize = new System.Drawing.Size(1222, 640);
+            this.ClientSize = new System.Drawing.Size(1222, 621);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitter1);
@@ -1055,7 +1165,7 @@ namespace iYak
             this.Controls.Add(this.StatusStrip1);
             this.Controls.Add(this.MenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1224, 450);
+            this.MinimumSize = new System.Drawing.Size(1224, 500);
             this.Name = "Main";
             this.Text = "iYak";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -1083,6 +1193,8 @@ namespace iYak
             this.panel5.PerformLayout();
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
+            this.VCFilter.ResumeLayout(false);
+            this.VCFilter.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1135,7 +1247,6 @@ namespace iYak
         internal System.Windows.Forms.ListView VoiceSelect;
         internal System.Windows.Forms.ColumnHeader col1;
         internal System.Windows.Forms.ColumnHeader col2;
-        private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.FlowLayoutPanel FlowScript;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
@@ -1160,6 +1271,14 @@ namespace iYak
         private System.Windows.Forms.PictureBox pbFace;
         internal System.Windows.Forms.Button btnAddActor;
         private System.Windows.Forms.Label lblNickImg;
+        private System.Windows.Forms.ToolStrip VCFilter;
+        private System.Windows.Forms.ToolStripButton VCGCloud;
+        private System.Windows.Forms.ToolStripButton VCAWS;
+        private System.Windows.Forms.ToolStripButton VCAzure;
+        private System.Windows.Forms.ToolStripButton VCBoys;
+        private System.Windows.Forms.ToolStripButton VCGirls;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton VCLocal;
     }
 }
 

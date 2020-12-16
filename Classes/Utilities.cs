@@ -91,6 +91,11 @@ namespace iYak.Classes
         static public void FillVoiceList(List<Voice> VList) 
         {
 
+            //  Set Filter Options
+            Config.mainRef.RefreshFilters();
+
+            Config.LVoices.Items.Clear();
+
             int imgNum;
             string tmpLoc;
             Color FontColor;
@@ -98,6 +103,9 @@ namespace iYak.Classes
 
             foreach (Voice vItem in VList)
             {
+
+                if (Config.VFilter.male && vItem.Gender == Voice.EGender.Male) continue;
+                if (Config.VFilter.female && vItem.Gender == Voice.EGender.Female) continue;
 
                 if (vItem.Gender == Voice.EGender.Male) {
                     imgNum    = 0;

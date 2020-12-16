@@ -16,7 +16,7 @@ namespace iYak.Classes
         static public List<String> Avatars      = new List<String>();
         static public Voice CurrentVoice        = new Voice();
         static public Playlist CurrentPlaylist  = new Playlist();
-
+        static public FilterOpts VFilter        = new FilterOpts();
 
         //
         //  Define Paths
@@ -35,6 +35,8 @@ namespace iYak.Classes
         static public System.Windows.Forms.PictureBox CurrentFace;
         static public System.Windows.Forms.FlowLayoutPanel FScripts;
         static public Main mainRef;
+
+
 
 
 
@@ -64,6 +66,16 @@ namespace iYak.Classes
     }
 
     
+    class FilterOpts
+    {
+        public bool male   = true;
+        public bool female = true;
+        public bool local  = true;
+        public bool aws    = true;
+        public bool gcloud = true;
+        public bool azure  = true;
+
+    }
 
 
 }

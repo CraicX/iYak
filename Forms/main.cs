@@ -109,12 +109,24 @@ namespace iYak
 
             Config.CurrentVoice.SetVoice(VoiceSelect.Items[VoiceSelect.SelectedIndices[0]].Text);
 
-            Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
+            if (Config.CurrentFace.Tag != null)
+            {
+
+                Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
+
+            }
 
             UpdateVoiceInfo(Config.CurrentVoice);
 
         }
 
+        public void RefreshFilters() {
+            Config.VFilter.female   = this.VCGirls.Checked;
+            Config.VFilter.male = this.VCBoys.Checked;
+            Config.VFilter.aws    = this.VCAWS.Checked;
+            Config.VFilter.gcloud = this.VCGCloud.Checked;
+            Config.VFilter.azure  = this.VCAzure.Checked;
+        }
         public void UpdateVoiceInfo( Voice speaker )
         {
 
@@ -217,6 +229,13 @@ namespace iYak
             actor.RefreshActor();
 
             Datax.AddSpeech(actor.voice, actor.voice.Speech, Config.CurrentPlaylist.Uid);
+
+        }
+
+
+        private void VCFilter_Click(object sender, EventArgs e)
+        {
+            Utilities.FillVoiceList(Config.Voices);
 
         }
     }
