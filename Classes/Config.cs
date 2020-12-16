@@ -47,11 +47,25 @@ namespace iYak.Classes
     {
         static public class Azure
         {
-            static public string key      = "";
-            static public string region   = "";
+            static public string key = "";
+            static public string region = "";
             static public bool enabled = false;
 
-            
+        }
+
+        static public class AWS
+        {
+            static public string key = "";
+            static public string region = "";
+            static public bool enabled = false;
+        }
+
+        static public class GCloud
+        {
+            static public string key = "";
+            static public string region = "";
+            static public bool enabled = false;
+
         }
     }
 

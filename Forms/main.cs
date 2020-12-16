@@ -126,6 +126,13 @@ namespace iYak
             Config.VFilter.aws    = this.VCAWS.Checked;
             Config.VFilter.gcloud = this.VCGCloud.Checked;
             Config.VFilter.azure  = this.VCAzure.Checked;
+            Config.VFilter.local  = this.VCLocal.Checked;
+        }
+
+        private void VCFilter_Click(object sender, EventArgs e)
+        {
+            Utilities.FillVoiceList(Config.Voices);
+
         }
         public void UpdateVoiceInfo( Voice speaker )
         {
@@ -233,10 +240,6 @@ namespace iYak
         }
 
 
-        private void VCFilter_Click(object sender, EventArgs e)
-        {
-            Utilities.FillVoiceList(Config.Voices);
 
-        }
     }
 }

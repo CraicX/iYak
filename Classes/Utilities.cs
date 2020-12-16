@@ -104,6 +104,7 @@ namespace iYak.Classes
             foreach (Voice vItem in VList)
             {
 
+                if (Config.VFilter.local && vItem.Host == Voice.EHost.Local) continue;
                 if (Config.VFilter.male && vItem.Gender == Voice.EGender.Male) continue;
                 if (Config.VFilter.female && vItem.Gender == Voice.EGender.Female) continue;
 
@@ -282,7 +283,10 @@ namespace iYak.Classes
 
                     String[] pieces = lineProperty.Split('=');
 
-                    switch( pieces[0].Trim() ) {
+                    pieces[0] = pieces[0].Trim();
+                    pieces[1] = pieces[1].Trim();
+
+                    switch( pieces[0] ) {
                         case "AzureKey":
                             CloudWS.Azure.key = pieces[1];
                             break;
@@ -292,7 +296,31 @@ namespace iYak.Classes
                             break;
 
                         case "AzureEnabled":
-                            CloudWS.Azure.enabled = (pieces[1].Trim() == "1");
+                            CloudWS.Azure.enabled = (pieces[1] == "1");
+                            break;
+
+                        case "AWSKey":
+                            CloudWS.AWS.key = pieces[1];
+                            break;
+
+                        case "AWSRegion":
+                            CloudWS.AWS.region = pieces[1];
+                            break;
+
+                        case "AWSEnabled":
+                            CloudWS.AWS.enabled = (pieces[1] == "1");
+                            break;
+
+                        case "GCloudKey":
+                            CloudWS.GCloud.key = pieces[1];
+                            break;
+
+                        case "GCloudRegion":
+                            CloudWS.GCloud.region = pieces[1];
+                            break;
+
+                        case "GCloudEnabled":
+                            CloudWS.GCloud.enabled = (pieces[1] == "1");
                             break;
 
                     }
@@ -313,9 +341,19 @@ namespace iYak.Classes
 
             StreamWriter sw = new StreamWriter(iniFile, false);
 
-            sw.WriteLine("AzureKey = "       + CloudWS.Azure.key);
-            sw.WriteLine("AzureRegion = "    + CloudWS.Azure.region);
-            sw.WriteLine("AzureEnabled = "   + (CloudWS.Azure.enabled ? "1":"0"));
+            sw.WriteLine("AzureKey = "          + CloudWS.Azure.key);
+            sw.WriteLine("AzureRegion = "       + CloudWS.Azure.region);
+            sw.WriteLine("AzureEnabled = "      + (CloudWS.Azure.enabled ? "1":"0"));
+
+            sw.WriteLine("AWSKey = "            + CloudWS.AWS.key);
+            sw.WriteLine("AWSRegion = "         + CloudWS.AWS.region);
+            sw.WriteLine("AWSEnabled = "        + (CloudWS.AWS.enabled ? "1" : "0"));
+
+            sw.WriteLine("GCloudKey = "         + CloudWS.GCloud.key);
+            sw.WriteLine("GCloudRegion = "      + CloudWS.GCloud.region);
+            sw.WriteLine("GCloudEnabled = "     + (CloudWS.GCloud.enabled ? "1" : "0"));
+
+
 
             sw.Close();
 

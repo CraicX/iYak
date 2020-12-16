@@ -1070,6 +1070,7 @@ namespace iYak
             this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
             this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
             this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
+            this.VCLocal.Click += new System.EventHandler(this.VCFilter_Click);
 
             // 
             // splitter2
