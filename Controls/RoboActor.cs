@@ -96,11 +96,13 @@ namespace iYak.Controls
 
         }
 
-        public void SetAvatar(string _Avatar)
+        public void SetAvatar(string _Avatar="")
         {
+            if (_Avatar == "") _Avatar = this.voice.Avatar;
 
             foreach (PictureBox pbox in Config.FAvatars.Controls)
             {
+
                 if (pbox.Tag.ToString() == _Avatar) {
                     pbActor.Image = pbox.Image;
                     return;

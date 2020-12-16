@@ -87,7 +87,7 @@ namespace iYak.Classes
                     Active = true,
                     Id     = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle = iVoice.VoiceInfo.Name,
-                    Gender = iVoice.VoiceInfo.Gender,
+                    Gender = Voice.convertGenderFromLocal(iVoice.VoiceInfo.Gender),
                     Host   = Voice.EHost.Local
                 };
 
@@ -114,34 +114,38 @@ namespace iYak.Classes
     public class Voice
     {
 
-        public string Id       = "";
-        public string Handle   = "";
-        public string Avatar   = "";
-        public string Nickname = "";
-        public bool Active     = true;
-        public int Rate        = 5;
-        public int Pitch       = 5;
-        public int Volume      = 100;
+        public int Uid = 0;
+        public string Id        = "";
+        public string Handle    = "";
+        public string Avatar    = "";
+        public string Nickname  = "";
+        public string Speech    = "";
+        public bool Active      = true;
+        public int Rate         = 5;
+        public int Pitch        = 5;
+        public int Volume       = 100;
 
-        public System.Speech.Synthesis.VoiceGender Gender = System.Speech.Synthesis.VoiceGender.NotSet;
-        public EVoiceType VoiceType                       = EVoiceType.Standard;
-        public EHost Host                                 = EHost.Local;
+        public EGender Gender           = EGender.NotSet;
+        public EVoiceType VoiceType     = EVoiceType.Standard;
+        public EHost Host               = EHost.Local;
 
         public Voice Copy()
         {
             Voice _voice = new Voice()
             {
-                Id        = this.Id,
-                Handle    = this.Handle,
-                Avatar    = this.Avatar,
-                Nickname  = this.Nickname,
-                Active    = this.Active,
-                Rate      = this.Rate,
-                Pitch     = this.Pitch,
-                Volume    = this.Volume,
-                Gender    = this.Gender,
-                VoiceType = this.VoiceType,
-                Host      = this.Host
+                Uid         = this.Uid,
+                Id          = this.Id,
+                Handle      = this.Handle,
+                Avatar      = this.Avatar,
+                Nickname    = this.Nickname,
+                Active      = this.Active,
+                Rate        = this.Rate,
+                Pitch       = this.Pitch,
+                Volume      = this.Volume,
+                Gender      = this.Gender,
+                VoiceType   = this.VoiceType,
+                Host        = this.Host,
+                Speech      = this.Speech
             };
 
             return _voice;
@@ -151,7 +155,8 @@ namespace iYak.Classes
         {
             Male,
             Female,
-            Neutral
+            Neutral,
+            NotSet
         }
 
         public enum EVoiceType
@@ -169,23 +174,29 @@ namespace iYak.Classes
             AWS
         }
 
-        static public string GetGender(System.Speech.Synthesis.VoiceGender which)
+        public string GetGender() { return Voice.GetGender(this.Gender); }
+        public string GetType() { return Voice.GetType(this.VoiceType); }
+        public string GetHost() { return Voice.GetHost(this.Host); }
+
+        static public string GetGender(EGender which)
         {
-            if (which == VoiceGender.Male)      return "Male";
-            if (which == VoiceGender.Female)    return "Female";
-            if (which == VoiceGender.Neutral)   return "Neu";
+            if (which == EGender.Male)      return "Male";
+            if (which == EGender.Female)    return "Female";
+            if (which == EGender.Neutral)   return "Neutral";
+            if (which == EGender.NotSet)    return "NotSet";
 
             return "unknown";
             
         }
 
-        static public string GetType (EVoiceType which)
+        static public EGender FromGender(string which)
         {
-            if (which == EVoiceType.Standard) return "Standard";
-            if (which == EVoiceType.Neural)   return "Neural";
+            if (which == "Male")    return EGender.Male;
+            if (which == "Female")  return EGender.Female;
+            if (which == "Neutral") return EGender.Neutral;
+            if (which == "NotSet")  return EGender.NotSet;
 
-            return "unknown";
-
+            return EGender.NotSet;
         }
 
         static public string GetHost(EHost which)
@@ -199,7 +210,32 @@ namespace iYak.Classes
 
         }
 
+        static public EHost FromHost(string which)
+        {
+            if (which == "Azure")   return EHost.Azure;
+            if (which == "GCloud")  return EHost.GCloud;
+            if (which == "AWS")     return EHost.AWS;
+            if (which == "Local")   return EHost.Local;
 
+            return EHost.Local;
+        }
+
+
+        static public string GetType(EVoiceType which)
+        {
+            if (which == EVoiceType.Standard) return "Standard";
+            if (which == EVoiceType.Neural)   return "Neural";
+
+            return "unknown";
+
+        }
+        static public EVoiceType FromType (string which)
+        {
+            if (which == "Standard") return EVoiceType.Standard;
+            if (which == "Neural")   return EVoiceType.Neural;
+
+            return EVoiceType.Standard;
+        }
 
         static public string GenerateName(string HandleStr)
         {
@@ -216,18 +252,18 @@ namespace iYak.Classes
 
 
         }
-        static public System.Speech.Synthesis.VoiceGender ToGender(string GenderStr)
+
+        static public EGender convertGenderFromLocal(System.Speech.Synthesis.VoiceGender gender)
         {
-            switch (GenderStr)
-            {
-                case "male":
-                    return System.Speech.Synthesis.VoiceGender.Male;
-                case "female":
-                    return System.Speech.Synthesis.VoiceGender.Female;
-                default:
-                    return System.Speech.Synthesis.VoiceGender.Neutral;
-            }
+            if (gender == VoiceGender.Male)     return EGender.Male;
+            if (gender == VoiceGender.Female)   return EGender.Female;
+            if (gender == VoiceGender.Neutral)  return EGender.Neutral;
+            if (gender == VoiceGender.NotSet)   return EGender.NotSet;
+
+            return EGender.NotSet;
+
         }
+        
         public void SetVoice(String Lookup)
         {
 

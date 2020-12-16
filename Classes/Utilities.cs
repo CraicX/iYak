@@ -1,14 +1,14 @@
-﻿using System;
+﻿using iYak.Classes;
+using iYak.Controls;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using iYak.Classes;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using System.Drawing;
-using iYak.Controls;
 namespace iYak.Classes
 {
     class Utilities
@@ -60,8 +60,23 @@ namespace iYak.Classes
 
             ListAvatars();
 
+            LoadPlaylist(0);
+
         }
 
+
+        static public void LoadPlaylist(int playlistId)
+        {
+            List<Voice> Speeches = Datax.GetSpeeches(playlistId);
+
+            if(Speeches.Count > 0)
+            {
+                foreach(Voice voice in Speeches)
+                {
+                    Utilities.AddSpeech(voice);
+                }
+            }
+        }
         static public void FillVoiceList(List<Voice> VList) 
         {
 
@@ -73,7 +88,7 @@ namespace iYak.Classes
             foreach (Voice vItem in VList)
             {
 
-                if (vItem.Gender == System.Speech.Synthesis.VoiceGender.Male) {
+                if (vItem.Gender == Voice.EGender.Male) {
                     imgNum    = 0;
                     FontColor = Color.Blue;
                     BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
@@ -104,11 +119,11 @@ namespace iYak.Classes
                 VoiceItem.SubItems.Add(tmpHost);
 
                 switch( vItem.Gender) {
-                    case System.Speech.Synthesis.VoiceGender.Male:
+                    case Voice.EGender.Male:
                         VoiceItem.Group = Config.LVoices.Groups[0];
                         break;
 
-                    case System.Speech.Synthesis.VoiceGender.Female:
+                    case Voice.EGender.Female:
                         VoiceItem.Group = Config.LVoices.Groups[1];
                         break;
 
@@ -291,13 +306,15 @@ namespace iYak.Classes
         {
             RoboActor actor = new RoboActor(voice, RoboActor.ControlType.Actor)
             {
-                Width = 64,
+                Width  = 64,
                 Height = 80,
                 Margin = new Padding(1)
             };
 
 
             Config.FActors.Controls.Add(actor);
+
+            Datax.AddActor( voice, Config.CurrentPlaylist.Uid );
 
         }
 
@@ -311,8 +328,23 @@ namespace iYak.Classes
 
             
             Config.FScripts.Controls.Add(roboA);
+            Datax.AddSpeech(voice, speech, Config.CurrentPlaylist.Uid);
             RoboActor.Activate(roboA);
 
+
+        }
+
+        static public void AddSpeech(Voice voice, bool autoSave=false)
+        {
+            RoboActor roboA = new RoboActor(
+                0,
+                voice.Speech,
+                voice
+            );
+
+
+            Config.FScripts.Controls.Add(roboA);
+            RoboActor.Activate(roboA);
 
         }
 

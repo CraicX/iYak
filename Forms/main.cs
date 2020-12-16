@@ -212,8 +212,11 @@ namespace iYak
             Console.WriteLine(actor.ActorID);
 
             actor.voice = Config.CurrentVoice.Copy();
-            actor.Speech = SayBox.Text;
+
+            actor.Speech = actor.voice.Speech = SayBox.Text;
             actor.RefreshActor();
+
+            Datax.AddSpeech(actor.voice, actor.voice.Speech, 0);
 
         }
     }

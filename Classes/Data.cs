@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 
@@ -12,6 +13,7 @@ namespace iYak.Classes
 
         static public SqliteConnection DBH;
 
+        const string qUpdateTime = "UPDATE [Playlists] SET last_updated = DATE('now') WHERE id=\"{0}\"";
 
         static public void InitializeDatabase() 
         {
@@ -45,12 +47,16 @@ namespace iYak.Classes
                 CREATE TABLE If Not Exists [Speeches] (
                     [id]            INTEGER PRIMARY KEY AUTOINCREMENT,
                     [playlist]      INTEGER         DEFAULT 0    NOT NULL,
-                    [voice_handle]  NVARCHAR(100)   DEFAULT """" NOT NULL,
+                    [nickname]      NVARCHAR(16)    DEFAULT 50   NOT NULL,
+                    [voice_handle]  NVARCHAR(128)   DEFAULT """" NOT NULL,
                     [voice_name]    NVARCHAR(16)    DEFAULT """" NOT NULL,
+                    [voice_type]    NVARCHAR(32)    DEFAULT """" NOT NULL,
+                    [voice_host]    NVARCHAR(32)    DEFAULT """" NOT NULL,
+                    [gender]        NVARCHAR(8)     DEFAULT """" NOT NULL,
                     [volume]        TINYINT(3)      DEFAULT 100  NOT NULL,
                     [rate]          TINYINT(3)      DEFAULT 5    NOT NULL,
                     [pitch]         TINYINT(3)      DEFAULT 5    NOT NULL,
-                    [avatar]        NVARCHAR(50)    DEFAULT """" NOT NULL,
+                    [avatar]        NVARCHAR(64)    DEFAULT """" NOT NULL,
                     [say]           TEXT            DEFAULT """" NOT NULL
                 ); 
             ");
@@ -58,20 +64,23 @@ namespace iYak.Classes
             QueryList.Add(@"
                 CREATE TABLE If Not Exists [Actors] (
                     [id]            INTEGER PRIMARY KEY AUTOINCREMENT,
-                    [nickname]      NVARCHAR(50)    DEFAULT """" NOT NULL,
                     [playlist]      INTEGER         DEFAULT 0    NOT NULL,
-                    [voice_handle]  NVARCHAR(100)   DEFAULT """" NOT NULL,
+                    [nickname]      NVARCHAR(16)    DEFAULT """" NOT NULL,
+                    [voice_handle]  NVARCHAR(128)   DEFAULT """" NOT NULL,
                     [voice_name]    NVARCHAR(16)    DEFAULT """" NOT NULL,
+                    [voice_type]    NVARCHAR(32)    DEFAULT """" NOT NULL,
+                    [voice_host]    NVARCHAR(32)    DEFAULT """" NOT NULL,
+                    [gender]        TINYINT(3)      DEFAULT 100  NOT NULL,
                     [volume]        TINYINT(3)      DEFAULT 100  NOT NULL,
                     [rate]          TINYINT(3)      DEFAULT 5    NOT NULL,
                     [pitch]         TINYINT(3)      DEFAULT 5    NOT NULL,
-                    [avatar]        NVARCHAR(50)    DEFAULT """" NOT NULL
+                    [avatar]        NVARCHAR(64)    DEFAULT """" NOT NULL
                 ); 
             ");
 
             QueryList.Add("CREATE INDEX IF Not EXISTS idx_RosterP ON Actors (playlist);");
 
-            DropTables("Playlists,Actors,Speeches");
+            //DropTables("Playlists,Actors,Speeches");
             //TruncateTables()
 
 
@@ -79,10 +88,11 @@ namespace iYak.Classes
 
             SqliteCommand MyCommand = DBH.CreateCommand();
 
-            //foreach (string query in QueryList) {
-            //    MyCommand.CommandText = query;
-            //    MyCommand.ExecuteNonQuery();
-            //}
+            foreach (string query in QueryList)
+            {
+                MyCommand.CommandText = query;
+                MyCommand.ExecuteNonQuery();
+            }
 
             DBH.Close();
 
@@ -108,11 +118,226 @@ namespace iYak.Classes
             SqliteCommand command = DBH.CreateCommand();
 
             command.CommandText = query;
+
             command.ExecuteNonQuery();
 
             DBH.Close();
 
         }
 
+        static public Object Fetch(string query)
+        {
+            DBH.Open();
+
+            SqliteCommand command = DBH.CreateCommand();
+
+            command.CommandText = query;
+
+            Object Response = command.ExecuteScalar();
+
+            return Response;
+
+
+        }
+
+        static public int AddActor(Voice actor, int playlistId)
+        {
+
+            DBH.Open();
+
+            const string qUpdateActor = @"
+                UPDATE [Actors] SET 
+                    playlist        = ""{0}"",
+                    nickname        = ""{1}"",
+                    voice_handle    = ""{2}"",
+                    voice_name      = ""{3}"",
+                    voice_type      = ""{4}"",
+                    voice_host      = ""{5}"",
+                    gender          = ""{6}"",
+                    volume          = ""{7}"",
+                    rate            = ""{8}"",
+                    pitch           = ""{9}"",
+                    avatar          = ""{10}"",
+                WHERE id            = ""{11}""
+            ";
+
+            const string qInsertActor = @"
+                INSERT INTO [Actors] (playlist, nickname, voice_handle, voice_name, voice_type, voice_host, gender, volume, rate, pitch, avatar)
+                VALUES (""{0}"", ""{1}"", ""{2}"", ""{3}"", ""{4}"", ""{5}"", ""{6}"", ""{7}"", ""{8}"", ""{9}"", ""{10}"");
+
+                SELECT last_insert_rowid();
+            ";
+
+
+            SqliteCommand cmd = DBH.CreateCommand();
+
+            if (actor.Uid > 0) {
+
+                cmd.CommandText = String.Format(qUpdateActor, playlistId, actor.Id, actor.Handle,
+                                    actor.Volume, actor.Rate, actor.Pitch, actor.Avatar, actor.Uid);
+
+                Object actor_uid = cmd.ExecuteScalar();
+
+                actor.Uid = (int)actor_uid;
+                
+
+            } else {
+
+                cmd.CommandText = String.Format(qInsertActor, playlistId, actor.Id, actor.Handle,
+                                    actor.Volume, actor.Rate, actor.Pitch, actor.Avatar);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            cmd.CommandText = String.Format(qUpdateTime, playlistId);
+                
+            cmd.ExecuteNonQuery();
+
+            DBH.Close();
+
+            return actor.Uid;
+
+        }
+
+
+
+        static public int AddSpeech(Voice speech, string say, int playlistId)
+        {
+
+            DBH.Open();
+
+            const string qUpdateSpeech = @"
+                UPDATE [Speeches] SET 
+                    playlist        = ""{0}"",
+                    nickname        = ""{1}"",
+                    voice_handle    = ""{2}"",
+                    voice_name      = ""{3}"",
+                    voice_type      = ""{4}"",
+                    voice_host      = ""{5}"",
+                    gender          = ""{6}"",
+                    volume          = ""{7}"",
+                    rate            = ""{8}"",
+                    pitch           = ""{9}"",
+                    avatar          = ""{10}"",
+                    say             = ""{11}""
+                WHERE id            = ""{12}""
+            ";
+
+            const string qInsertSpeech = @"
+                INSERT INTO [Speeches] (playlist, nickname, voice_handle, voice_name, voice_type, voice_host, gender, volume, rate, pitch, avatar, say)
+                VALUES (""{0}"", ""{1}"", ""{2}"", ""{3}"", ""{4}"", ""{5}"", ""{6}"", ""{7}"", ""{8}"", ""{9}"", ""{10}"", ""{11}"");
+
+                SELECT last_insert_rowid();
+            ";
+
+            SqliteCommand cmd = DBH.CreateCommand();
+
+            if (speech.Uid > 0)
+            {
+
+                cmd.CommandText = String.Format(qUpdateSpeech,
+                    playlistId,
+                    speech.Nickname,
+                    speech.Handle,
+                    speech.Id,
+                    speech.GetType(),
+                    speech.GetHost(),
+                    speech.GetGender(),
+                    speech.Volume,
+                    speech.Rate,
+                    speech.Pitch,
+                    speech.Avatar,
+                    say,
+                    speech.Uid);
+
+
+
+
+                Object speech_uid = cmd.ExecuteScalar();
+
+            }
+            else
+            {
+
+                cmd.CommandText = String.Format(qInsertSpeech, 
+                    playlistId,
+                    speech.Nickname,
+                    speech.Handle,
+                    speech.Id,
+                    speech.GetType(),
+                    speech.GetHost(),
+                    speech.GetGender(),
+                    speech.Volume, 
+                    speech.Rate, 
+                    speech.Pitch, 
+                    speech.Avatar, 
+                    say);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            cmd.CommandText = String.Format(qUpdateTime, playlistId);
+
+            cmd.ExecuteNonQuery();
+
+            DBH.Close();
+
+            return speech.Uid;
+
+        }
+
+        static public List<Voice> GetSpeeches(int playlistId)
+        {
+            DBH.Open();
+
+            const string qGetSpeeches = @"
+                SELECT id, nickname, voice_handle, voice_name, voice_type, voice_host, gender, volume, rate, pitch, avatar, say
+                FROM [Speeches] 
+                WHERE playlist = ""{0}""
+            ";
+
+            List<Voice> Speeches = new List<Voice>();
+
+            SqliteCommand cmd = DBH.CreateCommand();
+            
+            cmd.CommandText = String.Format(qGetSpeeches, playlistId);
+
+            SqliteDataReader reader = cmd.ExecuteReader();
+
+            while( reader.Read() ) {
+
+                Voice voice = new Voice()
+                {
+                    Uid       = int.Parse(reader.GetString(0)),
+                    Nickname  = reader.GetString(1),
+                    Handle    = reader.GetString(2),
+                    Id        = reader.GetString(3),
+                    VoiceType = Voice.FromType(reader.GetString(4)),
+                    Host      = Voice.FromHost(reader.GetString(5)),
+                    Gender    = Voice.FromGender(reader.GetString(6)),
+                    Volume    = int.Parse(reader.GetString(7)),
+                    Rate      = int.Parse(reader.GetString(8)),
+                    Pitch     = int.Parse(reader.GetString(9)),
+                    Avatar    = reader.GetString(10),
+                    Speech    = reader.GetString(11)
+                };
+
+                Speeches.Add(voice.Copy());
+
+            }
+
+            reader.Close();
+
+            DBH.Close();
+
+            return Speeches;
+
+
+        }
+
+
     }
+
 }

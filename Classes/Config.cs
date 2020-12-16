@@ -11,10 +11,11 @@ namespace iYak.Classes
 
         static public ViewSplash splasher;
         static public Settings frmSettings;
-        static public string AppName       = "iYak";
-        static public List<Voice> Voices   = new List<Voice>();
-        static public List<String> Avatars = new List<String>();
-        static public Voice CurrentVoice   = new Voice();
+        static public string AppName            = "iYak";
+        static public List<Voice> Voices        = new List<Voice>();
+        static public List<String> Avatars      = new List<String>();
+        static public Voice CurrentVoice        = new Voice();
+        static public Playlist CurrentPlaylist  = new Playlist();
 
 
         //
@@ -44,9 +45,9 @@ namespace iYak.Classes
     {
         static public class Azure
         {
-            static public String key      = "";
-            static public String region   = "";
-            static public Boolean enabled = false;
+            static public string key      = "";
+            static public string region   = "";
+            static public bool enabled = false;
 
             
         }
@@ -54,10 +55,11 @@ namespace iYak.Classes
 
     class Playlist
     {
-        public int Uid            = 0;
-        public string Name        = "";
-        public string Created     = "";
-        public string LastUpdated = "";
+        public int Uid              = 0;
+        public string Name          = "";
+        public string Created       = "";
+        public string positions     = "";
+        public string LastUpdated   = "";
 
     }
 
