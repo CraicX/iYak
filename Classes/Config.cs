@@ -26,6 +26,7 @@ namespace iYak.Classes
         static public string AvatarsPath = "";
         static public string VoicesPath  = "";
 
+
         //
         //  Define Controls
         //
@@ -35,11 +36,6 @@ namespace iYak.Classes
         static public System.Windows.Forms.PictureBox CurrentFace;
         static public System.Windows.Forms.FlowLayoutPanel FScripts;
         static public Main mainRef;
-
-
-
-
-
 
     }
 

@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Collections;
 using System.Net;
 using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace iYak.Classes
 {
@@ -44,20 +46,13 @@ namespace iYak.Classes
 
         static public bool DownloadImage(String path, String savePath) {
 
-
             WebClient tClient = new WebClient();
 
             String fName = path.Substring(path.LastIndexOf('/'));
 
-
             tClient.DownloadFile(path, savePath + "\\" + fName);
 
-
             return true;
-
-
-            
-
 
         }
 
@@ -73,31 +68,45 @@ namespace iYak.Classes
 
                 return MyImage;
 
-
-
             }
 
-
             return new System.Drawing.Bitmap(48, 48);
-
 
         }
         static public void Shuffle(ref List<string> theList)
         {
-            var r = new Random();
-
+            var r  = new Random();
             int lc = theList.Count();
-
-            int i = 0;
+            int i  = 0;
 
             for (i = 0; i < lc - 1; i++) {
+
                 int index = r.Next(i, lc);
+
                 if (i != index) {
-                    string temp = theList[i];
-                    theList[i] = theList[index];
+                    string temp    = theList[i];
+                    theList[i]     = theList[index];
                     theList[index] = temp;
                 }
             }
+        }
+
+        
+
+        public static string LoadFile(string FilePath)
+        {
+            if (File.Exists(FilePath))
+            {
+                string FileData = File.ReadAllText(FilePath).Trim();
+                return FileData;
+            }
+
+            return "";
+        }
+
+        public static void Alert(string message, string caption="Alert") 
+        {
+            MessageBox.Show(message, caption);
         }
 
     }

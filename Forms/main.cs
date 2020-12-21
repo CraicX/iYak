@@ -121,8 +121,8 @@ namespace iYak
         }
 
         public void RefreshFilters() {
-            Config.VFilter.female   = this.VCGirls.Checked;
-            Config.VFilter.male = this.VCBoys.Checked;
+            Config.VFilter.female = this.VCGirls.Checked;
+            Config.VFilter.male   = this.VCBoys.Checked;
             Config.VFilter.aws    = this.VCAWS.Checked;
             Config.VFilter.gcloud = this.VCGCloud.Checked;
             Config.VFilter.azure  = this.VCAzure.Checked;
@@ -239,7 +239,19 @@ namespace iYak
 
         }
 
+        private void refreshListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Config.Voices.Clear();
+            Config.Voices = RoboVoice.GetVoiceList();
+           
 
+            Utilities.FillVoiceList(Config.Voices);
+        }
 
+        static public Main GetForm() {
+            return Config.mainRef;
+        }
     }
+
+
 }

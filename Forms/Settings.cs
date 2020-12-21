@@ -15,6 +15,8 @@ namespace iYak
     public partial class Settings : Form
     {
 
+        static public Settings MyForm;
+
         Image OrigAzure  = null;
         Image OrigAWS    = null;
         Image OrigGCloud = null;
@@ -22,17 +24,19 @@ namespace iYak
         {
             InitializeComponent();
 
-            cbAzure.Checked  = CloudWS.Azure.enabled;
-            AzureKey.Text    = CloudWS.Azure.key;
-            AzureRegion.Text = CloudWS.Azure.region;
+            cbAzure.Checked   = CloudWS.Azure.enabled;
+            AzureKey.Text     = CloudWS.Azure.key;
+            AzureRegion.Text  = CloudWS.Azure.region;
 
             cbGCloud.Checked  = CloudWS.GCloud.enabled;
             GCloudKey.Text    = CloudWS.GCloud.key;
             GCloudRegion.Text = CloudWS.GCloud.region;
 
-            cbAWS.Checked  = CloudWS.AWS.enabled;
-            AWSKey.Text    = CloudWS.AWS.key;
-            AWSRegion.Text = CloudWS.AWS.region;
+            cbAWS.Checked     = CloudWS.AWS.enabled;
+            AWSKey.Text       = CloudWS.AWS.key;
+            AWSRegion.Text    = CloudWS.AWS.region;
+
+            Settings.MyForm = this;
 
         }
 
@@ -63,8 +67,8 @@ namespace iYak
         static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
         {
             Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
-            float a = alpha / 255f;
-            Rectangle r = new Rectangle(0, 0, bmpIn.Width, bmpIn.Height);
+            float a       = alpha / 255f;
+            Rectangle r   = new Rectangle(0, 0, bmpIn.Width, bmpIn.Height);
 
             float[][] matrixItems = {
                 new float[] {1, 0, 0, 0, 0},
@@ -84,10 +88,19 @@ namespace iYak
             return bmpOut;
         }
 
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    L O A D   F O R M
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Runs every time user opens the settings
+        //
         private void Settings_Load(object sender, EventArgs e)
         {
-            if (OrigAzure == null)  OrigAzure   = (Bitmap)Pb_azure.Image.Clone();
-            if (OrigAWS == null)    OrigAWS     = (Bitmap)Pb_aws.Image.Clone();
+            if (OrigAzure  == null) OrigAzure   = (Bitmap)Pb_azure.Image.Clone();
+            if (OrigAWS    == null) OrigAWS     = (Bitmap)Pb_aws.Image.Clone();
             if (OrigGCloud == null) OrigGCloud  = (Bitmap)Pb_gcloud.Image.Clone();
 
             if (this.Visible) 
@@ -97,16 +110,73 @@ namespace iYak
                 Pb_gcloud.Image = SetAlpha((Bitmap)OrigGCloud, CloudWS.GCloud.enabled ? 200:50);
             }
 
+            lblRestart.Visible = false;
+
+            ShowLocalVoices();
+
+
+
+
 
 
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    S H O W   L O C A L   V O I C E S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // List view bo
+        //
+        public void ShowLocalVoices() 
         {
+            TTSLV.Items.Clear();
+
+            VoiceImport.GetAvailableVoices();
+
+
+            if (VoiceImport.ListTTS.Count <= 0) return;
+
+            foreach( VoiceImport.VoiceSynth synth in VoiceImport.ListTTS ) {
+
+                ListViewItem lvi = new ListViewItem(synth.name);
+                lvi.UseItemStyleForSubItems = false;
+
+                lvi.SubItems.Add(synth.tokenPath);
+                lvi.SubItems.Add(synth.region);
+                lvi.SubItems.Add(synth.Gender);
+
+                if (synth.installed)
+                {
+
+                    lvi.SubItems.Add("ok");
+
+                }
+                else
+                {
+
+                    ListViewItem.ListViewSubItem iSublink = new ListViewItem.ListViewSubItem();
+
+                    iSublink.Text      = "install";
+                    iSublink.Font      = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+                    iSublink.ForeColor = Color.Blue;
+                    
+                    lvi.SubItems.Add(iSublink);
+                }
+
+                TTSLV.Items.Add(lvi);
+            }
+
 
         }
+        
 
         private void BtnSave1_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void btnSave3_Click(object sender, EventArgs e)
         {
             SaveSettings();
         }
@@ -120,16 +190,26 @@ namespace iYak
                 
             }
         }
+
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    S A V E   S E T T I N G S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Saves the settings for all tabs
+        //
         private void SaveSettings() {
-            CloudWS.Azure.enabled = cbAzure.Checked;
-            CloudWS.Azure.key = AzureKey.Text;
-            CloudWS.Azure.region = AzureRegion.Text;
+            CloudWS.Azure.enabled  = cbAzure.Checked;
+            CloudWS.Azure.key      = AzureKey.Text;
+            CloudWS.Azure.region   = AzureRegion.Text;
             CloudWS.GCloud.enabled = cbGCloud.Checked;
-            CloudWS.GCloud.key = GCloudKey.Text;
-            CloudWS.GCloud.region = GCloudRegion.Text;
-            CloudWS.AWS.enabled = cbAWS.Checked;
-            CloudWS.AWS.key = AWSKey.Text;
-            CloudWS.AWS.region = AWSRegion.Text;
+            CloudWS.GCloud.key     = GCloudKey.Text;
+            CloudWS.GCloud.region  = GCloudRegion.Text;
+            CloudWS.AWS.enabled    = cbAWS.Checked;
+            CloudWS.AWS.key        = AWSKey.Text;
+            CloudWS.AWS.region     = AWSRegion.Text;
 
 
             Application.DoEvents();
@@ -137,6 +217,35 @@ namespace iYak
 
             Config.frmSettings.Hide();
         }
+
+        
+        private void TTSLV_DoubleClicked(object sender, EventArgs e)
+        {
+
+            if (TTSLV.SelectedItems.Count <= 0) return;
+
+            foreach( ListViewItem SelItem in TTSLV.SelectedItems )
+            {
+                Console.WriteLine(SelItem.SubItems[2].Text);
+                if (SelItem.SubItems[4].Text != "install") continue;
+
+                var result = MessageBox.Show("Install TTS Voice: " + SelItem.Text, "Install this voice?",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+                // If the no button was pressed ...
+                if (result == DialogResult.No) continue;
+
+
+                VoiceImport.InstallTTS(SelItem.Text);
+
+                lblRestart.Visible = true;
+
+
+            }
+        }
+
+        
     }
 
 

@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Microsoft Linda",
+    "tokenPath": "TTS_MS_EN-CA_LINDA_11.0",
+    "fullName": "Microsoft Linda - English (Canada)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\M4105Linda",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\MSTTSLocenCA.dat",
+    "region": "en-CA",
+    "Language": "1009",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Richard",
+    "tokenPath": "TTS_MS_EN-CA_RICHARD_11.0",
+    "fullName": "Microsoft Richard - English (Canada)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\M4105Richard",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\MSTTSLocenCA.dat",
+    "region": "en-CA",
+    "Language": "1009",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Eva",
+    "tokenPath": "TTS_MS_EN-CA_EVA_11.0",
+    "fullName": "Microsoft Eva - English (Canada)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\M4105Eva",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-CA\\MSTTSLocenCA.dat",
+    "region": "en-CA",
+    "Language": "1009",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Eva Mobile",
+    "tokenPath": "TTS_MS_EN-US_EVA_11.0",
+    "fullName": "Microsoft Eva Mobile - English (United States)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\M1033Eva",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\MSTTSLocenUS.dat",
+    "region": "en-US",
+    "Language": "409",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft David Desktop",
+    "tokenPath": "TTS_MS_EN-US_DAVID_11.0",
+    "fullName": "Microsoft David Desktop - English (United States)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\M1033David",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\MSTTSLocenUS.dat",
+    "region": "en-US",
+    "Language": "409",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Mark",
+    "tokenPath": "TTS_MS_EN-US_MARK_11.0",
+    "fullName": "Microsoft Mark - English (United States)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\M1033Mark",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\MSTTSLocenUS.dat",
+    "region": "en-US",
+    "Language": "409",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft George",
+    "tokenPath": "TTS_MS_EN-GB_George_11.0",
+    "fullName": "Microsoft George - English (Great Britain)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\M2057George",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\MSTTSLocenGB.dat",
+    "region": "en-GB",
+    "Language": "809",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Hazel Desktop",
+    "tokenPath": "TTS_MS_EN-GB_HAZEL_11.0",
+    "fullName": "Microsoft Hazel - English (Great Britain)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\M2057Hazel",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\MSTTSLocenGB.dat",
+    "region": "en-GB",
+    "Language": "809",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Sarah",
+    "tokenPath": "TTS_MS_EN-GB_SARAH_11.0",
+    "fullName": "Microsoft Sarah - English (Great Britain)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\M2057Sarah",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\MSTTSLocenGB.dat",
+    "region": "en-GB",
+    "Language": "809",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Susan",
+    "tokenPath": "TTS_MS_EN-GB_SUSAN_11.0",
+    "fullName": "Microsoft Susan - English (Great Britain)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\M2057Susan",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-GB\\MSTTSLocenGB.dat",
+    "region": "en-GB",
+    "Language": "809",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Catherine",
+    "tokenPath": "TTS_MS_EN-AU_CATHERINE_11.0",
+    "fullName": "Microsoft Catherine - English (Australia)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\M3081Catherine",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\MSTTSLocenAU.dat",
+    "region": "en-AU",
+    "Language": "C09",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft James",
+    "tokenPath": "TTS_MS_EN-AU_JAMES_11.0",
+    "fullName": "Microsoft James - English (Australia)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\M3081James",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\MSTTSLocenAU.dat",
+    "region": "en-AU",
+    "Language": "C09",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Matilda",
+    "tokenPath": "TTS_MS_EN-AU_MATILDA_11.0",
+    "fullName": "Microsoft Matilda - English (Australia)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\M3081Matilda",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-AU\\MSTTSLocenAU.dat",
+    "region": "en-AU",
+    "Language": "C09",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Sean",
+    "tokenPath": "TTS_MS_EN-IE_SEAN_11.0",
+    "fullName": "Microsoft Sean - English (Ireland)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IE\\M6153Sean",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IE\\MSTTSLocenIE.dat",
+    "region": "en-IE",
+    "Language": "1809",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Heera",
+    "tokenPath": "TTS_MS_EN-IN_HEERA_11.0",
+    "fullName": "Microsoft Heera - English (India)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\M16393Heera",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\MSTTSLocEnIN.dat",
+    "region": "en-IN",
+    "Language": "4009",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Koyal",
+    "tokenPath": "TTS_MS_EN-IN_KOYAL_11.0",
+    "fullName": "Microsoft Koyal - English (India)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\M16393Koyal",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\MSTTSLocEnIN.dat",
+    "region": "en-IN",
+    "Language": "4009",
+    "Gender": "Female"
+  },
+  {
+    "name": "Microsoft Ravi",
+    "tokenPath": "TTS_MS_EN-IN_RAVI_11.0",
+    "fullName": "Microsoft Ravi - English (India)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\M16393Ravi",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-IN\\MSTTSLocEnIN.dat",
+    "region": "en-IN",
+    "Language": "4009",
+    "Gender": "Male"
+  },
+  {
+    "name": "Microsoft Zira Desktop",
+    "tokenPath": "TTS_MS_EN-US_ZIRA_11.0",
+    "fullName": "Microsoft Zira Desktop - English (United States)",
+    "VoicePath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\M1033Zira",
+    "LangDataPath": "%windir%\\Speech_OneCore\\Engines\\TTS\\en-US\\MSTTSLocenCA.dat",
+    "region": "en-US",
+    "Language": "409",
+    "Gender": "Female"
+  }
+]

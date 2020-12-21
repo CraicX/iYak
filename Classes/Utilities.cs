@@ -9,23 +9,25 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace iYak.Classes
 {
     class Utilities
     {
 
 
-        /**
-         *  START UP
-         *  
-         *  Create Paths, Datatables and download Avatars
-         */
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    S T A R T U P
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Create paths, datatables, download avatars
+        //
         static public void StartUp() 
         {
 
             Application.DoEvents();
 
-            //
             //  Check/create folders
             //
             Config.RootPath = Helpers.JoinPath(
@@ -35,19 +37,17 @@ namespace iYak.Classes
 
             Config.CachePath   = Helpers.JoinPath(Config.RootPath, "Cache");
             Config.AvatarsPath = Helpers.JoinPath(Config.RootPath, "Avatars");
-            Config.VoicesPath  = Helpers.JoinPath(Config.RootPath, "voices.json");
+            Config.VoicesPath  = Helpers.JoinPath(Config.RootPath, "LocalVoices.json");
 
             if (!Directory.Exists(Config.CachePath))    Directory.CreateDirectory(Config.CachePath);
             if (!Directory.Exists(Config.AvatarsPath))  Directory.CreateDirectory(Config.AvatarsPath);
 
-            //
             //  Check/Download Avatars
             //
             Config.Avatars = LoadAvatars();
 
             Config.splasher.Hide();
 
-            //
             //  Initialize SQLite DataTables
             //
             Datax.InitializeDatabase();
@@ -62,9 +62,19 @@ namespace iYak.Classes
 
             LoadPlaylist(Config.CurrentPlaylist.Uid);
 
+
+
         }
 
 
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::     L O A D   P L A Y L I S T
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Grabs Actors and Scripts from the database
+        //
         static public void LoadPlaylist(int playlistId)
         {
             List<Voice> Speeches = Datax.GetSpeeches(playlistId);
@@ -88,6 +98,16 @@ namespace iYak.Classes
 
             }
         }
+
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    F I L L    V O I C E L I S T
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Adds Items to the main voices ViewListBox
+        //
         static public void FillVoiceList(List<Voice> VList) 
         {
 
@@ -101,12 +121,16 @@ namespace iYak.Classes
             Color FontColor;
             string BackCol;
 
+            int countMale    = 0;
+            int countFemale  = 0;
+            int countNeutral = 0;
+
             foreach (Voice vItem in VList)
             {
 
-                if (Config.VFilter.local && vItem.Host == Voice.EHost.Local) continue;
-                if (Config.VFilter.male && vItem.Gender == Voice.EGender.Male) continue;
-                if (Config.VFilter.female && vItem.Gender == Voice.EGender.Female) continue;
+                if (Config.VFilter.local    && vItem.Host   == Voice.EHost.Local)       continue;
+                if (Config.VFilter.male     && vItem.Gender == Voice.EGender.Male)      continue;
+                if (Config.VFilter.female   && vItem.Gender == Voice.EGender.Female)    continue;
 
                 if (vItem.Gender == Voice.EGender.Male) {
                     imgNum    = 0;
@@ -119,14 +143,13 @@ namespace iYak.Classes
                     BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
                 }
 
-                ListViewItem VoiceItem            = new ListViewItem(vItem.Id, imgNum) { 
-                    UseItemStyleForSubItems = false
-                };
+                ListViewItem VoiceItem  = new ListViewItem(vItem.Id, imgNum) { UseItemStyleForSubItems = false };
 
                 if (vItem.Host == Voice.EHost.Azure) {
                     VoiceItem.BackColor = Color.FromName(BackCol);
                     tmpLoc = "C";
                 }
+
                 tmpLoc = "-";
 
                 VoiceItem.SubItems.Add(tmpLoc);
@@ -141,14 +164,17 @@ namespace iYak.Classes
                 switch( vItem.Gender) {
                     case Voice.EGender.Male:
                         VoiceItem.Group = Config.LVoices.Groups[0];
+                        countMale++;
                         break;
 
                     case Voice.EGender.Female:
                         VoiceItem.Group = Config.LVoices.Groups[1];
+                        countFemale++;
                         break;
 
                     default:
                         VoiceItem.Group = Config.LVoices.Groups[2];
+                        countNeutral++;
                         break;
                 }
                 VoiceItem.SubItems[0].ForeColor = FontColor;
@@ -159,9 +185,21 @@ namespace iYak.Classes
                 Config.LVoices.Items.Add(VoiceItem);
             }
 
+            Config.LVoices.Groups[0].Header = "Male ("    + countMale   + ")";
+            Config.LVoices.Groups[1].Header = "Female ("  + countFemale + ")";
+            Config.LVoices.Groups[2].Header = "Neutral (" + countNeutral+ ")";
+
         }
 
 
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    L I S T   A V A T A R S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Adds the avatar objects to the flow panel
+        //
         static public void ListAvatars()
         {
 
@@ -235,12 +273,15 @@ namespace iYak.Classes
         }
 
 
-        /**
-         * DOWNLOAD AVATARS
-         * 
-         * Downloads avatars from the web to the local Avatars folder
-         * 
-         */ 
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    D O W N L O A D    A V A T A R S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Downloads avatars from the web to the local Avatars folder
+        //
         static public List<String> DownloadAvatars()
         {
 
@@ -267,6 +308,15 @@ namespace iYak.Classes
 
         }
 
+        
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    L O A D   C L O U D   C R E D S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Loads Webservice credentials from INI file 
+        //
         static public void LoadCloudCreds()
         {
             String iniFile = Helpers.JoinPath(Config.RootPath, "Cloud.ini");
@@ -331,10 +381,16 @@ namespace iYak.Classes
 
             sr.Close();
 
-
-
         }
 
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    S A V E   C L O U D   C R E D S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Saves Webservice credentials to INI file 
+        //
         static public void SaveCloudCreds()
         {
             String iniFile = Helpers.JoinPath(Config.RootPath, "Cloud.ini");
@@ -353,12 +409,19 @@ namespace iYak.Classes
             sw.WriteLine("GCloudRegion = "      + CloudWS.GCloud.region);
             sw.WriteLine("GCloudEnabled = "     + (CloudWS.GCloud.enabled ? "1" : "0"));
 
-
-
             sw.Close();
 
         }
 
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    ADD   ACTOR
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Creates a new actor control in the flow panel
+        //
         static public void AddActor(Voice _voice, bool autoSave=false)
         {
 
@@ -378,6 +441,14 @@ namespace iYak.Classes
 
         }
 
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    ADD   SPEECH
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Creates a new voice control in the flow panel for speech/scripts
+        //
         static public void AddSpeech(Voice voice, string speech)
         {
             RoboActor roboA = new RoboActor(

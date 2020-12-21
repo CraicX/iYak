@@ -38,7 +38,6 @@ namespace iYak
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SelectVoicesToDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.StartNewPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +45,8 @@ namespace iYak
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.TextToSpeechToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.XMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.voicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripRoster = new System.Windows.Forms.ToolStrip();
             this.btnDeleteRoster = new System.Windows.Forms.ToolStripButton();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -150,24 +151,16 @@ namespace iYak
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
-            this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SelectVoicesToDeleteToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "&Edit";
-            // 
-            // SelectVoicesToDeleteToolStripMenuItem
-            // 
-            this.SelectVoicesToDeleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SelectVoicesToDeleteToolStripMenuItem.Image")));
-            this.SelectVoicesToDeleteToolStripMenuItem.Name = "SelectVoicesToDeleteToolStripMenuItem";
-            this.SelectVoicesToDeleteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.SelectVoicesToDeleteToolStripMenuItem.Text = "Select Voices to Delete";
             // 
             // PlaylistToolStripMenuItem
             // 
@@ -214,17 +207,36 @@ namespace iYak
             // TextToSpeechToolStripMenuItem
             // 
             this.TextToSpeechToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.XMLToolStripMenuItem});
+            this.XMLToolStripMenuItem,
+            this.voicesToolStripMenuItem});
             this.TextToSpeechToolStripMenuItem.Name = "TextToSpeechToolStripMenuItem";
             this.TextToSpeechToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.TextToSpeechToolStripMenuItem.Text = "Tools";
             // 
             // XMLToolStripMenuItem
             // 
+            this.XMLToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("XMLToolStripMenuItem.Image")));
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
             this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
+            // 
+            // voicesToolStripMenuItem
+            // 
+            this.voicesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshListToolStripMenuItem});
+            this.voicesToolStripMenuItem.Name = "voicesToolStripMenuItem";
+            this.voicesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.voicesToolStripMenuItem.Text = "&Voices";
+            // 
+            // refreshListToolStripMenuItem
+            // 
+            this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
+            this.refreshListToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.refreshListToolStripMenuItem.Text = "&Refresh List";
+            this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
             // 
             // ToolStripRoster
             // 
@@ -909,7 +921,6 @@ namespace iYak
             // 
             this.VoiceSelect.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.VoiceSelect.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
-            this.VoiceSelect.AutoArrange = false;
             this.VoiceSelect.BackColor = System.Drawing.Color.LightBlue;
             this.VoiceSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VoiceSelect.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -942,6 +953,7 @@ namespace iYak
             this.VoiceSelect.Name = "VoiceSelect";
             this.VoiceSelect.Size = new System.Drawing.Size(228, 231);
             this.VoiceSelect.SmallImageList = this.ActorIcons;
+            this.VoiceSelect.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.VoiceSelect.TabIndex = 16;
             this.VoiceSelect.UseCompatibleStateImageBehavior = false;
             this.VoiceSelect.View = System.Windows.Forms.View.Details;
@@ -985,7 +997,6 @@ namespace iYak
             this.VCFilter.Size = new System.Drawing.Size(228, 25);
             this.VCFilter.TabIndex = 17;
             this.VCFilter.Text = "Filters";
-
             // 
             // VCBoys
             // 
@@ -998,6 +1009,7 @@ namespace iYak
             this.VCBoys.Size = new System.Drawing.Size(23, 20);
             this.VCBoys.Text = "toolStripButton1";
             this.VCBoys.ToolTipText = "Male Voices";
+            this.VCBoys.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // VCGirls
             // 
@@ -1010,6 +1022,7 @@ namespace iYak
             this.VCGirls.Size = new System.Drawing.Size(23, 20);
             this.VCGirls.Text = "toolStripButton1";
             this.VCGirls.ToolTipText = "Female Voices";
+            this.VCGirls.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1028,6 +1041,7 @@ namespace iYak
             this.VCAzure.Size = new System.Drawing.Size(23, 20);
             this.VCAzure.Text = "toolStripButton1";
             this.VCAzure.ToolTipText = "Azure WS Voices";
+            this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // VCGCloud
             // 
@@ -1040,6 +1054,7 @@ namespace iYak
             this.VCGCloud.Size = new System.Drawing.Size(23, 20);
             this.VCGCloud.Text = "toolStripButton1";
             this.VCGCloud.ToolTipText = "GCloud WS Voices";
+            this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // VCAWS
             // 
@@ -1052,6 +1067,7 @@ namespace iYak
             this.VCAWS.Size = new System.Drawing.Size(23, 20);
             this.VCAWS.Text = "toolStripButton1";
             this.VCAWS.ToolTipText = "Amazon AWS Voices";
+            this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // VCLocal
             // 
@@ -1064,14 +1080,7 @@ namespace iYak
             this.VCLocal.Size = new System.Drawing.Size(23, 20);
             this.VCLocal.Text = "toolStripButton1";
             this.VCLocal.ToolTipText = "Locally Installed Voices";
-            
-            this.VCGirls.Click += new System.EventHandler(this.VCFilter_Click);
-            this.VCBoys.Click += new System.EventHandler(this.VCFilter_Click);
-            this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
-            this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
-            this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
             this.VCLocal.Click += new System.EventHandler(this.VCFilter_Click);
-
             // 
             // splitter2
             // 
@@ -1207,7 +1216,6 @@ namespace iYak
         internal System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem SelectVoicesToDeleteToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem PlaylistToolStripMenuItem;
         internal System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         internal System.Windows.Forms.ToolStripMenuItem StartNewPlaylistToolStripMenuItem;
@@ -1280,6 +1288,8 @@ namespace iYak
         private System.Windows.Forms.ToolStripButton VCGirls;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton VCLocal;
+        private System.Windows.Forms.ToolStripMenuItem voicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
     }
 }
 
