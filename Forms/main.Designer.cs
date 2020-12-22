@@ -31,9 +31,9 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,7 @@ namespace iYak
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SavedStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
             this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.AvatarPanel = new System.Windows.Forms.Panel();
@@ -112,7 +113,10 @@ namespace iYak
             this.panel4 = new System.Windows.Forms.Panel();
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
-            this.SavedStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.ListExport = new System.Windows.Forms.ListView();
+            this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colFileDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -138,7 +142,7 @@ namespace iYak
             // 
             this.ToolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
-            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1131, 17);
+            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1162, 17);
             this.ToolStripStatusLabel2.Spring = true;
             // 
             // FileToolStripMenuItem
@@ -153,7 +157,7 @@ namespace iYak
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -218,7 +222,7 @@ namespace iYak
             // 
             this.XMLToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("XMLToolStripMenuItem.Image")));
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
@@ -227,7 +231,7 @@ namespace iYak
             this.voicesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshListToolStripMenuItem});
             this.voicesToolStripMenuItem.Name = "voicesToolStripMenuItem";
-            this.voicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.voicesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.voicesToolStripMenuItem.Text = "&Voices";
             // 
             // refreshListToolStripMenuItem
@@ -303,6 +307,11 @@ namespace iYak
             this.lblStatus.IsLink = true;
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // SavedStatus
+            // 
+            this.SavedStatus.Name = "SavedStatus";
+            this.SavedStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // ActorIcons
             // 
@@ -425,8 +434,10 @@ namespace iYak
             // ActorsPanel
             // 
             this.ActorsPanel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsPanel.Controls.Add(this.splitter3);
             this.ActorsPanel.Controls.Add(this.ActorsFlow);
             this.ActorsPanel.Controls.Add(this.label6);
+            this.ActorsPanel.Controls.Add(this.ListExport);
             this.ActorsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.ActorsPanel.Location = new System.Drawing.Point(997, 24);
             this.ActorsPanel.Name = "ActorsPanel";
@@ -444,7 +455,7 @@ namespace iYak
             this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
             this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
             this.ActorsFlow.Name = "ActorsFlow";
-            this.ActorsFlow.Size = new System.Drawing.Size(225, 544);
+            this.ActorsFlow.Size = new System.Drawing.Size(225, 240);
             this.ActorsFlow.TabIndex = 6;
             // 
             // label6
@@ -934,19 +945,19 @@ namespace iYak
             this.VoiceSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
             this.VoiceSelect.FullRowSelect = true;
-            listViewGroup1.Header = "Male";
-            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name = "grpMale";
-            listViewGroup2.Header = "Female";
-            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup2.Name = "grpFemale";
-            listViewGroup3.Header = "Neutral";
-            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup3.Name = "grpNeutral";
+            listViewGroup4.Header = "Male";
+            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup4.Name = "grpMale";
+            listViewGroup5.Header = "Female";
+            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup5.Name = "grpFemale";
+            listViewGroup6.Header = "Neutral";
+            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup6.Name = "grpNeutral";
             this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
             this.VoiceSelect.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.VoiceSelect.HideSelection = false;
             this.VoiceSelect.LabelWrap = false;
@@ -1162,10 +1173,46 @@ namespace iYak
             this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
             this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
             // 
-            // SavedStatus
+            // splitter3
             // 
-            this.SavedStatus.Name = "SavedStatus";
-            this.SavedStatus.Size = new System.Drawing.Size(0, 17);
+            this.splitter3.BackColor = System.Drawing.Color.MidnightBlue;
+            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter3.Location = new System.Drawing.Point(0, 264);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(225, 7);
+            this.splitter3.TabIndex = 7;
+            this.splitter3.TabStop = false;
+            // 
+            // ListExport
+            // 
+            this.ListExport.BackColor = System.Drawing.Color.MidnightBlue;
+            this.ListExport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ListExport.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colFileName,
+            this.colFileDate});
+            this.ListExport.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ListExport.ForeColor = System.Drawing.Color.Khaki;
+            this.ListExport.FullRowSelect = true;
+            this.ListExport.HideSelection = false;
+            this.ListExport.Location = new System.Drawing.Point(0, 271);
+            this.ListExport.Name = "ListExport";
+            this.ListExport.Size = new System.Drawing.Size(225, 304);
+            this.ListExport.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.ListExport.TabIndex = 8;
+            this.ListExport.UseCompatibleStateImageBehavior = false;
+            this.ListExport.View = System.Windows.Forms.View.Details;
+            this.ListExport.DoubleClick += new System.EventHandler(this.ListExport_DoubleClicked);
+            // 
+            // colFileName
+            // 
+            this.colFileName.Text = "Filename";
+            this.colFileName.Width = 145;
+            // 
+            // colFileDate
+            // 
+            this.colFileDate.Text = "Date";
+            this.colFileDate.Width = 79;
             // 
             // Main
             // 
@@ -1299,6 +1346,10 @@ namespace iYak
         private System.Windows.Forms.ToolStripMenuItem voicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel SavedStatus;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.ListView ListExport;
+        private System.Windows.Forms.ColumnHeader colFileName;
+        private System.Windows.Forms.ColumnHeader colFileDate;
     }
 }
 

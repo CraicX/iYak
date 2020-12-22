@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace iYak.Classes
 {
@@ -70,6 +71,8 @@ namespace iYak.Classes
 
             LoadPlaylist(Config.CurrentPlaylist.Uid);
 
+            FillExported();
+
             //  Update form based on prev settings
             //
             Config.mainRef.SayBox.Text = Config.DefaultText;
@@ -110,6 +113,60 @@ namespace iYak.Classes
             }
         }
 
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    L I S T   E X P O R T E D
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Adds Items to the main voices ViewListBox
+        //
+        static public List<AudioFile> ListExported(string folderPath="")
+        {
+            var AudioList = new List<AudioFile>();
+        
+            if (folderPath == "") folderPath = Config.ExportPath;
+
+            List<string> FileList = Helpers.GlobList(folderPath);
+            foreach(string filename in FileList)
+            {
+                if( Regex.IsMatch(filename, "\\.(wav|mp3)") ) {
+                    AudioFile afile = Helpers.GetAudioFileInfo(filename);
+
+                    AudioList.Add(afile);
+
+                }
+            }
+
+            return AudioList;
+
+        }
+
+        static public void FillExported(string folderPath="")
+        {
+            Config.LExport.Items.Clear();
+
+            List<AudioFile> AudioList = ListExported(folderPath);
+
+            foreach(AudioFile afile in AudioList)
+            {
+                string shortname = afile.FilePath.Substring(afile.FilePath.LastIndexOf("\\")+1);
+                Console.WriteLine(afile.FilePath + " -> " + shortname);
+                ListViewItem litem = new ListViewItem(shortname)
+                {
+                    Tag                     = afile.FilePath,
+                    UseItemStyleForSubItems = false
+                };
+
+                litem.SubItems.Add(afile.FileDate);
+
+                Config.LExport.Items.Add(litem);
+
+
+
+            }
+        }
 
 
         //

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,7 @@ namespace iYak
             
 
             Config.LVoices     = VoiceSelect;
+            Config.LExport     = ListExport;
             Config.FAvatars    = AvatarsFlow;
             Config.FActors     = ActorsFlow;
             Config.FScripts    = FlowScript;
@@ -260,20 +262,27 @@ namespace iYak
 
             if (SayText == "") return;
 
-            //Voice ExpVoice  = Config.CurrentVoice.Copy();
-            Config.CurrentVoice.Speech = SayText;
-            Config.CurrentVoice.Volume = tbVolume.Value;
-            Config.CurrentVoice.Rate = tbSpeed.Value;
+            //Voice ExpVoice            = Config.CurrentVoice.Copy();
+            Config.CurrentVoice.Speech  = SayText;
+            Config.CurrentVoice.Volume  = tbVolume.Value;
+            Config.CurrentVoice.Rate    = tbSpeed.Value;
 
-            AudioFile fileOut = RoboVoice.ExportSpeechLocal(Config.CurrentVoice);
+            AudioFile fileOut           = RoboVoice.ExportSpeechLocal(Config.CurrentVoice);
 
-            SavedStatus.Text = "Saved! :: " + fileOut.FilePath;
+            SavedStatus.Text            = "Saved!";
 
-            Console.WriteLine(fileOut.FilePath);
-
-
-
+            Utilities.FillExported();
             
+        }
+
+        private void ListExport_DoubleClicked(object sender, EventArgs e)
+        {
+            if (ListExport.SelectedItems.Count < 1) return;
+
+            Application.DoEvents();
+
+            Process.Start("explorer.exe", "/select," + ListExport.Items[ListExport.SelectedIndices[0]].Tag);
+
         }
     }
 

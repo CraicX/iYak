@@ -78,7 +78,7 @@ namespace iYak.Classes
             System.Speech.Synthesis.SpeechSynthesizer ExportVoice = new System.Speech.Synthesis.SpeechSynthesizer()
             {
                 Volume = voice.Volume,
-                Rate = (voice.Rate * 2) - 10
+                Rate   = (voice.Rate * 2) - 10
             };
             ExportVoice.SetOutputToDefaultAudioDevice();
             ExportVoice.SelectVoice(voice.Handle);
@@ -100,7 +100,8 @@ namespace iYak.Classes
             string FileName = voice.Nickname + "_";
 
             string words = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ");
-            words = words.Replace("  ", " ");//
+            
+            words = words.Replace("  ", " ");
 
             if (words.Length > 20) words = words.Substring(0, 20);
 
