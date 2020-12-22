@@ -17,6 +17,7 @@ namespace iYak.Classes
         static public Voice CurrentVoice        = new Voice();
         static public Playlist CurrentPlaylist  = new Playlist();
         static public FilterOpts VFilter        = new FilterOpts();
+        static public string DefaultText        = "";
 
         //
         //  Define Paths
@@ -25,6 +26,7 @@ namespace iYak.Classes
         static public string CachePath   = "";
         static public string AvatarsPath = "";
         static public string VoicesPath  = "";
+        static public string ExportPath  = "";
 
 
         //
@@ -43,24 +45,24 @@ namespace iYak.Classes
     {
         static public class Azure
         {
-            static public string key = "";
+            static public string key    = "";
             static public string region = "";
-            static public bool enabled = false;
+            static public bool enabled  = false;
 
         }
 
         static public class AWS
         {
-            static public string key = "";
+            static public string key    = "";
             static public string region = "";
-            static public bool enabled = false;
+            static public bool enabled  = false;
         }
 
         static public class GCloud
         {
-            static public string key = "";
+            static public string key    = "";
             static public string region = "";
-            static public bool enabled = false;
+            static public bool enabled  = false;
 
         }
     }
@@ -87,5 +89,18 @@ namespace iYak.Classes
 
     }
 
+
+    //
+    // ────────────────────────────────────────────────────────────────────────
+    //   :::::: A U D I O   F I L E
+    // ────────────────────────────────────────────────────────────────────────
+    //
+    public class AudioFile
+    {
+        public string FilePath = "";
+        public int FileSize    = 0;
+        public string FileDate = "";
+
+    }
 
 }

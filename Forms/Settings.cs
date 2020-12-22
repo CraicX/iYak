@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iYak.Classes;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace iYak
 {
@@ -110,9 +111,13 @@ namespace iYak
                 Pb_gcloud.Image = SetAlpha((Bitmap)OrigGCloud, CloudWS.GCloud.enabled ? 200:50);
             }
 
-            lblRestart.Visible = false;
 
             ShowLocalVoices();
+
+            lblRestart.Visible   = false;
+        
+            TBDefaultSpeech.Text = Config.DefaultText;
+            TBExport.Text        = Config.ExportPath;
 
 
 
@@ -186,7 +191,7 @@ namespace iYak
             DialogResult result = fbrowse1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                tb_export.Text = fbrowse1.SelectedPath;
+                TBExport.Text = fbrowse1.SelectedPath;
                 
             }
         }
@@ -214,6 +219,31 @@ namespace iYak
 
             Application.DoEvents();
             Utilities.SaveCloudCreds();
+
+
+            Config.DefaultText = TBDefaultSpeech.Text.Trim();
+
+            
+
+            if (Main.GetForm().SayBox.Text == "") Main.GetForm().SayBox.Text = Config.DefaultText.Trim();
+
+            //  Settings.ini
+            if(!Directory.Exists(TBExport.Text.Trim())) {
+
+                try
+                {
+                    Directory.CreateDirectory(TBExport.Text.Trim());
+
+                } catch (Exception e)
+                {
+                    TBExport.Text = Config.ExportPath;
+                }
+
+                Utilities.SaveSettings();
+
+            }
+
+
 
             Config.frmSettings.Hide();
         }

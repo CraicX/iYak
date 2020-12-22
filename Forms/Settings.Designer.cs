@@ -36,10 +36,10 @@ namespace iYak
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.tb_export = new System.Windows.Forms.TextBox();
+            this.TBExport = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TBDefaultSpeech = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Pb_aws = new System.Windows.Forms.PictureBox();
@@ -67,6 +67,7 @@ namespace iYak
             this.label1 = new System.Windows.Forms.Label();
             this.cbAzure = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblRestart = new System.Windows.Forms.Label();
             this.btnSave3 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.TTSLV = new System.Windows.Forms.ListView();
@@ -76,7 +77,6 @@ namespace iYak
             this.colGender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fbrowse1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.lblRestart = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -136,7 +136,7 @@ namespace iYak
             // 
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.tb_export);
+            this.groupBox5.Controls.Add(this.TBExport);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(10, 158);
             this.groupBox5.Name = "groupBox5";
@@ -168,17 +168,17 @@ namespace iYak
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tb_export
+            // TBExport
             // 
-            this.tb_export.Location = new System.Drawing.Point(80, 48);
-            this.tb_export.Name = "tb_export";
-            this.tb_export.Size = new System.Drawing.Size(415, 20);
-            this.tb_export.TabIndex = 0;
+            this.TBExport.Location = new System.Drawing.Point(80, 48);
+            this.TBExport.Name = "TBExport";
+            this.TBExport.Size = new System.Drawing.Size(415, 20);
+            this.TBExport.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.TBDefaultSpeech);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(8, 8);
             this.groupBox3.Name = "groupBox3";
@@ -197,14 +197,14 @@ namespace iYak
             this.label7.TabIndex = 1;
             this.label7.Text = "Start new speeches with the following prefilled text:";
             // 
-            // textBox5
+            // TBDefaultSpeech
             // 
-            this.textBox5.Location = new System.Drawing.Point(6, 39);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox5.Size = new System.Drawing.Size(503, 56);
-            this.textBox5.TabIndex = 0;
+            this.TBDefaultSpeech.Location = new System.Drawing.Point(6, 39);
+            this.TBDefaultSpeech.Multiline = true;
+            this.TBDefaultSpeech.Name = "TBDefaultSpeech";
+            this.TBDefaultSpeech.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TBDefaultSpeech.Size = new System.Drawing.Size(503, 56);
+            this.TBDefaultSpeech.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -478,6 +478,18 @@ namespace iYak
             this.tabPage3.Text = "Local Voices";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblRestart
+            // 
+            this.lblRestart.AutoSize = true;
+            this.lblRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRestart.ForeColor = System.Drawing.Color.Crimson;
+            this.lblRestart.Location = new System.Drawing.Point(95, 353);
+            this.lblRestart.Name = "lblRestart";
+            this.lblRestart.Size = new System.Drawing.Size(270, 13);
+            this.lblRestart.TabIndex = 4;
+            this.lblRestart.Text = "Restart application for changes to take effect!";
+            this.lblRestart.Visible = false;
+            // 
             // btnSave3
             // 
             this.btnSave3.Location = new System.Drawing.Point(445, 342);
@@ -551,18 +563,6 @@ namespace iYak
             this.colStatus.Text = "-";
             this.colStatus.Width = 54;
             // 
-            // lblRestart
-            // 
-            this.lblRestart.AutoSize = true;
-            this.lblRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRestart.ForeColor = System.Drawing.Color.Crimson;
-            this.lblRestart.Location = new System.Drawing.Point(95, 353);
-            this.lblRestart.Name = "lblRestart";
-            this.lblRestart.Size = new System.Drawing.Size(270, 13);
-            this.lblRestart.TabIndex = 4;
-            this.lblRestart.Text = "Restart application for changes to take effect!";
-            this.lblRestart.Visible = false;
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,10 +635,10 @@ namespace iYak
         private System.Windows.Forms.PictureBox Pb_gcloud;
         private System.Windows.Forms.PictureBox Pb_azure;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox tb_export;
+        private System.Windows.Forms.TextBox TBExport;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TBDefaultSpeech;
         private System.Windows.Forms.FolderBrowserDialog fbrowse1;
         private System.Windows.Forms.Button btnSave1;
         private System.Windows.Forms.Label label8;

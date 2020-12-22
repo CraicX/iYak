@@ -91,7 +91,21 @@ namespace iYak.Classes
             }
         }
 
-        
+        public static AudioFile GetAudioFileInfo(string Filename)
+        {
+            AudioFile audiof = new AudioFile()
+            {
+                FilePath = Filename,
+                FileDate = File.GetCreationTime(Filename).ToShortDateString()
+            };
+
+            var info = new FileInfo(Filename);
+
+            audiof.FileSize = (int) info.Length / 1000;
+
+            return audiof;
+
+        }
 
         public static string LoadFile(string FilePath)
         {

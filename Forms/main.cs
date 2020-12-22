@@ -36,7 +36,9 @@ namespace iYak
             Application.DoEvents();
             Console.WriteLine("key:" + CloudWS.Azure.key);
 
-            Config.frmSettings.ShowDialog();
+
+            Config.frmSettings.Location = new Point(Main.GetForm().Left + Main.GetForm().Width + Config.frmSettings.Width, this.Top);
+            Config.frmSettings.ShowDialog(this);
 
         }
 
@@ -250,6 +252,28 @@ namespace iYak
 
         static public Main GetForm() {
             return Config.mainRef;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string SayText = SayBox.Text.Trim();
+
+            if (SayText == "") return;
+
+            //Voice ExpVoice  = Config.CurrentVoice.Copy();
+            Config.CurrentVoice.Speech = SayText;
+            Config.CurrentVoice.Volume = tbVolume.Value;
+            Config.CurrentVoice.Rate = tbSpeed.Value;
+
+            AudioFile fileOut = RoboVoice.ExportSpeechLocal(Config.CurrentVoice);
+
+            SavedStatus.Text = "Saved! :: " + fileOut.FilePath;
+
+            Console.WriteLine(fileOut.FilePath);
+
+
+
+            
         }
     }
 

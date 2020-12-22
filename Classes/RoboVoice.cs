@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Speech;
 using System.Speech.Synthesis;
 using System.Speech.Synthesis.TtsEngine;
+using System.Text.RegularExpressions;
 //using Microsoft.CognitiveServices.Speech;
 
 
@@ -14,7 +15,7 @@ namespace iYak.Classes
     public class RoboVoice
     {
 
-        static private Boolean isImported  = false;
+        static private Boolean isImported = false;
         //static private Boolean AzureReady  = false;
         //static private Boolean AzureEnabled = false;
         //static private Boolean GCloudReady = false;
@@ -28,7 +29,7 @@ namespace iYak.Classes
         public Voice voice = new Voice();
 
 
-        public RoboVoice() 
+        public RoboVoice()
         {
             if (RoboVoice.isImported == false) {
 
@@ -45,7 +46,7 @@ namespace iYak.Classes
         }
 
 
-        public bool Say(string sayText) 
+        public bool Say(string sayText)
         {
             if (voice.Handle == null || voice.Handle == "") return false;
 
@@ -60,7 +61,60 @@ namespace iYak.Classes
 
         }
 
-        static void InitAzure() 
+
+        public static AudioFile ExportSpeechLocal(Voice voice, string FileName="")
+        {
+        
+            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice) + ".wav";
+
+            string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
+
+            var SaveFormat = new System.Speech.AudioFormat.SpeechAudioFormatInfo(
+                96000,
+                System.Speech.AudioFormat.AudioBitsPerSample.Sixteen,
+                System.Speech.AudioFormat.AudioChannel.Stereo
+            );
+
+            System.Speech.Synthesis.SpeechSynthesizer ExportVoice = new System.Speech.Synthesis.SpeechSynthesizer()
+            {
+                Volume = voice.Volume,
+                Rate = (voice.Rate * 2) - 10
+            };
+            ExportVoice.SetOutputToDefaultAudioDevice();
+            ExportVoice.SelectVoice(voice.Handle);
+
+            ExportVoice.SetOutputToWaveFile(FilePath, SaveFormat);
+            ExportVoice.Speak(voice.Speech);
+
+            AudioFile afile = Helpers.GetAudioFileInfo(FilePath);
+
+            return afile;                
+
+
+        }
+
+
+        static public string GenerateFileName(Voice voice) 
+        {
+
+            string FileName = voice.Nickname + "_";
+
+            string words = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ");
+            words = words.Replace("  ", " ");//
+
+            if (words.Length > 20) words = words.Substring(0, 20);
+
+            string timestamp = DateTime.UtcNow.Ticks.ToString();
+
+            timestamp = timestamp.Substring(timestamp.Length - 5);
+
+            FileName += words + "_" + timestamp;
+
+            return FileName.Replace(" ", "-").ToLower();
+
+        }
+
+        static void InitAzure()
         {
             if (CloudWS.Azure.key == "") return;
 
@@ -68,9 +122,9 @@ namespace iYak.Classes
 
             //RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
 
-           // if (!RoboVoice.AzureReady) RoboVoice.AzureReady = true;
+            // if (!RoboVoice.AzureReady) RoboVoice.AzureReady = true;
 
-            
+
         }
 
 
@@ -85,16 +139,16 @@ namespace iYak.Classes
                 TempVoice = new Voice
                 {
                     Active = true,
-                    Id     = Voice.GenerateName(iVoice.VoiceInfo.Name),
+                    Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle = iVoice.VoiceInfo.Name,
                     Gender = Voice.convertGenderFromLocal(iVoice.VoiceInfo.Gender),
-                    Host   = Voice.EHost.Local
+                    Host = Voice.EHost.Local
                 };
 
                 VoiceList.Add(TempVoice);
 
 
-                
+
             }
 
 
@@ -103,13 +157,13 @@ namespace iYak.Classes
 
         }
 
-        static public void RefreshVoiceList() 
+        static public void RefreshVoiceList()
         {
             LocalSynth = new SpeechSynthesizer();
         }
 
 
-        public static void DumpVoices() 
+        public static void DumpVoices()
         {
             // Initialize a new instance of the SpeechSynthesizer.  
             using (SpeechSynthesizer synth = new SpeechSynthesizer())
@@ -171,38 +225,38 @@ namespace iYak.Classes
     public class Voice
     {
 
-        public int Uid = 0;
-        public string Id        = "";
-        public string Handle    = "";
-        public string Avatar    = "";
-        public string Nickname  = "";
-        public string Speech    = "";
-        public bool Active      = true;
-        public int Rate         = 5;
-        public int Pitch        = 5;
-        public int Volume       = 100;
+        public int Uid         = 0;
+        public string Id       = "";
+        public string Handle   = "";
+        public string Avatar   = "";
+        public string Nickname = "";
+        public string Speech   = "";
+        public bool Active     = true;
+        public int Rate        = 5;
+        public int Pitch       = 5;
+        public int Volume      = 100;
 
-        public EGender Gender           = EGender.NotSet;
-        public EVoiceType VoiceType     = EVoiceType.Standard;
-        public EHost Host               = EHost.Local;
+        public EGender Gender       = EGender.NotSet;
+        public EVoiceType VoiceType = EVoiceType.Standard;
+        public EHost Host           = EHost.Local;
 
         public Voice Copy()
         {
             Voice _voice = new Voice()
             {
-                Uid         = 0,
-                Id          = this.Id,
-                Handle      = this.Handle,
-                Avatar      = this.Avatar,
-                Nickname    = this.Nickname,
-                Active      = this.Active,
-                Rate        = this.Rate,
-                Pitch       = this.Pitch,
-                Volume      = this.Volume,
-                Gender      = this.Gender,
-                VoiceType   = this.VoiceType,
-                Host        = this.Host,
-                Speech      = this.Speech
+                Uid       = 0,
+                Id        = this.Id,
+                Handle    = this.Handle,
+                Avatar    = this.Avatar,
+                Nickname  = this.Nickname,
+                Active    = this.Active,
+                Rate      = this.Rate,
+                Pitch     = this.Pitch,
+                Volume    = this.Volume,
+                Gender    = this.Gender,
+                VoiceType = this.VoiceType,
+                Host      = this.Host,
+                Speech    = this.Speech
             };
 
             return _voice;
@@ -232,8 +286,8 @@ namespace iYak.Classes
         }
 
         public string GetGender() { return Voice.GetGender(this.Gender); }
-        public string GetType() { return Voice.GetType(this.VoiceType); }
-        public string GetHost() { return Voice.GetHost(this.Host); }
+        public string GetType() {   return Voice.GetType(this.VoiceType); }
+        public string GetHost() {   return Voice.GetHost(this.Host); }
 
         static public string GetGender(EGender which)
         {
@@ -243,11 +297,11 @@ namespace iYak.Classes
             if (which == EGender.NotSet)    return "NotSet";
 
             return "unknown";
-            
-        }
 
-        static public EGender FromGender(string which)
-        {
+        }
+         
+         static public EGender FromGender(string which)
+            {
             if (which == "Male")    return EGender.Male;
             if (which == "Female")  return EGender.Female;
             if (which == "Neutral") return EGender.Neutral;
@@ -258,10 +312,10 @@ namespace iYak.Classes
 
         static public string GetHost(EHost which)
         {
-            if (which == EHost.Azure)  return "Azure";
-            if (which == EHost.GCloud) return "GCloud";
-            if (which == EHost.AWS)    return "AWS";
-            if (which == EHost.Local)  return "Local";
+            if (which == EHost.Azure)   return "Azure";
+            if (which == EHost.GCloud)  return "GCloud";
+            if (which == EHost.AWS)     return "AWS";
+            if (which == EHost.Local)   return "Local";
 
             return "unknown";
 
@@ -280,16 +334,16 @@ namespace iYak.Classes
 
         static public string GetType(EVoiceType which)
         {
-            if (which == EVoiceType.Standard) return "Standard";
-            if (which == EVoiceType.Neural)   return "Neural";
+            if (which == EVoiceType.Standard)   return "Standard";
+            if (which == EVoiceType.Neural)     return "Neural";
 
             return "unknown";
 
         }
-        static public EVoiceType FromType (string which)
+        static public EVoiceType FromType(string which)
         {
-            if (which == "Standard") return EVoiceType.Standard;
-            if (which == "Neural")   return EVoiceType.Neural;
+            if (which == "Standard")    return EVoiceType.Standard;
+            if (which == "Neural")      return EVoiceType.Neural;
 
             return EVoiceType.Standard;
         }
@@ -320,7 +374,7 @@ namespace iYak.Classes
             return EGender.NotSet;
 
         }
-        
+
         public void SetVoice(String Lookup)
         {
 
@@ -347,5 +401,8 @@ namespace iYak.Classes
 
 
     }
+
+
+    
 
 }

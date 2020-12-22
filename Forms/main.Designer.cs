@@ -112,6 +112,7 @@ namespace iYak
             this.panel4 = new System.Windows.Forms.Panel();
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
+            this.SavedStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -137,7 +138,7 @@ namespace iYak
             // 
             this.ToolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
-            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1162, 17);
+            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(1131, 17);
             this.ToolStripStatusLabel2.Spring = true;
             // 
             // FileToolStripMenuItem
@@ -152,7 +153,7 @@ namespace iYak
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -217,7 +218,7 @@ namespace iYak
             // 
             this.XMLToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("XMLToolStripMenuItem.Image")));
             this.XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
-            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.XMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.XMLToolStripMenuItem.Text = "Options";
             this.XMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
@@ -226,7 +227,7 @@ namespace iYak
             this.voicesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshListToolStripMenuItem});
             this.voicesToolStripMenuItem.Name = "voicesToolStripMenuItem";
-            this.voicesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.voicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.voicesToolStripMenuItem.Text = "&Voices";
             // 
             // refreshListToolStripMenuItem
@@ -283,7 +284,8 @@ namespace iYak
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripStatusLabel1,
             this.ToolStripStatusLabel2,
-            this.lblStatus});
+            this.lblStatus,
+            this.SavedStatus});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 599);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1222, 22);
@@ -508,6 +510,7 @@ namespace iYak
             this.btnExport.TabIndex = 23;
             this.btnExport.Text = "    Export";
             this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnUpdate
             // 
@@ -1159,6 +1162,11 @@ namespace iYak
             this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
             this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
             // 
+            // SavedStatus
+            // 
+            this.SavedStatus.Name = "SavedStatus";
+            this.SavedStatus.Size = new System.Drawing.Size(0, 17);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1290,6 +1298,7 @@ namespace iYak
         private System.Windows.Forms.ToolStripButton VCLocal;
         private System.Windows.Forms.ToolStripMenuItem voicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel SavedStatus;
     }
 }
 

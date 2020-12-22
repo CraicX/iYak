@@ -30,7 +30,7 @@ namespace iYak.Classes
 
             //  Check/create folders
             //
-            Config.RootPath = Helpers.JoinPath(
+            Config.RootPath    = Helpers.JoinPath(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
                 Config.AppName
             );
@@ -39,14 +39,22 @@ namespace iYak.Classes
             Config.AvatarsPath = Helpers.JoinPath(Config.RootPath, "Avatars");
             Config.VoicesPath  = Helpers.JoinPath(Config.RootPath, "LocalVoices.json");
 
+            Config.ExportPath  = Helpers.JoinPath(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Config.AppName
+            );
+
             if (!Directory.Exists(Config.CachePath))    Directory.CreateDirectory(Config.CachePath);
             if (!Directory.Exists(Config.AvatarsPath))  Directory.CreateDirectory(Config.AvatarsPath);
+            if (!Directory.Exists(Config.ExportPath))   Directory.CreateDirectory(Config.ExportPath);
 
             //  Check/Download Avatars
             //
             Config.Avatars = LoadAvatars();
 
             Config.splasher.Hide();
+
+            LoadSettings();
 
             //  Initialize SQLite DataTables
             //
@@ -62,6 +70,9 @@ namespace iYak.Classes
 
             LoadPlaylist(Config.CurrentPlaylist.Uid);
 
+            //  Update form based on prev settings
+            //
+            Config.mainRef.SayBox.Text = Config.DefaultText;
 
 
         }
@@ -308,7 +319,84 @@ namespace iYak.Classes
 
         }
 
-        
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    L O A D   S E T T I N G S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Loads User Settings
+        //
+        static public void LoadSettings()
+        {
+            String iniFile = Helpers.JoinPath(Config.RootPath, "Settings.ini");
+
+            if (!File.Exists(iniFile)) return;
+
+            StreamReader sr = new StreamReader(iniFile);
+
+            while (!sr.EndOfStream)
+            {
+                String lineProperty = sr.ReadLine();
+
+                if (lineProperty.Contains('='))
+                {
+
+                    String[] pieces = lineProperty.Split('=');
+
+                    pieces[0] = pieces[0].Trim();
+                    pieces[1] = pieces[1].Trim();
+
+                    switch( pieces[0] ) {
+
+                        case "ExportPath":
+                            if (Directory.Exists(pieces[1])) Config.ExportPath = pieces[1];
+                            break;
+
+                    }
+                }
+
+            }
+
+            sr.Close();
+
+            string DSpeechFile = Helpers.JoinPath(Config.RootPath, "DefaultSpeech.txt");
+
+            if( File.Exists(DSpeechFile) ) {
+
+                Config.DefaultText = File.ReadAllText(@DSpeechFile).Trim();
+
+            }
+
+        }
+
+
+
+        //
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    S A V E   S E T T I N G S
+        // ────────────────────────────────────────────────────────────────────────
+        //
+        // Saves User Settings
+        //
+        static public void SaveSettings()
+        {
+            String iniFile = Helpers.JoinPath(Config.RootPath, "Settings.ini");
+
+            StreamWriter sw = new StreamWriter(iniFile, false);
+
+            sw.WriteLine("ExportPath = " + Config.ExportPath);
+
+            sw.Close();
+
+            string DSpeechFile = Helpers.JoinPath(Config.RootPath, "DefaultSpeech.txt");
+
+            File.WriteAllText(DSpeechFile, Config.DefaultText);
+
+        }
+
+
 
         //
         // ────────────────────────────────────────────────────────────────────────
@@ -327,7 +415,6 @@ namespace iYak.Classes
 
             while (!sr.EndOfStream) {
                 String lineProperty = sr.ReadLine();
-                Console.WriteLine(lineProperty);
 
                 if (lineProperty.Contains('=') ) {
 
