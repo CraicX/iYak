@@ -7,7 +7,6 @@ using System.Speech;
 using System.Speech.Synthesis;
 using System.Speech.Synthesis.TtsEngine;
 using System.Text.RegularExpressions;
-//using Microsoft.CognitiveServices.Speech;
 
 
 namespace iYak.Classes
@@ -15,29 +14,19 @@ namespace iYak.Classes
     public class RoboVoice
     {
 
-        static private Boolean isImported = false;
-        //static private Boolean AzureReady  = false;
-        //static private Boolean AzureEnabled = false;
+        static private Boolean isImported   = false;
+        static public Boolean AzureReady   = false;
+        static public Boolean AzureEnabled = false;
         //static private Boolean GCloudReady = false;
-        //static private String AzureKey     = "";
-        //static private String AzureRegion  = "";
 
-        //static private SpeechConfig AzureConfig;
-
-        private static System.Speech.Synthesis.SpeechSynthesizer LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
 
         public Voice voice = new Voice();
 
 
         public RoboVoice()
         {
-            if (RoboVoice.isImported == false) {
+                
 
-                RoboVoice.InitAzure();
-
-                RoboVoice.isImported = true;
-
-            }
         }
 
         public RoboVoice(Voice _voice)
@@ -54,44 +43,27 @@ namespace iYak.Classes
             tmpVoice.SetOutputToDefaultAudioDevice();
             tmpVoice.SelectVoice(voice.Handle);
             tmpVoice.Volume = voice.Volume;
-            tmpVoice.Rate = (voice.Rate * 2) - 10;
+            tmpVoice.Rate   = (voice.Rate * 2) - 10;
             tmpVoice.SpeakAsync(sayText);
 
             return true;
 
         }
 
-
-        public static AudioFile ExportSpeechLocal(Voice voice, string FileName="")
+        public static AudioFile ExportSpeech(Voice voice, string FileName="")
         {
-        
-            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice) + ".wav";
-
+            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice);
             string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
 
-            var SaveFormat = new System.Speech.AudioFormat.SpeechAudioFormatInfo(
-                96000,
-                System.Speech.AudioFormat.AudioBitsPerSample.Sixteen,
-                System.Speech.AudioFormat.AudioChannel.Stereo
-            );
-
-            System.Speech.Synthesis.SpeechSynthesizer ExportVoice = new System.Speech.Synthesis.SpeechSynthesizer()
-            {
-                Volume = voice.Volume,
-                Rate   = (voice.Rate * 2) - 10
-            };
-            ExportVoice.SetOutputToDefaultAudioDevice();
-            ExportVoice.SelectVoice(voice.Handle);
-
-            ExportVoice.SetOutputToWaveFile(FilePath, SaveFormat);
-            ExportVoice.Speak(voice.Speech);
+            if (voice.Host == Voice.EHost.Local)        LocalVoice.Export(voice, FileName);
+            else if (voice.Host == Voice.EHost.Azure)   AzureVoice.Export(voice, FileName);
 
             AudioFile afile = Helpers.GetAudioFileInfo(FilePath);
 
-            return afile;                
-
+            return afile;
 
         }
+        
 
 
         static public string GenerateFileName(Voice voice) 
@@ -99,10 +71,8 @@ namespace iYak.Classes
 
             string FileName = voice.Nickname + "_";
 
-            string words = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ");
+            string words    = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ").Replace("  ", " ");
             
-            words = words.Replace("  ", " ");
-
             if (words.Length > 20) words = words.Substring(0, 20);
 
             string timestamp = DateTime.UtcNow.Ticks.ToString();
@@ -111,20 +81,25 @@ namespace iYak.Classes
 
             FileName += words + "_" + timestamp;
 
-            return FileName.Replace(" ", "-").ToLower();
+            FileName = FileName.Replace(" ", "-").ToLower();
+
+            if (FileName.Substring(FileName.Length - 1) == "-") FileName = FileName.Substring(0, FileName.Length - 2);
+
+            return FileName;
 
         }
 
-        static void InitAzure()
+        static public void InitAzure()
         {
-            if (CloudWS.Azure.key == "") return;
 
-            // SpeechConf = SpeechConfig.FromSubscription(CloudKey, CloudRegion)
-
+            
+            //if (CloudWS.Azure.key == "") return;
+            //AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
+            //AzureSynth = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(AzureConfig);
             //RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
+            //RoboVoice.AzureReady = true;
 
-            // if (!RoboVoice.AzureReady) RoboVoice.AzureReady = true;
-
+            
 
         }
 
@@ -132,84 +107,26 @@ namespace iYak.Classes
         static public List<Voice> GetVoiceList()
         {
             List<Voice> VoiceList = new List<Voice>();
-            Voice TempVoice;
 
-
-            foreach (InstalledVoice iVoice in LocalSynth.GetInstalledVoices()) {
-
-                TempVoice = new Voice
-                {
-                    Active = true,
-                    Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
-                    Handle = iVoice.VoiceInfo.Name,
-                    Gender = Voice.convertGenderFromLocal(iVoice.VoiceInfo.Gender),
-                    Host = Voice.EHost.Local
-                };
-
+            List<Voice> TempList = LocalVoice.GetVoiceList();
+            foreach( Voice TempVoice in TempList)
+            {
                 VoiceList.Add(TempVoice);
-
-
-
             }
-
 
             return VoiceList;
 
 
         }
 
+        
+       
+
         static public void RefreshVoiceList()
         {
-            LocalSynth = new SpeechSynthesizer();
-        }
+           // LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
+            //GetVoiceList();
 
-
-        public static void DumpVoices()
-        {
-            // Initialize a new instance of the SpeechSynthesizer.  
-            using (SpeechSynthesizer synth = new SpeechSynthesizer())
-            {
-
-                // Output information about all of the installed voices.   
-                Console.WriteLine("Installed voices -");
-                foreach (InstalledVoice voice in synth.GetInstalledVoices())
-                {
-                    VoiceInfo info = voice.VoiceInfo;
-                    string AudioFormats = "";
-                    foreach (System.Speech.AudioFormat.SpeechAudioFormatInfo fmt in info.SupportedAudioFormats)
-                    {
-                        AudioFormats += String.Format("{0}\n",
-                        fmt.EncodingFormat.ToString());
-                    }
-
-                    Console.WriteLine(" Name:          " + info.Name);
-                    Console.WriteLine(" Culture:       " + info.Culture);
-                    Console.WriteLine(" Age:           " + info.Age);
-                    Console.WriteLine(" Gender:        " + info.Gender);
-                    Console.WriteLine(" Description:   " + info.Description);
-                    Console.WriteLine(" ID:            " + info.Id);
-                    Console.WriteLine(" Enabled:       " + voice.Enabled);
-                    if (info.SupportedAudioFormats.Count != 0)
-                    {
-                        Console.WriteLine(" Audio formats: " + AudioFormats);
-                    }
-                    else
-                    {
-                        Console.WriteLine(" No supported audio formats found");
-                    }
-
-                    string AdditionalInfo = "";
-                    foreach (string key in info.AdditionalInfo.Keys)
-                    {
-                        AdditionalInfo += String.Format("  {0}: {1}\n", key, info.AdditionalInfo[key]);
-                    }
-
-                    Console.WriteLine(" Additional Info - " + AdditionalInfo);
-                    Console.WriteLine();
-                }
-            }
-            Console.WriteLine("Press any key to exit...");
-            //Console.ReadKey();
         }
 
 

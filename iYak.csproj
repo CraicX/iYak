@@ -185,9 +185,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AzureVoice.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Data.cs" />
     <Compile Include="Classes\Helpers.cs" />
+    <Compile Include="Classes\LocalVoice.cs" />
     <Compile Include="Classes\RoboVoice.cs" />
     <Compile Include="Classes\Utilities.cs" />
     <Compile Include="Classes\VoiceImport.cs" />

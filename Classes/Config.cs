@@ -48,6 +48,7 @@ namespace iYak.Classes
         {
             static public string key    = "";
             static public string region = "";
+            static public string token  = "";
             static public bool enabled  = false;
 
         }

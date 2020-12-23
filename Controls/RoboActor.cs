@@ -282,7 +282,6 @@ namespace iYak.Controls
 
             parent.timer1.Enabled = false;
 
-            Console.WriteLine(control.Name + ">enter");
 
         }
 
@@ -299,7 +298,6 @@ namespace iYak.Controls
 
             parent.timer1.Enabled = true;
 
-            Console.WriteLine(control.Name + ">leave");
 
         }
 

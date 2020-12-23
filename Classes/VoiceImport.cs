@@ -110,8 +110,11 @@ namespace iYak.Classes
                 AddedVoices.Add(synth.name);
 
                 RoboVoice.RefreshVoiceList();
+
                 Config.Voices = RoboVoice.GetVoiceList();
+
                 Utilities.FillVoiceList(Config.Voices);
+
                 Settings.MyForm.ShowLocalVoices();
                 
 
@@ -125,6 +128,75 @@ namespace iYak.Classes
             }
 
             return true;
+
+        }
+
+        static public bool ConvertAzureJsonToVoice(string json)
+        {
+            List<Voice> VoiceList = new List<Voice>();
+
+            //Console.WriteLine(json);
+
+            List<Object> JsonList = new List<Object>();
+
+            JsonList = JsonConvert.DeserializeObject<List<Object>>(json);
+
+            foreach(Object azvoice in JsonList)
+            {
+                Voice voice = new Voice()
+                {
+                    // Nickname = azvoice.
+                };
+            }
+
+            return true;
+        }
+
+        static public async Task<string> AppendVoiceListAzure()
+        {
+            string CachedJson = Helpers.JoinPath(Config.RootPath, "Azure_" + CloudWS.Azure.region + ".json");
+            string json       = "";
+
+            //
+            //  Check if we already grabbed the voice list from Azure
+            //
+            if(File.Exists(CachedJson))
+            {
+                json = File.ReadAllText(CachedJson);
+                Console.WriteLine("Cached List");
+
+            } else {
+
+                //
+                //  Download the voicelist from Azure
+                //
+                await Utilities.AzureAuthentication();
+
+                string wsUri = "https://" + CloudWS.Azure.region + ".tts.speech.microsoft.com/cognitiveservices/voices/list";
+
+                using (var client = new System.Net.Http.HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + CloudWS.Azure.token);
+
+                    UriBuilder uriBuilder = new UriBuilder(wsUri);
+                    var result            = await client.GetAsync(uriBuilder.Uri.AbsoluteUri);
+                    json                  = await result.Content.ReadAsStringAsync();
+
+                    //
+                    //  Cache the Voice List to file
+                    //
+                    File.WriteAllText(CachedJson, json);
+                   
+                }
+
+                ConvertAzureJsonToVoice(json);
+
+            }
+
+            
+
+
+            return CloudWS.Azure.token;
 
         }
 

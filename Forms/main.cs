@@ -267,7 +267,7 @@ namespace iYak
             Config.CurrentVoice.Volume  = tbVolume.Value;
             Config.CurrentVoice.Rate    = tbSpeed.Value;
 
-            AudioFile fileOut           = RoboVoice.ExportSpeechLocal(Config.CurrentVoice);
+            AudioFile fileOut           = RoboVoice.ExportSpeech(Config.CurrentVoice);
 
             SavedStatus.Text            = "Saved!";
 

@@ -239,11 +239,9 @@ namespace iYak
                     TBExport.Text = Config.ExportPath;
                 }
 
-                Utilities.SaveSettings();
-
             }
 
-
+            Utilities.SaveSettings();
 
             Config.frmSettings.Hide();
         }
