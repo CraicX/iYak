@@ -1,4 +1,15 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     RoboActor.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Custom control for displaying Avatar and storing Voice options
+//
+//
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -193,9 +204,10 @@ namespace iYak.Controls
         {
             if (this.Speech == "") return;
 
-            RoboVoice robo = new RoboVoice(this.voice);
+            this.voice.Speech = this.Speech;
 
-            robo.Say(this.Speech);
+            RoboVoice.Speak(this.voice);
+
 
         }
 

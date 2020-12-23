@@ -1,4 +1,15 @@
-﻿using iYak.Classes;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     Utilities.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Static class containing misc utilities
+//
+//
+using iYak.Classes;
 using iYak.Controls;
 using System;
 using System.Collections.Generic;
@@ -13,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace iYak.Classes
 {
-    class Utilities
+    static class Utilities
     {
 
 
@@ -215,14 +226,14 @@ namespace iYak.Classes
                     BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
                 }
 
-                ListViewItem VoiceItem  = new ListViewItem(vItem.Id, imgNum) { UseItemStyleForSubItems = false };
-
-                if (vItem.Host == Voice.EHost.Azure) {
-                    VoiceItem.BackColor = Color.FromName(BackCol);
-                    tmpLoc = "C";
-                }
+                ListViewItem VoiceItem  = new ListViewItem(vItem.Nickname, imgNum) { UseItemStyleForSubItems = false };
 
                 tmpLoc = "-";
+
+                if (vItem.Locale != "") tmpLoc = vItem.Locale;
+
+                
+
 
                 VoiceItem.SubItems.Add(tmpLoc);
 
@@ -251,8 +262,17 @@ namespace iYak.Classes
                 }
                 VoiceItem.SubItems[0].ForeColor = FontColor;
                 VoiceItem.SubItems[0].Font      = new Font(VoiceItem.SubItems[0].Font, VoiceItem.SubItems[1].Font.Style | FontStyle.Bold);
+                VoiceItem.SubItems[1].Font      = new Font("Microsoft Sans Serif", 9, GraphicsUnit.Pixel);
                 VoiceItem.SubItems[2].Font      = new Font("Microsoft Sans Serif", 10, GraphicsUnit.Pixel);
                 VoiceItem.SubItems[2].ForeColor = Color.MidnightBlue;
+
+                if (vItem.Host == Voice.EHost.Azure)
+                {
+                    VoiceItem.BackColor = Color.FromName(BackCol);
+                    VoiceItem.SubItems[0].BackColor = Color.FromName(BackCol);
+                    VoiceItem.SubItems[1].BackColor = Color.FromName(BackCol);
+                    VoiceItem.SubItems[2].BackColor = Color.FromName(BackCol);
+                }
 
                 Config.LVoices.Items.Add(VoiceItem);
             }

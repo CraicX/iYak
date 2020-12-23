@@ -1,4 +1,15 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     Settings.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  The Settings/Options Form
+//
+//
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -272,12 +283,7 @@ namespace iYak
 
             }
         }
-
         
     }
-
-
-    
-
 
 }

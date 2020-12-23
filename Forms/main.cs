@@ -1,4 +1,15 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     main.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Main application form
+//
+//
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +38,6 @@ namespace iYak
 
         public void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
 
             Config.frmSettings = new Settings();
             
@@ -64,10 +74,6 @@ namespace iYak
 
                 ListAvatars();
             }
-
-
-
-
 
         }
 
@@ -151,16 +157,12 @@ namespace iYak
         private void BtnRead_Click(object sender, EventArgs e)
         {
             string SayText = SayBox.Text.Trim();
-            Console.WriteLine(SayText);
+
             if (SayText == "") return;
 
-            RoboVoice RVoice = new RoboVoice { voice = Config.CurrentVoice };
-
-            RVoice.Say(SayText);
-
-
-
-
+            Config.CurrentVoice.Speech = SayText;
+            
+            RoboVoice.Speak(Config.CurrentVoice);
 
         }
 
@@ -179,11 +181,6 @@ namespace iYak
             Config.CurrentVoice.Rate = tbSpeed.Value;
         }
 
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {

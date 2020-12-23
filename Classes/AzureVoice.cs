@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Data;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using Newtonsoft.Json;
@@ -31,6 +32,7 @@ namespace iYak.Classes
 
         public static SpeechConfig AzureConfig;
         public static SpeechSynthesizer Synth;
+        public static List<Voice> VoiceList = new List<Voice>();
 
         //
         //  Template for ssml 
@@ -65,12 +67,33 @@ namespace iYak.Classes
         // ────────────────────────────────────────────────────────────────────────
         //   :::    SPEAK
         // ────────────────────────────────────────────────────────────────────────
-        public static bool Speak(Voice voice)
+        public static async void Speak(Voice voice)
         {
 
-            
+            string Pitch = "";
+            string Rate = "";
 
-            return true;
+            //
+            //  Convert Pitch & Rate values
+            //
+            if (voice.Pitch != 5)
+            {
+                int pitchVal = voice.Pitch - 5;
+                Pitch = "pitch=\"" + (pitchVal < 0, "-", "+") + Math.Abs(pitchVal) + "st\"";
+            }
+
+            if (voice.Rate != 5)
+            {
+                double rateVal = ((voice.Rate - 5) * 0.1) + 1;
+                Rate = "rate=\"" + rateVal + "\"";
+            }
+
+            //
+            //  Build our ssml string from template
+            //
+            string ssml = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
+
+            SpeechSynthesisResult result = await Synth.SpeakSsmlAsync(ssml);
 
         }
 
@@ -150,18 +173,19 @@ namespace iYak.Classes
         {
             Voice TempVoice;
 
-            List<Voice> VoiceList = new List<Voice>();
 
             GetVoiceListTask(ForceRefresh);
 
-            return VoiceList;
+            return AzureVoice.VoiceList;
 
         }
 
 
         public static async Task<string> GetVoiceListTask(bool ForceRefresh=false)
         {
+
             string CachedJson = Helpers.JoinPath(Config.RootPath, "Azure_" + CloudWS.Azure.region + ".json");
+
             string json = "";
 
             //
@@ -170,7 +194,6 @@ namespace iYak.Classes
             if (!ForceRefresh && File.Exists(CachedJson))
             {
                 json = File.ReadAllText(CachedJson);
-                Console.WriteLine("Cached List");
 
             }
             else
@@ -199,31 +222,39 @@ namespace iYak.Classes
 
                 }
 
-                ConvertAzureJsonToVoice(json);
-
             }
+
+            ConvertVoice(json);
 
             return CloudWS.Azure.token;
 
         }
 
-        public static bool ConvertAzureJsonToVoice(string json){
+        public static bool ConvertVoice(string json){
 
 
-            List<Voice> VoiceList = new List<Voice>();
+            AzureVoice.VoiceList = new List<Voice>();
 
-            //Console.WriteLine(json);
+            List<VoiceConvert> JsonList = new List<VoiceConvert>();
 
-            List<Object> JsonList = new List<Object>();
+            JsonList = JsonConvert.DeserializeObject<List<VoiceConvert>>(json);
+            
 
-            JsonList = JsonConvert.DeserializeObject<List<Object>>(json);
-
-            foreach (Object azvoice in JsonList)
+            foreach (VoiceConvert row in JsonList)
             {
                 Voice voice = new Voice()
                 {
-                    // Nickname = azvoice.
-                };
+                    Id        = row.DisplayName,
+                    Nickname  = row.DisplayName,
+                    Handle    = row.ShortName,
+                    Gender    = Voice.FromGender(row.Gender),
+                    VoiceType = Voice.FromType(row.VoiceType),
+                    Host      = Voice.EHost.Azure,
+                    Locale    = row.Locale
+                }; 
+
+                AzureVoice.VoiceList.Add(voice);
+
             }
 
             return true;
@@ -248,9 +279,9 @@ namespace iYak.Classes
 
                 UriBuilder uriBuilder = new UriBuilder(FetchTokenUri);
 
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+                var result            = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
 
-                CloudWS.Azure.token = await result.Content.ReadAsStringAsync();
+                CloudWS.Azure.token   = await result.Content.ReadAsStringAsync();
 
                 return CloudWS.Azure.token;
 
@@ -259,65 +290,18 @@ namespace iYak.Classes
         }
 
 
-        public class Authentication
+        public class VoiceConvert
         {
-            private static DateTime LastToken;
-            private static string accessToken;
-            private static string AccessUri;   
-            private static string apiKey;
-
-            //Access token expires every 10 minutes. Renew it every 9 minutes only.
-            private const int RefreshTokenDuration = 9;
-
+            public string Name;
+            public string DisplayName;
+            public string LocalName;
+            public string ShortName;
+            public string Gender;
+            public string Locale;
+            public string SampleRateHertz;
+            public string VoiceType;
+            public string Status;
             
-
-            public static void SetupTokens()
-            {
-                AccessUri   = String.Format("https://{0}.api.cognitive.microsoft.com/sts/v1.0/issueToken", CloudWS.Azure.region);
-                apiKey      = CloudWS.Azure.key;
-                accessToken = HttpPost(AccessUri, apiKey);
-                LastToken   = DateTime.UtcNow;
-
-            }
-
-            public string GetAccessToken()
-            {
-                return accessToken;
-            }
-
-
-            private static string HttpPost(string accessUri, string apiKey)
-            {
-
-                Console.WriteLine("Trying: {0} {1}", accessUri, apiKey);
-                // Prepare OAuth request
-                WebRequest webRequest = WebRequest.Create(accessUri);
-                webRequest.Method = "POST";
-                webRequest.ContentLength = 0;
-                webRequest.Headers["Ocp-Apim-Subscription-Key"] = apiKey;
-
-                using (WebResponse webResponse = webRequest.GetResponse())
-                {
-                    using (Stream stream = webResponse.GetResponseStream())
-                    {
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            byte[] waveBytes = null;
-                            int count = 0;
-                            do
-                            {
-                                byte[] buf = new byte[1024];
-                                count = stream.Read(buf, 0, 1024);
-                                ms.Write(buf, 0, count);
-                            } while (stream.CanRead && count > 0);
-
-                            waveBytes = ms.ToArray();
-
-                            return Encoding.UTF8.GetString(waveBytes);
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -332,7 +316,7 @@ namespace iYak.Classes
         }
 
        
-
         
     }
+
 }

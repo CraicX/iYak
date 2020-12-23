@@ -44,27 +44,13 @@ namespace iYak.Classes
             this.voice = _voice;
         }
 
-
-        public bool Say(string sayText)
-        {
-            if (voice.Handle == null || voice.Handle == "") return false;
-
-            System.Speech.Synthesis.SpeechSynthesizer tmpVoice = new System.Speech.Synthesis.SpeechSynthesizer();
-            tmpVoice.SetOutputToDefaultAudioDevice();
-            tmpVoice.SelectVoice(voice.Handle);
-            tmpVoice.Volume = voice.Volume;
-            tmpVoice.Rate   = (voice.Rate * 2) - 10;
-            tmpVoice.SpeakAsync(sayText);
-
-            return true;
-
-        }
+        
 
         public static bool Speak(Voice voice) 
         {
 
             if (voice.Host == Voice.EHost.Local) return LocalVoice.Speak(voice);
-            if (voice.Host == Voice.EHost.Azure) return AzureVoice.Speak(voice);
+            if (voice.Host == Voice.EHost.Azure) { AzureVoice.Speak(voice); return true; }
 
             return false;
         
@@ -139,6 +125,7 @@ namespace iYak.Classes
         public string Avatar   = "";
         public string Nickname = "";
         public string Speech   = "";
+        public string Locale   = "";
         public bool Active     = true;
         public int Rate        = 5;
         public int Pitch       = 5;
@@ -158,6 +145,7 @@ namespace iYak.Classes
                 Avatar    = this.Avatar,
                 Nickname  = this.Nickname,
                 Active    = this.Active,
+                Locale    = this.Locale,
                 Rate      = this.Rate,
                 Pitch     = this.Pitch,
                 Volume    = this.Volume,

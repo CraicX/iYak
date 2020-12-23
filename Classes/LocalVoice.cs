@@ -31,15 +31,17 @@ namespace iYak.Classes
 
         public static bool Speak(Voice voice)
         {
-            Synth.SetOutputToDefaultAudioDevice();
+            SpeechSynthesizer TSynth = new SpeechSynthesizer();
 
-            Synth.SelectVoice(voice.Handle);
+            TSynth.SetOutputToDefaultAudioDevice();
 
-            Synth.Volume = voice.Volume;
+            TSynth.SelectVoice(voice.Handle);
 
-            Synth.Rate   = (voice.Rate * 2) - 10;
+            TSynth.Volume = voice.Volume;
 
-            Synth.SpeakAsync(voice.Speech);
+            TSynth.Rate   = (voice.Rate * 2) - 10;
+
+            TSynth.SpeakAsync(voice.Speech);
 
             return true;
         }
@@ -89,11 +91,13 @@ namespace iYak.Classes
             {
                 TempVoice = new Voice
                 {
-                    Active = true,
-                    Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
-                    Handle = iVoice.VoiceInfo.Name,
-                    Gender = convertGenderFromLocal(iVoice.VoiceInfo.Gender),
-                    Host = Voice.EHost.Local
+                    Active   = true,
+                    Id       = Voice.GenerateName(iVoice.VoiceInfo.Name),
+                    Nickname = Voice.GenerateName(iVoice.VoiceInfo.Name),
+                    Handle   = iVoice.VoiceInfo.Name,
+                    Gender   = convertGenderFromLocal(iVoice.VoiceInfo.Gender),
+                    Host     = Voice.EHost.Local,
+                    Locale   = iVoice.VoiceInfo.Culture.DisplayName
                 };
 
                 VoiceList.Add(TempVoice);

@@ -1,4 +1,15 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     Data.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Class for utilizing an SqlLite database
+//
+//
+using System;
 using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;

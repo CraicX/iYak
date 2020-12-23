@@ -1,4 +1,15 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     Helpers.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Static class for misc functions
+//
+//
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +25,7 @@ using System.Text.RegularExpressions;
 
 namespace iYak.Classes
 {
-    public class Helpers
+    public static class Helpers
     {
 
         static public string JoinPath(params String[] Args) {
@@ -145,6 +156,30 @@ namespace iYak.Classes
 
             return FileName;
 
+        }
+
+        public static Object GetPropValue(this Object obj, String name)
+        {
+            foreach (String part in name.Split('.'))
+            {
+                if (obj == null) { return null; }
+
+                Type type = obj.GetType();
+                PropertyInfo info = type.GetProperty(part);
+                if (info == null) { return null; }
+
+                obj = info.GetValue(obj, null);
+            }
+            return obj;
+        }
+
+        public static T GetPropValue<T>(this Object obj, String name)
+        {
+            Object retval = GetPropValue(obj, name);
+            if (retval == null) { return default(T); }
+
+            // throws InvalidCastException if types are incompatible
+            return (T)retval;
         }
 
     }

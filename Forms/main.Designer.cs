@@ -31,9 +31,9 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +62,12 @@ namespace iYak
             this.label5 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ActorsPanel = new System.Windows.Forms.Panel();
+            this.splitter3 = new System.Windows.Forms.Splitter();
             this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.ListExport = new System.Windows.Forms.ListView();
+            this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colFileDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExport = new System.Windows.Forms.Button();
@@ -113,10 +117,6 @@ namespace iYak
             this.panel4 = new System.Windows.Forms.Panel();
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.ListExport = new System.Windows.Forms.ListView();
-            this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colFileDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -444,6 +444,17 @@ namespace iYak
             this.ActorsPanel.Size = new System.Drawing.Size(225, 575);
             this.ActorsPanel.TabIndex = 26;
             // 
+            // splitter3
+            // 
+            this.splitter3.BackColor = System.Drawing.Color.MidnightBlue;
+            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter3.Location = new System.Drawing.Point(0, 264);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(225, 7);
+            this.splitter3.TabIndex = 7;
+            this.splitter3.TabStop = false;
+            // 
             // ActorsFlow
             // 
             this.ActorsFlow.AutoScroll = true;
@@ -471,6 +482,36 @@ namespace iYak
             this.label6.Size = new System.Drawing.Size(225, 31);
             this.label6.TabIndex = 5;
             this.label6.Text = "Actors";
+            // 
+            // ListExport
+            // 
+            this.ListExport.BackColor = System.Drawing.Color.MidnightBlue;
+            this.ListExport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ListExport.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colFileName,
+            this.colFileDate});
+            this.ListExport.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ListExport.ForeColor = System.Drawing.Color.Khaki;
+            this.ListExport.FullRowSelect = true;
+            this.ListExport.HideSelection = false;
+            this.ListExport.Location = new System.Drawing.Point(0, 271);
+            this.ListExport.Name = "ListExport";
+            this.ListExport.Size = new System.Drawing.Size(225, 304);
+            this.ListExport.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.ListExport.TabIndex = 8;
+            this.ListExport.UseCompatibleStateImageBehavior = false;
+            this.ListExport.View = System.Windows.Forms.View.Details;
+            this.ListExport.DoubleClick += new System.EventHandler(this.ListExport_DoubleClicked);
+            // 
+            // colFileName
+            // 
+            this.colFileName.Text = "Filename";
+            this.colFileName.Width = 145;
+            // 
+            // colFileDate
+            // 
+            this.colFileDate.Text = "Date";
+            this.colFileDate.Width = 79;
             // 
             // panel3
             // 
@@ -945,19 +986,19 @@ namespace iYak
             this.VoiceSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
             this.VoiceSelect.FullRowSelect = true;
-            listViewGroup4.Header = "Male";
-            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup4.Name = "grpMale";
-            listViewGroup5.Header = "Female";
-            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup5.Name = "grpFemale";
-            listViewGroup6.Header = "Neutral";
-            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup6.Name = "grpNeutral";
+            listViewGroup1.Header = "Male";
+            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup1.Name = "grpMale";
+            listViewGroup2.Header = "Female";
+            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup2.Name = "grpFemale";
+            listViewGroup3.Header = "Neutral";
+            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup3.Name = "grpNeutral";
             this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
             this.VoiceSelect.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.VoiceSelect.HideSelection = false;
             this.VoiceSelect.LabelWrap = false;
@@ -981,14 +1022,13 @@ namespace iYak
             // col2
             // 
             this.col2.Text = "-";
-            this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.col2.Width = 40;
+            this.col2.Width = 49;
             // 
             // col3
             // 
             this.col3.Text = "Type";
             this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.col3.Width = 70;
+            this.col3.Width = 62;
             // 
             // VCFilter
             // 
@@ -1172,47 +1212,6 @@ namespace iYak
             this.IconsYak.Images.SetKeyName(39, "tag_icon&16.png");
             this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
             this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
-            // 
-            // splitter3
-            // 
-            this.splitter3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter3.Location = new System.Drawing.Point(0, 264);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(225, 7);
-            this.splitter3.TabIndex = 7;
-            this.splitter3.TabStop = false;
-            // 
-            // ListExport
-            // 
-            this.ListExport.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ListExport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ListExport.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colFileName,
-            this.colFileDate});
-            this.ListExport.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ListExport.ForeColor = System.Drawing.Color.Khaki;
-            this.ListExport.FullRowSelect = true;
-            this.ListExport.HideSelection = false;
-            this.ListExport.Location = new System.Drawing.Point(0, 271);
-            this.ListExport.Name = "ListExport";
-            this.ListExport.Size = new System.Drawing.Size(225, 304);
-            this.ListExport.Sorting = System.Windows.Forms.SortOrder.Descending;
-            this.ListExport.TabIndex = 8;
-            this.ListExport.UseCompatibleStateImageBehavior = false;
-            this.ListExport.View = System.Windows.Forms.View.Details;
-            this.ListExport.DoubleClick += new System.EventHandler(this.ListExport_DoubleClicked);
-            // 
-            // colFileName
-            // 
-            this.colFileName.Text = "Filename";
-            this.colFileName.Width = 145;
-            // 
-            // colFileDate
-            // 
-            this.colFileDate.Text = "Date";
-            this.colFileDate.Width = 79;
             // 
             // Main
             // 
