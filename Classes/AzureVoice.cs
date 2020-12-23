@@ -10,7 +10,6 @@
 //  using Microsoft CognitiveServices & Azure SDK
 //
 //
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +32,23 @@ namespace iYak.Classes
         public static SpeechConfig AzureConfig;
         public static SpeechSynthesizer Synth;
 
+        //
+        //  Template for ssml 
+        //
+        public static string ssmlTemplate = @"
+                <speak version=""1.0"" xmlns=""https://www.w3.org/2001/10/synthesis"" xml:lang=""en-US"">
+                    <voice name=""{1}"">
+                        <prosody volume=""{2}"" {3} {4}>
+                            {0}
+                        </prosody>
+                    </voice>
+                </speak>
+            ";
+
+
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    INITIALIZE AZURE 
+        // ────────────────────────────────────────────────────────────────────────
         public static void Init()
         {
             if (CloudWS.Azure.key == "") return;
@@ -45,13 +61,30 @@ namespace iYak.Classes
 
         }
 
+
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    SPEAK
+        // ────────────────────────────────────────────────────────────────────────
+        public static bool Speak(Voice voice)
+        {
+
+            
+
+            return true;
+
+        }
+
+
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    EXPORT
+        // ────────────────────────────────────────────────────────────────────────
         public static AudioFile Export(Voice voice, string FileName = "")
         {
 
             //
             //  Validate and set our export file name/path
             //
-            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice) + ".mp3";
+            if (FileName == "") FileName = Helpers.GenerateFileName(voice) + ".mp3";
 
             string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
 
@@ -65,19 +98,6 @@ namespace iYak.Classes
 
         public static async void ExportTask(Voice voice, string FilePath)
         {
-
-            //
-            //  Template for ssml 
-            //
-            string ssmlTemplate = @"
-                <speak version=""1.0"" xmlns=""https://www.w3.org/2001/10/synthesis"" xml:lang=""en-US"">
-                    <voice name=""{1}"">
-                        <prosody volume=""{2}"" {3} {4}>
-                            {0}
-                        </prosody>
-                    </voice>
-                </speak>
-            ";
 
             string Pitch = "";
             string Rate  = "";
@@ -109,32 +129,37 @@ namespace iYak.Classes
 
             TempConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3);
 
-            var TempSynth = new SpeechSynthesizer(TempConfig);
-
-            AudioConfig SaveFormat = AudioConfig.FromWavFileOutput(FilePath);
-
+            var TempSynth                     = new SpeechSynthesizer(TempConfig);
+            AudioConfig SaveFormat            = AudioConfig.FromWavFileOutput(FilePath);
             SpeechSynthesisResult SynthResult = await TempSynth.SpeakSsmlAsync(ssml);
+            AudioDataStream stream            = AudioDataStream.FromResult(SynthResult);
 
-            AudioDataStream stream = AudioDataStream.FromResult(SynthResult);
-
+            //
+            //  Save the Stream Data to file
+            //
             await stream.SaveToWaveFileAsync(FilePath);
 
         }
 
-        public static List<Voice> GetVoiceList()
+        
+        
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    GET VOICE LIST
+        // ────────────────────────────────────────────────────────────────────────
+        public static List<Voice> GetVoiceList(bool ForceRefresh=false)
         {
             Voice TempVoice;
 
             List<Voice> VoiceList = new List<Voice>();
 
-
+            GetVoiceListTask(ForceRefresh);
 
             return VoiceList;
 
         }
 
 
-        static public async Task<string> AppendVoiceListAzure()
+        public static async Task<string> GetVoiceListTask(bool ForceRefresh=false)
         {
             string CachedJson = Helpers.JoinPath(Config.RootPath, "Azure_" + CloudWS.Azure.region + ".json");
             string json = "";
@@ -142,7 +167,7 @@ namespace iYak.Classes
             //
             //  Check if we already grabbed the voice list from Azure
             //
-            if (File.Exists(CachedJson))
+            if (!ForceRefresh && File.Exists(CachedJson))
             {
                 json = File.ReadAllText(CachedJson);
                 Console.WriteLine("Cached List");
@@ -154,7 +179,7 @@ namespace iYak.Classes
                 //
                 //  Download the voicelist from Azure
                 //
-                Authentication.SetupTokens();
+                await Authenticate();
 
                 string wsUri = "https://" + CloudWS.Azure.region + ".tts.speech.microsoft.com/cognitiveservices/voices/list";
 
@@ -169,7 +194,8 @@ namespace iYak.Classes
                     //
                     //  Cache the Voice List to file
                     //
-                    File.WriteAllText(CachedJson, json);
+                    if (json.Length > 1) File.WriteAllText(CachedJson, json);
+                    else Console.WriteLine("Could not retrieve voice list from Azure.");
 
                 }
 
@@ -205,6 +231,34 @@ namespace iYak.Classes
         }
 
 
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    AUTHENTICATE AZURE SERVICES
+        // ────────────────────────────────────────────────────────────────────────
+        public static async Task<string> Authenticate()
+        {
+            string FetchTokenUri = String.Format(
+                "https://{0}.api.cognitive.microsoft.com/sts/v1.0/issueToken",
+                CloudWS.Azure.region
+            );
+
+
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", CloudWS.Azure.key);
+
+                UriBuilder uriBuilder = new UriBuilder(FetchTokenUri);
+
+                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+
+                CloudWS.Azure.token = await result.Content.ReadAsStringAsync();
+
+                return CloudWS.Azure.token;
+
+            }
+
+        }
+
+
         public class Authentication
         {
             private static DateTime LastToken;
@@ -234,6 +288,8 @@ namespace iYak.Classes
 
             private static string HttpPost(string accessUri, string apiKey)
             {
+
+                Console.WriteLine("Trying: {0} {1}", accessUri, apiKey);
                 // Prepare OAuth request
                 WebRequest webRequest = WebRequest.Create(accessUri);
                 webRequest.Method = "POST";
@@ -275,269 +331,8 @@ namespace iYak.Classes
             public T EventData { get; private set; }
         }
 
-        public enum Gender
-        {
-            Female,
-            Male
-        }
+       
 
-        public enum AudioOutputFormat
-        {
-            Raw8Khz8BitMonoMULaw,
-            Raw16Khz16BitMonoPcm,
-            Riff8Khz8BitMonoMULaw,
-            Riff16Khz16BitMonoPcm,
-            Ssml16Khz16BitMonoSilk,
-            Raw16Khz16BitMonoTrueSilk,
-            Ssml16Khz16BitMonoTts,
-            Audio16Khz128KBitRateMonoMp3,
-            Audio16Khz64KBitRateMonoMp3,
-            Audio16Khz32KBitRateMonoMp3,
-            Audio16Khz16KbpsMonoSiren,
-            Riff16Khz16KbpsMonoSiren,
-            Raw24Khz16BitMonoTrueSilk,
-            Raw24Khz16BitMonoPcm,
-            Riff24Khz16BitMonoPcm,
-            Audio24Khz48KBitRateMonoMp3,
-            Audio24Khz96KBitRateMonoMp3,
-            Audio24Khz160KBitRateMonoMp3
-        }
-
-        public class Synthesize
-        {
-            private string GenerateSsml(string locale, string gender, string name, string text)
-            {
-                var ssmlDoc = new XDocument(
-                                  new XElement("speak",
-                                      new XAttribute("version", "1.0"),
-                                      new XAttribute(XNamespace.Xml + "lang", locale),
-                                      new XElement("voice",
-                                          new XAttribute(XNamespace.Xml + "lang", locale),
-                                          new XAttribute(XNamespace.Xml + "gender", gender),
-                                          new XAttribute("name", name),
-                                          text)));
-                return ssmlDoc.ToString();
-            }
-
-            private HttpClient client;
-            private HttpClientHandler handler;
-
-            public Synthesize()
-            {
-                var cookieContainer = new CookieContainer();
-                handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
-                client = new HttpClient(handler);
-            }
-
-            ~Synthesize()
-            {
-                client.Dispose();
-                handler.Dispose();
-            }
-
-            public event EventHandler<GenericEventArgs<Stream>> OnAudioAvailable;
-
-            public event EventHandler<GenericEventArgs<Exception>> OnError;
-
-            public Task Speak(CancellationToken cancellationToken, InputOptions inputOptions)
-            {
-                client.DefaultRequestHeaders.Clear();
-                foreach (var header in inputOptions.Headers)
-                {
-                    client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
-                }
-
-                var genderValue = "";
-                switch (inputOptions.VoiceType)
-                {
-                    case Gender.Male:
-                        genderValue = "Male";
-                        break;
-
-                    case Gender.Female:
-                    default:
-                        genderValue = "Female";
-                        break;
-                }
-
-                var request = new HttpRequestMessage(HttpMethod.Post, inputOptions.RequestUri)
-                {
-                    Content = new StringContent(GenerateSsml(inputOptions.Locale, genderValue, inputOptions.VoiceName, inputOptions.Text))
-                };
-
-                var httpTask = client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-                Console.WriteLine("Response status code: [{0}]", httpTask.Result.StatusCode);
-
-                var saveTask = httpTask.ContinueWith(
-                    async (responseMessage, token) =>
-                    {
-                        try
-                        {
-                            if (responseMessage.IsCompleted && responseMessage.Result != null && responseMessage.Result.IsSuccessStatusCode)
-                            {
-                                var httpStream = await responseMessage.Result.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                                this.AudioAvailable(new GenericEventArgs<Stream>(httpStream));
-                            }
-                            else
-                            {
-                                this.Error(new GenericEventArgs<Exception>(new Exception(String.Format("Service returned {0}", responseMessage.Result.StatusCode))));
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            this.Error(new GenericEventArgs<Exception>(e.GetBaseException()));
-                        }
-                        finally
-                        {
-                            responseMessage.Dispose();
-                            request.Dispose();
-                        }
-                    },
-                    TaskContinuationOptions.AttachedToParent,
-                    cancellationToken);
-
-                return saveTask;
-            }
-
-            private void AudioAvailable(GenericEventArgs<Stream> e)
-            {
-                EventHandler<GenericEventArgs<Stream>> handler = this.OnAudioAvailable;
-                if (handler != null)
-                {
-                    handler(this, e);
-                }
-            }
-
-            private void Error(GenericEventArgs<Exception> e)
-            {
-                EventHandler<GenericEventArgs<Exception>> handler = this.OnError;
-                if (handler != null)
-                {
-                    handler(this, e);
-                }
-            }
-
-            public class InputOptions
-            {
-                public InputOptions()
-                {
-                    this.Locale = "en-us";
-                    this.VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)";
-                    // Default to Riff16Khz16BitMonoPcm output format.
-                    this.OutputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm;
-                }
-
-                public Uri RequestUri { get; set; }
-
-                public AudioOutputFormat OutputFormat { get; set; }
-
-                public IEnumerable<KeyValuePair<string, string>> Headers
-                {
-                    get
-                    {
-                        List<KeyValuePair<string, string>> toReturn = new List<KeyValuePair<string, string>>();
-                        toReturn.Add(new KeyValuePair<string, string>("Content-Type", "application/ssml+xml"));
-
-                        string outputFormat;
-
-                        switch (this.OutputFormat)
-                        {
-                            case AudioOutputFormat.Raw16Khz16BitMonoPcm:
-                                outputFormat = "raw-16khz-16bit-mono-pcm";
-                                break;
-
-                            case AudioOutputFormat.Raw8Khz8BitMonoMULaw:
-                                outputFormat = "raw-8khz-8bit-mono-mulaw";
-                                break;
-
-                            case AudioOutputFormat.Riff16Khz16BitMonoPcm:
-                                outputFormat = "riff-16khz-16bit-mono-pcm";
-                                break;
-
-                            case AudioOutputFormat.Riff8Khz8BitMonoMULaw:
-                                outputFormat = "riff-8khz-8bit-mono-mulaw";
-                                break;
-
-                            case AudioOutputFormat.Ssml16Khz16BitMonoSilk:
-                                outputFormat = "ssml-16khz-16bit-mono-silk";
-                                break;
-
-                            case AudioOutputFormat.Raw16Khz16BitMonoTrueSilk:
-                                outputFormat = "raw-16khz-16bit-mono-truesilk";
-                                break;
-
-                            case AudioOutputFormat.Ssml16Khz16BitMonoTts:
-                                outputFormat = "ssml-16khz-16bit-mono-tts";
-                                break;
-
-                            case AudioOutputFormat.Audio16Khz128KBitRateMonoMp3:
-                                outputFormat = "audio-16khz-128kbitrate-mono-mp3";
-                                break;
-
-                            case AudioOutputFormat.Audio16Khz64KBitRateMonoMp3:
-                                outputFormat = "audio-16khz-64kbitrate-mono-mp3";
-                                break;
-
-                            case AudioOutputFormat.Audio16Khz32KBitRateMonoMp3:
-                                outputFormat = "audio-16khz-32kbitrate-mono-mp3";
-                                break;
-
-                            case AudioOutputFormat.Audio16Khz16KbpsMonoSiren:
-                                outputFormat = "audio-16khz-16kbps-mono-siren";
-                                break;
-
-                            case AudioOutputFormat.Riff16Khz16KbpsMonoSiren:
-                                outputFormat = "riff-16khz-16kbps-mono-siren";
-                                break;
-                            case AudioOutputFormat.Raw24Khz16BitMonoPcm:
-                                outputFormat = "raw-24khz-16bit-mono-pcm";
-                                break;
-                            case AudioOutputFormat.Riff24Khz16BitMonoPcm:
-                                outputFormat = "riff-24khz-16bit-mono-pcm";
-                                break;
-                            case AudioOutputFormat.Audio24Khz48KBitRateMonoMp3:
-                                outputFormat = "audio-24khz-48kbitrate-mono-mp3";
-                                break;
-                            case AudioOutputFormat.Audio24Khz96KBitRateMonoMp3:
-                                outputFormat = "audio-24khz-96kbitrate-mono-mp3";
-                                break;
-                            case AudioOutputFormat.Audio24Khz160KBitRateMonoMp3:
-                                outputFormat = "audio-24khz-160kbitrate-mono-mp3";
-                                break;
-                            default:
-                                outputFormat = "riff-16khz-16bit-mono-pcm";
-                                break;
-                        }
-
-                        toReturn.Add(new KeyValuePair<string, string>("X-Microsoft-OutputFormat", outputFormat));
-                        // authorization Header
-                        toReturn.Add(new KeyValuePair<string, string>("Authorization", this.AuthorizationToken));
-                        // Refer to the doc
-                        toReturn.Add(new KeyValuePair<string, string>("X-Search-AppId", "07D3234E49CE426DAA29772419F436CA"));
-                        // Refer to the doc
-                        toReturn.Add(new KeyValuePair<string, string>("X-Search-ClientID", "1ECFAE91408841A480F00935DC390960"));
-                        // The software originating the request
-                        toReturn.Add(new KeyValuePair<string, string>("User-Agent", "TTSClient"));
-
-                        return toReturn;
-                    }
-                    set
-                    {
-                        Headers = value;
-                    }
-                }
-
-                public String Locale { get; set; }
-
-                public Gender VoiceType { get; set; }
-
-                public string VoiceName { get; set; }
-
-                public string AuthorizationToken { get; set; }
-
-                public string Text { get; set; }
-
-            }
-        }
+        
     }
 }

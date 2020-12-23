@@ -9,6 +9,7 @@ using System.Collections;
 using System.Net;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace iYak.Classes
@@ -121,6 +122,29 @@ namespace iYak.Classes
         public static void Alert(string message, string caption="Alert") 
         {
             MessageBox.Show(message, caption);
+        }
+
+        public static string GenerateFileName(Voice voice)
+        {
+
+            string FileName = voice.Nickname + "_";
+
+            string words = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ").Replace("  ", " ");
+
+            if (words.Length > 20) words = words.Substring(0, 20);
+
+            string timestamp = DateTime.UtcNow.Ticks.ToString();
+
+            timestamp = timestamp.Substring(timestamp.Length - 5);
+
+            FileName += words + "_" + timestamp;
+
+            FileName = FileName.Replace(" ", "-").ToLower();
+
+            if (FileName.Substring(FileName.Length - 1) == "-") FileName = FileName.Substring(0, FileName.Length - 2);
+
+            return FileName;
+
         }
 
     }

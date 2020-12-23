@@ -10,7 +10,6 @@
 //  utilizing Microsoft's Speech API (SAPI)
 //
 //
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +29,7 @@ namespace iYak.Classes
         private static SpeechSynthesizer Synth = new SpeechSynthesizer();
 
 
-        public static void Speak(Voice voice)
+        public static bool Speak(Voice voice)
         {
             Synth.SetOutputToDefaultAudioDevice();
 
@@ -41,6 +40,8 @@ namespace iYak.Classes
             Synth.Rate   = (voice.Rate * 2) - 10;
 
             Synth.SpeakAsync(voice.Speech);
+
+            return true;
         }
 
 
@@ -48,7 +49,7 @@ namespace iYak.Classes
         public static AudioFile Export(Voice voice, string FileName = "")
         {
 
-            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice) + ".wav";
+            if (FileName == "") FileName = Helpers.GenerateFileName(voice) + ".wav";
 
             string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
 
@@ -91,7 +92,7 @@ namespace iYak.Classes
                     Active = true,
                     Id = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle = iVoice.VoiceInfo.Name,
-                    Gender = Voice.convertGenderFromLocal(iVoice.VoiceInfo.Gender),
+                    Gender = convertGenderFromLocal(iVoice.VoiceInfo.Gender),
                     Host = Voice.EHost.Local
                 };
 
@@ -100,6 +101,18 @@ namespace iYak.Classes
             }
 
             return VoiceList;
+        }
+
+
+        public static Voice.EGender convertGenderFromLocal(VoiceGender gender)
+        {
+            if (gender == VoiceGender.Male)     return Voice.EGender.Male;
+            if (gender == VoiceGender.Female)   return Voice.EGender.Female;
+            if (gender == VoiceGender.Neutral)  return Voice.EGender.Neutral;
+            if (gender == VoiceGender.NotSet)   return Voice.EGender.NotSet;
+
+            return Voice.EGender.NotSet;
+
         }
     }
 }

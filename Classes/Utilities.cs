@@ -73,15 +73,13 @@ namespace iYak.Classes
             //
             Config.mainRef.SayBox.Text = Config.DefaultText;
 
+            if (CloudWS.Azure.enabled) AzureVoice.Init();
+
             Config.Voices = RoboVoice.GetVoiceList();
 
             FillVoiceList(Config.Voices);
 
-            if (CloudWS.Azure.enabled)
-            {
-                RoboVoice.InitAzure();
-                VoiceImport.AppendVoiceListAzure();
-            }
+            
 
 
         }
@@ -158,7 +156,7 @@ namespace iYak.Classes
             foreach(AudioFile afile in AudioList)
             {
                 string shortname = afile.FilePath.Substring(afile.FilePath.LastIndexOf("\\")+1);
-                Console.WriteLine(afile.FilePath + " -> " + shortname);
+
                 ListViewItem litem = new ListViewItem(shortname)
                 {
                     Tag                     = afile.FilePath,
@@ -454,7 +452,7 @@ namespace iYak.Classes
             sw.Close();
 
             string DSpeechFile = Helpers.JoinPath(Config.RootPath, "DefaultSpeech.txt");
-            Console.WriteLine("Saving to: " + DSpeechFile + " : " + Config.DefaultText);
+
             File.WriteAllText(DSpeechFile, Config.DefaultText);
 
         }
@@ -631,33 +629,6 @@ namespace iYak.Classes
 
         }
 
-
-        //
-        // ────────────────────────────────────────────────────────────────────────
-        //   :::    AZURE
-        // ────────────────────────────────────────────────────────────────────────
-        //
-        // Utilities for Azure Webservices
-        //
-        static public async Task<string> AzureAuthentication()
-        {
-            string FetchTokenUri = "https://" + CloudWS.Azure.region + ".api.cognitive.microsoft.com/sts/v1.0/issueToken";
-
-            using (var client = new System.Net.Http.HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", CloudWS.Azure.key);
-                UriBuilder uriBuilder = new UriBuilder(FetchTokenUri);
-
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-                Console.WriteLine("Token Uri: {0} {1}", uriBuilder.Uri.AbsoluteUri, CloudWS.Azure.key);
-                CloudWS.Azure.token = await result.Content.ReadAsStringAsync();
-                Console.WriteLine("Token: {0}", CloudWS.Azure.token);
-                return CloudWS.Azure.token;
-                //return await result.Content.ReadAsStringAsync();
-
-            }
-
-        }
 
     }
 

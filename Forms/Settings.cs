@@ -131,7 +131,7 @@ namespace iYak
         //   :::    S H O W   L O C A L   V O I C E S
         // ────────────────────────────────────────────────────────────────────────
         //
-        // List view bo
+        // 
         //
         public void ShowLocalVoices() 
         {

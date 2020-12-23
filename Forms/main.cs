@@ -246,7 +246,7 @@ namespace iYak
         private void refreshListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Config.Voices.Clear();
-            Config.Voices = RoboVoice.GetVoiceList();
+            Config.Voices = RoboVoice.GetVoiceList(true);
            
 
             Utilities.FillVoiceList(Config.Voices);

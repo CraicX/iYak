@@ -1,12 +1,23 @@
-﻿using System;
+﻿//
+//  ██╗██╗   ██╗ █████╗ ██╗  ██╗
+//  ██║╚██╗ ██╔╝██╔══██╗██║ ██╔╝
+//  ██║ ╚████╔╝ ███████║█████╔╝     RoboVoice.cs
+//  ██║  ╚██╔╝  ██╔══██║██╔═██╗ 
+//  ██║   ██║   ██║  ██║██║  ██╗
+//  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+//
+//  Interface for the various Text-to-speech services
+//
+//  Currently supported services:
+//  SAPI    (LocalVoice.cs)
+//  Azure   (AzureVoice.cs)
+//
+//
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Speech;
-using System.Speech.Synthesis;
-using System.Speech.Synthesis.TtsEngine;
-using System.Text.RegularExpressions;
 
 
 namespace iYak.Classes
@@ -14,10 +25,9 @@ namespace iYak.Classes
     public class RoboVoice
     {
 
-        static private Boolean isImported   = false;
-        static public Boolean AzureReady   = false;
-        static public Boolean AzureEnabled = false;
-        //static private Boolean GCloudReady = false;
+        static private Boolean isImported    = false;
+        static public Boolean AzureReady     = false;
+        static public Boolean AzureEnabled   = false;
 
 
         public Voice voice = new Voice();
@@ -50,9 +60,19 @@ namespace iYak.Classes
 
         }
 
+        public static bool Speak(Voice voice) 
+        {
+
+            if (voice.Host == Voice.EHost.Local) return LocalVoice.Speak(voice);
+            if (voice.Host == Voice.EHost.Azure) return AzureVoice.Speak(voice);
+
+            return false;
+        
+       }
+
         public static AudioFile ExportSpeech(Voice voice, string FileName="")
         {
-            if (FileName == "") FileName = RoboVoice.GenerateFileName(voice);
+            if (FileName == "") FileName = Helpers.GenerateFileName(voice);
             string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
 
             if (voice.Host == Voice.EHost.Local)        LocalVoice.Export(voice, FileName);
@@ -65,46 +85,7 @@ namespace iYak.Classes
         }
         
 
-
-        static public string GenerateFileName(Voice voice) 
-        {
-
-            string FileName = voice.Nickname + "_";
-
-            string words    = Regex.Replace(voice.Speech, "[^a-zA-Z]", " ").Replace("  ", " ");
-            
-            if (words.Length > 20) words = words.Substring(0, 20);
-
-            string timestamp = DateTime.UtcNow.Ticks.ToString();
-
-            timestamp = timestamp.Substring(timestamp.Length - 5);
-
-            FileName += words + "_" + timestamp;
-
-            FileName = FileName.Replace(" ", "-").ToLower();
-
-            if (FileName.Substring(FileName.Length - 1) == "-") FileName = FileName.Substring(0, FileName.Length - 2);
-
-            return FileName;
-
-        }
-
-        static public void InitAzure()
-        {
-
-            
-            //if (CloudWS.Azure.key == "") return;
-            //AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
-            //AzureSynth = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(AzureConfig);
-            //RoboVoice.AzureConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
-            //RoboVoice.AzureReady = true;
-
-            
-
-        }
-
-
-        static public List<Voice> GetVoiceList()
+        static public List<Voice> GetVoiceList(bool ForceRefresh=false)
         {
             List<Voice> VoiceList = new List<Voice>();
 
@@ -112,6 +93,15 @@ namespace iYak.Classes
             foreach( Voice TempVoice in TempList)
             {
                 VoiceList.Add(TempVoice);
+            }
+
+            if(AzureReady)
+            {
+                TempList = AzureVoice.GetVoiceList(ForceRefresh);
+                foreach (Voice TempVoice in TempList)
+                {
+                    VoiceList.Add(TempVoice);
+                }
             }
 
             return VoiceList;
@@ -282,16 +272,7 @@ namespace iYak.Classes
 
         }
 
-        static public EGender convertGenderFromLocal(System.Speech.Synthesis.VoiceGender gender)
-        {
-            if (gender == VoiceGender.Male)     return EGender.Male;
-            if (gender == VoiceGender.Female)   return EGender.Female;
-            if (gender == VoiceGender.Neutral)  return EGender.Neutral;
-            if (gender == VoiceGender.NotSet)   return EGender.NotSet;
-
-            return EGender.NotSet;
-
-        }
+        
 
         public void SetVoice(String Lookup)
         {
