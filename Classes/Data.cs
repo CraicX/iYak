@@ -436,17 +436,17 @@ namespace iYak.Classes
 
                 Voice voice = new Voice()
                 {
-                    Uid = int.Parse(reader.GetString(0)),
-                    Nickname = reader.GetString(1),
-                    Handle = reader.GetString(2),
-                    Id = reader.GetString(3),
+                    Uid       = int.Parse(reader.GetString(0)),
+                    Nickname  = reader.GetString(1),
+                    Handle    = reader.GetString(2),
+                    Id        = reader.GetString(3),
                     VoiceType = Voice.FromType(reader.GetString(4)),
-                    Host = Voice.FromHost(reader.GetString(5)),
-                    Gender = Voice.FromGender(reader.GetString(6)),
-                    Volume = int.Parse(reader.GetString(7)),
-                    Rate = int.Parse(reader.GetString(8)),
-                    Pitch = int.Parse(reader.GetString(9)),
-                    Avatar = reader.GetString(10)
+                    Host      = Voice.FromHost(reader.GetString(5)),
+                    Gender    = Voice.FromGender(reader.GetString(6)),
+                    Volume    = int.Parse(reader.GetString(7)),
+                    Rate      = int.Parse(reader.GetString(8)),
+                    Pitch     = int.Parse(reader.GetString(9)),
+                    Avatar    = reader.GetString(10)
                 };
 
                 Actors.Add(voice);
@@ -459,9 +459,7 @@ namespace iYak.Classes
 
             return Actors;
 
-
         }
-
 
     }
 
