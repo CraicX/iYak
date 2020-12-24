@@ -211,9 +211,12 @@ namespace iYak.Classes
             foreach (Voice vItem in VList)
             {
 
-                if (Config.VFilter.local    && vItem.Host   == Voice.EHost.Local)       continue;
                 if (Config.VFilter.male     && vItem.Gender == Voice.EGender.Male)      continue;
                 if (Config.VFilter.female   && vItem.Gender == Voice.EGender.Female)    continue;
+                if (Config.VFilter.local    && vItem.Host   == Voice.EHost.Local)       continue;
+                if (Config.VFilter.azure    && vItem.Host   == Voice.EHost.Azure)       continue;
+                if (Config.VFilter.aws      && vItem.Host   == Voice.EHost.AWS)         continue;
+                if (Config.VFilter.gcloud   && vItem.Host   == Voice.EHost.GCloud)      continue;
 
                 if (vItem.Gender == Voice.EGender.Male) {
                     imgNum    = 0;
