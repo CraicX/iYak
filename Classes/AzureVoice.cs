@@ -79,7 +79,8 @@ namespace iYak.Classes
             if (voice.Pitch != 5)
             {
                 int pitchVal = voice.Pitch - 5;
-                Pitch = "pitch=\"" + (pitchVal < 0, "-", "+") + Math.Abs(pitchVal) + "st\"";
+
+                Pitch = "pitch=\"" + (pitchVal < 0 ? "-" : "+") + Math.Abs(pitchVal) + "st\"";
             }
 
             if (voice.Rate != 5)
@@ -92,6 +93,8 @@ namespace iYak.Classes
             //  Build our ssml string from template
             //
             string ssml = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
+
+            Console.WriteLine(ssml);
 
             SpeechSynthesisResult result = await Synth.SpeakSsmlAsync(ssml);
 
@@ -131,7 +134,7 @@ namespace iYak.Classes
             if( voice.Pitch != 5 )
             {
                 int pitchVal = voice.Pitch - 5;
-                Pitch = "pitch=\"" + (pitchVal < 0, "-", "+") + Math.Abs(pitchVal) + "st\"";
+                Pitch = "pitch=\"" + (pitchVal < 0 ? "-" : "+") + Math.Abs(pitchVal) + "st\"";
             }
 
             if( voice.Rate != 5 )
@@ -144,6 +147,8 @@ namespace iYak.Classes
             //  Build our ssml string from template
             //
             string ssml  = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
+
+            Console.WriteLine(ssml);
 
             //
             //  Create new Synthesizer object
@@ -169,12 +174,10 @@ namespace iYak.Classes
         // ────────────────────────────────────────────────────────────────────────
         //   :::    GET VOICE LIST
         // ────────────────────────────────────────────────────────────────────────
-        public static List<Voice> GetVoiceList(bool ForceRefresh=false)
+        public static async Task<List<Voice>> GetVoiceList(bool ForceRefresh=false)
         {
-            Voice TempVoice;
 
-
-            GetVoiceListTask(ForceRefresh);
+            await GetVoiceListTask(ForceRefresh);
 
             return AzureVoice.VoiceList;
 

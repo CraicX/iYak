@@ -83,7 +83,7 @@ namespace iYak.Classes
 
             if(AzureReady)
             {
-                TempList = AzureVoice.GetVoiceList(ForceRefresh);
+                TempList = AzureVoice.GetVoiceList(ForceRefresh).Result;
                 foreach (Voice TempVoice in TempList)
                 {
                     VoiceList.Add(TempVoice);
