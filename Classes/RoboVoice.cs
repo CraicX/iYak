@@ -262,13 +262,13 @@ namespace iYak.Classes
 
         
 
-        public void SetVoice(String Lookup)
+        public void SetVoice(string LookupId, EHost LookupHost=EHost.Local)
         {
 
             foreach (Voice tmpVoice in Config.Voices)
             {
 
-                if (tmpVoice.Id == Lookup)
+                if (tmpVoice.Id == LookupId && tmpVoice.Host == LookupHost)
                 {
                     Id        = tmpVoice.Id;
                     Handle    = tmpVoice.Handle;

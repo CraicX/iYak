@@ -117,7 +117,11 @@ namespace iYak
 
             Config.CurrentVoice = new Voice();
 
-            Config.CurrentVoice.SetVoice(VoiceSelect.Items[VoiceSelect.SelectedIndices[0]].Text);
+            ListViewItem SelectedVoice = VoiceSelect.Items[VoiceSelect.SelectedIndices[0]];
+
+            string SelectedHost = SelectedVoice.SubItems[1].Text;
+
+            Config.CurrentVoice.SetVoice(SelectedVoice.Text, Voice.FromHost(SelectedHost));
 
             if (Config.CurrentFace.Tag != null)
             {
