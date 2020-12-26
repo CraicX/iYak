@@ -133,7 +133,7 @@ namespace iYak
             lblVoice.Text     = speaker.Id;
             lblGender.Text    = Voice.GetGender(speaker.Gender);
             lblService.Text   = Voice.GetHost(speaker.Host);
-            lblType.Text      = Voice.GetType(speaker.VoiceType);
+            lblType.Text      = Voice.GetVoiceType(speaker.VoiceType);
             tbNickname.Text   = speaker.Nickname;
         }
 

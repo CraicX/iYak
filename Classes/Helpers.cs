@@ -183,4 +183,44 @@ namespace iYak.Classes
         }
 
     }
+
+
+    public class HttpPost
+    {
+
+        public WebHeaderCollection Headers = new WebHeaderCollection();
+        public string Method = "POST";
+
+
+        public string Request(string accessUri)
+        {
+            // Prepare OAuth request
+            WebRequest webRequest = WebRequest.Create(accessUri);
+            webRequest.Method = Method;
+            webRequest.ContentLength = 0;
+            if(Headers.Count >= 1) webRequest.Headers = Headers;
+
+            using (WebResponse webResponse = webRequest.GetResponse())
+            {
+                using (Stream stream = webResponse.GetResponseStream())
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        byte[] waveBytes = null;
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = stream.Read(buf, 0, 1024);
+                            ms.Write(buf, 0, count);
+                        } while (stream.CanRead && count > 0);
+
+                        waveBytes = ms.ToArray();
+
+                        return Encoding.UTF8.GetString(waveBytes);
+                    }
+                }
+            }
+        }
+    }
 }

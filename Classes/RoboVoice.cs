@@ -25,7 +25,6 @@ namespace iYak.Classes
     public class RoboVoice
     {
 
-        static private Boolean isImported    = false;
         static public Boolean AzureReady     = false;
         static public Boolean AzureEnabled   = false;
 
@@ -83,7 +82,7 @@ namespace iYak.Classes
 
             if(AzureReady)
             {
-                TempList = AzureVoice.GetVoiceList(ForceRefresh).Result;
+                TempList = AzureVoice.GetVoiceList(ForceRefresh);
                 foreach (Voice TempVoice in TempList)
                 {
                     VoiceList.Add(TempVoice);
@@ -182,7 +181,7 @@ namespace iYak.Classes
         }
 
         public string GetGender() { return Voice.GetGender(this.Gender); }
-        public string GetType() {   return Voice.GetType(this.VoiceType); }
+        public string GetVoiceType() {   return Voice.GetVoiceType(this.VoiceType); }
         public string GetHost() {   return Voice.GetHost(this.Host); }
 
         static public string GetGender(EGender which)
@@ -228,7 +227,7 @@ namespace iYak.Classes
         }
 
 
-        static public string GetType(EVoiceType which)
+        static public string GetVoiceType(EVoiceType which)
         {
             if (which == EVoiceType.Standard)   return "Standard";
             if (which == EVoiceType.Neural)     return "Neural";

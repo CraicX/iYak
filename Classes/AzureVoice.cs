@@ -174,17 +174,10 @@ namespace iYak.Classes
         // ────────────────────────────────────────────────────────────────────────
         //   :::    GET VOICE LIST
         // ────────────────────────────────────────────────────────────────────────
-        public static async Task<List<Voice>> GetVoiceList(bool ForceRefresh=false)
-        {
-
-            await GetVoiceListTask(ForceRefresh);
-
-            return AzureVoice.VoiceList;
-
-        }
+       
 
 
-        public static async Task<string> GetVoiceListTask(bool ForceRefresh=false)
+        public static List<Voice> GetVoiceList(bool ForceRefresh)
         {
 
             string CachedJson = Helpers.JoinPath(Config.RootPath, "Azure_" + CloudWS.Azure.region + ".json");
@@ -205,31 +198,47 @@ namespace iYak.Classes
                 //
                 //  Download the voicelist from Azure
                 //
-                await Authenticate();
+                string FetchUri = String.Format(
+                    "https://{0}.api.cognitive.microsoft.com/sts/v1.0/issueToken",
+                    CloudWS.Azure.region
+                );
 
-                string wsUri = "https://" + CloudWS.Azure.region + ".tts.speech.microsoft.com/cognitiveservices/voices/list";
+                var http = new HttpPost();
+                http.Headers.Add("Ocp-Apim-Subscription-Key", CloudWS.Azure.key);
 
-                using (var client = new HttpClient())
+                //
+                //  If successful, we now have the Azure auth Token
+                //
+                CloudWS.Azure.token = http.Request(FetchUri);
+
+                if( CloudWS.Azure.token == "" ) 
                 {
-                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + CloudWS.Azure.token);
-
-                    UriBuilder uriBuilder = new UriBuilder(wsUri);
-                    var result            = await client.GetAsync(uriBuilder.Uri.AbsoluteUri);
-                    json                  = await result.Content.ReadAsStringAsync();
-
-                    //
-                    //  Cache the Voice List to file
-                    //
-                    if (json.Length > 1) File.WriteAllText(CachedJson, json);
-                    else Console.WriteLine("Could not retrieve voice list from Azure.");
-
+                    Helpers.Alert("Could not retrieve the Azure Authentication Token. \n\nPlease check your credentials.", "Unable to connect to Azure");
+                    return AzureVoice.VoiceList;
                 }
+
+                http = new HttpPost();
+                http.Headers.Add("Authorization", "Bearer " + CloudWS.Azure.token);
+                http.Method = "GET";
+
+                FetchUri = String.Format(
+                    "https://{0}.tts.speech.microsoft.com/cognitiveservices/voices/list",
+                    CloudWS.Azure.region
+                );
+
+                json = http.Request(FetchUri);
+
+                //
+                //  Cache the Voice List to file
+                //
+                if (json.Length > 1) File.WriteAllText(CachedJson, json);
+                else Helpers.Alert("Could not retrieve voice list from Azure.");
 
             }
 
             ConvertVoice(json);
 
-            return CloudWS.Azure.token;
+            return AzureVoice.VoiceList;
 
         }
 
@@ -264,62 +273,20 @@ namespace iYak.Classes
 
         }
 
-
-        // ────────────────────────────────────────────────────────────────────────
-        //   :::    AUTHENTICATE AZURE SERVICES
-        // ────────────────────────────────────────────────────────────────────────
-        public static async Task<string> Authenticate()
-        {
-            string FetchTokenUri = String.Format(
-                "https://{0}.api.cognitive.microsoft.com/sts/v1.0/issueToken",
-                CloudWS.Azure.region
-            );
-
-
-            using (var client = new System.Net.Http.HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", CloudWS.Azure.key);
-
-                UriBuilder uriBuilder = new UriBuilder(FetchTokenUri);
-
-                var result            = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-
-                CloudWS.Azure.token   = await result.Content.ReadAsStringAsync();
-
-                return CloudWS.Azure.token;
-
-            }
-
-        }
-
-
         public class VoiceConvert
         {
-            public string Name;
-            public string DisplayName;
-            public string LocalName;
-            public string ShortName;
-            public string Gender;
-            public string Locale;
-            public string SampleRateHertz;
-            public string VoiceType;
-            public string Status;
+            public string Name            = "";
+            public string DisplayName     = "";
+            public string LocalName       = "";
+            public string ShortName       = "";
+            public string Gender          = "";
+            public string Locale          = "";
+            public string SampleRateHertz = "";
+            public string VoiceType       = "";
+            public string Status          = "";
             
         }
 
-
-        public class GenericEventArgs<T> : EventArgs
-        {
-            public GenericEventArgs(T eventData)
-            {
-                this.EventData = eventData;
-            }
-
-            public T EventData { get; private set; }
-        }
-
-       
-        
     }
 
 }

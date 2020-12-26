@@ -128,7 +128,7 @@ namespace iYak.Classes
 
 
             } catch (Exception e) {
-                string msg = "Access to the following registry key is needed:\n\n"
+                string msg = e.Message + "\n\nAccess to the following registry key is needed:\n\n"
                             + "HKLM\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\\n\n"
                             + "You can manually adjust the permissions for that key to give your user full control "
                             + "or Re-run this application as Admin and try again.";

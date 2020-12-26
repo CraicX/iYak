@@ -241,6 +241,7 @@
     <EmbeddedResource Include="Forms\ViewSplash.resx">
       <DependentUpon>ViewSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="LocalVoices.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

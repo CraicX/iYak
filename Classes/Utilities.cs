@@ -261,7 +261,7 @@ namespace iYak.Classes
                 };
                 DataGridViewTextBoxCell cTypeHidden = new DataGridViewTextBoxCell()
                 {
-                    Value = Voice.GetType(vItem.VoiceType),
+                    Value = Voice.GetVoiceType(vItem.VoiceType),
                 };
                 DataGridViewTextBoxCell cHostHidden = new DataGridViewTextBoxCell()
                 {

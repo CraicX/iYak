@@ -32,6 +32,9 @@ namespace iYak
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +103,15 @@ namespace iYak
             this.SayBox = new System.Windows.Forms.RichTextBox();
             this.VoiceSelFrame = new System.Windows.Forms.Panel();
             this.VoiceSelector = new System.Windows.Forms.DataGridView();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColGender = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColLocale = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Host = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColGenderHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLocHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTypeHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHostHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VCFilter = new System.Windows.Forms.ToolStrip();
             this.VCBoys = new System.Windows.Forms.ToolStripButton();
             this.VCGirls = new System.Windows.Forms.ToolStripButton();
@@ -113,15 +125,6 @@ namespace iYak
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColGender = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColLocale = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Host = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColType = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColGenderHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColLocHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTypeHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHostHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -985,8 +988,17 @@ namespace iYak
             this.VoiceSelector.AllowUserToResizeRows = false;
             this.VoiceSelector.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.VoiceSelector.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.VoiceSelector.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.VoiceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VoiceSelector.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.VoiceSelector.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VoiceSelector.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.VoiceSelector.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.VoiceSelector.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColName,
@@ -998,11 +1010,28 @@ namespace iYak
             this.ColLocHid,
             this.ColTypeHid,
             this.ColHostHid});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.VoiceSelector.DefaultCellStyle = dataGridViewCellStyle3;
             this.VoiceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelector.GridColor = System.Drawing.Color.DodgerBlue;
             this.VoiceSelector.Location = new System.Drawing.Point(0, 25);
             this.VoiceSelector.MultiSelect = false;
             this.VoiceSelector.Name = "VoiceSelector";
             this.VoiceSelector.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VoiceSelector.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.VoiceSelector.RowHeadersVisible = false;
             this.VoiceSelector.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.VoiceSelector.RowTemplate.Height = 20;
@@ -1013,6 +1042,79 @@ namespace iYak
             this.VoiceSelector.TabIndex = 18;
             this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
             this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
+            // 
+            // ColName
+            // 
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ColName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColName.HeaderText = "Name";
+            this.ColName.MinimumWidth = 70;
+            this.ColName.Name = "ColName";
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColName.Width = 70;
+            // 
+            // ColGender
+            // 
+            this.ColGender.HeaderText = "";
+            this.ColGender.MinimumWidth = 30;
+            this.ColGender.Name = "ColGender";
+            this.ColGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColGender.Width = 30;
+            // 
+            // ColLocale
+            // 
+            this.ColLocale.HeaderText = "";
+            this.ColLocale.MinimumWidth = 30;
+            this.ColLocale.Name = "ColLocale";
+            this.ColLocale.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColLocale.Width = 30;
+            // 
+            // Host
+            // 
+            this.Host.HeaderText = "";
+            this.Host.MinimumWidth = 30;
+            this.Host.Name = "Host";
+            this.Host.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Host.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Host.Width = 30;
+            // 
+            // ColType
+            // 
+            this.ColType.HeaderText = "";
+            this.ColType.MinimumWidth = 40;
+            this.ColType.Name = "ColType";
+            this.ColType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColType.Width = 40;
+            // 
+            // ColGenderHid
+            // 
+            this.ColGenderHid.HeaderText = "HiddenGender";
+            this.ColGenderHid.Name = "ColGenderHid";
+            this.ColGenderHid.Visible = false;
+            this.ColGenderHid.Width = 151;
+            // 
+            // ColLocHid
+            // 
+            this.ColLocHid.HeaderText = "HiddenLoc";
+            this.ColLocHid.Name = "ColLocHid";
+            this.ColLocHid.Visible = false;
+            this.ColLocHid.Width = 120;
+            // 
+            // ColTypeHid
+            // 
+            this.ColTypeHid.HeaderText = "HiddenType";
+            this.ColTypeHid.Name = "ColTypeHid";
+            this.ColTypeHid.Visible = false;
+            this.ColTypeHid.Width = 129;
+            // 
+            // ColHostHid
+            // 
+            this.ColHostHid.HeaderText = "HiddenHost";
+            this.ColHostHid.Name = "ColHostHid";
+            this.ColHostHid.Visible = false;
+            this.ColHostHid.Width = 129;
             // 
             // VCFilter
             // 
@@ -1216,79 +1318,6 @@ namespace iYak
             this.ImgListVS.Images.SetKeyName(12, "us.png");
             this.ImgListVS.Images.SetKeyName(13, "neural-list.png");
             this.ImgListVS.Images.SetKeyName(14, "trans.png");
-            // 
-            // ColName
-            // 
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ColName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColName.HeaderText = "Name";
-            this.ColName.MinimumWidth = 70;
-            this.ColName.Name = "ColName";
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColName.Width = 80;
-            // 
-            // ColGender
-            // 
-            this.ColGender.HeaderText = "";
-            this.ColGender.MinimumWidth = 30;
-            this.ColGender.Name = "ColGender";
-            this.ColGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColGender.Width = 30;
-            // 
-            // ColLocale
-            // 
-            this.ColLocale.HeaderText = "";
-            this.ColLocale.MinimumWidth = 30;
-            this.ColLocale.Name = "ColLocale";
-            this.ColLocale.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColLocale.Width = 30;
-            // 
-            // Host
-            // 
-            this.Host.HeaderText = "";
-            this.Host.MinimumWidth = 30;
-            this.Host.Name = "Host";
-            this.Host.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Host.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Host.Width = 30;
-            // 
-            // ColType
-            // 
-            this.ColType.HeaderText = "";
-            this.ColType.MinimumWidth = 40;
-            this.ColType.Name = "ColType";
-            this.ColType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColType.Width = 40;
-            // 
-            // ColGenderHid
-            // 
-            this.ColGenderHid.HeaderText = "HiddenGender";
-            this.ColGenderHid.Name = "ColGenderHid";
-            this.ColGenderHid.Visible = false;
-            this.ColGenderHid.Width = 151;
-            // 
-            // ColLocHid
-            // 
-            this.ColLocHid.HeaderText = "HiddenLoc";
-            this.ColLocHid.Name = "ColLocHid";
-            this.ColLocHid.Visible = false;
-            this.ColLocHid.Width = 120;
-            // 
-            // ColTypeHid
-            // 
-            this.ColTypeHid.HeaderText = "HiddenType";
-            this.ColTypeHid.Name = "ColTypeHid";
-            this.ColTypeHid.Visible = false;
-            this.ColTypeHid.Width = 129;
-            // 
-            // ColHostHid
-            // 
-            this.ColHostHid.HeaderText = "HiddenHost";
-            this.ColHostHid.Name = "ColHostHid";
-            this.ColHostHid.Visible = false;
-            this.ColHostHid.Width = 129;
             // 
             // Main
             // 

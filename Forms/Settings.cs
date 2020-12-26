@@ -247,6 +247,7 @@ namespace iYak
 
                 } catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     TBExport.Text = Config.ExportPath;
                 }
 
