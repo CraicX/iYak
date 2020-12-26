@@ -112,7 +112,7 @@ namespace iYak.Classes
         {
             if (gender == VoiceGender.Male)     return Voice.EGender.Male;
             if (gender == VoiceGender.Female)   return Voice.EGender.Female;
-            if (gender == VoiceGender.Neutral)  return Voice.EGender.Neutral;
+            if (gender == VoiceGender.Neutral)  return Voice.EGender.Female;
             if (gender == VoiceGender.NotSet)   return Voice.EGender.NotSet;
 
             return Voice.EGender.NotSet;

@@ -31,9 +31,7 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Male", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Female", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Neutral", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,10 +99,7 @@ namespace iYak
             this.lblVoice = new System.Windows.Forms.Label();
             this.SayBox = new System.Windows.Forms.RichTextBox();
             this.VoiceSelFrame = new System.Windows.Forms.Panel();
-            this.VoiceSelect = new System.Windows.Forms.ListView();
-            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.VoiceSelector = new System.Windows.Forms.DataGridView();
             this.VCFilter = new System.Windows.Forms.ToolStrip();
             this.VCBoys = new System.Windows.Forms.ToolStripButton();
             this.VCGirls = new System.Windows.Forms.ToolStripButton();
@@ -117,6 +112,16 @@ namespace iYak
             this.panel4 = new System.Windows.Forms.Panel();
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
+            this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColGender = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColLocale = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Host = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColGenderHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLocHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTypeHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHostHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -134,6 +139,7 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.panel5.SuspendLayout();
             this.VoiceSelFrame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).BeginInit();
             this.VCFilter.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -964,7 +970,7 @@ namespace iYak
             // VoiceSelFrame
             // 
             this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
-            this.VoiceSelFrame.Controls.Add(this.VoiceSelect);
+            this.VoiceSelFrame.Controls.Add(this.VoiceSelector);
             this.VoiceSelFrame.Controls.Add(this.VCFilter);
             this.VoiceSelFrame.Location = new System.Drawing.Point(6, 19);
             this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
@@ -972,63 +978,41 @@ namespace iYak
             this.VoiceSelFrame.Size = new System.Drawing.Size(228, 256);
             this.VoiceSelFrame.TabIndex = 13;
             // 
-            // VoiceSelect
+            // VoiceSelector
             // 
-            this.VoiceSelect.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.VoiceSelect.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
-            this.VoiceSelect.BackColor = System.Drawing.Color.LightBlue;
-            this.VoiceSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.VoiceSelect.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col1,
-            this.col2,
-            this.col3});
-            this.VoiceSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VoiceSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoiceSelect.ForeColor = System.Drawing.Color.Blue;
-            this.VoiceSelect.FullRowSelect = true;
-            listViewGroup1.Header = "Male";
-            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name = "grpMale";
-            listViewGroup2.Header = "Female";
-            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup2.Name = "grpFemale";
-            listViewGroup3.Header = "Neutral";
-            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup3.Name = "grpNeutral";
-            this.VoiceSelect.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
-            this.VoiceSelect.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.VoiceSelect.HideSelection = false;
-            this.VoiceSelect.LabelWrap = false;
-            this.VoiceSelect.Location = new System.Drawing.Point(0, 25);
-            this.VoiceSelect.Margin = new System.Windows.Forms.Padding(0);
-            this.VoiceSelect.MultiSelect = false;
-            this.VoiceSelect.Name = "VoiceSelect";
-            this.VoiceSelect.Size = new System.Drawing.Size(228, 231);
-            this.VoiceSelect.SmallImageList = this.ActorIcons;
-            this.VoiceSelect.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.VoiceSelect.TabIndex = 16;
-            this.VoiceSelect.UseCompatibleStateImageBehavior = false;
-            this.VoiceSelect.View = System.Windows.Forms.View.Details;
-            this.VoiceSelect.SelectedIndexChanged += new System.EventHandler(this.VoiceSelect_SelectedIndexChanged);
-            // 
-            // col1
-            // 
-            this.col1.Text = "Name";
-            this.col1.Width = 100;
-            // 
-            // col2
-            // 
-            this.col2.Text = "-";
-            this.col2.Width = 49;
-            // 
-            // col3
-            // 
-            this.col3.Text = "Type";
-            this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.col3.Width = 62;
+            this.VoiceSelector.AllowUserToAddRows = false;
+            this.VoiceSelector.AllowUserToDeleteRows = false;
+            this.VoiceSelector.AllowUserToResizeRows = false;
+            this.VoiceSelector.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.VoiceSelector.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.VoiceSelector.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.VoiceSelector.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.VoiceSelector.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.VoiceSelector.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColName,
+            this.ColGender,
+            this.ColLocale,
+            this.Host,
+            this.ColType,
+            this.ColGenderHid,
+            this.ColLocHid,
+            this.ColTypeHid,
+            this.ColHostHid});
+            this.VoiceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelector.Location = new System.Drawing.Point(0, 25);
+            this.VoiceSelector.MultiSelect = false;
+            this.VoiceSelector.Name = "VoiceSelector";
+            this.VoiceSelector.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.VoiceSelector.RowHeadersVisible = false;
+            this.VoiceSelector.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.VoiceSelector.RowTemplate.Height = 20;
+            this.VoiceSelector.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VoiceSelector.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.VoiceSelector.ShowRowErrors = false;
+            this.VoiceSelector.Size = new System.Drawing.Size(228, 231);
+            this.VoiceSelector.TabIndex = 18;
+            this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
+            this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
             // 
             // VCFilter
             // 
@@ -1213,6 +1197,99 @@ namespace iYak
             this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
             this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
             // 
+            // ImgListVS
+            // 
+            this.ImgListVS.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImgListVS.ImageStream")));
+            this.ImgListVS.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImgListVS.Images.SetKeyName(0, "aws.ico");
+            this.ImgListVS.Images.SetKeyName(1, "azure-list.png");
+            this.ImgListVS.Images.SetKeyName(2, "female-list.png");
+            this.ImgListVS.Images.SetKeyName(3, "GCloud.ico");
+            this.ImgListVS.Images.SetKeyName(4, "male-list.png");
+            this.ImgListVS.Images.SetKeyName(5, "win-list.png");
+            this.ImgListVS.Images.SetKeyName(6, "au.png");
+            this.ImgListVS.Images.SetKeyName(7, "ca.png");
+            this.ImgListVS.Images.SetKeyName(8, "cn.png");
+            this.ImgListVS.Images.SetKeyName(9, "gb.png");
+            this.ImgListVS.Images.SetKeyName(10, "ie.png");
+            this.ImgListVS.Images.SetKeyName(11, "in.png");
+            this.ImgListVS.Images.SetKeyName(12, "us.png");
+            this.ImgListVS.Images.SetKeyName(13, "neural-list.png");
+            this.ImgListVS.Images.SetKeyName(14, "trans.png");
+            // 
+            // ColName
+            // 
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ColName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColName.HeaderText = "Name";
+            this.ColName.MinimumWidth = 70;
+            this.ColName.Name = "ColName";
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColName.Width = 80;
+            // 
+            // ColGender
+            // 
+            this.ColGender.HeaderText = "";
+            this.ColGender.MinimumWidth = 30;
+            this.ColGender.Name = "ColGender";
+            this.ColGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColGender.Width = 30;
+            // 
+            // ColLocale
+            // 
+            this.ColLocale.HeaderText = "";
+            this.ColLocale.MinimumWidth = 30;
+            this.ColLocale.Name = "ColLocale";
+            this.ColLocale.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColLocale.Width = 30;
+            // 
+            // Host
+            // 
+            this.Host.HeaderText = "";
+            this.Host.MinimumWidth = 30;
+            this.Host.Name = "Host";
+            this.Host.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Host.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Host.Width = 30;
+            // 
+            // ColType
+            // 
+            this.ColType.HeaderText = "";
+            this.ColType.MinimumWidth = 40;
+            this.ColType.Name = "ColType";
+            this.ColType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColType.Width = 40;
+            // 
+            // ColGenderHid
+            // 
+            this.ColGenderHid.HeaderText = "HiddenGender";
+            this.ColGenderHid.Name = "ColGenderHid";
+            this.ColGenderHid.Visible = false;
+            this.ColGenderHid.Width = 151;
+            // 
+            // ColLocHid
+            // 
+            this.ColLocHid.HeaderText = "HiddenLoc";
+            this.ColLocHid.Name = "ColLocHid";
+            this.ColLocHid.Visible = false;
+            this.ColLocHid.Width = 120;
+            // 
+            // ColTypeHid
+            // 
+            this.ColTypeHid.HeaderText = "HiddenType";
+            this.ColTypeHid.Name = "ColTypeHid";
+            this.ColTypeHid.Visible = false;
+            this.ColTypeHid.Width = 129;
+            // 
+            // ColHostHid
+            // 
+            this.ColHostHid.HeaderText = "HiddenHost";
+            this.ColHostHid.Name = "ColHostHid";
+            this.ColHostHid.Visible = false;
+            this.ColHostHid.Width = 129;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1257,6 +1334,7 @@ namespace iYak
             this.panel5.PerformLayout();
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).EndInit();
             this.VCFilter.ResumeLayout(false);
             this.VCFilter.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1307,15 +1385,11 @@ namespace iYak
         internal System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Panel panel8;
         internal System.Windows.Forms.RichTextBox SayBox;
-        internal System.Windows.Forms.ListView VoiceSelect;
-        internal System.Windows.Forms.ColumnHeader col1;
-        internal System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.FlowLayoutPanel FlowScript;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
         internal System.Windows.Forms.FlowLayoutPanel ActorsFlow;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ColumnHeader col3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lblVoice;
         private System.Windows.Forms.Label lblType;
@@ -1349,6 +1423,17 @@ namespace iYak
         private System.Windows.Forms.ListView ListExport;
         private System.Windows.Forms.ColumnHeader colFileName;
         private System.Windows.Forms.ColumnHeader colFileDate;
+        internal System.Windows.Forms.ImageList ImgListVS;
+        internal System.Windows.Forms.DataGridView VoiceSelector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.DataGridViewImageColumn ColGender;
+        private System.Windows.Forms.DataGridViewImageColumn ColLocale;
+        private System.Windows.Forms.DataGridViewImageColumn Host;
+        private System.Windows.Forms.DataGridViewImageColumn ColType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColGenderHid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLocHid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTypeHid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColHostHid;
     }
 }
 

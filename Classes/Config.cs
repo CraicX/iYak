@@ -43,7 +43,7 @@ namespace iYak.Classes
         //
         //  Define Controls
         //
-        static public System.Windows.Forms.ListView LVoices;
+        static public System.Windows.Forms.DataGridView LVoiceSelect;
         static public System.Windows.Forms.ListView LExport;
         static public System.Windows.Forms.FlowLayoutPanel FAvatars;
         static public System.Windows.Forms.FlowLayoutPanel FActors;

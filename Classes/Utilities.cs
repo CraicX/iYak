@@ -191,98 +191,108 @@ namespace iYak.Classes
         //
         // Adds Items to the main voices ViewListBox
         //
-        static public void FillVoiceList(List<Voice> VList) 
+        static public void FillVoiceList(List<Voice> VList)
         {
-
             //  Set Filter Options
             Config.mainRef.RefreshFilters();
+            Config.LVoiceSelect.Rows.Clear();
 
-            Config.LVoices.Items.Clear();
-
-            int imgNum;
-            string tmpLoc;
             Color FontColor;
             string BackCol;
 
-            int countMale    = 0;
-            int countFemale  = 0;
-            int countNeutral = 0;
-
-            foreach (Voice vItem in VList)
-            {
-
-                if (Config.VFilter.male     && vItem.Gender == Voice.EGender.Male)      continue;
-                if (Config.VFilter.female   && vItem.Gender == Voice.EGender.Female)    continue;
-                if (Config.VFilter.local    && vItem.Host   == Voice.EHost.Local)       continue;
-                if (Config.VFilter.azure    && vItem.Host   == Voice.EHost.Azure)       continue;
-                if (Config.VFilter.aws      && vItem.Host   == Voice.EHost.AWS)         continue;
-                if (Config.VFilter.gcloud   && vItem.Host   == Voice.EHost.GCloud)      continue;
-
-                if (vItem.Gender == Voice.EGender.Male) {
-                    imgNum    = 0;
-                    FontColor = Color.Blue;
-                    BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural) ? "LightSteelBlue" : "SkyBlue";
-
-                } else {
-                    imgNum    = 1;
-                    FontColor = Color.MediumVioletRed;
-                    BackCol   = (vItem.VoiceType == Voice.EVoiceType.Neural ? "Plum" : "LightSteelBlue");
-                }
-
-                ListViewItem VoiceItem  = new ListViewItem(vItem.Nickname, imgNum) { UseItemStyleForSubItems = false };
-
-                tmpLoc = "-";
-
-                if (vItem.Locale != "") tmpLoc = vItem.Locale;
-
-                
-
-
-                VoiceItem.SubItems.Add(tmpLoc);
-
-                ListViewItem.ListViewSubItem tmpHost = new ListViewItem.ListViewSubItem(VoiceItem, Voice.GetHost(vItem.Host))
-                {
-                    ForeColor = Color.Black
+            
+            var HostMap = new Dictionary<Voice.EHost, int>() {
+                    { Voice.EHost.AWS, 0 },
+                    { Voice.EHost.Azure, 1 },
+                    { Voice.EHost.GCloud, 3 },
+                    { Voice.EHost.Local, 5 }
                 };
 
-                VoiceItem.SubItems.Add(tmpHost);
+            var LocaleMap = new Dictionary<string, int>()
+            {
+                {"au", 6},
+                {"ca", 7},
+                {"cn", 8},
+                {"gb", 9},
+                {"ie", 10},
+                {"in", 11},
+                {"us", 12},
+            };
+            foreach (Voice vItem in VList)
+            {
+                if (vItem.Nickname == "") continue;
 
-                switch( vItem.Gender) {
-                    case Voice.EGender.Male:
-                        VoiceItem.Group = Config.LVoices.Groups[0];
-                        countMale++;
-                        break;
+                if (Config.VFilter.male && vItem.Gender == Voice.EGender.Male) continue;
+                if (Config.VFilter.female && vItem.Gender == Voice.EGender.Female) continue;
+                if (Config.VFilter.local && vItem.Host == Voice.EHost.Local) continue;
+                if (Config.VFilter.azure && vItem.Host == Voice.EHost.Azure) continue;
+                if (Config.VFilter.aws && vItem.Host == Voice.EHost.AWS) continue;
+                if (Config.VFilter.gcloud && vItem.Host == Voice.EHost.GCloud) continue;
 
-                    case Voice.EGender.Female:
-                        VoiceItem.Group = Config.LVoices.Groups[1];
-                        countFemale++;
-                        break;
+                string CountryCode = GetCountryFromLocale(vItem.Locale);
 
-                    default:
-                        VoiceItem.Group = Config.LVoices.Groups[2];
-                        countNeutral++;
-                        break;
-                }
-                VoiceItem.SubItems[0].ForeColor = FontColor;
-                VoiceItem.SubItems[0].Font      = new Font(VoiceItem.SubItems[0].Font, VoiceItem.SubItems[1].Font.Style | FontStyle.Bold);
-                VoiceItem.SubItems[1].Font      = new Font("Microsoft Sans Serif", 9, GraphicsUnit.Pixel);
-                VoiceItem.SubItems[2].Font      = new Font("Microsoft Sans Serif", 10, GraphicsUnit.Pixel);
-                VoiceItem.SubItems[2].ForeColor = Color.MidnightBlue;
-
-                if (vItem.Host == Voice.EHost.Azure)
+                DataGridViewRow dgvr = new DataGridViewRow() { };
+                DataGridViewImageCell cGender = new DataGridViewImageCell() { };
+                DataGridViewTextBoxCell cName = new DataGridViewTextBoxCell()
                 {
-                    VoiceItem.BackColor = Color.FromName(BackCol);
-                    VoiceItem.SubItems[0].BackColor = Color.FromName(BackCol);
-                    VoiceItem.SubItems[1].BackColor = Color.FromName(BackCol);
-                    VoiceItem.SubItems[2].BackColor = Color.FromName(BackCol);
+                    Value = vItem.Nickname,
+                };
+
+                cName.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+
+
+                DataGridViewImageCell cType = new DataGridViewImageCell() {
+                    Value = Config.mainRef.ImgListVS.Images[vItem.VoiceType == Voice.EVoiceType.Neural ? 13 : 14],
+                };
+                DataGridViewImageCell cLoc = new DataGridViewImageCell() {
+                    Value = Config.mainRef.ImgListVS.Images[LocaleMap[CountryCode]],
+                };
+                DataGridViewImageCell cHost = new DataGridViewImageCell()
+                {
+                    Value = Config.mainRef.ImgListVS.Images[HostMap[vItem.Host]],
+                };
+                DataGridViewTextBoxCell cGenderHidden = new DataGridViewTextBoxCell()
+                {
+                    Value = Voice.GetGender(vItem.Gender),
+                };
+                DataGridViewTextBoxCell cLocHidden = new DataGridViewTextBoxCell()
+                {
+                    Value = CountryCode,
+                };
+                DataGridViewTextBoxCell cTypeHidden = new DataGridViewTextBoxCell()
+                {
+                    Value = Voice.GetType(vItem.VoiceType),
+                };
+                DataGridViewTextBoxCell cHostHidden = new DataGridViewTextBoxCell()
+                {
+                    Value = vItem.Host,
+                };
+
+                if (vItem.Gender == Voice.EGender.Male)
+                {
+                    FontColor = Color.Blue;
+                    BackCol = "SkyBlue";
+                    cGender.Value = Config.mainRef.ImgListVS.Images[4];
+
+                }
+                else
+                {
+                    FontColor = Color.MediumVioletRed;
+                    BackCol = "Plum";
+                    cGender.Value = Config.mainRef.ImgListVS.Images[2];
                 }
 
-                Config.LVoices.Items.Add(VoiceItem);
+                dgvr.DefaultCellStyle.BackColor = Color.FromName(BackCol);
+                dgvr.DefaultCellStyle.ForeColor = FontColor;
+
+
+                dgvr.Cells.AddRange( new DataGridViewCell[]{cName, cGender, cLoc, cHost, cType,  cGenderHidden, cLocHidden, cTypeHidden, cHostHidden} );
+
+                Config.LVoiceSelect.Rows.Add(dgvr);
             }
 
-            Config.LVoices.Groups[0].Header = "Male ("    + countMale   + ")";
-            Config.LVoices.Groups[1].Header = "Female ("  + countFemale + ")";
-            Config.LVoices.Groups[2].Header = "Neutral (" + countNeutral+ ")";
+            Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
 
         }
 
@@ -652,6 +662,36 @@ namespace iYak.Classes
 
         }
 
+
+        static public string GetCountryFromLocale(string locale)
+        {
+            var CountryMap = new Dictionary<string, string>()
+            {
+                {"ie", "ie"},
+                {"gb", "gb"},
+                {"cn", "cn"},
+                {"au", "au"},
+                {"in", "in"},
+                {"ca", "ca"},
+                {"us", "us"},
+                {"states", "us"},
+                {"ireland", "ie"},
+                {"india", "in"},
+                {"kingdom", "gb"},
+                {"britain", "gb"},
+                {"australia", "au"},
+                {"china", "cn"},
+            };
+
+            locale = locale.ToLower();
+
+            foreach(KeyValuePair<string, string> entry in CountryMap)
+            {
+                if (locale.Contains(entry.Key)) return entry.Value;
+            }
+
+            return "us";
+        }
 
     }
 

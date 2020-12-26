@@ -28,7 +28,8 @@ namespace iYak
 {
     public partial class Main : Form
     {
-        
+
+        private SortOrder LastSortOrder = SortOrder.Descending;
 
         public Main()
         {
@@ -60,13 +61,15 @@ namespace iYak
             Config.splasher.Show();
             
 
-            Config.LVoices     = VoiceSelect;
+            //Config.LVoices     = VoiceSelect;
+            Config.LVoiceSelect = VoiceSelector;
             Config.LExport     = ListExport;
             Config.FAvatars    = AvatarsFlow;
             Config.FActors     = ActorsFlow;
             Config.FScripts    = FlowScript;
             Config.CurrentFace = pbFace;
             Config.mainRef     = this;
+
 
             Utilities.StartUp();
 
@@ -109,33 +112,7 @@ namespace iYak
             tbSpeed.Value  = 5;
             tbVolume.Value = 100;
         }
-        private void VoiceSelect_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (VoiceSelect.SelectedItems.Count < 1) return;
-
-            Application.DoEvents();
-
-            Config.CurrentVoice = new Voice();
-
-            ListViewItem SelectedVoice = VoiceSelect.Items[VoiceSelect.SelectedIndices[0]];
-
-            string SelectedHost = SelectedVoice.SubItems[2].Text;
-
-            Config.CurrentVoice.SetVoice(SelectedVoice.Text, Voice.FromHost(SelectedHost));
-
-            Console.WriteLine("Changed to {0}, {1}", SelectedVoice.Text, SelectedHost);
-
-            if (Config.CurrentFace.Tag != null)
-            {
-
-                Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
-
-            }
-
-            UpdateVoiceInfo(Config.CurrentVoice);
-
-        }
-
+       
         public void RefreshFilters() {
             Config.VFilter.female = this.VCGirls.Checked;
             Config.VFilter.male   = this.VCBoys.Checked;
@@ -287,6 +264,80 @@ namespace iYak
             Process.Start("explorer.exe", "/select," + ListExport.Items[ListExport.SelectedIndices[0]].Tag);
 
         }
+
+        private void VoiceSelector_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            DataGridViewRow row = Config.LVoiceSelect.Rows[e.RowIndex];
+
+            string rName = row.Cells["ColName"].Value.ToString();
+            string rType = row.Cells["ColTypeHid"].Value.ToString();
+            string rHost = row.Cells["ColHostHid"].Value.ToString();
+
+            Config.CurrentVoice.SetVoice(rName, Voice.FromHost(rHost), Voice.FromType(rType));
+
+            Console.WriteLine("Changed to {0}, {1}", rName, rHost);
+
+            if (Config.CurrentFace.Tag != null)
+            {
+
+                Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
+
+            }
+
+            UpdateVoiceInfo(Config.CurrentVoice);
+
+        }
+
+        private void VoiceSelector_Sort(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            DataGridView csender = (DataGridView)sender;
+
+            DataGridViewColumn newColumn = csender.Columns[e.ColumnIndex];
+
+            foreach(DataGridViewColumn tempCell in csender.Columns) {
+                tempCell.HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+
+            ListSortDirection direction;
+
+            if( this.LastSortOrder == SortOrder.Ascending ) {
+                this.LastSortOrder = SortOrder.Descending;
+                direction = ListSortDirection.Descending;
+            } else {
+                this.LastSortOrder = SortOrder.Ascending;
+                direction = ListSortDirection.Ascending;
+            }
+            
+            if (newColumn.Name == "ColGender")
+            {
+                Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns["ColGenderHid"], direction);
+            }
+            if (newColumn.Name == "ColLocale")
+            {
+                Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns["ColLocHid"], direction);
+            }
+            if (newColumn.Name == "ColType")
+            {
+                Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns["ColTypeHid"], direction);
+            }
+            if (newColumn.Name == "Host")
+            {
+                Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns["ColHostHid"], direction);
+            }
+            if (newColumn.Name == "ColName")
+            {
+                Config.LVoiceSelect.Sort(Config.LVoiceSelect.Columns["ColName"], direction);
+            }
+
+            newColumn.HeaderCell.SortGlyphDirection = this.LastSortOrder;
+
+
+            Console.WriteLine("CLICKED HEADER: " +newColumn.ToString());
+        }
+
+        
     }
 
 
