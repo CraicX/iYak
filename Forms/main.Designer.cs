@@ -58,14 +58,10 @@ namespace iYak
             this.SavedStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
             this.IconList = new System.Windows.Forms.ImageList(this.components);
-            this.AvatarPanel = new System.Windows.Forms.Panel();
-            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.PanelRight = new System.Windows.Forms.Panel();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.ActorsPanel = new System.Windows.Forms.Panel();
+            this.PanelLeft = new System.Windows.Forms.Panel();
             this.splitter3 = new System.Windows.Forms.Splitter();
-            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.ListExport = new System.Windows.Forms.ListView();
             this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFileDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -101,6 +97,14 @@ namespace iYak
             this.label8 = new System.Windows.Forms.Label();
             this.lblVoice = new System.Windows.Forms.Label();
             this.SayBox = new System.Windows.Forms.RichTextBox();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
+            this.IconsYak = new System.Windows.Forms.ImageList(this.components);
+            this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
+            this.PanelRightBottom = new System.Windows.Forms.Panel();
+            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.VoiceSelFrame = new System.Windows.Forms.Panel();
             this.VoiceSelector = new System.Windows.Forms.DataGridView();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,16 +124,15 @@ namespace iYak
             this.VCGCloud = new System.Windows.Forms.ToolStripButton();
             this.VCAWS = new System.Windows.Forms.ToolStripButton();
             this.VCLocal = new System.Windows.Forms.ToolStripButton();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
-            this.IconsYak = new System.Windows.Forms.ImageList(this.components);
-            this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
+            this.PanelTopRight = new System.Windows.Forms.Panel();
+            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.splitter5 = new System.Windows.Forms.Splitter();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
-            this.AvatarPanel.SuspendLayout();
-            this.ActorsPanel.SuspendLayout();
+            this.PanelRight.SuspendLayout();
+            this.PanelLeft.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -141,10 +144,12 @@ namespace iYak
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.PanelRightBottom.SuspendLayout();
             this.VoiceSelFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).BeginInit();
             this.VCFilter.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.PanelTopRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
@@ -393,65 +398,37 @@ namespace iYak
             this.IconList.Images.SetKeyName(43, "stop.png");
             this.IconList.Images.SetKeyName(44, "volume.png");
             // 
-            // AvatarPanel
+            // PanelRight
             // 
-            this.AvatarPanel.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AvatarPanel.Controls.Add(this.AvatarsFlow);
-            this.AvatarPanel.Controls.Add(this.label5);
-            this.AvatarPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.AvatarPanel.Location = new System.Drawing.Point(0, 24);
-            this.AvatarPanel.Name = "AvatarPanel";
-            this.AvatarPanel.Size = new System.Drawing.Size(220, 575);
-            this.AvatarPanel.TabIndex = 24;
-            // 
-            // AvatarsFlow
-            // 
-            this.AvatarsFlow.AutoScroll = true;
-            this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
-            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.AvatarsFlow.Name = "AvatarsFlow";
-            this.AvatarsFlow.Size = new System.Drawing.Size(220, 544);
-            this.AvatarsFlow.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SeaShell;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(5);
-            this.label5.Size = new System.Drawing.Size(220, 31);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Faces";
+            this.PanelRight.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.PanelRight.Controls.Add(this.splitter5);
+            this.PanelRight.Controls.Add(this.PanelTopRight);
+            this.PanelRight.Controls.Add(this.PanelRightBottom);
+            this.PanelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PanelRight.Location = new System.Drawing.Point(999, 24);
+            this.PanelRight.Name = "PanelRight";
+            this.PanelRight.Size = new System.Drawing.Size(220, 575);
+            this.PanelRight.TabIndex = 24;
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(220, 24);
+            this.splitter1.Location = new System.Drawing.Point(225, 24);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 575);
             this.splitter1.TabIndex = 25;
             this.splitter1.TabStop = false;
             // 
-            // ActorsPanel
+            // PanelLeft
             // 
-            this.ActorsPanel.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorsPanel.Controls.Add(this.splitter3);
-            this.ActorsPanel.Controls.Add(this.ActorsFlow);
-            this.ActorsPanel.Controls.Add(this.label6);
-            this.ActorsPanel.Controls.Add(this.ListExport);
-            this.ActorsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ActorsPanel.Location = new System.Drawing.Point(997, 24);
-            this.ActorsPanel.Name = "ActorsPanel";
-            this.ActorsPanel.Size = new System.Drawing.Size(225, 575);
-            this.ActorsPanel.TabIndex = 26;
+            this.PanelLeft.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.PanelLeft.Controls.Add(this.VoiceSelFrame);
+            this.PanelLeft.Controls.Add(this.splitter3);
+            this.PanelLeft.Controls.Add(this.ListExport);
+            this.PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelLeft.Location = new System.Drawing.Point(0, 24);
+            this.PanelLeft.Name = "PanelLeft";
+            this.PanelLeft.Size = new System.Drawing.Size(225, 575);
+            this.PanelLeft.TabIndex = 26;
             // 
             // splitter3
             // 
@@ -463,34 +440,6 @@ namespace iYak
             this.splitter3.Size = new System.Drawing.Size(225, 7);
             this.splitter3.TabIndex = 7;
             this.splitter3.TabStop = false;
-            // 
-            // ActorsFlow
-            // 
-            this.ActorsFlow.AutoScroll = true;
-            this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
-            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.ActorsFlow.Name = "ActorsFlow";
-            this.ActorsFlow.Size = new System.Drawing.Size(225, 240);
-            this.ActorsFlow.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SeaShell;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(5);
-            this.label6.Size = new System.Drawing.Size(225, 31);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Actors";
             // 
             // ListExport
             // 
@@ -527,7 +476,7 @@ namespace iYak
             this.panel3.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(223, 289);
+            this.panel3.Location = new System.Drawing.Point(228, 289);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(771, 310);
             this.panel3.TabIndex = 27;
@@ -544,7 +493,6 @@ namespace iYak
             this.groupBox1.Controls.Add(this.btnRead);
             this.groupBox1.Controls.Add(this.panel8);
             this.groupBox1.Controls.Add(this.SayBox);
-            this.groupBox1.Controls.Add(this.VoiceSelFrame);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(5, 13);
@@ -970,16 +918,152 @@ namespace iYak
             this.SayBox.TabIndex = 15;
             this.SayBox.Text = "";
             // 
+            // splitter2
+            // 
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Location = new System.Drawing.Point(1219, 24);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 575);
+            this.splitter2.TabIndex = 28;
+            this.splitter2.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel4.Controls.Add(this.FlowScript);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(228, 24);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(771, 265);
+            this.panel4.TabIndex = 29;
+            // 
+            // FlowScript
+            // 
+            this.FlowScript.AutoScroll = true;
+            this.FlowScript.BackColor = System.Drawing.Color.SkyBlue;
+            this.FlowScript.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowScript.Location = new System.Drawing.Point(0, 0);
+            this.FlowScript.Margin = new System.Windows.Forms.Padding(10);
+            this.FlowScript.Name = "FlowScript";
+            this.FlowScript.Size = new System.Drawing.Size(771, 265);
+            this.FlowScript.TabIndex = 0;
+            // 
+            // IconsYak
+            // 
+            this.IconsYak.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconsYak.ImageStream")));
+            this.IconsYak.TransparentColor = System.Drawing.Color.Transparent;
+            this.IconsYak.Images.SetKeyName(0, "arrow_bottom_icon&16.png");
+            this.IconsYak.Images.SetKeyName(1, "arrow_top_icon&16.png");
+            this.IconsYak.Images.SetKeyName(2, "attention_icon&16.png");
+            this.IconsYak.Images.SetKeyName(3, "burst_icon&16.png");
+            this.IconsYak.Images.SetKeyName(4, "cancel_icon&16.png");
+            this.IconsYak.Images.SetKeyName(5, "checkmark_icon&16.png");
+            this.IconsYak.Images.SetKeyName(6, "cloud_icon&16.png");
+            this.IconsYak.Images.SetKeyName(7, "cog_icon&16.png");
+            this.IconsYak.Images.SetKeyName(8, "delete_icon&16.png");
+            this.IconsYak.Images.SetKeyName(9, "doc_edit_icon&16.png");
+            this.IconsYak.Images.SetKeyName(10, "doc_export_icon&16.png");
+            this.IconsYak.Images.SetKeyName(11, "doc_import_icon&16.png");
+            this.IconsYak.Images.SetKeyName(12, "doc_new_icon&16.png");
+            this.IconsYak.Images.SetKeyName(13, "download_icon&16.png");
+            this.IconsYak.Images.SetKeyName(14, "export_icon&16.png");
+            this.IconsYak.Images.SetKeyName(15, "filter_icon&16.png");
+            this.IconsYak.Images.SetKeyName(16, "message_attention_icon&16.png");
+            this.IconsYak.Images.SetKeyName(17, "mic_icon&16.png");
+            this.IconsYak.Images.SetKeyName(18, "microphone_icon&16.png");
+            this.IconsYak.Images.SetKeyName(19, "pencil_icon&16.png");
+            this.IconsYak.Images.SetKeyName(20, "playback_play_icon&16.png");
+            this.IconsYak.Images.SetKeyName(21, "playback_reload_icon&16.png");
+            this.IconsYak.Images.SetKeyName(22, "playback_stop_icon&16.png");
+            this.IconsYak.Images.SetKeyName(23, "podcast_icon&16.png");
+            this.IconsYak.Images.SetKeyName(24, "rnd_br_up_icon&16.png");
+            this.IconsYak.Images.SetKeyName(25, "round_checkmark_icon&16.png");
+            this.IconsYak.Images.SetKeyName(26, "round_delete_icon&16.png");
+            this.IconsYak.Images.SetKeyName(27, "round_plus_icon&16.png");
+            this.IconsYak.Images.SetKeyName(28, "save_icon&16.png");
+            this.IconsYak.Images.SetKeyName(29, "sound_high_icon&16.png");
+            this.IconsYak.Images.SetKeyName(30, "sound_low_icon&16.png");
+            this.IconsYak.Images.SetKeyName(31, "sound_mute_icon&16.png");
+            this.IconsYak.Images.SetKeyName(32, "spechbubble_2_icon&16.png");
+            this.IconsYak.Images.SetKeyName(33, "spechbubble_icon&16.png");
+            this.IconsYak.Images.SetKeyName(34, "spechbubble_sq_icon&16.png");
+            this.IconsYak.Images.SetKeyName(35, "spechbubble_sq_line_icon&16.png");
+            this.IconsYak.Images.SetKeyName(36, "sq_plus_icon&16.png");
+            this.IconsYak.Images.SetKeyName(37, "star_fav_icon&16.png");
+            this.IconsYak.Images.SetKeyName(38, "star_icon&16.png");
+            this.IconsYak.Images.SetKeyName(39, "tag_icon&16.png");
+            this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
+            this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
+            // 
+            // ImgListVS
+            // 
+            this.ImgListVS.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImgListVS.ImageStream")));
+            this.ImgListVS.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImgListVS.Images.SetKeyName(0, "aws.ico");
+            this.ImgListVS.Images.SetKeyName(1, "azure-list.png");
+            this.ImgListVS.Images.SetKeyName(2, "female-list.png");
+            this.ImgListVS.Images.SetKeyName(3, "GCloud.ico");
+            this.ImgListVS.Images.SetKeyName(4, "male-list.png");
+            this.ImgListVS.Images.SetKeyName(5, "win-list.png");
+            this.ImgListVS.Images.SetKeyName(6, "au.png");
+            this.ImgListVS.Images.SetKeyName(7, "ca.png");
+            this.ImgListVS.Images.SetKeyName(8, "cn.png");
+            this.ImgListVS.Images.SetKeyName(9, "gb.png");
+            this.ImgListVS.Images.SetKeyName(10, "ie.png");
+            this.ImgListVS.Images.SetKeyName(11, "in.png");
+            this.ImgListVS.Images.SetKeyName(12, "us.png");
+            this.ImgListVS.Images.SetKeyName(13, "neural-list.png");
+            this.ImgListVS.Images.SetKeyName(14, "trans.png");
+            // 
+            // PanelRightBottom
+            // 
+            this.PanelRightBottom.Controls.Add(this.ActorsFlow);
+            this.PanelRightBottom.Controls.Add(this.label6);
+            this.PanelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelRightBottom.Location = new System.Drawing.Point(0, 265);
+            this.PanelRightBottom.Name = "PanelRightBottom";
+            this.PanelRightBottom.Size = new System.Drawing.Size(220, 310);
+            this.PanelRightBottom.TabIndex = 6;
+            // 
+            // ActorsFlow
+            // 
+            this.ActorsFlow.AutoScroll = true;
+            this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
+            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.ActorsFlow.Name = "ActorsFlow";
+            this.ActorsFlow.Size = new System.Drawing.Size(220, 279);
+            this.ActorsFlow.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SeaShell;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(5);
+            this.label6.Size = new System.Drawing.Size(220, 31);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Actors";
+            // 
             // VoiceSelFrame
             // 
             this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
             this.VoiceSelFrame.Controls.Add(this.VoiceSelector);
             this.VoiceSelFrame.Controls.Add(this.VCFilter);
-            this.VoiceSelFrame.Location = new System.Drawing.Point(6, 19);
+            this.VoiceSelFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelFrame.Location = new System.Drawing.Point(0, 0);
             this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceSelFrame.Name = "VoiceSelFrame";
-            this.VoiceSelFrame.Size = new System.Drawing.Size(228, 256);
-            this.VoiceSelFrame.TabIndex = 13;
+            this.VoiceSelFrame.Size = new System.Drawing.Size(225, 264);
+            this.VoiceSelFrame.TabIndex = 14;
             // 
             // VoiceSelector
             // 
@@ -1038,7 +1122,7 @@ namespace iYak
             this.VoiceSelector.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.VoiceSelector.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.VoiceSelector.ShowRowErrors = false;
-            this.VoiceSelector.Size = new System.Drawing.Size(228, 231);
+            this.VoiceSelector.Size = new System.Drawing.Size(225, 239);
             this.VoiceSelector.TabIndex = 18;
             this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
             this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
@@ -1134,7 +1218,7 @@ namespace iYak
             this.VCFilter.Name = "VCFilter";
             this.VCFilter.Padding = new System.Windows.Forms.Padding(1);
             this.VCFilter.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.VCFilter.Size = new System.Drawing.Size(228, 25);
+            this.VCFilter.Size = new System.Drawing.Size(225, 25);
             this.VCFilter.TabIndex = 17;
             this.VCFilter.Text = "Filters";
             // 
@@ -1208,6 +1292,7 @@ namespace iYak
             this.VCAWS.Text = "toolStripButton1";
             this.VCAWS.ToolTipText = "Amazon AWS Voices";
             this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
+
             // 
             // VCLocal
             // 
@@ -1222,102 +1307,54 @@ namespace iYak
             this.VCLocal.ToolTipText = "Locally Installed Voices";
             this.VCLocal.Click += new System.EventHandler(this.VCFilter_Click);
             // 
-            // splitter2
+            // PanelTopRight
             // 
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(994, 24);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 575);
-            this.splitter2.TabIndex = 28;
-            this.splitter2.TabStop = false;
+            this.PanelTopRight.Controls.Add(this.AvatarsFlow);
+            this.PanelTopRight.Controls.Add(this.label5);
+            this.PanelTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelTopRight.Location = new System.Drawing.Point(0, 0);
+            this.PanelTopRight.Name = "PanelTopRight";
+            this.PanelTopRight.Size = new System.Drawing.Size(220, 265);
+            this.PanelTopRight.TabIndex = 7;
             // 
-            // panel4
+            // AvatarsFlow
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel4.Controls.Add(this.FlowScript);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(223, 24);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(771, 265);
-            this.panel4.TabIndex = 29;
+            this.AvatarsFlow.AutoScroll = true;
+            this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
+            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.AvatarsFlow.Name = "AvatarsFlow";
+            this.AvatarsFlow.Size = new System.Drawing.Size(220, 234);
+            this.AvatarsFlow.TabIndex = 6;
             // 
-            // FlowScript
+            // label5
             // 
-            this.FlowScript.AutoScroll = true;
-            this.FlowScript.BackColor = System.Drawing.Color.SkyBlue;
-            this.FlowScript.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowScript.Location = new System.Drawing.Point(0, 0);
-            this.FlowScript.Margin = new System.Windows.Forms.Padding(10);
-            this.FlowScript.Name = "FlowScript";
-            this.FlowScript.Size = new System.Drawing.Size(771, 265);
-            this.FlowScript.TabIndex = 0;
+            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SeaShell;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(5);
+            this.label5.Size = new System.Drawing.Size(220, 31);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Faces";
             // 
-            // IconsYak
+            // splitter5
             // 
-            this.IconsYak.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconsYak.ImageStream")));
-            this.IconsYak.TransparentColor = System.Drawing.Color.Transparent;
-            this.IconsYak.Images.SetKeyName(0, "arrow_bottom_icon&16.png");
-            this.IconsYak.Images.SetKeyName(1, "arrow_top_icon&16.png");
-            this.IconsYak.Images.SetKeyName(2, "attention_icon&16.png");
-            this.IconsYak.Images.SetKeyName(3, "burst_icon&16.png");
-            this.IconsYak.Images.SetKeyName(4, "cancel_icon&16.png");
-            this.IconsYak.Images.SetKeyName(5, "checkmark_icon&16.png");
-            this.IconsYak.Images.SetKeyName(6, "cloud_icon&16.png");
-            this.IconsYak.Images.SetKeyName(7, "cog_icon&16.png");
-            this.IconsYak.Images.SetKeyName(8, "delete_icon&16.png");
-            this.IconsYak.Images.SetKeyName(9, "doc_edit_icon&16.png");
-            this.IconsYak.Images.SetKeyName(10, "doc_export_icon&16.png");
-            this.IconsYak.Images.SetKeyName(11, "doc_import_icon&16.png");
-            this.IconsYak.Images.SetKeyName(12, "doc_new_icon&16.png");
-            this.IconsYak.Images.SetKeyName(13, "download_icon&16.png");
-            this.IconsYak.Images.SetKeyName(14, "export_icon&16.png");
-            this.IconsYak.Images.SetKeyName(15, "filter_icon&16.png");
-            this.IconsYak.Images.SetKeyName(16, "message_attention_icon&16.png");
-            this.IconsYak.Images.SetKeyName(17, "mic_icon&16.png");
-            this.IconsYak.Images.SetKeyName(18, "microphone_icon&16.png");
-            this.IconsYak.Images.SetKeyName(19, "pencil_icon&16.png");
-            this.IconsYak.Images.SetKeyName(20, "playback_play_icon&16.png");
-            this.IconsYak.Images.SetKeyName(21, "playback_reload_icon&16.png");
-            this.IconsYak.Images.SetKeyName(22, "playback_stop_icon&16.png");
-            this.IconsYak.Images.SetKeyName(23, "podcast_icon&16.png");
-            this.IconsYak.Images.SetKeyName(24, "rnd_br_up_icon&16.png");
-            this.IconsYak.Images.SetKeyName(25, "round_checkmark_icon&16.png");
-            this.IconsYak.Images.SetKeyName(26, "round_delete_icon&16.png");
-            this.IconsYak.Images.SetKeyName(27, "round_plus_icon&16.png");
-            this.IconsYak.Images.SetKeyName(28, "save_icon&16.png");
-            this.IconsYak.Images.SetKeyName(29, "sound_high_icon&16.png");
-            this.IconsYak.Images.SetKeyName(30, "sound_low_icon&16.png");
-            this.IconsYak.Images.SetKeyName(31, "sound_mute_icon&16.png");
-            this.IconsYak.Images.SetKeyName(32, "spechbubble_2_icon&16.png");
-            this.IconsYak.Images.SetKeyName(33, "spechbubble_icon&16.png");
-            this.IconsYak.Images.SetKeyName(34, "spechbubble_sq_icon&16.png");
-            this.IconsYak.Images.SetKeyName(35, "spechbubble_sq_line_icon&16.png");
-            this.IconsYak.Images.SetKeyName(36, "sq_plus_icon&16.png");
-            this.IconsYak.Images.SetKeyName(37, "star_fav_icon&16.png");
-            this.IconsYak.Images.SetKeyName(38, "star_icon&16.png");
-            this.IconsYak.Images.SetKeyName(39, "tag_icon&16.png");
-            this.IconsYak.Images.SetKeyName(40, "tape_icon&16.png");
-            this.IconsYak.Images.SetKeyName(41, "top_right_expand_icon&16.png");
-            // 
-            // ImgListVS
-            // 
-            this.ImgListVS.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImgListVS.ImageStream")));
-            this.ImgListVS.TransparentColor = System.Drawing.Color.Transparent;
-            this.ImgListVS.Images.SetKeyName(0, "aws.ico");
-            this.ImgListVS.Images.SetKeyName(1, "azure-list.png");
-            this.ImgListVS.Images.SetKeyName(2, "female-list.png");
-            this.ImgListVS.Images.SetKeyName(3, "GCloud.ico");
-            this.ImgListVS.Images.SetKeyName(4, "male-list.png");
-            this.ImgListVS.Images.SetKeyName(5, "win-list.png");
-            this.ImgListVS.Images.SetKeyName(6, "au.png");
-            this.ImgListVS.Images.SetKeyName(7, "ca.png");
-            this.ImgListVS.Images.SetKeyName(8, "cn.png");
-            this.ImgListVS.Images.SetKeyName(9, "gb.png");
-            this.ImgListVS.Images.SetKeyName(10, "ie.png");
-            this.ImgListVS.Images.SetKeyName(11, "in.png");
-            this.ImgListVS.Images.SetKeyName(12, "us.png");
-            this.ImgListVS.Images.SetKeyName(13, "neural-list.png");
-            this.ImgListVS.Images.SetKeyName(14, "trans.png");
+            this.splitter5.BackColor = System.Drawing.Color.MidnightBlue;
+            this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter5.Location = new System.Drawing.Point(0, 258);
+            this.splitter5.Name = "splitter5";
+            this.splitter5.Size = new System.Drawing.Size(220, 7);
+            this.splitter5.TabIndex = 8;
+            this.splitter5.TabStop = false;
             // 
             // Main
             // 
@@ -1328,10 +1365,10 @@ namespace iYak
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.AvatarPanel);
+            this.Controls.Add(this.PanelRight);
             this.Controls.Add(this.ToolStripRoster);
             this.Controls.Add(this.splitter2);
-            this.Controls.Add(this.ActorsPanel);
+            this.Controls.Add(this.PanelLeft);
             this.Controls.Add(this.StatusStrip1);
             this.Controls.Add(this.MenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1345,8 +1382,8 @@ namespace iYak
             this.ToolStripRoster.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
-            this.AvatarPanel.ResumeLayout(false);
-            this.ActorsPanel.ResumeLayout(false);
+            this.PanelRight.ResumeLayout(false);
+            this.PanelLeft.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -1361,12 +1398,14 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.pbFace)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.PanelRightBottom.ResumeLayout(false);
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).EndInit();
             this.VCFilter.ResumeLayout(false);
             this.VCFilter.PerformLayout();
-            this.panel4.ResumeLayout(false);
+            this.PanelTopRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1393,9 +1432,9 @@ namespace iYak
         internal System.Windows.Forms.ToolStripStatusLabel lblStatus;
         internal System.Windows.Forms.ImageList ActorIcons;
         internal System.Windows.Forms.ImageList IconList;
-        private System.Windows.Forms.Panel AvatarPanel;
+        private System.Windows.Forms.Panel PanelRight;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Panel ActorsPanel;
+        private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Panel panel4;
@@ -1409,16 +1448,11 @@ namespace iYak
         internal System.Windows.Forms.TrackBar tbPitch;
         internal System.Windows.Forms.TrackBar tbSpeed;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel VoiceSelFrame;
         internal System.Windows.Forms.Button btnCommand3;
         internal System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Panel panel8;
         internal System.Windows.Forms.RichTextBox SayBox;
         private System.Windows.Forms.FlowLayoutPanel FlowScript;
-        private System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
-        internal System.Windows.Forms.FlowLayoutPanel ActorsFlow;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lblVoice;
         private System.Windows.Forms.Label lblType;
@@ -1437,14 +1471,6 @@ namespace iYak
         private System.Windows.Forms.PictureBox pbFace;
         internal System.Windows.Forms.Button btnAddActor;
         private System.Windows.Forms.Label lblNickImg;
-        private System.Windows.Forms.ToolStrip VCFilter;
-        private System.Windows.Forms.ToolStripButton VCGCloud;
-        private System.Windows.Forms.ToolStripButton VCAWS;
-        private System.Windows.Forms.ToolStripButton VCAzure;
-        private System.Windows.Forms.ToolStripButton VCBoys;
-        private System.Windows.Forms.ToolStripButton VCGirls;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton VCLocal;
         private System.Windows.Forms.ToolStripMenuItem voicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel SavedStatus;
@@ -1453,6 +1479,10 @@ namespace iYak
         private System.Windows.Forms.ColumnHeader colFileName;
         private System.Windows.Forms.ColumnHeader colFileDate;
         internal System.Windows.Forms.ImageList ImgListVS;
+        private System.Windows.Forms.Panel PanelRightBottom;
+        internal System.Windows.Forms.FlowLayoutPanel ActorsFlow;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel VoiceSelFrame;
         internal System.Windows.Forms.DataGridView VoiceSelector;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
         private System.Windows.Forms.DataGridViewImageColumn ColGender;
@@ -1463,6 +1493,18 @@ namespace iYak
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLocHid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTypeHid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColHostHid;
+        private System.Windows.Forms.ToolStrip VCFilter;
+        private System.Windows.Forms.ToolStripButton VCBoys;
+        private System.Windows.Forms.ToolStripButton VCGirls;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton VCAzure;
+        private System.Windows.Forms.ToolStripButton VCGCloud;
+        private System.Windows.Forms.ToolStripButton VCAWS;
+        private System.Windows.Forms.ToolStripButton VCLocal;
+        private System.Windows.Forms.Panel PanelTopRight;
+        internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Splitter splitter5;
     }
 }
 

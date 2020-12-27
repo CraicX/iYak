@@ -10,14 +10,9 @@
 //
 //
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
-using System.Data;
 using Microsoft.Win32;
 
 namespace iYak.Classes
@@ -34,15 +29,15 @@ namespace iYak.Classes
 
         public class VoiceSynth
         {
-            public string name { get; set; }
-            public string tokenPath { get; set; }
-            public string fullName { get; set; }
+            public string Name { get; set; }
+            public string TokenPath { get; set; }
+            public string FullName { get; set; }
             public string VoicePath { get; set; }
             public string LangDataPath { get; set; }
-            public string region { get; set; }
+            public string Region { get; set; }
             public string Gender { get; set; }
             public string Language { get; set; }
-            public bool installed { get; set; }
+            public bool Installed { get; set; }
 
 
 
@@ -62,14 +57,15 @@ namespace iYak.Classes
             foreach( VoiceSynth tmpVoice in ListTTS ) 
             {
 
-                tmpVoice.installed = false;
-                foreach( Voice voice in Config.Voices ) {
-                    if (voice.Handle.ToLower() == tmpVoice.name.ToLower()) tmpVoice.installed = true;
+                tmpVoice.Installed = false;
+                foreach( Voice voice in Config.Voices ) 
+                {
+                    if (voice.Handle.ToLower() == tmpVoice.Name.ToLower()) tmpVoice.Installed = true;
                 }
 
                 foreach( string beenInstalled in AddedVoices )
                 {
-                    if (beenInstalled == tmpVoice.name) tmpVoice.installed = true;
+                    if (beenInstalled == tmpVoice.Name) tmpVoice.Installed = true;
                 }
 
             }
@@ -87,7 +83,7 @@ namespace iYak.Classes
 
             foreach ( VoiceSynth tmpSynth in GetAvailableVoices())
             {
-                if (tmpSynth.name.ToLower() != voiceHandle.ToLower()) continue;
+                if (tmpSynth.Name.ToLower() != voiceHandle.ToLower()) continue;
 
                 synth  = tmpSynth;
 
@@ -96,26 +92,26 @@ namespace iYak.Classes
             if (synth == null) return false;
 
            
-            if (synth.installed) return true;
+            if (synth.Installed) return true;
 
-            Console.WriteLine("INSTALLING NEW TTS VOICE: " + synth.name);
+            Console.WriteLine("INSTALLING NEW TTS VOICE: " + synth.Name);
 
-            string rkey = TTS_ROOT + synth.tokenPath;
+            string rkey = TTS_ROOT + synth.TokenPath;
 
             try
             {
-                Registry.SetValue(rkey, "(Default)", synth.name);
-                Registry.SetValue(rkey, "409", synth.fullName);
+                Registry.SetValue(rkey, "(Default)", synth.Name);
+                Registry.SetValue(rkey, "409", synth.FullName);
                 Registry.SetValue(rkey, "CLSID", "{179F3D56-1B0B-42B2-A962-59B7EF59FE1B}");
                 Registry.SetValue(rkey, "LangDataPath", synth.LangDataPath);
                 Registry.SetValue(rkey, "VoicePath", synth.VoicePath);
                 Registry.SetValue(rkey + "\\Attributes", "Age", "Adult");
                 Registry.SetValue(rkey + "\\Attributes", "Gender", synth.Gender);
                 Registry.SetValue(rkey + "\\Attributes", "Language", synth.Language);
-                Registry.SetValue(rkey + "\\Attributes", "Name", synth.name);
+                Registry.SetValue(rkey + "\\Attributes", "Name", synth.Name);
 
 
-                AddedVoices.Add(synth.name);
+                AddedVoices.Add(synth.Name);
 
                 RoboVoice.RefreshVoiceList();
 
@@ -139,8 +135,6 @@ namespace iYak.Classes
 
         }
 
-        
-
-
     }
+
 }

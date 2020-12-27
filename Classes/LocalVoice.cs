@@ -12,13 +12,8 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Speech;
 using System.Speech.AudioFormat;
 using System.Speech.Synthesis;
-using System.Speech.Synthesis.TtsEngine;
 
 
 namespace iYak.Classes
@@ -26,9 +21,10 @@ namespace iYak.Classes
     class LocalVoice
     {
 
-        private static SpeechSynthesizer Synth = new SpeechSynthesizer();
 
-
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    SPEAK
+        // ────────────────────────────────────────────────────────────────────────
         public static bool Speak(Voice voice)
         {
             SpeechSynthesizer TSynth = new SpeechSynthesizer();
@@ -47,35 +43,50 @@ namespace iYak.Classes
         }
 
 
-
-        public static AudioFile Export(Voice voice, string FileName = "")
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    EXPORT
+        // ────────────────────────────────────────────────────────────────────────
+        public static void Export(Voice voice, VoiceExport voiceExport, Action callback=null)
         {
 
-            if (FileName == "") FileName = Helpers.GenerateFileName(voice) + ".wav";
+            //  Currently only supporting WAV format
+            voiceExport.OutputFormat = VoiceExport.OutputFormats.wav;
 
-            string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
+            //
+            //  set our export file name/path
+            //
+            string FilePath = VoiceExport.GetFilePath(voiceExport);
 
-            var SaveFormat = new SpeechAudioFormatInfo(
-                96000,
-                AudioBitsPerSample.Sixteen,
-                AudioChannel.Stereo
-            );
+            SpeechAudioFormatInfo outputFormat;
 
-            SpeechSynthesizer ExportVoice = new SpeechSynthesizer()
+            int hz = 96000;
+
+            if(voiceExport.OutputFormat == VoiceExport.OutputFormats.wav)
+            {
+                if (voiceExport.Khz == VoiceExport.KhzOptions.khz_16)       hz = 96000;
+                else if (voiceExport.Khz == VoiceExport.KhzOptions.khz_24)  hz = 96000;
+
+                outputFormat = new SpeechAudioFormatInfo(
+                    hz, 
+                    AudioBitsPerSample.Sixteen, 
+                    AudioChannel.Stereo
+                );
+
+            } else outputFormat = new SpeechAudioFormatInfo(hz, AudioBitsPerSample.Sixteen, AudioChannel.Stereo);
+
+            SpeechSynthesizer localSynth = new SpeechSynthesizer()
             {
                 Volume = voice.Volume,
-                Rate = (voice.Rate * 2) - 10
+                Rate   = (voice.Rate * 2) - 10
             };
-            ExportVoice.SetOutputToDefaultAudioDevice();
-            ExportVoice.SelectVoice(voice.Handle);
 
-            ExportVoice.SetOutputToWaveFile(FilePath, SaveFormat);
-            ExportVoice.Speak(voice.Speech);
+            localSynth.SetOutputToDefaultAudioDevice();
+            localSynth.SelectVoice(voice.Handle);
 
-            AudioFile afile = Helpers.GetAudioFileInfo(FilePath);
-
-            return afile;
-
+            localSynth.SetOutputToWaveFile(FilePath, outputFormat);
+            localSynth.Speak(voice.Speech);
+            
+            callback?.Invoke();
 
         }
 
@@ -85,9 +96,10 @@ namespace iYak.Classes
         {
             Voice TempVoice;
 
-            List<Voice> VoiceList = new List<Voice>();
+            List<Voice> VoiceList    = new List<Voice>();
+            SpeechSynthesizer TSynth = new SpeechSynthesizer();
 
-            foreach (InstalledVoice iVoice in Synth.GetInstalledVoices())
+            foreach (InstalledVoice iVoice in TSynth.GetInstalledVoices())
             {
                 TempVoice = new Voice
                 {
@@ -95,7 +107,7 @@ namespace iYak.Classes
                     Id       = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Nickname = Voice.GenerateName(iVoice.VoiceInfo.Name),
                     Handle   = iVoice.VoiceInfo.Name,
-                    Gender   = convertGenderFromLocal(iVoice.VoiceInfo.Gender),
+                    Gender   = ConvertGenderFromLocal(iVoice.VoiceInfo.Gender),
                     Host     = Voice.EHost.Local,
                     Locale   = iVoice.VoiceInfo.Culture.DisplayName
                 };
@@ -108,7 +120,7 @@ namespace iYak.Classes
         }
 
 
-        public static Voice.EGender convertGenderFromLocal(VoiceGender gender)
+        public static Voice.EGender ConvertGenderFromLocal(VoiceGender gender)
         {
             if (gender == VoiceGender.Male)     return Voice.EGender.Male;
             if (gender == VoiceGender.Female)   return Voice.EGender.Female;
@@ -118,5 +130,7 @@ namespace iYak.Classes
             return Voice.EGender.NotSet;
 
         }
+
     }
+
 }

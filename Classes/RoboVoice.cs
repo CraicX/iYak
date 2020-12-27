@@ -15,9 +15,6 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace iYak.Classes
@@ -55,17 +52,32 @@ namespace iYak.Classes
         
        }
 
-        public static AudioFile ExportSpeech(Voice voice, string FileName="")
+        public static void ExportSpeech(Voice voice, VoiceExport voiceExport=null)
         {
-            if (FileName == "") FileName = Helpers.GenerateFileName(voice);
-            string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
+            if (voiceExport == null)
+            {
+                voiceExport = new VoiceExport() 
+                { 
+                    FileName = Helpers.GenerateFileName(voice),
+                    FilePath = Config.ExportPath,
+                };
+                
 
-            if (voice.Host == Voice.EHost.Local)        LocalVoice.Export(voice, FileName);
-            else if (voice.Host == Voice.EHost.Azure)   AzureVoice.Export(voice, FileName);
+            }
 
-            AudioFile afile = Helpers.GetAudioFileInfo(FilePath);
+            Action callback;
 
-            return afile;
+            callback = Utilities.FillExported;
+
+            if (voice.Host == Voice.EHost.Local)
+            {
+                LocalVoice.Export(voice, voiceExport, callback);
+            }
+            else if (voice.Host == Voice.EHost.Azure)
+            {
+                AzureVoice.Export(voice, voiceExport, callback);
+            }
+
 
         }
         
@@ -74,7 +86,8 @@ namespace iYak.Classes
         {
             List<Voice> VoiceList = new List<Voice>();
 
-            List<Voice> TempList = LocalVoice.GetVoiceList();
+            List<Voice> TempList  = LocalVoice.GetVoiceList();
+
             foreach( Voice TempVoice in TempList)
             {
                 VoiceList.Add(TempVoice);
@@ -83,14 +96,15 @@ namespace iYak.Classes
             if(AzureReady)
             {
                 TempList = AzureVoice.GetVoiceList(ForceRefresh);
+
                 foreach (Voice TempVoice in TempList)
                 {
                     VoiceList.Add(TempVoice);
                 }
+
             }
 
             return VoiceList;
-
 
         }
 
@@ -99,12 +113,8 @@ namespace iYak.Classes
 
         static public void RefreshVoiceList()
         {
-           // LocalSynth = new System.Speech.Synthesis.SpeechSynthesizer();
-            //GetVoiceList();
 
         }
-
-
 
     }
 
@@ -188,7 +198,7 @@ namespace iYak.Classes
         {
             if (which == EGender.Male)      return "Male";
             if (which == EGender.Female)    return "Female";
-            if (which == EGender.Neutral)   return "Neutral";
+            if (which == EGender.Neutral)   return "Female";
             if (which == EGender.NotSet)    return "NotSet";
 
             return "unknown";
@@ -199,7 +209,7 @@ namespace iYak.Classes
             {
             if (which == "Male")    return EGender.Male;
             if (which == "Female")  return EGender.Female;
-            if (which == "Neutral") return EGender.Neutral;
+            if (which == "Neutral") return EGender.Female;
             if (which == "NotSet")  return EGender.NotSet;
 
             return EGender.NotSet;
@@ -280,12 +290,44 @@ namespace iYak.Classes
                     Nickname  = tmpVoice.Id;
                 }
 
-
             }
 
         }
 
 
+    }
+
+    public class VoiceExport
+    {
+        public string FileName            = "";
+        public string FilePath            = Config.ExportPath;
+        public OutputFormats OutputFormat = OutputFormats.mp3;
+        public KhzOptions Khz             = KhzOptions.khz_24;
+
+        public enum KhzOptions{
+            khz_16,
+            khz_24,
+        }
+        public enum OutputFormats{
+            wav,
+            mp3,
+        }
+
+        public static string GetFilePath(VoiceExport voiceExport)
+        {
+            string filePath = Helpers.JoinPath(voiceExport.FilePath, voiceExport.FileName);
+
+            string fileExtension = "";
+
+            if (voiceExport.OutputFormat == OutputFormats.mp3)      fileExtension = "mp3";
+            else if (voiceExport.OutputFormat == OutputFormats.wav) fileExtension = "wav";
+
+            filePath += "." + fileExtension;
+
+            return filePath;
+
+        }
+        
     }
 
 

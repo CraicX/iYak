@@ -158,11 +158,11 @@ namespace iYak.Classes
 
         }
 
-        static public void FillExported(string folderPath="")
+        static public void FillExported()
         {
             Config.LExport.Items.Clear();
 
-            List<AudioFile> AudioList = ListExported(folderPath);
+            List<AudioFile> AudioList = ListExported();
 
             foreach(AudioFile afile in AudioList)
             {

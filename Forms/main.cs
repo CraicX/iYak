@@ -10,19 +10,12 @@
 //
 //
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using iYak.Classes;
 using iYak.Controls;
-
-
 
 namespace iYak
 {
@@ -34,14 +27,12 @@ namespace iYak
         public Main()
         {
             InitializeComponent();
-
         }
 
         public void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Config.frmSettings = new Settings();
-            
+            Config.frmSettings                  = new Settings();
             Config.frmSettings.cbAzure.Checked  = CloudWS.Azure.enabled;
             Config.frmSettings.AzureKey.Text    = CloudWS.Azure.key;
             Config.frmSettings.AzureRegion.Text = CloudWS.Azure.region;
@@ -57,33 +48,29 @@ namespace iYak
         private void Main_Load(object sender, EventArgs e)
         {
 
-            Config.splasher = new ViewSplash();
+            Config.splasher      = new ViewSplash();
             Config.splasher.Show();
-            
 
             //Config.LVoices     = VoiceSelect;
-            Config.LVoiceSelect = VoiceSelector;
-            Config.LExport     = ListExport;
-            Config.FAvatars    = AvatarsFlow;
-            Config.FActors     = ActorsFlow;
-            Config.FScripts    = FlowScript;
-            Config.CurrentFace = pbFace;
-            Config.mainRef     = this;
-
+            Config.LVoiceSelect  = VoiceSelector;
+            Config.LExport       = ListExport;
+            Config.FAvatars      = AvatarsFlow;
+            Config.FActors       = ActorsFlow;
+            Config.FScripts      = FlowScript;
+            Config.CurrentFace   = pbFace;
+            Config.mainRef       = this;
 
             Utilities.StartUp();
 
-            if (Config.Avatars.Count >= 1) {
-
+            if (Config.Avatars.Count >= 1) 
+            {
                 ListAvatars();
             }
 
         }
 
         private void ListAvatars() 
-        {
-
-            
+        {            
 
         }
 
@@ -167,12 +154,9 @@ namespace iYak
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-
-        
             if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
 
             Utilities.AddSpeech(Config.CurrentVoice.Copy(), SayBox.Text);
-            
 
         }
 
@@ -183,11 +167,8 @@ namespace iYak
             if (tbNickname.Text == "nickname")
             {
                 tbNickname.Text = "";
-
             } else {
-
                 tbNickname.SelectAll();
-
             }
 
         }
@@ -212,11 +193,9 @@ namespace iYak
 
             if (actor == null) return;
 
-            Console.WriteLine(actor.ActorID);
-
-            actor.voice = Config.CurrentVoice.Copy();
-
+            actor.voice  = Config.CurrentVoice.Copy();
             actor.Speech = actor.voice.Speech = SayBox.Text;
+
             actor.RefreshActor();
 
             Datax.AddSpeech(actor.voice, actor.voice.Speech, Config.CurrentPlaylist.Uid);
@@ -241,17 +220,13 @@ namespace iYak
             string SayText = SayBox.Text.Trim();
 
             if (SayText == "") return;
-
-            //Voice ExpVoice            = Config.CurrentVoice.Copy();
+            if (Config.CurrentVoice.Id == "") return;
+               
             Config.CurrentVoice.Speech  = SayText;
             Config.CurrentVoice.Volume  = tbVolume.Value;
             Config.CurrentVoice.Rate    = tbSpeed.Value;
 
-            AudioFile fileOut           = RoboVoice.ExportSpeech(Config.CurrentVoice);
-
-            SavedStatus.Text            = "Saved!";
-
-            Utilities.FillExported();
+            RoboVoice.ExportSpeech(Config.CurrentVoice);
             
         }
 
@@ -276,13 +251,9 @@ namespace iYak
 
             Config.CurrentVoice.SetVoice(rName, Voice.FromHost(rHost), Voice.FromType(rType));
 
-            Console.WriteLine("Changed to {0}, {1}", rName, rHost);
-
             if (Config.CurrentFace.Tag != null)
             {
-
                 Config.CurrentVoice.Avatar = Config.CurrentFace.Tag.ToString();
-
             }
 
             UpdateVoiceInfo(Config.CurrentVoice);
@@ -333,12 +304,8 @@ namespace iYak
 
             newColumn.HeaderCell.SortGlyphDirection = this.LastSortOrder;
 
-
-            Console.WriteLine("CLICKED HEADER: " +newColumn.ToString());
         }
-
         
     }
-
 
 }

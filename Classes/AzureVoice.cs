@@ -13,13 +13,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Data;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using Newtonsoft.Json;
@@ -70,33 +63,9 @@ namespace iYak.Classes
         public static async void Speak(Voice voice)
         {
 
-            string Pitch = "";
-            string Rate = "";
+            string ssml = BuildSSML(voice);
 
-            //
-            //  Convert Pitch & Rate values
-            //
-            if (voice.Pitch != 5)
-            {
-                int pitchVal = voice.Pitch - 5;
-
-                Pitch = "pitch=\"" + (pitchVal < 0 ? "-" : "+") + Math.Abs(pitchVal) + "st\"";
-            }
-
-            if (voice.Rate != 5)
-            {
-                double rateVal = ((voice.Rate - 5) * 0.1) + 1;
-                Rate = "rate=\"" + rateVal + "\"";
-            }
-
-            //
-            //  Build our ssml string from template
-            //
-            string ssml = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
-
-            Console.WriteLine(ssml);
-
-            SpeechSynthesisResult result = await Synth.SpeakSsmlAsync(ssml);
+            await Synth.SpeakSsmlAsync(ssml);
 
         }
 
@@ -104,71 +73,94 @@ namespace iYak.Classes
         // ────────────────────────────────────────────────────────────────────────
         //   :::    EXPORT
         // ────────────────────────────────────────────────────────────────────────
-        public static AudioFile Export(Voice voice, string FileName = "")
+        public static async void Export(Voice voice, VoiceExport voiceExport, Action callback=null)
         {
 
             //
-            //  Validate and set our export file name/path
+            //  set our export file name/path
             //
-            if (FileName == "") FileName = Helpers.GenerateFileName(voice) + ".mp3";
+            string FilePath = VoiceExport.GetFilePath(voiceExport);
 
-            string FilePath = Helpers.JoinPath(Config.ExportPath, FileName);
+            string ssml     = BuildSSML(voice);
 
-            ExportTask(voice, FilePath);
+            var azConfig    = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
+            
+            SpeechSynthesisOutputFormat outputFormat = SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
 
-            AudioFile afile = Helpers.GetAudioFileInfo(FilePath);
+            if(voiceExport.OutputFormat == VoiceExport.OutputFormats.wav) 
+            {
+                switch(voiceExport.Khz) {
+                    case VoiceExport.KhzOptions.khz_16:
+                        outputFormat = SpeechSynthesisOutputFormat.Riff16Khz16BitMonoPcm;
+                        break;
 
-            return afile;
+                    case VoiceExport.KhzOptions.khz_24:
+                        outputFormat = SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
+                        break;
+                }
+            }
+            else if(voiceExport.OutputFormat == VoiceExport.OutputFormats.mp3)
+            {
+                switch(voiceExport.Khz) {
+                    case VoiceExport.KhzOptions.khz_16:
+                        outputFormat = SpeechSynthesisOutputFormat.Audio16Khz64KBitRateMonoMp3;
+                        break;
+
+                    case VoiceExport.KhzOptions.khz_24:
+                        outputFormat = SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3;
+                        break;
+                }
+            }
+
+            azConfig.SetSpeechSynthesisOutputFormat(outputFormat);
+
+            var azSynth = new SpeechSynthesizer(azConfig, null);
+
+            var result  = await azSynth.SpeakSsmlAsync(ssml);
+
+            var stream  = AudioDataStream.FromResult(result);
+
+            await stream.SaveToWaveFileAsync(FilePath);
+
+            callback?.Invoke();
+
+
 
         }
 
-        public static async void ExportTask(Voice voice, string FilePath)
-        {
 
+        // ────────────────────────────────────────────────────────────────────────
+        //   :::    SSML 
+        // ────────────────────────────────────────────────────────────────────────
+        public static string BuildSSML(Voice voice)
+        {
             string Pitch = "";
             string Rate  = "";
 
             //
             //  Convert Pitch & Rate values
             //
-            if( voice.Pitch != 5 )
+            if (voice.Pitch != 5)
             {
                 int pitchVal = voice.Pitch - 5;
-                Pitch = "pitch=\"" + (pitchVal < 0 ? "-" : "+") + Math.Abs(pitchVal) + "st\"";
+                Pitch        = "pitch=\"" + (pitchVal < 0 ? "-" : "+") + Math.Abs(pitchVal) + "st\"";
             }
 
-            if( voice.Rate != 5 )
+            if (voice.Rate != 5)
             {
                 double rateVal = ((voice.Rate - 5) * 0.1) + 1;
-                Rate = "rate=\"" + rateVal + "\"";
+                Rate           = "rate=\"" + rateVal + "\"";
             }
 
             //
             //  Build our ssml string from template
             //
-            string ssml  = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
+            string ssml = String.Format(ssmlTemplate, voice.Speech, voice.Handle, voice.Volume, Pitch, Rate);
 
-            Console.WriteLine(ssml);
-
-            //
-            //  Create new Synthesizer object
-            //
-            SpeechConfig TempConfig = SpeechConfig.FromSubscription(CloudWS.Azure.key, CloudWS.Azure.region);
-
-            TempConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3);
-
-            var TempSynth                     = new SpeechSynthesizer(TempConfig);
-            AudioConfig SaveFormat            = AudioConfig.FromWavFileOutput(FilePath);
-            SpeechSynthesisResult SynthResult = await TempSynth.SpeakSsmlAsync(ssml);
-            AudioDataStream stream            = AudioDataStream.FromResult(SynthResult);
-
-            //
-            //  Save the Stream Data to file
-            //
-            await stream.SaveToWaveFileAsync(FilePath);
-
+            return ssml;
         }
 
+        
         
         
         // ────────────────────────────────────────────────────────────────────────
@@ -182,7 +174,7 @@ namespace iYak.Classes
 
             string CachedJson = Helpers.JoinPath(Config.RootPath, "Azure_" + CloudWS.Azure.region + ".json");
 
-            string json = "";
+            string json;
 
             //
             //  Check if we already grabbed the voice list from Azure
@@ -247,7 +239,7 @@ namespace iYak.Classes
 
             AzureVoice.VoiceList = new List<Voice>();
 
-            List<VoiceConvert> JsonList = new List<VoiceConvert>();
+            List<VoiceConvert> JsonList;
 
             JsonList = JsonConvert.DeserializeObject<List<VoiceConvert>>(json);
             

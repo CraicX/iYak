@@ -155,14 +155,14 @@ namespace iYak
 
             foreach( VoiceImport.VoiceSynth synth in VoiceImport.ListTTS ) {
 
-                ListViewItem lvi = new ListViewItem(synth.name);
+                ListViewItem lvi = new ListViewItem(synth.Name);
                 lvi.UseItemStyleForSubItems = false;
 
-                lvi.SubItems.Add(synth.tokenPath);
-                lvi.SubItems.Add(synth.region);
+                lvi.SubItems.Add(synth.TokenPath);
+                lvi.SubItems.Add(synth.Region);
                 lvi.SubItems.Add(synth.Gender);
 
-                if (synth.installed)
+                if (synth.Installed)
                 {
 
                     lvi.SubItems.Add("ok");
@@ -171,18 +171,18 @@ namespace iYak
                 else
                 {
 
-                    ListViewItem.ListViewSubItem iSublink = new ListViewItem.ListViewSubItem();
-
-                    iSublink.Text      = "install";
-                    iSublink.Font      = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-                    iSublink.ForeColor = Color.Blue;
+                    ListViewItem.ListViewSubItem iSublink = new ListViewItem.ListViewSubItem()
+                    {
+                        Text      = "install",
+                        Font      = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Pixel, ((byte)(0))),
+                        ForeColor = Color.Blue,
+                    };
                     
                     lvi.SubItems.Add(iSublink);
                 }
 
                 TTSLV.Items.Add(lvi);
             }
-
 
         }
         
