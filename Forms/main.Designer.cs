@@ -31,10 +31,10 @@ namespace iYak
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,8 +59,34 @@ namespace iYak
             this.ActorIcons = new System.Windows.Forms.ImageList(this.components);
             this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.PanelRight = new System.Windows.Forms.Panel();
+            this.splitter5 = new System.Windows.Forms.Splitter();
+            this.PanelTopRight = new System.Windows.Forms.Panel();
+            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.PanelRightBottom = new System.Windows.Forms.Panel();
+            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.PanelLeft = new System.Windows.Forms.Panel();
+            this.VoiceSelFrame = new System.Windows.Forms.Panel();
+            this.VoiceSelector = new System.Windows.Forms.DataGridView();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColGender = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColLocale = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Host = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColGenderHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLocHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTypeHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHostHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VCFilter = new System.Windows.Forms.ToolStrip();
+            this.VCBoys = new System.Windows.Forms.ToolStripButton();
+            this.VCGirls = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.VCAzure = new System.Windows.Forms.ToolStripButton();
+            this.VCGCloud = new System.Windows.Forms.ToolStripButton();
+            this.VCAWS = new System.Windows.Forms.ToolStripButton();
+            this.VCLocal = new System.Windows.Forms.ToolStripButton();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.ListExport = new System.Windows.Forms.ListView();
             this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -102,37 +128,16 @@ namespace iYak
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
-            this.PanelRightBottom = new System.Windows.Forms.Panel();
-            this.ActorsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.VoiceSelFrame = new System.Windows.Forms.Panel();
-            this.VoiceSelector = new System.Windows.Forms.DataGridView();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColGender = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColLocale = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Host = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColType = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColGenderHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColLocHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTypeHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHostHid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VCFilter = new System.Windows.Forms.ToolStrip();
-            this.VCBoys = new System.Windows.Forms.ToolStripButton();
-            this.VCGirls = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.VCAzure = new System.Windows.Forms.ToolStripButton();
-            this.VCGCloud = new System.Windows.Forms.ToolStripButton();
-            this.VCAWS = new System.Windows.Forms.ToolStripButton();
-            this.VCLocal = new System.Windows.Forms.ToolStripButton();
-            this.PanelTopRight = new System.Windows.Forms.Panel();
-            this.AvatarsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.splitter5 = new System.Windows.Forms.Splitter();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelRight.SuspendLayout();
+            this.PanelTopRight.SuspendLayout();
+            this.PanelRightBottom.SuspendLayout();
             this.PanelLeft.SuspendLayout();
+            this.VoiceSelFrame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).BeginInit();
+            this.VCFilter.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -145,11 +150,6 @@ namespace iYak
             ((System.ComponentModel.ISupportInitialize)(this.pbFace)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.PanelRightBottom.SuspendLayout();
-            this.VoiceSelFrame.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).BeginInit();
-            this.VCFilter.SuspendLayout();
-            this.PanelTopRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripStatusLabel2
@@ -410,6 +410,93 @@ namespace iYak
             this.PanelRight.Size = new System.Drawing.Size(220, 575);
             this.PanelRight.TabIndex = 24;
             // 
+            // splitter5
+            // 
+            this.splitter5.BackColor = System.Drawing.Color.MidnightBlue;
+            this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter5.Location = new System.Drawing.Point(0, 258);
+            this.splitter5.Name = "splitter5";
+            this.splitter5.Size = new System.Drawing.Size(220, 7);
+            this.splitter5.TabIndex = 8;
+            this.splitter5.TabStop = false;
+            // 
+            // PanelTopRight
+            // 
+            this.PanelTopRight.Controls.Add(this.AvatarsFlow);
+            this.PanelTopRight.Controls.Add(this.label5);
+            this.PanelTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelTopRight.Location = new System.Drawing.Point(0, 0);
+            this.PanelTopRight.Name = "PanelTopRight";
+            this.PanelTopRight.Size = new System.Drawing.Size(220, 265);
+            this.PanelTopRight.TabIndex = 7;
+            // 
+            // AvatarsFlow
+            // 
+            this.AvatarsFlow.AutoScroll = true;
+            this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
+            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.AvatarsFlow.Name = "AvatarsFlow";
+            this.AvatarsFlow.Size = new System.Drawing.Size(220, 234);
+            this.AvatarsFlow.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SeaShell;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(5);
+            this.label5.Size = new System.Drawing.Size(220, 31);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Faces";
+            // 
+            // PanelRightBottom
+            // 
+            this.PanelRightBottom.Controls.Add(this.ActorsFlow);
+            this.PanelRightBottom.Controls.Add(this.label6);
+            this.PanelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelRightBottom.Location = new System.Drawing.Point(0, 265);
+            this.PanelRightBottom.Name = "PanelRightBottom";
+            this.PanelRightBottom.Size = new System.Drawing.Size(220, 310);
+            this.PanelRightBottom.TabIndex = 6;
+            // 
+            // ActorsFlow
+            // 
+            this.ActorsFlow.AutoScroll = true;
+            this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
+            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.ActorsFlow.Name = "ActorsFlow";
+            this.ActorsFlow.Size = new System.Drawing.Size(220, 279);
+            this.ActorsFlow.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SeaShell;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(5);
+            this.label6.Size = new System.Drawing.Size(220, 31);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Actors";
+            // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(225, 24);
@@ -429,6 +516,259 @@ namespace iYak
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(225, 575);
             this.PanelLeft.TabIndex = 26;
+            // 
+            // VoiceSelFrame
+            // 
+            this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
+            this.VoiceSelFrame.Controls.Add(this.VoiceSelector);
+            this.VoiceSelFrame.Controls.Add(this.VCFilter);
+            this.VoiceSelFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelFrame.Location = new System.Drawing.Point(0, 0);
+            this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
+            this.VoiceSelFrame.Name = "VoiceSelFrame";
+            this.VoiceSelFrame.Size = new System.Drawing.Size(225, 264);
+            this.VoiceSelFrame.TabIndex = 14;
+            // 
+            // VoiceSelector
+            // 
+            this.VoiceSelector.AllowUserToAddRows = false;
+            this.VoiceSelector.AllowUserToDeleteRows = false;
+            this.VoiceSelector.AllowUserToResizeRows = false;
+            this.VoiceSelector.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.VoiceSelector.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.VoiceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VoiceSelector.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.VoiceSelector.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VoiceSelector.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.VoiceSelector.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.VoiceSelector.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColName,
+            this.ColGender,
+            this.ColLocale,
+            this.Host,
+            this.ColType,
+            this.ColGenderHid,
+            this.ColLocHid,
+            this.ColTypeHid,
+            this.ColHostHid});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.VoiceSelector.DefaultCellStyle = dataGridViewCellStyle7;
+            this.VoiceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoiceSelector.GridColor = System.Drawing.Color.DodgerBlue;
+            this.VoiceSelector.Location = new System.Drawing.Point(0, 25);
+            this.VoiceSelector.MultiSelect = false;
+            this.VoiceSelector.Name = "VoiceSelector";
+            this.VoiceSelector.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VoiceSelector.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.VoiceSelector.RowHeadersVisible = false;
+            this.VoiceSelector.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.VoiceSelector.RowTemplate.Height = 20;
+            this.VoiceSelector.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VoiceSelector.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.VoiceSelector.ShowRowErrors = false;
+            this.VoiceSelector.Size = new System.Drawing.Size(225, 239);
+            this.VoiceSelector.TabIndex = 18;
+            this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
+            this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
+            // 
+            // ColName
+            // 
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ColName.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColName.HeaderText = "Name";
+            this.ColName.MinimumWidth = 70;
+            this.ColName.Name = "ColName";
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColName.Width = 70;
+            // 
+            // ColGender
+            // 
+            this.ColGender.HeaderText = "";
+            this.ColGender.MinimumWidth = 30;
+            this.ColGender.Name = "ColGender";
+            this.ColGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColGender.Width = 30;
+            // 
+            // ColLocale
+            // 
+            this.ColLocale.HeaderText = "";
+            this.ColLocale.MinimumWidth = 30;
+            this.ColLocale.Name = "ColLocale";
+            this.ColLocale.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColLocale.Width = 30;
+            // 
+            // Host
+            // 
+            this.Host.HeaderText = "";
+            this.Host.MinimumWidth = 30;
+            this.Host.Name = "Host";
+            this.Host.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Host.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Host.Width = 30;
+            // 
+            // ColType
+            // 
+            this.ColType.HeaderText = "";
+            this.ColType.MinimumWidth = 40;
+            this.ColType.Name = "ColType";
+            this.ColType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColType.Width = 40;
+            // 
+            // ColGenderHid
+            // 
+            this.ColGenderHid.HeaderText = "HiddenGender";
+            this.ColGenderHid.Name = "ColGenderHid";
+            this.ColGenderHid.Visible = false;
+            this.ColGenderHid.Width = 151;
+            // 
+            // ColLocHid
+            // 
+            this.ColLocHid.HeaderText = "HiddenLoc";
+            this.ColLocHid.Name = "ColLocHid";
+            this.ColLocHid.Visible = false;
+            this.ColLocHid.Width = 120;
+            // 
+            // ColTypeHid
+            // 
+            this.ColTypeHid.HeaderText = "HiddenType";
+            this.ColTypeHid.Name = "ColTypeHid";
+            this.ColTypeHid.Visible = false;
+            this.ColTypeHid.Width = 129;
+            // 
+            // ColHostHid
+            // 
+            this.ColHostHid.HeaderText = "HiddenHost";
+            this.ColHostHid.Name = "ColHostHid";
+            this.ColHostHid.Visible = false;
+            this.ColHostHid.Width = 129;
+            // 
+            // VCFilter
+            // 
+            this.VCFilter.BackColor = System.Drawing.Color.SteelBlue;
+            this.VCFilter.GripMargin = new System.Windows.Forms.Padding(0);
+            this.VCFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.VCFilter.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.VCFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.VCBoys,
+            this.VCGirls,
+            this.toolStripSeparator3,
+            this.VCAzure,
+            this.VCGCloud,
+            this.VCAWS,
+            this.VCLocal});
+            this.VCFilter.Location = new System.Drawing.Point(0, 0);
+            this.VCFilter.Name = "VCFilter";
+            this.VCFilter.Padding = new System.Windows.Forms.Padding(1);
+            this.VCFilter.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.VCFilter.Size = new System.Drawing.Size(225, 25);
+            this.VCFilter.TabIndex = 17;
+            this.VCFilter.Text = "Filters";
+            // 
+            // VCBoys
+            // 
+            this.VCBoys.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCBoys.CheckOnClick = true;
+            this.VCBoys.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCBoys.Image = ((System.Drawing.Image)(resources.GetObject("VCBoys.Image")));
+            this.VCBoys.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCBoys.Name = "VCBoys";
+            this.VCBoys.Size = new System.Drawing.Size(23, 20);
+            this.VCBoys.Text = "toolStripButton1";
+            this.VCBoys.ToolTipText = "Male Voices";
+            this.VCBoys.Click += new System.EventHandler(this.VCFilter_Click);
+            // 
+            // VCGirls
+            // 
+            this.VCGirls.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCGirls.CheckOnClick = true;
+            this.VCGirls.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCGirls.Image = ((System.Drawing.Image)(resources.GetObject("VCGirls.Image")));
+            this.VCGirls.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCGirls.Name = "VCGirls";
+            this.VCGirls.Size = new System.Drawing.Size(23, 20);
+            this.VCGirls.Text = "toolStripButton1";
+            this.VCGirls.ToolTipText = "Female Voices";
+            this.VCGirls.Click += new System.EventHandler(this.VCFilter_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
+            // 
+            // VCAzure
+            // 
+            this.VCAzure.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCAzure.CheckOnClick = true;
+            this.VCAzure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCAzure.Image = ((System.Drawing.Image)(resources.GetObject("VCAzure.Image")));
+            this.VCAzure.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.VCAzure.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCAzure.Name = "VCAzure";
+            this.VCAzure.Size = new System.Drawing.Size(23, 20);
+            this.VCAzure.Text = "toolStripButton1";
+            this.VCAzure.ToolTipText = "Azure WS Voices";
+            this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
+            // 
+            // VCGCloud
+            // 
+            this.VCGCloud.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCGCloud.CheckOnClick = true;
+            this.VCGCloud.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCGCloud.Image = ((System.Drawing.Image)(resources.GetObject("VCGCloud.Image")));
+            this.VCGCloud.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCGCloud.Name = "VCGCloud";
+            this.VCGCloud.Size = new System.Drawing.Size(23, 20);
+            this.VCGCloud.Text = "toolStripButton1";
+            this.VCGCloud.ToolTipText = "GCloud WS Voices";
+            this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
+            // 
+            // VCAWS
+            // 
+            this.VCAWS.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCAWS.CheckOnClick = true;
+            this.VCAWS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCAWS.Image = ((System.Drawing.Image)(resources.GetObject("VCAWS.Image")));
+            this.VCAWS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCAWS.Name = "VCAWS";
+            this.VCAWS.Size = new System.Drawing.Size(23, 20);
+            this.VCAWS.Text = "toolStripButton1";
+            this.VCAWS.ToolTipText = "Amazon AWS Voices";
+            this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
+            // 
+            // VCLocal
+            // 
+            this.VCLocal.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.VCLocal.CheckOnClick = true;
+            this.VCLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.VCLocal.Image = ((System.Drawing.Image)(resources.GetObject("VCLocal.Image")));
+            this.VCLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VCLocal.Name = "VCLocal";
+            this.VCLocal.Size = new System.Drawing.Size(23, 20);
+            this.VCLocal.Text = "toolStripButton1";
+            this.VCLocal.ToolTipText = "Locally Installed Voices";
+            this.VCLocal.Click += new System.EventHandler(this.VCFilter_Click);
             // 
             // splitter3
             // 
@@ -1014,347 +1354,42 @@ namespace iYak
             this.ImgListVS.Images.SetKeyName(12, "us.png");
             this.ImgListVS.Images.SetKeyName(13, "neural-list.png");
             this.ImgListVS.Images.SetKeyName(14, "trans.png");
-            // 
-            // PanelRightBottom
-            // 
-            this.PanelRightBottom.Controls.Add(this.ActorsFlow);
-            this.PanelRightBottom.Controls.Add(this.label6);
-            this.PanelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelRightBottom.Location = new System.Drawing.Point(0, 265);
-            this.PanelRightBottom.Name = "PanelRightBottom";
-            this.PanelRightBottom.Size = new System.Drawing.Size(220, 310);
-            this.PanelRightBottom.TabIndex = 6;
-            // 
-            // ActorsFlow
-            // 
-            this.ActorsFlow.AutoScroll = true;
-            this.ActorsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.ActorsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ActorsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ActorsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActorsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActorsFlow.Location = new System.Drawing.Point(0, 31);
-            this.ActorsFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.ActorsFlow.Name = "ActorsFlow";
-            this.ActorsFlow.Size = new System.Drawing.Size(220, 279);
-            this.ActorsFlow.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SeaShell;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(5);
-            this.label6.Size = new System.Drawing.Size(220, 31);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Actors";
-            // 
-            // VoiceSelFrame
-            // 
-            this.VoiceSelFrame.BackColor = System.Drawing.Color.SteelBlue;
-            this.VoiceSelFrame.Controls.Add(this.VoiceSelector);
-            this.VoiceSelFrame.Controls.Add(this.VCFilter);
-            this.VoiceSelFrame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VoiceSelFrame.Location = new System.Drawing.Point(0, 0);
-            this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
-            this.VoiceSelFrame.Name = "VoiceSelFrame";
-            this.VoiceSelFrame.Size = new System.Drawing.Size(225, 264);
-            this.VoiceSelFrame.TabIndex = 14;
-            // 
-            // VoiceSelector
-            // 
-            this.VoiceSelector.AllowUserToAddRows = false;
-            this.VoiceSelector.AllowUserToDeleteRows = false;
-            this.VoiceSelector.AllowUserToResizeRows = false;
-            this.VoiceSelector.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.VoiceSelector.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.VoiceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.VoiceSelector.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.VoiceSelector.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Moccasin;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.VoiceSelector.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.VoiceSelector.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.VoiceSelector.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColName,
-            this.ColGender,
-            this.ColLocale,
-            this.Host,
-            this.ColType,
-            this.ColGenderHid,
-            this.ColLocHid,
-            this.ColTypeHid,
-            this.ColHostHid});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.VoiceSelector.DefaultCellStyle = dataGridViewCellStyle3;
-            this.VoiceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VoiceSelector.GridColor = System.Drawing.Color.DodgerBlue;
-            this.VoiceSelector.Location = new System.Drawing.Point(0, 25);
-            this.VoiceSelector.MultiSelect = false;
-            this.VoiceSelector.Name = "VoiceSelector";
-            this.VoiceSelector.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.VoiceSelector.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.VoiceSelector.RowHeadersVisible = false;
-            this.VoiceSelector.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.VoiceSelector.RowTemplate.Height = 20;
-            this.VoiceSelector.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.VoiceSelector.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.VoiceSelector.ShowRowErrors = false;
-            this.VoiceSelector.Size = new System.Drawing.Size(225, 239);
-            this.VoiceSelector.TabIndex = 18;
-            this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
-            this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
-            // 
-            // ColName
-            // 
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ColName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColName.HeaderText = "Name";
-            this.ColName.MinimumWidth = 70;
-            this.ColName.Name = "ColName";
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColName.Width = 70;
-            // 
-            // ColGender
-            // 
-            this.ColGender.HeaderText = "";
-            this.ColGender.MinimumWidth = 30;
-            this.ColGender.Name = "ColGender";
-            this.ColGender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColGender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColGender.Width = 30;
-            // 
-            // ColLocale
-            // 
-            this.ColLocale.HeaderText = "";
-            this.ColLocale.MinimumWidth = 30;
-            this.ColLocale.Name = "ColLocale";
-            this.ColLocale.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColLocale.Width = 30;
-            // 
-            // Host
-            // 
-            this.Host.HeaderText = "";
-            this.Host.MinimumWidth = 30;
-            this.Host.Name = "Host";
-            this.Host.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Host.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Host.Width = 30;
-            // 
-            // ColType
-            // 
-            this.ColType.HeaderText = "";
-            this.ColType.MinimumWidth = 40;
-            this.ColType.Name = "ColType";
-            this.ColType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColType.Width = 40;
-            // 
-            // ColGenderHid
-            // 
-            this.ColGenderHid.HeaderText = "HiddenGender";
-            this.ColGenderHid.Name = "ColGenderHid";
-            this.ColGenderHid.Visible = false;
-            this.ColGenderHid.Width = 151;
-            // 
-            // ColLocHid
-            // 
-            this.ColLocHid.HeaderText = "HiddenLoc";
-            this.ColLocHid.Name = "ColLocHid";
-            this.ColLocHid.Visible = false;
-            this.ColLocHid.Width = 120;
-            // 
-            // ColTypeHid
-            // 
-            this.ColTypeHid.HeaderText = "HiddenType";
-            this.ColTypeHid.Name = "ColTypeHid";
-            this.ColTypeHid.Visible = false;
-            this.ColTypeHid.Width = 129;
-            // 
-            // ColHostHid
-            // 
-            this.ColHostHid.HeaderText = "HiddenHost";
-            this.ColHostHid.Name = "ColHostHid";
-            this.ColHostHid.Visible = false;
-            this.ColHostHid.Width = 129;
-            // 
-            // VCFilter
-            // 
-            this.VCFilter.BackColor = System.Drawing.Color.SteelBlue;
-            this.VCFilter.GripMargin = new System.Windows.Forms.Padding(0);
-            this.VCFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.VCFilter.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.VCFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.VCBoys,
-            this.VCGirls,
-            this.toolStripSeparator3,
-            this.VCAzure,
-            this.VCGCloud,
-            this.VCAWS,
-            this.VCLocal});
-            this.VCFilter.Location = new System.Drawing.Point(0, 0);
-            this.VCFilter.Name = "VCFilter";
-            this.VCFilter.Padding = new System.Windows.Forms.Padding(1);
-            this.VCFilter.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.VCFilter.Size = new System.Drawing.Size(225, 25);
-            this.VCFilter.TabIndex = 17;
-            this.VCFilter.Text = "Filters";
-            // 
-            // VCBoys
-            // 
-            this.VCBoys.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCBoys.CheckOnClick = true;
-            this.VCBoys.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCBoys.Image = ((System.Drawing.Image)(resources.GetObject("VCBoys.Image")));
-            this.VCBoys.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCBoys.Name = "VCBoys";
-            this.VCBoys.Size = new System.Drawing.Size(23, 20);
-            this.VCBoys.Text = "toolStripButton1";
-            this.VCBoys.ToolTipText = "Male Voices";
-            this.VCBoys.Click += new System.EventHandler(this.VCFilter_Click);
-            // 
-            // VCGirls
-            // 
-            this.VCGirls.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCGirls.CheckOnClick = true;
-            this.VCGirls.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCGirls.Image = ((System.Drawing.Image)(resources.GetObject("VCGirls.Image")));
-            this.VCGirls.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCGirls.Name = "VCGirls";
-            this.VCGirls.Size = new System.Drawing.Size(23, 20);
-            this.VCGirls.Text = "toolStripButton1";
-            this.VCGirls.ToolTipText = "Female Voices";
-            this.VCGirls.Click += new System.EventHandler(this.VCFilter_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
-            // 
-            // VCAzure
-            // 
-            this.VCAzure.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCAzure.CheckOnClick = true;
-            this.VCAzure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCAzure.Image = ((System.Drawing.Image)(resources.GetObject("VCAzure.Image")));
-            this.VCAzure.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.VCAzure.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCAzure.Name = "VCAzure";
-            this.VCAzure.Size = new System.Drawing.Size(23, 20);
-            this.VCAzure.Text = "toolStripButton1";
-            this.VCAzure.ToolTipText = "Azure WS Voices";
-            this.VCAzure.Click += new System.EventHandler(this.VCFilter_Click);
-            // 
-            // VCGCloud
-            // 
-            this.VCGCloud.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCGCloud.CheckOnClick = true;
-            this.VCGCloud.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCGCloud.Image = ((System.Drawing.Image)(resources.GetObject("VCGCloud.Image")));
-            this.VCGCloud.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCGCloud.Name = "VCGCloud";
-            this.VCGCloud.Size = new System.Drawing.Size(23, 20);
-            this.VCGCloud.Text = "toolStripButton1";
-            this.VCGCloud.ToolTipText = "GCloud WS Voices";
-            this.VCGCloud.Click += new System.EventHandler(this.VCFilter_Click);
-            // 
-            // VCAWS
-            // 
-            this.VCAWS.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCAWS.CheckOnClick = true;
-            this.VCAWS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCAWS.Image = ((System.Drawing.Image)(resources.GetObject("VCAWS.Image")));
-            this.VCAWS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCAWS.Name = "VCAWS";
-            this.VCAWS.Size = new System.Drawing.Size(23, 20);
-            this.VCAWS.Text = "toolStripButton1";
-            this.VCAWS.ToolTipText = "Amazon AWS Voices";
-            this.VCAWS.Click += new System.EventHandler(this.VCFilter_Click);
-
-            // 
-            // VCLocal
-            // 
-            this.VCLocal.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.VCLocal.CheckOnClick = true;
-            this.VCLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.VCLocal.Image = ((System.Drawing.Image)(resources.GetObject("VCLocal.Image")));
-            this.VCLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VCLocal.Name = "VCLocal";
-            this.VCLocal.Size = new System.Drawing.Size(23, 20);
-            this.VCLocal.Text = "toolStripButton1";
-            this.VCLocal.ToolTipText = "Locally Installed Voices";
-            this.VCLocal.Click += new System.EventHandler(this.VCFilter_Click);
-            // 
-            // PanelTopRight
-            // 
-            this.PanelTopRight.Controls.Add(this.AvatarsFlow);
-            this.PanelTopRight.Controls.Add(this.label5);
-            this.PanelTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelTopRight.Location = new System.Drawing.Point(0, 0);
-            this.PanelTopRight.Name = "PanelTopRight";
-            this.PanelTopRight.Size = new System.Drawing.Size(220, 265);
-            this.PanelTopRight.TabIndex = 7;
-            // 
-            // AvatarsFlow
-            // 
-            this.AvatarsFlow.AutoScroll = true;
-            this.AvatarsFlow.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.AvatarsFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AvatarsFlow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.AvatarsFlow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AvatarsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AvatarsFlow.Location = new System.Drawing.Point(0, 31);
-            this.AvatarsFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.AvatarsFlow.Name = "AvatarsFlow";
-            this.AvatarsFlow.Size = new System.Drawing.Size(220, 234);
-            this.AvatarsFlow.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SeaShell;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(5);
-            this.label5.Size = new System.Drawing.Size(220, 31);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Faces";
-            // 
-            // splitter5
-            // 
-            this.splitter5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter5.Location = new System.Drawing.Point(0, 258);
-            this.splitter5.Name = "splitter5";
-            this.splitter5.Size = new System.Drawing.Size(220, 7);
-            this.splitter5.TabIndex = 8;
-            this.splitter5.TabStop = false;
+            this.ImgListVS.Images.SetKeyName(15, "at.png");
+            this.ImgListVS.Images.SetKeyName(16, "bg.png");
+            this.ImgListVS.Images.SetKeyName(17, "br.png");
+            this.ImgListVS.Images.SetKeyName(18, "ch.png");
+            this.ImgListVS.Images.SetKeyName(19, "cz.png");
+            this.ImgListVS.Images.SetKeyName(20, "de.png");
+            this.ImgListVS.Images.SetKeyName(21, "dk.png");
+            this.ImgListVS.Images.SetKeyName(22, "eg.png");
+            this.ImgListVS.Images.SetKeyName(23, "es.png");
+            this.ImgListVS.Images.SetKeyName(24, "fr.png");
+            this.ImgListVS.Images.SetKeyName(25, "gr.png");
+            this.ImgListVS.Images.SetKeyName(26, "hk.png");
+            this.ImgListVS.Images.SetKeyName(27, "hr.png");
+            this.ImgListVS.Images.SetKeyName(28, "hu.png");
+            this.ImgListVS.Images.SetKeyName(29, "id.png");
+            this.ImgListVS.Images.SetKeyName(30, "il.png");
+            this.ImgListVS.Images.SetKeyName(31, "it.png");
+            this.ImgListVS.Images.SetKeyName(32, "jp.png");
+            this.ImgListVS.Images.SetKeyName(33, "kr.png");
+            this.ImgListVS.Images.SetKeyName(34, "mx.png");
+            this.ImgListVS.Images.SetKeyName(35, "my.png");
+            this.ImgListVS.Images.SetKeyName(36, "nl.png");
+            this.ImgListVS.Images.SetKeyName(37, "no.png");
+            this.ImgListVS.Images.SetKeyName(38, "pl.png");
+            this.ImgListVS.Images.SetKeyName(39, "pt.png");
+            this.ImgListVS.Images.SetKeyName(40, "ro.png");
+            this.ImgListVS.Images.SetKeyName(41, "ru.png");
+            this.ImgListVS.Images.SetKeyName(42, "sa.png");
+            this.ImgListVS.Images.SetKeyName(43, "se.png");
+            this.ImgListVS.Images.SetKeyName(44, "si.png");
+            this.ImgListVS.Images.SetKeyName(45, "sk.png");
+            this.ImgListVS.Images.SetKeyName(46, "th.png");
+            this.ImgListVS.Images.SetKeyName(47, "tr.png");
+            this.ImgListVS.Images.SetKeyName(48, "tw.png");
+            this.ImgListVS.Images.SetKeyName(49, "vn.png");
+            this.ImgListVS.Images.SetKeyName(50, "fi.png");
             // 
             // Main
             // 
@@ -1383,7 +1418,14 @@ namespace iYak
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.PanelRight.ResumeLayout(false);
+            this.PanelTopRight.ResumeLayout(false);
+            this.PanelRightBottom.ResumeLayout(false);
             this.PanelLeft.ResumeLayout(false);
+            this.VoiceSelFrame.ResumeLayout(false);
+            this.VoiceSelFrame.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).EndInit();
+            this.VCFilter.ResumeLayout(false);
+            this.VCFilter.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -1399,13 +1441,6 @@ namespace iYak
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.PanelRightBottom.ResumeLayout(false);
-            this.VoiceSelFrame.ResumeLayout(false);
-            this.VoiceSelFrame.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).EndInit();
-            this.VCFilter.ResumeLayout(false);
-            this.VCFilter.PerformLayout();
-            this.PanelTopRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

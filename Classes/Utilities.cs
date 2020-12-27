@@ -218,6 +218,8 @@ namespace iYak.Classes
                 {"in", 11},
                 {"us", 12},
             };
+
+            
             foreach (Voice vItem in VList)
             {
                 if (vItem.Nickname == "") continue;
@@ -245,7 +247,7 @@ namespace iYak.Classes
                     Value = Config.mainRef.ImgListVS.Images[vItem.VoiceType == Voice.EVoiceType.Neural ? 13 : 14],
                 };
                 DataGridViewImageCell cLoc = new DataGridViewImageCell() {
-                    Value = Config.mainRef.ImgListVS.Images[LocaleMap[CountryCode]],
+                    Value = Config.mainRef.ImgListVS.Images[CountryCode + ".png"],
                 };
                 DataGridViewImageCell cHost = new DataGridViewImageCell()
                 {
@@ -270,15 +272,15 @@ namespace iYak.Classes
 
                 if (vItem.Gender == Voice.EGender.Male)
                 {
-                    FontColor = Color.Blue;
-                    BackCol = "SkyBlue";
+                    FontColor     = Color.Blue;
+                    BackCol       = "SkyBlue";
                     cGender.Value = Config.mainRef.ImgListVS.Images[4];
 
                 }
                 else
                 {
-                    FontColor = Color.MediumVioletRed;
-                    BackCol = "Plum";
+                    FontColor     = Color.MediumVioletRed;
+                    BackCol       = "Plum";
                     cGender.Value = Config.mainRef.ImgListVS.Images[2];
                 }
 
@@ -665,15 +667,52 @@ namespace iYak.Classes
 
         static public string GetCountryFromLocale(string locale)
         {
+
+            if (locale.Length < 2) return "us";
+
             var CountryMap = new Dictionary<string, string>()
             {
-                {"ie", "ie"},
-                {"gb", "gb"},
-                {"cn", "cn"},
+                {"at", "at"},
                 {"au", "au"},
-                {"in", "in"},
+                {"bg", "bg"},
+                {"br", "br"},
                 {"ca", "ca"},
+                {"ch", "ch"},
+                {"cn", "cn"},
+                {"cz", "cz"},
+                {"de", "de"},
+                {"dk", "dk"},
+                {"eg", "eg"},
+                {"es", "es"},
+                {"fi", "fi"},
+                {"fr", "fr"},
+                {"gb", "gb"},
+                {"gr", "gr"},
+                {"hk", "hk"},
+                {"hr", "hr"},
+                {"hu", "hu"},
+                {"id", "id"},
+                {"ie", "ie"},
+                {"it", "it"},
+                {"jp", "jp"},
+                {"kr", "kr"},
+                {"mx", "mx"},
+                {"my", "my"},
+                {"nl", "nl"},
+                {"no", "no"},
+                {"pl", "pl"},
+                {"pt", "pt"},
+                {"ro", "ro"},
+                {"ru", "ru"},
+                {"sa", "sa"},
+                {"se", "se"},
+                {"si", "si"},
+                {"sk", "sk"},
+                {"th", "th"},
+                {"tr", "tr"},
+                {"tw", "tw"},
                 {"us", "us"},
+                {"vn", "vn"},
                 {"states", "us"},
                 {"ireland", "ie"},
                 {"india", "in"},
@@ -685,7 +724,14 @@ namespace iYak.Classes
 
             locale = locale.ToLower();
 
-            foreach(KeyValuePair<string, string> entry in CountryMap)
+            string lastTwo = locale.Substring(locale.Length - 2);
+
+            foreach (KeyValuePair<string, string> entry in CountryMap)
+            {
+                if (lastTwo == entry.Key) return entry.Value;
+            }
+
+            foreach (KeyValuePair<string, string> entry in CountryMap)
             {
                 if (locale.Contains(entry.Key)) return entry.Value;
             }
