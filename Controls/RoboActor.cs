@@ -296,9 +296,9 @@ namespace iYak.Controls
 
                 parent.lblDelete.Visible = true;
                 parent.lblEdit.Visible   = true;
-                string[] tipWords = parent.voice.Speech.Split(' ');
-                int curLength = 0;
-                parent.tipText = "";
+                string[] tipWords        = parent.voice.Speech.Split(' ');
+                int curLength            = 0;
+                parent.tipText           = "";
                 foreach (string tipWord in tipWords)
                 {
                     parent.tipText += tipWord + ' ';
@@ -373,14 +373,13 @@ namespace iYak.Controls
             //this.Popup    += new PopupEventHandler(this.OnPopup);
             //this.Draw     += new DrawToolTipEventHandler(this.OnDraw);
             this.IsBalloon = true;
-            this.BackColor = Color.Red;
             
             
         }
 
         private void OnPopup(object sender, PopupEventArgs e) // use this event to set the size of the tool tip
         {
-            e.ToolTipSize = new Size(250, 100);
+            //e.ToolTipSize = new Size(250, 100);
         }
 
         private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip

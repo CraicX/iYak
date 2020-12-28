@@ -92,7 +92,7 @@ namespace iYak.Controls
             this.lblNickname.ForeColor = System.Drawing.Color.Linen;
             this.lblNickname.Location = new System.Drawing.Point(0, 0);
             this.lblNickname.Name = "lblNickname";
-            this.lblNickname.Size = new System.Drawing.Size(78, 20);
+            this.lblNickname.Size = new System.Drawing.Size(78, 16);
             this.lblNickname.TabIndex = 10;
             this.lblNickname.Text = "nickname";
             this.lblNickname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,7 +107,7 @@ namespace iYak.Controls
             this.Controls.Add(this.pbActor);
             this.Controls.Add(this.lblNickname);
             this.Name = "RoboActor";
-            this.Size = new System.Drawing.Size(78, 98);
+            this.Size = new System.Drawing.Size(78, 84);
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).EndInit();
             this.ResumeLayout(false);
 

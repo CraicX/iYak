@@ -35,7 +35,6 @@ namespace iYak.Classes
             ConnectionStr.Mode       = SqliteOpenMode.ReadWriteCreate;
             ConnectionStr.Cache      = SqliteCacheMode.Private;
             ConnectionStr.DataSource = Helpers.JoinPath(Config.CachePath, "iYak.db");
-            Console.WriteLine(Helpers.JoinPath(Config.CachePath, "iYak.db"));
             
             DBH = new SqliteConnection(ConnectionStr.ConnectionString);
 
