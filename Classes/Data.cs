@@ -110,15 +110,15 @@ namespace iYak.Classes
 
         }
 
-        static private void DropTables(string tableList)
-        {
-            string[] Tables = tableList.Split(',');
+        //static private void DropTables(string tableList)
+        //{
+        //    string[] Tables = tableList.Split(',');
 
-            foreach (string tableName in Tables) {
-                Query("DROP TABLE IF EXISTS " + tableName.Trim());
-            }
+        //    foreach (string tableName in Tables) {
+        //        Query("DROP TABLE IF EXISTS " + tableName.Trim());
+        //    }
             
-        }
+        //}
 
 
         static public void Query(string query)
@@ -150,8 +150,12 @@ namespace iYak.Classes
 
         }
 
-        static public int AddActor(Voice actor, int playlistId)
+        static public QueryResult AddActor(Voice actor, int playlistId)
         {
+
+            bool doUpdate = false;
+
+            var qResult   = new QueryResult();
 
             DBH.Open();
 
@@ -167,7 +171,7 @@ namespace iYak.Classes
                     volume          = ""{7}"",
                     rate            = ""{8}"",
                     pitch           = ""{9}"",
-                    avatar          = ""{10}"",
+                    avatar          = ""{10}""
                 WHERE id            = ""{11}""
             ";
 
@@ -178,11 +182,26 @@ namespace iYak.Classes
                 SELECT last_insert_rowid();
             ";
 
+            const string qValidateUpdate = @"
+                SELECT nickname FROM [Actors] 
+                WHERE id = ""{0}"";
+            ";
+
 
             SqliteCommand cmd = DBH.CreateCommand();
 
             if (actor.Uid > 0)
             {
+                string nickname = (string) Fetch(String.Format(qValidateUpdate, actor.Uid));
+
+                if (nickname == actor.Nickname) doUpdate = true;
+
+            }
+
+            if (doUpdate)
+            {
+
+                qResult.queryMethod = QueryResult.QueryMethod.Update;
 
                 cmd.CommandText = String.Format(qUpdateActor,
                     playlistId,
@@ -201,9 +220,14 @@ namespace iYak.Classes
 
                 cmd.ExecuteNonQuery();
 
+                qResult.recordKey   = actor.Uid;
+                qResult.numAffected = 1;
+
             }
             else
             {
+
+                qResult.queryMethod = QueryResult.QueryMethod.Insert;
 
                 cmd.CommandText = String.Format(qInsertActor,
                     playlistId,
@@ -221,8 +245,9 @@ namespace iYak.Classes
                 Object actor_uid = cmd.ExecuteScalar();
 
                 actor.Uid = int.Parse(actor_uid.ToString());
-
-
+                
+                qResult.recordKey   = actor.Uid;
+                qResult.numAffected = 1;
             }
 
             cmd.CommandText = String.Format(qUpdateTime, playlistId);
@@ -231,7 +256,7 @@ namespace iYak.Classes
 
             DBH.Close();
 
-            return actor.Uid;
+            return qResult;
 
         }
 
@@ -457,6 +482,27 @@ namespace iYak.Classes
             DBH.Close();
 
             return Actors;
+
+        }
+
+        public class QueryResult 
+        {
+
+            public QueryMethod queryMethod = QueryMethod.Unknown;
+
+            public int numAffected = 0;
+
+            public int recordKey = 0;
+
+            public string data = "";
+
+            public enum QueryMethod {
+                Delete,
+                Insert,
+                Update,
+                Unknown,
+            }
+
 
         }
 

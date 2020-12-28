@@ -207,18 +207,6 @@ namespace iYak.Classes
                     { Voice.EHost.GCloud, 3 },
                     { Voice.EHost.Local, 5 }
                 };
-
-            var LocaleMap = new Dictionary<string, int>()
-            {
-                {"au", 6},
-                {"ca", 7},
-                {"cn", 8},
-                {"gb", 9},
-                {"ie", 10},
-                {"in", 11},
-                {"us", 12},
-            };
-
             
             foreach (Voice vItem in VList)
             {
@@ -607,25 +595,46 @@ namespace iYak.Classes
         //
         // Creates a new actor control in the flow panel
         //
-        static public void AddActor(Voice _voice, bool autoSave=false)
+        static public void AddActor(Voice _voice, bool autoSave = false)
         {
 
             Voice voice = (autoSave) ? _voice.Copy() : _voice;
-            
+
             RoboActor actor = new RoboActor(voice, RoboActor.ControlType.Actor)
             {
-                Width  = 64,
+                Width = 64,
                 Height = 80,
                 Margin = new Padding(1)
             };
 
 
-            Config.FActors.Controls.Add(actor);
+            if (autoSave)
+            {
 
-            if(autoSave) Datax.AddActor( voice, Config.CurrentPlaylist.Uid );
+                Datax.QueryResult dResult = Datax.AddActor(voice, Config.CurrentPlaylist.Uid);
+                
+                if (dResult.queryMethod == Datax.QueryResult.QueryMethod.Update)
+                {
+                    foreach (RoboActor robo in Config.FActors.Controls)
+                    {
+                        if (robo.voice.Uid == dResult.recordKey)
+                        {
+                            robo.voice = actor.voice;
+                            robo.RefreshActor();
+                        }
+                    }
+
+                }
+                else
+                {
+                    Config.FActors.Controls.Add(actor);
+                }
+
+            } else {
+                Config.FActors.Controls.Add(actor);
+            }
 
         }
-
 
         //
         // ────────────────────────────────────────────────────────────────────────
