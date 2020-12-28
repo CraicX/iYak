@@ -637,7 +637,7 @@ namespace iYak.Classes
         static public void AddSpeech(Voice voice, string speech)
         {
             RoboActor roboA = new RoboActor(
-                0,
+                voice.Uid,
                 speech,
                 voice
             );
@@ -653,7 +653,7 @@ namespace iYak.Classes
         static public void AddSpeech(Voice voice, bool autoSave=false)
         {
             RoboActor roboA = new RoboActor(
-                0,
+                voice.Uid,
                 voice.Speech,
                 voice
             );

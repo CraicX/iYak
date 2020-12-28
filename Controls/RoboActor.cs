@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace iYak.Controls
         public string Speech    = "";
         public Voice voice      = new Voice();
         public ControlType Type = ControlType.Speech;
+        public string tipText;
         public enum ControlType 
         {
             Speech,
@@ -68,6 +70,7 @@ namespace iYak.Controls
             this.ActorID  = _ActorID;
             this.Speech   = _Speech;
             this.voice    = _voice;
+
 
             if (this.ActorID == 0) this.ActorID = ControlCounter;
 
@@ -104,6 +107,7 @@ namespace iYak.Controls
             this.lblNickname.Text = this.voice.Nickname;
             
             if (this.voice.Avatar != "") this.SetAvatar(this.voice.Avatar);
+
 
         }
 
@@ -232,6 +236,8 @@ namespace iYak.Controls
 
             pbActor.Paint += new System.Windows.Forms.PaintEventHandler(this.PBActor_Paint);
 
+            
+
         }
 
 
@@ -244,8 +250,6 @@ namespace iYak.Controls
         {
             Control control  = (Control)sender;
             RoboActor parent = (RoboActor)control.Parent;
-
-            Console.WriteLine(control.Name + ">click");
 
             switch (control.Name)
             {
@@ -272,15 +276,18 @@ namespace iYak.Controls
          * MOUSE ENTER
          * ---------------------------------------------------
          */
+
         static public void MEnter(object sender, EventArgs e)
         {
             Control control  = (Control)sender;
             RoboActor parent = (RoboActor)control.Parent;
+            
+
+
 
             //  Dont show Edit option for Actors
             if (parent.Type == ControlType.Actor)
             {
-
                 parent.lblDelete.Visible = true;
 
             }
@@ -289,6 +296,21 @@ namespace iYak.Controls
 
                 parent.lblDelete.Visible = true;
                 parent.lblEdit.Visible   = true;
+                string[] tipWords = parent.voice.Speech.Split(' ');
+                int curLength = 0;
+                parent.tipText = "";
+                foreach (string tipWord in tipWords)
+                {
+                    parent.tipText += tipWord + ' ';
+
+                    curLength += tipWord.Length;
+                    if (curLength > 30)
+                    {
+                        parent.tipText += Environment.NewLine;
+                        curLength = 0;
+                    }
+                }
+                Config.mainRef.tip.SetToolTip(parent.pbActor, parent.tipText);
 
             }
 
@@ -335,5 +357,59 @@ namespace iYak.Controls
         }
 
         
+    }
+
+
+    //
+    // ────────────────────────────────────────────────────────────────────────
+    //   :::::: T O O L  T I P
+    // ────────────────────────────────────────────────────────────────────────
+    //
+    class CustomToolTip : ToolTip
+    {
+        public CustomToolTip()
+        {
+            this.OwnerDraw = true;
+            //this.Popup    += new PopupEventHandler(this.OnPopup);
+            //this.Draw     += new DrawToolTipEventHandler(this.OnDraw);
+            this.IsBalloon = true;
+            this.BackColor = Color.Red;
+            
+            
+        }
+
+        private void OnPopup(object sender, PopupEventArgs e) // use this event to set the size of the tool tip
+        {
+            e.ToolTipSize = new Size(250, 100);
+        }
+
+        private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip
+        {
+            //Graphics g = e.Graphics;
+
+            //LinearGradientBrush b = new LinearGradientBrush(e.Bounds,
+            //    Color.GreenYellow, Color.MintCream, 45f);
+
+            //g.FillRectangle(b, e.Bounds);
+
+            //g.DrawRectangle(new Pen(Brushes.Red, 1), new Rectangle(e.Bounds.X, e.Bounds.Y,
+            //    e.Bounds.Width - 1, e.Bounds.Height - 1));
+
+            //g.DrawString(
+            //    e.ToolTipText, 
+            //    new Font("Open Sans", 12.0F, FontStyle.Bold, GraphicsUnit.Pixel), 
+            //    Brushes.Silver,
+            //    new PointF(e.Bounds.X + 6, e.Bounds.Y + 6)
+            //); // shadow layer
+            
+            //g.DrawString(
+            //    e.ToolTipText, 
+            //    new Font("Open Sans", 12.0F, FontStyle.Bold, GraphicsUnit.Pixel), 
+            //    Brushes.Black,
+            //    new PointF(e.Bounds.X + 5, e.Bounds.Y + 5)
+            //); // top layer
+
+            //b.Dispose();
+        }
     }
 }

@@ -148,7 +148,7 @@ namespace iYak.Classes
         {
             Voice _voice = new Voice()
             {
-                Uid       = 0,
+                Uid       = this.Uid,
                 Id        = this.Id,
                 Handle    = this.Handle,
                 Avatar    = this.Avatar,

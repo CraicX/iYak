@@ -23,10 +23,12 @@ namespace iYak
     {
 
         private SortOrder LastSortOrder = SortOrder.Descending;
+        internal CustomToolTip tip;
 
         public Main()
         {
             InitializeComponent();
+
         }
 
         public void XMLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,6 +61,9 @@ namespace iYak
             Config.FScripts      = FlowScript;
             Config.CurrentFace   = pbFace;
             Config.mainRef       = this;
+            this.tip = new CustomToolTip();
+
+
 
             Utilities.StartUp();
 
