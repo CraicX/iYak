@@ -398,7 +398,9 @@ namespace iYak.Classes
 
             int curAvatar = 1;
 
-            foreach (String avatarPath in avatarList) { 
+            foreach (String avatarSegment in avatarList) {
+
+                string avatarPath = "http://img.faceyourmanga.com/mangatars" + avatarSegment;
 
                 Config.splasher.ShowStatus("Downloading avatar image (" + curAvatar + " / " + numAvatar + ")", curAvatar, numAvatar);
                 

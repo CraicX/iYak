@@ -41,15 +41,15 @@ namespace iYak.Controls
             // 
             // timer1
             // 
-            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // lblDelete
             // 
+            this.lblDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDelete.BackColor = System.Drawing.Color.Indigo;
             this.lblDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDelete.Image = ((System.Drawing.Image)(resources.GetObject("lblDelete.Image")));
-            this.lblDelete.Location = new System.Drawing.Point(0, 1);
+            this.lblDelete.Location = new System.Drawing.Point(60, 1);
             this.lblDelete.Margin = new System.Windows.Forms.Padding(0);
             this.lblDelete.Name = "lblDelete";
             this.lblDelete.Size = new System.Drawing.Size(16, 16);
@@ -63,7 +63,7 @@ namespace iYak.Controls
             this.lblEdit.BackColor = System.Drawing.Color.Transparent;
             this.lblEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEdit.Image = ((System.Drawing.Image)(resources.GetObject("lblEdit.Image")));
-            this.lblEdit.Location = new System.Drawing.Point(60, 22);
+            this.lblEdit.Location = new System.Drawing.Point(2, 22);
             this.lblEdit.Margin = new System.Windows.Forms.Padding(0);
             this.lblEdit.Name = "lblEdit";
             this.lblEdit.Size = new System.Drawing.Size(16, 16);
@@ -95,7 +95,7 @@ namespace iYak.Controls
             this.lblNickname.Size = new System.Drawing.Size(78, 20);
             this.lblNickname.TabIndex = 10;
             this.lblNickname.Text = "nickname";
-            this.lblNickname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNickname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // RoboActor
             // 
