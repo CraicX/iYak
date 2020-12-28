@@ -63,7 +63,7 @@ namespace iYak.Controls
             this.lblEdit.BackColor = System.Drawing.Color.Transparent;
             this.lblEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEdit.Image = ((System.Drawing.Image)(resources.GetObject("lblEdit.Image")));
-            this.lblEdit.Location = new System.Drawing.Point(2, 22);
+            this.lblEdit.Location = new System.Drawing.Point(2, 18);
             this.lblEdit.Margin = new System.Windows.Forms.Padding(0);
             this.lblEdit.Name = "lblEdit";
             this.lblEdit.Size = new System.Drawing.Size(16, 16);
@@ -76,10 +76,10 @@ namespace iYak.Controls
             // 
             this.pbActor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbActor.Image = global::iYak.Properties.Resources.voice;
-            this.pbActor.Location = new System.Drawing.Point(0, 20);
+            this.pbActor.Location = new System.Drawing.Point(0, 16);
             this.pbActor.Margin = new System.Windows.Forms.Padding(0);
             this.pbActor.Name = "pbActor";
-            this.pbActor.Size = new System.Drawing.Size(78, 78);
+            this.pbActor.Size = new System.Drawing.Size(78, 68);
             this.pbActor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbActor.TabIndex = 9;
             this.pbActor.TabStop = false;
