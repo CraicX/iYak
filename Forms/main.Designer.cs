@@ -91,6 +91,7 @@ namespace iYak
             this.ListExport = new System.Windows.Forms.ListView();
             this.colFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFileDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ToolsExport = new System.Windows.Forms.ToolStrip();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExport = new System.Windows.Forms.Button();
@@ -128,6 +129,11 @@ namespace iYak
             this.FlowScript = new System.Windows.Forms.FlowLayoutPanel();
             this.IconsYak = new System.Windows.Forms.ImageList(this.components);
             this.ImgListVS = new System.Windows.Forms.ImageList(this.components);
+            this.BtnExportPlay = new System.Windows.Forms.ToolStripButton();
+            this.BtnExportStop = new System.Windows.Forms.ToolStripButton();
+            this.BtnExportDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnExportOpenPath = new System.Windows.Forms.ToolStripButton();
             this.MenuStrip1.SuspendLayout();
             this.ToolStripRoster.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -138,6 +144,7 @@ namespace iYak
             this.VoiceSelFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).BeginInit();
             this.VCFilter.SuspendLayout();
+            this.ToolsExport.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -511,6 +518,7 @@ namespace iYak
             this.PanelLeft.Controls.Add(this.VoiceSelFrame);
             this.PanelLeft.Controls.Add(this.splitter3);
             this.PanelLeft.Controls.Add(this.ListExport);
+            this.PanelLeft.Controls.Add(this.ToolsExport);
             this.PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelLeft.Location = new System.Drawing.Point(0, 24);
             this.PanelLeft.Name = "PanelLeft";
@@ -526,7 +534,7 @@ namespace iYak
             this.VoiceSelFrame.Location = new System.Drawing.Point(0, 0);
             this.VoiceSelFrame.Margin = new System.Windows.Forms.Padding(0);
             this.VoiceSelFrame.Name = "VoiceSelFrame";
-            this.VoiceSelFrame.Size = new System.Drawing.Size(225, 264);
+            this.VoiceSelFrame.Size = new System.Drawing.Size(225, 255);
             this.VoiceSelFrame.TabIndex = 14;
             // 
             // VoiceSelector
@@ -586,7 +594,7 @@ namespace iYak
             this.VoiceSelector.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.VoiceSelector.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.VoiceSelector.ShowRowErrors = false;
-            this.VoiceSelector.Size = new System.Drawing.Size(225, 239);
+            this.VoiceSelector.Size = new System.Drawing.Size(225, 230);
             this.VoiceSelector.TabIndex = 18;
             this.VoiceSelector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VoiceSelector_CellContentClick);
             this.VoiceSelector.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VoiceSelector_Sort);
@@ -775,9 +783,9 @@ namespace iYak
             this.splitter3.BackColor = System.Drawing.Color.MidnightBlue;
             this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitter3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter3.Location = new System.Drawing.Point(0, 264);
+            this.splitter3.Location = new System.Drawing.Point(0, 255);
             this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(225, 7);
+            this.splitter3.Size = new System.Drawing.Size(225, 10);
             this.splitter3.TabIndex = 7;
             this.splitter3.TabStop = false;
             // 
@@ -792,9 +800,9 @@ namespace iYak
             this.ListExport.ForeColor = System.Drawing.Color.Khaki;
             this.ListExport.FullRowSelect = true;
             this.ListExport.HideSelection = false;
-            this.ListExport.Location = new System.Drawing.Point(0, 271);
+            this.ListExport.Location = new System.Drawing.Point(0, 265);
             this.ListExport.Name = "ListExport";
-            this.ListExport.Size = new System.Drawing.Size(225, 304);
+            this.ListExport.Size = new System.Drawing.Size(225, 285);
             this.ListExport.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.ListExport.TabIndex = 8;
             this.ListExport.UseCompatibleStateImageBehavior = false;
@@ -810,6 +818,25 @@ namespace iYak
             // 
             this.colFileDate.Text = "Date";
             this.colFileDate.Width = 79;
+            // 
+            // ToolsExport
+            // 
+            this.ToolsExport.AllowMerge = false;
+            this.ToolsExport.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.ToolsExport.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ToolsExport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ToolsExport.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ToolsExport.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BtnExportPlay,
+            this.BtnExportStop,
+            this.BtnExportDelete,
+            this.toolStripSeparator4,
+            this.BtnExportOpenPath});
+            this.ToolsExport.Location = new System.Drawing.Point(0, 550);
+            this.ToolsExport.Name = "ToolsExport";
+            this.ToolsExport.Padding = new System.Windows.Forms.Padding(0);
+            this.ToolsExport.Size = new System.Drawing.Size(225, 25);
+            this.ToolsExport.TabIndex = 15;
             // 
             // panel3
             // 
@@ -1393,6 +1420,51 @@ namespace iYak
             this.ImgListVS.Images.SetKeyName(49, "vn.png");
             this.ImgListVS.Images.SetKeyName(50, "fi.png");
             // 
+            // BtnExportPlay
+            // 
+            this.BtnExportPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnExportPlay.Image = ((System.Drawing.Image)(resources.GetObject("BtnExportPlay.Image")));
+            this.BtnExportPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExportPlay.Name = "BtnExportPlay";
+            this.BtnExportPlay.Size = new System.Drawing.Size(23, 22);
+            this.BtnExportPlay.Text = "toolStripButton1";
+            this.BtnExportPlay.Click += new System.EventHandler(this.BtnExportPlay_Click);
+            // 
+            // BtnExportStop
+            // 
+            this.BtnExportStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnExportStop.Image = ((System.Drawing.Image)(resources.GetObject("BtnExportStop.Image")));
+            this.BtnExportStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExportStop.Name = "BtnExportStop";
+            this.BtnExportStop.Size = new System.Drawing.Size(23, 22);
+            this.BtnExportStop.Text = "toolStripButton2";
+            this.BtnExportStop.Click += new System.EventHandler(this.BtnExportStop_Click);
+            // 
+            // BtnExportDelete
+            // 
+            this.BtnExportDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnExportDelete.Image = ((System.Drawing.Image)(resources.GetObject("BtnExportDelete.Image")));
+            this.BtnExportDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExportDelete.Name = "BtnExportDelete";
+            this.BtnExportDelete.Size = new System.Drawing.Size(23, 22);
+            this.BtnExportDelete.Text = "toolStripButton3";
+            this.BtnExportDelete.Click += new System.EventHandler(this.BtnExportDelete_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // BtnExportOpenPath
+            // 
+            this.BtnExportOpenPath.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnExportOpenPath.Image = ((System.Drawing.Image)(resources.GetObject("BtnExportOpenPath.Image")));
+            this.BtnExportOpenPath.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExportOpenPath.Name = "BtnExportOpenPath";
+            this.BtnExportOpenPath.Size = new System.Drawing.Size(23, 22);
+            this.BtnExportOpenPath.Text = "toolStripButton1";
+            this.BtnExportOpenPath.Click += new System.EventHandler(this.BtnExportOpenPath_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1423,11 +1495,14 @@ namespace iYak
             this.PanelTopRight.ResumeLayout(false);
             this.PanelRightBottom.ResumeLayout(false);
             this.PanelLeft.ResumeLayout(false);
+            this.PanelLeft.PerformLayout();
             this.VoiceSelFrame.ResumeLayout(false);
             this.VoiceSelFrame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceSelector)).EndInit();
             this.VCFilter.ResumeLayout(false);
             this.VCFilter.PerformLayout();
+            this.ToolsExport.ResumeLayout(false);
+            this.ToolsExport.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -1542,6 +1617,12 @@ namespace iYak
         internal System.Windows.Forms.FlowLayoutPanel AvatarsFlow;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Splitter splitter5;
+        private System.Windows.Forms.ToolStrip ToolsExport;
+        private System.Windows.Forms.ToolStripButton BtnExportPlay;
+        private System.Windows.Forms.ToolStripButton BtnExportStop;
+        private System.Windows.Forms.ToolStripButton BtnExportDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton BtnExportOpenPath;
     }
 }
 

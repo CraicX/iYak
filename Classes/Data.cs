@@ -303,7 +303,7 @@ namespace iYak.Classes
 
 
 
-        static public int AddSpeech(Voice speech, string say, int playlistId)
+        static public int AddSpeech(Voice speech, string say, int playlistId, bool forceNew=false)
         {
 
             DBH.Open();
@@ -334,7 +334,7 @@ namespace iYak.Classes
 
             SqliteCommand cmd = DBH.CreateCommand();
 
-            if (speech.Uid > 0)
+            if (speech.Uid > 0 && !forceNew)
             {
 
                 cmd.CommandText = String.Format(qUpdateSpeech,
@@ -377,6 +377,8 @@ namespace iYak.Classes
                 speech.Uid = int.Parse(speech_uid.ToString());
 
             }
+
+            Console.WriteLine(cmd.CommandText);
 
             cmd.CommandText = String.Format(qUpdateTime, playlistId);
 

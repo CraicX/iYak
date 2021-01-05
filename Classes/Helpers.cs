@@ -89,9 +89,8 @@ namespace iYak.Classes
         {
             var r  = new Random();
             int lc = theList.Count();
-            int i  = 0;
 
-            for (i = 0; i < lc - 1; i++) {
+            for (int i = 0; i < lc - 1; i++) {
 
                 int index = r.Next(i, lc);
 
@@ -118,7 +117,10 @@ namespace iYak.Classes
             return audiof;
 
         }
-
+        public static void DeleteFile(string FilePath)
+        {
+            if (File.Exists(FilePath)) File.Delete(FilePath);
+        }
         public static string LoadFile(string FilePath)
         {
             if (File.Exists(FilePath))
@@ -176,7 +178,7 @@ namespace iYak.Classes
         public static T GetPropValue<T>(this Object obj, String name)
         {
             Object retval = GetPropValue(obj, name);
-            if (retval == null) { return default(T); }
+            if (retval == null) { return default; }
 
             // throws InvalidCastException if types are incompatible
             return (T)retval;

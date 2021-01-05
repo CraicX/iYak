@@ -161,7 +161,7 @@ namespace iYak
         {
             if (Config.CurrentVoice.Handle == null || Config.CurrentVoice.Handle == "") return;
 
-            Utilities.AddSpeech(Config.CurrentVoice.Copy(), SayBox.Text);
+            Utilities.AddSpeech(Config.CurrentVoice.Copy(), SayBox.Text, true);
 
         }
 
@@ -241,6 +241,8 @@ namespace iYak
 
             Application.DoEvents();
 
+            AudioTools.PlayAudio(ListExport.Items[ListExport.SelectedIndices[0]].Tag.ToString());
+
             Process.Start("explorer.exe", "/select," + ListExport.Items[ListExport.SelectedIndices[0]].Tag);
 
         }
@@ -310,7 +312,53 @@ namespace iYak
             newColumn.HeaderCell.SortGlyphDirection = this.LastSortOrder;
 
         }
-        
+
+        private void BtnExportPlay_Click(object sender, EventArgs e)
+        {
+            if (ListExport.SelectedItems.Count < 1) return;
+
+            AudioTools.PlayAudio(ListExport.Items[ListExport.SelectedIndices[0]].Tag.ToString());
+
+        }
+
+        private void BtnExportStop_Click(object sender, EventArgs e)
+        {
+            AudioTools.StopAudio();
+        }
+
+        private void BtnExportDelete_Click(object sender, EventArgs e)
+        {
+            if (ListExport.SelectedItems.Count < 1) return;
+
+            const string c_message = "Are you sure that you would like to delete this sound file?";
+            const string c_caption = "Delete Sound Clip";
+
+            var result = MessageBox.Show(c_message, c_caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            // If the no button was pressed ...
+            if (result == DialogResult.No)
+            {
+                // cancel delete
+                return;
+            }
+
+            Helpers.DeleteFile(ListExport.Items[ListExport.SelectedIndices[0]].Tag.ToString());
+
+            Utilities.FillExported();
+
+        }
+
+        private void BtnExportOpenPath_Click(object sender, EventArgs e)
+        {
+
+            if (ListExport.SelectedItems.Count < 1) return;
+
+            Process.Start("explorer.exe", "/select," + ListExport.Items[ListExport.SelectedIndices[0]].Tag.ToString());
+
+        }
+
     }
 
 }

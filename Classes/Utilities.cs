@@ -643,7 +643,7 @@ namespace iYak.Classes
         //
         // Creates a new voice control in the flow panel for speech/scripts
         //
-        static public void AddSpeech(Voice voice, string speech)
+        static public void AddSpeech(Voice voice, string speech, bool forceNew=false)
         {
             RoboActor roboA = new RoboActor(
                 voice.Uid,
@@ -653,7 +653,7 @@ namespace iYak.Classes
 
             
             Config.FScripts.Controls.Add(roboA);
-            Datax.AddSpeech(voice, speech, Config.CurrentPlaylist.Uid);
+            Datax.AddSpeech(voice, speech, Config.CurrentPlaylist.Uid, forceNew);
             RoboActor.Activate(roboA);
 
 
@@ -666,6 +666,8 @@ namespace iYak.Classes
                 voice.Speech,
                 voice
             );
+
+            Console.WriteLine("AutoSave: " + (autoSave ? "Yes" : "No"));
 
 
             Config.FScripts.Controls.Add(roboA);
