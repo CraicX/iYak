@@ -45,7 +45,8 @@ namespace iYak
             GCloudRegion.Text = CloudWS.GCloud.region;
 
             cbAWS.Checked     = CloudWS.AWS.enabled;
-            AWSKey.Text       = CloudWS.AWS.key;
+            AWSAccessKey.Text = CloudWS.AWS.accessKey;
+            AWSSecretKey.Text = CloudWS.AWS.secretKey;
             AWSRegion.Text    = CloudWS.AWS.region;
 
             Settings.MyForm = this;
@@ -155,8 +156,10 @@ namespace iYak
 
             foreach( VoiceImport.VoiceSynth synth in VoiceImport.ListTTS ) {
 
-                ListViewItem lvi = new ListViewItem(synth.Name);
-                lvi.UseItemStyleForSubItems = false;
+                ListViewItem lvi = new ListViewItem(synth.Name)
+                {
+                    UseItemStyleForSubItems = false
+                };
 
                 lvi.SubItems.Add(synth.TokenPath);
                 lvi.SubItems.Add(synth.Region);
@@ -224,7 +227,8 @@ namespace iYak
             CloudWS.GCloud.key     = GCloudKey.Text;
             CloudWS.GCloud.region  = GCloudRegion.Text;
             CloudWS.AWS.enabled    = cbAWS.Checked;
-            CloudWS.AWS.key        = AWSKey.Text;
+            CloudWS.AWS.accessKey  = AWSAccessKey.Text;
+            CloudWS.AWS.secretKey  = AWSSecretKey.Text;
             CloudWS.AWS.region     = AWSRegion.Text;
 
 

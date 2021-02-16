@@ -66,9 +66,10 @@ namespace iYak.Classes
 
         static public class AWS
         {
-            static public string key    = "";
-            static public string region = "";
-            static public bool enabled  = false;
+            static public string accessKey     = "";
+            static public string secretKey     = "";
+            static public string region        = "";
+            static public bool enabled         = false;
         }
 
         static public class GCloud

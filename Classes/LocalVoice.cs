@@ -79,7 +79,7 @@ namespace iYak.Classes
                 Volume = voice.Volume,
                 Rate   = (voice.Rate * 2) - 10
             };
-
+            Console.Write(voice);
             localSynth.SetOutputToDefaultAudioDevice();
             localSynth.SelectVoice(voice.Handle);
 

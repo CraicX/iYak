@@ -24,6 +24,8 @@ namespace iYak.Classes
 
         static public Boolean AzureReady     = false;
         static public Boolean AzureEnabled   = false;
+        static public Boolean AWSReady       = false;
+        static public Boolean AWSEnabled     = false;
 
 
         public Voice voice = new Voice();
@@ -47,6 +49,7 @@ namespace iYak.Classes
 
             if (voice.Host == Voice.EHost.Local) return LocalVoice.Speak(voice);
             if (voice.Host == Voice.EHost.Azure) { AzureVoice.Speak(voice); return true; }
+            if (voice.Host == Voice.EHost.AWS) { AWSVoice.Speak(voice); return true; }
 
             return false;
         
@@ -77,6 +80,10 @@ namespace iYak.Classes
             {
                 AzureVoice.Export(voice, voiceExport, callback);
             }
+            else if (voice.Host == Voice.EHost.AWS)
+            {
+                AWSVoice.Export(voice, voiceExport, callback);
+            }
 
 
         }
@@ -96,6 +103,17 @@ namespace iYak.Classes
             if(AzureReady)
             {
                 TempList = AzureVoice.GetVoiceList(ForceRefresh);
+
+                foreach (Voice TempVoice in TempList)
+                {
+                    VoiceList.Add(TempVoice);
+                }
+
+            }
+
+            if (AWSReady)
+            {
+                TempList = AWSVoice.GetVoiceList(ForceRefresh);
 
                 foreach (Voice TempVoice in TempList)
                 {

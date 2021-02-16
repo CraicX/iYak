@@ -45,7 +45,7 @@ namespace iYak
             this.Pb_aws = new System.Windows.Forms.PictureBox();
             this.gbAWS = new System.Windows.Forms.GroupBox();
             this.AWSRegion = new System.Windows.Forms.TextBox();
-            this.AWSKey = new System.Windows.Forms.TextBox();
+            this.AWSAccessKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbAWS = new System.Windows.Forms.CheckBox();
@@ -77,6 +77,8 @@ namespace iYak
             this.colGender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fbrowse1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.AWSSecretKey = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -106,7 +108,7 @@ namespace iYak
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(540, 411);
+            this.tabControl1.Size = new System.Drawing.Size(540, 427);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -215,7 +217,7 @@ namespace iYak
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(532, 382);
+            this.tabPage2.Size = new System.Drawing.Size(532, 398);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cloud Setup";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -227,7 +229,7 @@ namespace iYak
             this.groupBox4.Controls.Add(this.cbAWS);
             this.groupBox4.Location = new System.Drawing.Point(8, 228);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(516, 102);
+            this.groupBox4.Size = new System.Drawing.Size(516, 121);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Amazon AWS";
@@ -244,35 +246,37 @@ namespace iYak
             // 
             // gbAWS
             // 
+            this.gbAWS.Controls.Add(this.AWSSecretKey);
+            this.gbAWS.Controls.Add(this.label9);
             this.gbAWS.Controls.Add(this.AWSRegion);
-            this.gbAWS.Controls.Add(this.AWSKey);
+            this.gbAWS.Controls.Add(this.AWSAccessKey);
             this.gbAWS.Controls.Add(this.label5);
             this.gbAWS.Controls.Add(this.label6);
             this.gbAWS.Enabled = false;
             this.gbAWS.Location = new System.Drawing.Point(100, 14);
             this.gbAWS.Name = "gbAWS";
-            this.gbAWS.Size = new System.Drawing.Size(402, 74);
+            this.gbAWS.Size = new System.Drawing.Size(402, 101);
             this.gbAWS.TabIndex = 2;
             this.gbAWS.TabStop = false;
             // 
             // AWSRegion
             // 
-            this.AWSRegion.Location = new System.Drawing.Point(63, 42);
+            this.AWSRegion.Location = new System.Drawing.Point(80, 67);
             this.AWSRegion.Name = "AWSRegion";
             this.AWSRegion.Size = new System.Drawing.Size(168, 20);
             this.AWSRegion.TabIndex = 3;
             // 
-            // AWSKey
+            // AWSAccessKey
             // 
-            this.AWSKey.Location = new System.Drawing.Point(63, 15);
-            this.AWSKey.Name = "AWSKey";
-            this.AWSKey.Size = new System.Drawing.Size(313, 20);
-            this.AWSKey.TabIndex = 2;
+            this.AWSAccessKey.Location = new System.Drawing.Point(80, 15);
+            this.AWSAccessKey.Name = "AWSAccessKey";
+            this.AWSAccessKey.Size = new System.Drawing.Size(296, 20);
+            this.AWSAccessKey.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 45);
+            this.label5.Location = new System.Drawing.Point(33, 70);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 1;
@@ -283,9 +287,9 @@ namespace iYak
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(11, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "API Key";
+            this.label6.Text = "Access Key";
             // 
             // cbAWS
             // 
@@ -300,7 +304,8 @@ namespace iYak
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(445, 342);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(445, 356);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 34);
             this.btnSave.TabIndex = 2;
@@ -563,11 +568,27 @@ namespace iYak
             this.colStatus.Text = "-";
             this.colStatus.Width = 54;
             // 
+            // AWSSecretKey
+            // 
+            this.AWSSecretKey.Location = new System.Drawing.Point(80, 41);
+            this.AWSSecretKey.Name = "AWSSecretKey";
+            this.AWSSecretKey.Size = new System.Drawing.Size(296, 20);
+            this.AWSSecretKey.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Secret Key";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 411);
+            this.ClientSize = new System.Drawing.Size(540, 427);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -621,7 +642,7 @@ namespace iYak
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox gbAWS;
         public System.Windows.Forms.TextBox AWSRegion;
-        public System.Windows.Forms.TextBox AWSKey;
+        public System.Windows.Forms.TextBox AWSAccessKey;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.CheckBox cbAWS;
@@ -653,5 +674,7 @@ namespace iYak
         private System.Windows.Forms.ColumnHeader colStatus;
         private System.Windows.Forms.Button btnSave3;
         private System.Windows.Forms.Label lblRestart;
+        public System.Windows.Forms.TextBox AWSSecretKey;
+        private System.Windows.Forms.Label label9;
     }
 }

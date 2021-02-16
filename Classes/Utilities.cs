@@ -84,7 +84,8 @@ namespace iYak.Classes
             //
             Config.mainRef.SayBox.Text = Config.DefaultText;
 
-            if (CloudWS.Azure.enabled) AzureVoice.Init();
+            if (CloudWS.Azure.enabled)  AzureVoice.Init();
+            if (CloudWS.AWS.enabled)    AWSVoice.Init();
 
             Config.Voices = RoboVoice.GetVoiceList();
 
@@ -522,8 +523,12 @@ namespace iYak.Classes
                             CloudWS.Azure.enabled = (pieces[1] == "1");
                             break;
 
-                        case "AWSKey":
-                            CloudWS.AWS.key = pieces[1];
+                        case "AWSAccessKey":
+                            CloudWS.AWS.accessKey = pieces[1];
+                            break;
+
+                        case "AWSSecretKey":
+                            CloudWS.AWS.secretKey = pieces[1];
                             break;
 
                         case "AWSRegion":
@@ -574,7 +579,8 @@ namespace iYak.Classes
             sw.WriteLine("AzureRegion = "       + CloudWS.Azure.region);
             sw.WriteLine("AzureEnabled = "      + (CloudWS.Azure.enabled ? "1":"0"));
 
-            sw.WriteLine("AWSKey = "            + CloudWS.AWS.key);
+            sw.WriteLine("AWSAccessKey = "      + CloudWS.AWS.accessKey);
+            sw.WriteLine("AWSSecretKey = "      + CloudWS.AWS.secretKey);
             sw.WriteLine("AWSRegion = "         + CloudWS.AWS.region);
             sw.WriteLine("AWSEnabled = "        + (CloudWS.AWS.enabled ? "1" : "0"));
 
